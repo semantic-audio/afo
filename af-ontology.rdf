@@ -1,0 +1,366 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<rdf:RDF
+   xmlns:dc="http://purl.org/dc/elements/1.1/"
+   xmlns:dcterms="http://purl.org/dc/terms/"
+   xmlns:owl="http://www.w3.org/2002/07/owl#"
+   xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+   xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#"
+>
+  <rdf:Description rdf:about="https://w3id.org/afo/onto/1.1#AudioFeature">
+    <rdfs:label xml:lang="en">Audio feature</rdfs:label>
+    <rdfs:subClassOf rdf:resource="http://purl.org/NET/c4dm/event.#Event"/>
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+    <rdfs:comment xml:lang="en">Represents abstract conceptualisation of an audio feature</rdfs:comment>
+    <rdf:type rdf:nodeID="N53bbaedcf66d4be69a7d8e533b1fe423"/>
+    <rdf:type rdf:nodeID="Neba26c2f7ef04f7e937ff06f4dc1ca6b"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="https://w3id.org/afo/onto/1.1#Aggregation">
+    <rdfs:subClassOf rdf:resource="https://w3id.org/afo/onto/1.1#Operation"/>
+    <rdfs:comment xml:lang="en">Abstract class Aggregation represents a computational operation in audio feature extraction computational workflow</rdfs:comment>
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+    <rdfs:label xml:lang="en">Aggregation</rdfs:label>
+  </rdf:Description>
+  <rdf:Description rdf:about="https://w3id.org/afo/onto/1.1#Filter">
+    <rdfs:comment xml:lang="en">Abstract class Filter represents a computational operation in audio feature extraction computational workflow</rdfs:comment>
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+    <rdfs:label xml:lang="en">Filter</rdfs:label>
+    <rdfs:subClassOf rdf:resource="https://w3id.org/afo/onto/1.1#Operation"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="https://w3id.org/afo/onto/1.1#">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Ontology"/>
+    <dc:creator>Alo Allik</dc:creator>
+    <owl:versionInfo>Version 1.1</owl:versionInfo>
+    <dc:description xml:lang="en">This ontology represents the feature extraction workflow of automatically extracted features from audio signals on different levels of abstraction. It updates the original Audio Feature Ontology http://purl.org/ontology/af/.</dc:description>
+    <dc:rights>This ontology is distributed under a Creative Commons License - http://creativecommons.org/licenses/by-sa/4.0/</dc:rights>
+    <dc:title xml:lang="en">Audio Feature Ontology</dc:title>
+    <dc:date>2017-01-12T12:53:45.439476</dc:date>
+    <dc:creator>Gyorgy Fazekas</dc:creator>
+    <dcterms:license rdf:resource="http://creativecommons.org/licenses/by-sa/4.0/"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="https://w3id.org/afo/onto/1.1#Context">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+    <rdfs:label xml:lang="en">Audio feature extractor context</rdfs:label>
+    <rdfs:comment xml:lang="en">Represents the software and hardware context of a feature extractor instance</rdfs:comment>
+  </rdf:Description>
+  <rdf:Description rdf:about="https://w3id.org/afo/onto/1.1#described_in">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#ObjectProperty"/>
+    <rdfs:label xml:lang="en">described_in</rdfs:label>
+    <rdfs:domain rdf:resource="https://w3id.org/afo/onto/1.1#AudioFeature"/>
+    <rdfs:range rdf:resource="http://purl.org/ontology/bibo/Document"/>
+    <rdfs:comment xml:lang="en">links model to an external resource that describes it</rdfs:comment>
+  </rdf:Description>
+  <rdf:Description rdf:about="https://w3id.org/afo/onto/1.1#model">
+    <rdfs:comment xml:lang="en">links audio feature to a computational model</rdfs:comment>
+    <owl:inverseOf rdf:resource="https://w3id.org/afo/onto/1.1#model_of"/>
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#ObjectProperty"/>
+    <rdfs:label xml:lang="en">model</rdfs:label>
+    <rdfs:domain rdf:resource="https://w3id.org/afo/onto/1.1#AudioFeature"/>
+    <rdfs:range rdf:resource="https://w3id.org/afo/onto/1.1#Model"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="https://w3id.org/afo/onto/1.1#dimensions">
+    <rdfs:comment xml:lang="en">links dimensions of a feature to feature extraction result</rdfs:comment>
+    <rdfs:domain rdf:resource="https://w3id.org/afo/onto/1.1#AudioFeature"/>
+    <rdfs:range rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#List"/>
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#ObjectProperty"/>
+    <rdfs:label xml:lang="en">dimensions</rdfs:label>
+  </rdf:Description>
+  <rdf:Description rdf:about="https://w3id.org/afo/onto/1.1#value">
+    <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#anySimpleType"/>
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#DatatypeProperty"/>
+    <rdfs:label xml:lang="en">value</rdfs:label>
+    <rdfs:domain rdf:resource="https://w3id.org/afo/onto/1.1#Parameter"/>
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#ObjectProperty"/>
+    <rdfs:comment xml:lang="en">links a feature value to an audio feature</rdfs:comment>
+    <rdfs:domain rdf:resource="https://w3id.org/afo/onto/1.1#AudioFeature"/>
+    <rdfs:comment xml:lang="en">parameter value</rdfs:comment>
+  </rdf:Description>
+  <rdf:Description rdf:about="https://w3id.org/afo/onto/1.1#implementation">
+    <rdfs:domain rdf:resource="https://w3id.org/afo/onto/1.1#Model"/>
+    <rdfs:range rdf:resource="https://w3id.org/afo/onto/1.1#FeatureExtractor"/>
+    <rdfs:comment xml:lang="en">links an audio feature to an implementation</rdfs:comment>
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#ObjectProperty"/>
+    <owl:inverseOf rdf:resource="https://w3id.org/afo/onto/1.1#implementation_of"/>
+    <rdfs:label xml:lang="en">implementation</rdfs:label>
+  </rdf:Description>
+  <rdf:Description rdf:about="https://w3id.org/afo/onto/1.1#values">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#ObjectProperty"/>
+    <rdfs:range rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#Collection"/>
+    <rdfs:comment xml:lang="en">links a collection of values to an audio feature</rdfs:comment>
+    <rdfs:domain rdf:resource="https://w3id.org/afo/onto/1.1#AudioFeature"/>
+    <rdfs:label xml:lang="en">values</rdfs:label>
+  </rdf:Description>
+  <rdf:Description rdf:about="https://w3id.org/afo/onto/1.1#LastOperation">
+    <rdfs:subClassOf rdf:resource="https://w3id.org/afo/onto/1.1#Operation"/>
+    <rdfs:comment xml:lang="en">Last computational operation in a feature extraction sequence of operations</rdfs:comment>
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+    <rdfs:label xml:lang="en">Last Operation</rdfs:label>
+  </rdf:Description>
+  <rdf:Description rdf:about="https://w3id.org/afo/onto/1.1#operation">
+    <rdfs:range rdf:resource="https://w3id.org/afo/onto/1.1#Operation"/>
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#ObjectProperty"/>
+    <rdfs:label xml:lang="en">operation</rdfs:label>
+    <rdfs:comment xml:lang="en">abstract property</rdfs:comment>
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#FunctionalProperty"/>
+    <rdfs:domain rdf:resource="https://w3id.org/afo/onto/1.1#Operation"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="https://w3id.org/afo/onto/1.1#Signal">
+    <rdfs:subClassOf rdf:resource="http://purl.org/ontology/mo/Signal"/>
+    <rdfs:comment xml:lang="en">Represents a dense signal-like feature</rdfs:comment>
+    <rdfs:label xml:lang="en">Signal</rdfs:label>
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+    <rdfs:subClassOf rdf:resource="https://w3id.org/afo/onto/1.1#AudioFeature"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="https://w3id.org/afo/onto/1.1#Parameter">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+    <rdfs:comment xml:lang="en">Represents a parameter for an audio feature extraction algorithm</rdfs:comment>
+    <rdfs:label xml:lang="en">Parameter for audio feature extractor</rdfs:label>
+  </rdf:Description>
+  <rdf:Description rdf:about="https://w3id.org/afo/onto/1.1#unit">
+    <rdfs:comment xml:lang="en">parameter unit</rdfs:comment>
+    <rdfs:range rdf:resource="http://qudt.org/1.1/vocab/unit#unit"/>
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#ObjectProperty"/>
+    <rdfs:label xml:lang="en">unit</rdfs:label>
+    <rdfs:domain rdf:resource="https://w3id.org/afo/onto/1.1#Parameter"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="https://w3id.org/afo/onto/1.1#feature">
+    <rdfs:comment xml:lang="en">feature of a feature</rdfs:comment>
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#ObjectProperty"/>
+    <rdfs:range rdf:resource="https://w3id.org/afo/onto/1.1#AudioFeature"/>
+    <rdfs:label xml:lang="en">feature</rdfs:label>
+    <rdfs:domain rdf:resource="https://w3id.org/afo/onto/1.1#AudioFeature"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="https://w3id.org/afo/onto/1.1#FirstOperation">
+    <rdfs:subClassOf rdf:resource="https://w3id.org/afo/onto/1.1#Operation"/>
+    <rdfs:label xml:lang="en">First Operation</rdfs:label>
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+    <rdfs:comment xml:lang="en">First computational operation in a feature extraction sequence of operations</rdfs:comment>
+  </rdf:Description>
+  <rdf:Description rdf:about="https://w3id.org/afo/onto/1.1#computed_by">
+    <rdfs:label xml:lang="en">computed_by</rdfs:label>
+    <rdfs:range rdf:resource="https://w3id.org/afo/onto/1.1#FeatureExtractor"/>
+    <rdfs:comment xml:lang="en">links an audio feature to a feature extractor</rdfs:comment>
+    <rdfs:domain rdf:resource="https://w3id.org/afo/onto/1.1#AudioFeature"/>
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#ObjectProperty"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="https://w3id.org/afo/onto/1.1#sequence">
+    <rdfs:label xml:lang="en">sequence</rdfs:label>
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#FunctionalProperty"/>
+    <rdfs:range rdf:resource="https://w3id.org/afo/onto/1.1#OperationSequence"/>
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#ObjectProperty"/>
+    <rdfs:comment xml:lang="en">links a model to computational sequence</rdfs:comment>
+    <rdfs:domain rdf:resource="https://w3id.org/afo/onto/1.1#AudioFeature"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="https://w3id.org/afo/onto/1.1#parameter">
+    <rdfs:range rdf:resource="https://w3id.org/afo/onto/1.1#Parameter"/>
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#ObjectProperty"/>
+    <rdfs:label xml:lang="en">parameter</rdfs:label>
+    <rdfs:comment xml:lang="en">links parameters to audio features</rdfs:comment>
+    <rdfs:domain rdf:resource="https://w3id.org/afo/onto/1.1#Operation"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="https://w3id.org/afo/onto/1.1#data_type">
+    <rdfs:label xml:lang="en">data_type</rdfs:label>
+    <rdfs:comment xml:lang="en">parameter data type</rdfs:comment>
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#DatatypeProperty"/>
+    <rdfs:domain rdf:resource="https://w3id.org/afo/onto/1.1#Parameter"/>
+    <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#anySimpleType"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="https://w3id.org/afo/onto/1.1#next_operation">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#FunctionalProperty"/>
+    <rdfs:range rdf:resource="https://w3id.org/afo/onto/1.1#Operation"/>
+    <rdfs:subPropertyOf rdf:resource="https://w3id.org/afo/onto/1.1#operation"/>
+    <rdfs:comment xml:lang="en">link between operations in a sequence</rdfs:comment>
+    <rdfs:label xml:lang="en">next_operation</rdfs:label>
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#ObjectProperty"/>
+    <rdfs:domain rdf:resource="https://w3id.org/afo/onto/1.1#Operation"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="https://w3id.org/afo/onto/1.1#confidence">
+    <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#float"/>
+    <rdfs:label xml:lang="en">confidence</rdfs:label>
+    <rdfs:comment xml:lang="en">links a confidence value to a result</rdfs:comment>
+    <rdfs:domain rdf:resource="https://w3id.org/afo/onto/1.1#AudioFeature"/>
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#DatatypeProperty"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="https://w3id.org/afo/onto/1.1#implementation_of">
+    <owl:inverseOf rdf:resource="https://w3id.org/afo/onto/1.1#implementation"/>
+    <rdfs:range rdf:resource="https://w3id.org/afo/onto/1.1#Model"/>
+    <rdfs:domain rdf:resource="https://w3id.org/afo/onto/1.1#FeatureExtractor"/>
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#ObjectProperty"/>
+    <rdfs:label xml:lang="en">implementation_of</rdfs:label>
+    <rdfs:comment xml:lang="en">inverse of implementation to link an implemented algorithm to a computational model</rdfs:comment>
+  </rdf:Description>
+  <rdf:Description rdf:about="https://w3id.org/afo/onto/1.1#output">
+    <rdfs:comment xml:lang="en">links an abstract output type to a computational operation</rdfs:comment>
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#ObjectProperty"/>
+    <rdfs:range rdf:resource="https://w3id.org/afo/onto/1.1#AudioFeature"/>
+    <rdfs:label xml:lang="en">output</rdfs:label>
+    <rdfs:domain rdf:resource="https://w3id.org/afo/onto/1.1#Operation"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="https://w3id.org/afo/onto/1.1#Point">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+    <rdfs:label xml:lang="en">Point</rdfs:label>
+    <rdfs:comment xml:lang="en">Represents a feature at an instant of time</rdfs:comment>
+    <rdfs:subClassOf rdf:resource="https://w3id.org/afo/onto/1.1#AudioFeature"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="https://w3id.org/afo/onto/1.1#context">
+    <rdfs:domain rdf:resource="https://w3id.org/afo/onto/1.1#Instance"/>
+    <rdfs:range rdf:resource="https://w3id.org/afo/onto/1.1#Context"/>
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#ObjectProperty"/>
+    <rdfs:comment xml:lang="en">links an audio feature extractor to a system context</rdfs:comment>
+    <rdfs:label xml:lang="en">context</rdfs:label>
+  </rdf:Description>
+  <rdf:Description rdf:about="https://w3id.org/afo/onto/1.1#Operation">
+    <rdfs:comment xml:lang="en">Represents a computational operation in the feature extraction workflow</rdfs:comment>
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+    <rdfs:label xml:lang="en">Computational Operation</rdfs:label>
+    <rdfs:subClassOf rdf:resource="http://www.w3.org/ns/prov#SoftwareAgent"/>
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="Neba26c2f7ef04f7e937ff06f4dc1ca6b">
+    <owl:cardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#int">1</owl:cardinality>
+    <owl:onProperty rdf:resource="https://w3id.org/afo/onto/1.1#operation"/>
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Restriction"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="https://w3id.org/afo/onto/1.1#probability">
+    <rdfs:label xml:lang="en">probability</rdfs:label>
+    <rdfs:comment xml:lang="en">links a probability value to a result</rdfs:comment>
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#DatatypeProperty"/>
+    <rdfs:domain rdf:resource="https://w3id.org/afo/onto/1.1#AudioFeature"/>
+    <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#float"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="https://w3id.org/afo/onto/1.1#implemented_in">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#ObjectProperty"/>
+    <rdfs:domain rdf:resource="https://w3id.org/afo/onto/1.1#FeatureExtractor"/>
+    <rdfs:label xml:lang="en">implemented_in</rdfs:label>
+    <rdfs:comment xml:lang="en">links a feature extractor to a SoftwareAgent</rdfs:comment>
+    <rdfs:range rdf:resource="http://www.w3.org/ns/prov#SoftwareAgent"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="https://w3id.org/afo/onto/1.1#first_operation">
+    <rdfs:comment xml:lang="en">first operation in a sequence</rdfs:comment>
+    <rdfs:subPropertyOf rdf:resource="https://w3id.org/afo/onto/1.1#operation"/>
+    <rdfs:domain rdf:resource="https://w3id.org/afo/onto/1.1#OperationSequence"/>
+    <rdfs:range rdf:resource="https://w3id.org/afo/onto/1.1#Operation"/>
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#ObjectProperty"/>
+    <rdfs:label xml:lang="en">first_operation</rdfs:label>
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#FunctionalProperty"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="https://w3id.org/afo/onto/1.1#Instance">
+    <rdfs:label xml:lang="en">Audio feature extractor instance</rdfs:label>
+    <rdfs:comment xml:lang="en">Represents an instance of a feature extractor</rdfs:comment>
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="https://w3id.org/afo/onto/1.1#description">
+    <rdfs:label xml:lang="en">description</rdfs:label>
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#DatatypeProperty"/>
+    <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+    <rdfs:domain rdf:resource="https://w3id.org/afo/onto/1.1#Parameter"/>
+    <rdfs:comment xml:lang="en">parameter description</rdfs:comment>
+  </rdf:Description>
+  <rdf:Description rdf:about="https://w3id.org/afo/onto/1.1#OperationSequence">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+    <rdfs:label xml:lang="en">Operation Sequence</rdfs:label>
+    <rdfs:comment xml:lang="en">Represents a sequence of mathematical operations</rdfs:comment>
+  </rdf:Description>
+  <rdf:Description rdf:about="https://w3id.org/afo/onto/1.1#model_of">
+    <owl:inverseOf rdf:resource="https://w3id.org/afo/onto/1.1#model"/>
+    <rdfs:range rdf:resource="https://w3id.org/afo/onto/1.1#AudioFeature"/>
+    <rdfs:comment xml:lang="en">inverse of model to link a computational model to an audio feature</rdfs:comment>
+    <rdfs:label xml:lang="en">model_of</rdfs:label>
+    <rdfs:domain rdf:resource="https://w3id.org/afo/onto/1.1#Model"/>
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#ObjectProperty"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="https://w3id.org/afo/onto/1.1#name">
+    <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+    <rdfs:label xml:lang="en">name</rdfs:label>
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#DatatypeProperty"/>
+    <rdfs:comment xml:lang="en">feature extraction parameter name</rdfs:comment>
+    <rdfs:domain rdf:resource="https://w3id.org/afo/onto/1.1#Parameter"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="https://w3id.org/afo/onto/1.1#maximum_value">
+    <rdfs:label xml:lang="en">maximum_value</rdfs:label>
+    <rdfs:domain rdf:resource="https://w3id.org/afo/onto/1.1#Parameter"/>
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#DatatypeProperty"/>
+    <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#anySimpleType"/>
+    <rdfs:comment xml:lang="en">maximum parameter value</rdfs:comment>
+  </rdf:Description>
+  <rdf:Description rdf:about="https://w3id.org/afo/onto/1.1#Transformation">
+    <rdfs:subClassOf rdf:resource="https://w3id.org/afo/onto/1.1#Operation"/>
+    <rdfs:label xml:lang="en">Transformation</rdfs:label>
+    <rdfs:comment xml:lang="en">Abstract class Transformation represents a computational operation in audio feature extraction computational workflow</rdfs:comment>
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="N53bbaedcf66d4be69a7d8e533b1fe423">
+    <owl:allValuesFrom rdf:resource="https://w3id.org/afo/onto/1.1#Operation"/>
+    <owl:onProperty rdf:resource="https://w3id.org/afo/onto/1.1#operation"/>
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Restriction"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="https://w3id.org/afo/onto/1.1#minimum_value">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#DatatypeProperty"/>
+    <rdfs:domain rdf:resource="https://w3id.org/afo/onto/1.1#Parameter"/>
+    <rdfs:label xml:lang="en">minimum_value</rdfs:label>
+    <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#anySimpleType"/>
+    <rdfs:comment xml:lang="en">minimum parameter value</rdfs:comment>
+  </rdf:Description>
+  <rdf:Description rdf:about="https://w3id.org/afo/onto/1.1#agent">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#ObjectProperty"/>
+    <rdfs:comment xml:lang="en">links an operating system description to context</rdfs:comment>
+    <rdfs:range rdf:resource="http://www.w3.org/ns/prov#SoftwareAgent"/>
+    <rdfs:domain rdf:resource="https://w3id.org/afo/onto/1.1#Context"/>
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#FunctionalProperty"/>
+    <rdfs:label xml:lang="en">agent</rdfs:label>
+  </rdf:Description>
+  <rdf:Description rdf:about="https://w3id.org/afo/onto/1.1#implements">
+    <rdfs:domain rdf:resource="https://w3id.org/afo/onto/1.1#FeatureExtractor"/>
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#ObjectProperty"/>
+    <rdfs:range rdf:resource="https://w3id.org/afo/onto/1.1#AudioFeature"/>
+    <rdfs:comment xml:lang="en">links an audio feature extractor to an audio feature</rdfs:comment>
+    <rdfs:label xml:lang="en">implements</rdfs:label>
+  </rdf:Description>
+  <rdf:Description rdf:about="https://w3id.org/afo/onto/1.1#OptionalOperation">
+    <rdfs:label xml:lang="en">Optional Operation</rdfs:label>
+    <rdfs:subClassOf rdf:resource="https://w3id.org/afo/onto/1.1#Operation"/>
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+    <rdfs:comment xml:lang="en">Optional computational operation in a feature extraction sequence of operations</rdfs:comment>
+  </rdf:Description>
+  <rdf:Description rdf:about="https://w3id.org/afo/onto/1.1#input">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#ObjectProperty"/>
+    <rdfs:label xml:lang="en">input</rdfs:label>
+    <rdfs:comment xml:lang="en">links input to a computational operation</rdfs:comment>
+    <rdfs:domain rdf:resource="https://w3id.org/afo/onto/1.1#Operation"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="https://w3id.org/afo/onto/1.1#Segment">
+    <rdfs:comment xml:lang="en">Represents a feature spanning an interval of time</rdfs:comment>
+    <rdf:type rdf:nodeID="N77913cc8b2984942903a58597f9a2e3b"/>
+    <rdfs:subClassOf rdf:resource="https://w3id.org/afo/onto/1.1#AudioFeature"/>
+    <rdfs:label xml:lang="en">Segment</rdfs:label>
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="https://w3id.org/afo/onto/1.1#default_value">
+    <rdfs:comment xml:lang="en">default parameter value</rdfs:comment>
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#DatatypeProperty"/>
+    <rdfs:domain rdf:resource="https://w3id.org/afo/onto/1.1#Parameter"/>
+    <rdfs:label xml:lang="en">default_value</rdfs:label>
+    <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#anySimpleType"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="https://w3id.org/afo/onto/1.1#collection">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#ObjectProperty"/>
+    <rdfs:comment xml:lang="en">links a collection of values using terms defined in the Collection Ontology</rdfs:comment>
+    <rdfs:label xml:lang="en">collection</rdfs:label>
+    <rdfs:domain rdf:resource="https://w3id.org/afo/onto/1.1#AudioFeature"/>
+    <rdfs:range rdf:resource="http://purl.org/co/Collection"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="https://w3id.org/afo/onto/1.1#FeatureExtractor">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+    <rdfs:label xml:lang="en">Audio feature extractor implementation</rdfs:label>
+    <rdfs:subClassOf rdf:resource="https://w3id.org/afo/onto/1.1#Operation"/>
+    <rdfs:comment xml:lang="en">Represents a specific implementation of an audio feature</rdfs:comment>
+  </rdf:Description>
+  <rdf:Description rdf:about="https://w3id.org/afo/onto/1.1#Model">
+    <rdfs:comment xml:lang="en">Represents an abstract model of an audio feature</rdfs:comment>
+    <rdfs:label xml:lang="en">Model</rdfs:label>
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="N77913cc8b2984942903a58597f9a2e3b">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Restriction"/>
+    <owl:onProperty rdf:resource="http://purl.org/NET/c4dm/event.#time"/>
+    <owl:someValuesFrom rdf:resource="http://purl.org/NET/c4dm/timeline.#Interval"/>
+  </rdf:Description>
+</rdf:RDF>

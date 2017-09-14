@@ -1,0 +1,408 @@
+@prefix afo: <https://w3id.org/afo/onto/1.1#> .
+@prefix afv: <https://w3id.org/afo/vocab/1.1#> .
+@prefix dc: <http://purl.org/dc/elements/1.1/> .
+@prefix mirtoolbox: <http://sovarr.c4dm.eecs.qmul.ac.uk/af/mir/MIRToolbox/1.0#> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix skos: <http://www.w3.org/2004/02/skos/core#> .
+@prefix vs: <http://www.w3.org/2003/06/sw-vocab-status/ns#> .
+@prefix xml: <http://www.w3.org/XML/1998/namespace> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+<> a owl:Ontology ;
+    dc:description "This is an ontology for annotating MIR Toolbox audio features"@en ;
+    dc:title "MIR Toolbox Ontology"@en ;
+    owl:versionInfo "Version 1.0"@en .
+
+mirtoolbox:Attack a owl:Class ;
+    rdfs:label "Attack"@en ;
+    rdfs:comment "Attack MIR Toolbox audio feature" ;
+    rdfs:subClassOf afo:TimbreFeatureExtractor ;
+    = afv:Attack ;
+    vs:term_status "testing"@en .
+
+mirtoolbox:AttackLeap a owl:Class ;
+    rdfs:label "AttackLeap"@en ;
+    rdfs:comment "AttackLeap MIR Toolbox audio feature" ;
+    rdfs:subClassOf afo:TimbreFeatureExtractor ;
+    = afv:AttackLeap ;
+    vs:term_status "testing"@en .
+
+mirtoolbox:AttackSlope a owl:Class ;
+    rdfs:label "AttackSlope"@en ;
+    rdfs:comment "AttackSlope MIR Toolbox audio feature" ;
+    rdfs:subClassOf afo:TimbreFeatureExtractor ;
+    = afv:AttackSlope ;
+    vs:term_status "testing"@en .
+
+mirtoolbox:Audio a owl:Class ;
+    rdfs:label "Audio"@en ;
+    rdfs:comment "Audio MIR Toolbox audio feature" ;
+    = afv:Audio ;
+    vs:term_status "testing"@en .
+
+mirtoolbox:Autocorrelation a owl:Class ;
+    rdfs:label "Autocorrelation"@en ;
+    rdfs:comment "Autocorrelation MIR Toolbox audio feature" ;
+    = afv:Autocorrelation ;
+    vs:term_status "testing"@en .
+
+mirtoolbox:BeatSpectrum a owl:Class ;
+    rdfs:label "BeatSpectrum"@en ;
+    rdfs:comment "BeatSpectrum MIR Toolbox audio feature" ;
+    rdfs:subClassOf afo:RhythmFeatureExtractor ;
+    = afv:BeatSpectrum ;
+    vs:term_status "testing"@en .
+
+mirtoolbox:Brightness a owl:Class ;
+    rdfs:label "Brightness"@en ;
+    rdfs:comment "Brightness MIR Toolbox audio feature" ;
+    rdfs:subClassOf afo:TimbreFeatureExtractor ;
+    = afv:Brightness ;
+    vs:term_status "testing"@en .
+
+mirtoolbox:Centroid a owl:Class ;
+    rdfs:label "Centroid"@en ;
+    rdfs:comment "Centroid MIR Toolbox audio feature" ;
+    rdfs:subClassOf afo:Statistics ;
+    = afv:Centroid ;
+    vs:term_status "testing"@en .
+
+mirtoolbox:Cepstrum a owl:Class ;
+    rdfs:label "Cepstrum"@en ;
+    rdfs:comment "Cepstrum MIR Toolbox audio feature" ;
+    = afv:Cepstrum ;
+    vs:term_status "testing"@en .
+
+mirtoolbox:Chromagram a owl:Class ;
+    rdfs:label "Chromagram"@en ;
+    rdfs:comment "Chromagram MIR Toolbox audio feature" ;
+    rdfs:subClassOf afo:TonalityFeatureExtractor ;
+    = afv:Chromagram ;
+    vs:term_status "testing"@en .
+
+mirtoolbox:Classify a owl:Class ;
+    rdfs:label "Classify"@en ;
+    rdfs:comment "Classify MIR Toolbox audio feature" ;
+    rdfs:subClassOf afo:Predictions ;
+    = afv:Classify ;
+    vs:term_status "testing"@en .
+
+mirtoolbox:Cluster a owl:Class ;
+    rdfs:label "Cluster"@en ;
+    rdfs:comment "Cluster MIR Toolbox audio feature" ;
+    rdfs:subClassOf afo:Predictions ;
+    = afv:Cluster ;
+    vs:term_status "testing"@en .
+
+mirtoolbox:Distance a owl:Class ;
+    rdfs:label "Distance"@en ;
+    rdfs:comment "Distance MIR Toolbox audio feature" ;
+    rdfs:subClassOf afo:Similarity ;
+    = afv:Distance ;
+    vs:term_status "testing"@en .
+
+mirtoolbox:Emotion a owl:Class ;
+    rdfs:label "Emotion"@en ;
+    rdfs:comment "Emotion MIR Toolbox audio feature" ;
+    rdfs:subClassOf afo:Predictions ;
+    = afv:Emotion ;
+    vs:term_status "testing"@en .
+
+mirtoolbox:Entropy a owl:Class ;
+    rdfs:label "Entropy"@en ;
+    rdfs:comment "Entropy MIR Toolbox audio feature" ;
+    rdfs:subClassOf afo:Statistics ;
+    = afv:Entropy ;
+    vs:term_status "testing"@en .
+
+mirtoolbox:Envelope a owl:Class ;
+    rdfs:label "Envelope"@en ;
+    rdfs:comment "Envelope MIR Toolbox audio feature" ;
+    = afv:Envelope ;
+    vs:term_status "testing"@en .
+
+mirtoolbox:EventDensity a owl:Class ;
+    rdfs:label "EventDensity"@en ;
+    rdfs:comment "EventDensity MIR Toolbox audio feature" ;
+    rdfs:subClassOf afo:RhythmFeatureExtractor ;
+    = afv:EventDensity ;
+    vs:term_status "testing"@en .
+
+mirtoolbox:Filterbank a owl:Class ;
+    rdfs:label "Filterbank"@en ;
+    rdfs:comment "Filterbank MIR Toolbox audio feature" ;
+    = afv:Filterbank ;
+    vs:term_status "testing"@en .
+
+mirtoolbox:Flatness a owl:Class ;
+    rdfs:label "Flatness"@en ;
+    rdfs:comment "Flatness MIR Toolbox audio feature" ;
+    rdfs:subClassOf afo:Statistics ;
+    = afv:Flatness ;
+    vs:term_status "testing"@en .
+
+mirtoolbox:Flux a owl:Class ;
+    rdfs:label "Flux"@en ;
+    rdfs:comment "Flux MIR Toolbox audio feature" ;
+    = afv:Flux ;
+    vs:term_status "testing"@en .
+
+mirtoolbox:Frame a owl:Class ;
+    rdfs:label "Frame"@en ;
+    rdfs:comment "Frame MIR Toolbox audio feature" ;
+    = afv:Frame ;
+    vs:term_status "testing"@en .
+
+mirtoolbox:HarmonicChangeDetectionFunction a owl:Class ;
+    rdfs:label "HarmonicChangeDetectionFunction"@en ;
+    rdfs:comment "HarmonicChangeDetectionFunction MIR Toolbox audio feature" ;
+    rdfs:subClassOf afo:TonalityFeatureExtractor ;
+    = afv:HarmonicChangeDetectionFunction ;
+    vs:term_status "testing"@en .
+
+mirtoolbox:Histogram a owl:Class ;
+    rdfs:label "Histogram"@en ;
+    rdfs:comment "Histogram MIR Toolbox audio feature" ;
+    rdfs:subClassOf afo:Statistics ;
+    = afv:Histogram ;
+    vs:term_status "testing"@en .
+
+mirtoolbox:Inharmonicity a owl:Class ;
+    rdfs:label "Inharmonicity"@en ;
+    rdfs:comment "Inharmonicity MIR Toolbox audio feature" ;
+    rdfs:subClassOf afo:PitchFeatureExtractor ;
+    = afv:Inharmonicity ;
+    vs:term_status "testing"@en .
+
+mirtoolbox:Irregularity a owl:Class ;
+    rdfs:label "Irregularity"@en ;
+    rdfs:comment "Irregularity MIR Toolbox audio feature" ;
+    rdfs:subClassOf afo:TimbreFeatureExtractor ;
+    = afv:Irregularity ;
+    vs:term_status "testing"@en .
+
+mirtoolbox:Key a owl:Class ;
+    rdfs:label "Key"@en ;
+    rdfs:comment "Key MIR Toolbox audio feature" ;
+    rdfs:subClassOf afo:TonalityFeatureExtractor ;
+    = afv:Key ;
+    vs:term_status "testing"@en .
+
+mirtoolbox:KeySOM a owl:Class ;
+    rdfs:label "KeySOM"@en ;
+    rdfs:comment "KeySOM MIR Toolbox audio feature" ;
+    rdfs:subClassOf afo:TonalityFeatureExtractor ;
+    = afv:KeySOM ;
+    vs:term_status "testing"@en .
+
+mirtoolbox:KeyStrength a owl:Class ;
+    rdfs:label "KeyStrength"@en ;
+    rdfs:comment "KeyStrength MIR Toolbox audio feature" ;
+    rdfs:subClassOf afo:TonalityFeatureExtractor ;
+    = afv:KeyStrength ;
+    vs:term_status "testing"@en .
+
+mirtoolbox:Kurtosis a owl:Class ;
+    rdfs:label "Kurtosis"@en ;
+    rdfs:comment "Kurtosis MIR Toolbox audio feature" ;
+    rdfs:subClassOf afo:Statistics ;
+    = afv:Kurtosis ;
+    vs:term_status "testing"@en .
+
+mirtoolbox:Length a owl:Class ;
+    rdfs:label "Length"@en ;
+    rdfs:comment "Length MIR Toolbox audio feature" ;
+    = afv:Length ;
+    vs:term_status "testing"@en .
+
+mirtoolbox:LowEnergy a owl:Class ;
+    rdfs:label "LowEnergy"@en ;
+    rdfs:comment "LowEnergy MIR Toolbox audio feature" ;
+    rdfs:subClassOf afo:DynamicsFeatureExtractor ;
+    = afv:LowEnergy ;
+    vs:term_status "testing"@en .
+
+mirtoolbox:MFCC a owl:Class ;
+    rdfs:label "MFCC"@en ;
+    rdfs:comment "MFCC MIR Toolbox audio feature" ;
+    rdfs:subClassOf afo:TimbreFeatureExtractor ;
+    = afv:MFCC ;
+    vs:term_status "testing"@en .
+
+mirtoolbox:MIDI a owl:Class ;
+    rdfs:label "MIDI"@en ;
+    rdfs:comment "MIDI MIR Toolbox audio feature" ;
+    rdfs:subClassOf afo:PitchFeatureExtractor ;
+    = afv:MIDI ;
+    vs:term_status "testing"@en .
+
+mirtoolbox:Mean a owl:Class ;
+    rdfs:label "Mean"@en ;
+    rdfs:comment "Mean MIR Toolbox audio feature" ;
+    rdfs:subClassOf afo:Statistics ;
+    = afv:Mean ;
+    vs:term_status "testing"@en .
+
+mirtoolbox:Mode a owl:Class ;
+    rdfs:label "Mode"@en ;
+    rdfs:comment "Mode MIR Toolbox audio feature" ;
+    rdfs:subClassOf afo:TonalityFeatureExtractor ;
+    = afv:Mode ;
+    vs:term_status "testing"@en .
+
+mirtoolbox:NoteOnset a owl:Class ;
+    rdfs:label "NoteOnset"@en ;
+    rdfs:comment "NoteOnset MIR Toolbox audio feature" ;
+    rdfs:subClassOf afo:RhythmFeatureExtractor ;
+    = afv:NoteOnset ;
+    vs:term_status "testing"@en .
+
+mirtoolbox:Novelty a owl:Class ;
+    rdfs:label "Novelty"@en ;
+    rdfs:comment "Novelty MIR Toolbox audio feature" ;
+    rdfs:subClassOf afo:Structure ;
+    = afv:Novelty ;
+    vs:term_status "testing"@en .
+
+mirtoolbox:Peaks a owl:Class ;
+    rdfs:label "Peaks"@en ;
+    rdfs:comment "Peaks MIR Toolbox audio feature" ;
+    = afv:Peaks ;
+    vs:term_status "testing"@en .
+
+mirtoolbox:Pitch a owl:Class ;
+    rdfs:label "Pitch"@en ;
+    rdfs:comment "Pitch MIR Toolbox audio feature" ;
+    rdfs:subClassOf afo:PitchFeatureExtractor ;
+    = afv:Pitch ;
+    vs:term_status "testing"@en .
+
+mirtoolbox:PulseClarity a owl:Class ;
+    rdfs:label "PulseClarity"@en ;
+    rdfs:comment "PulseClarity MIR Toolbox audio feature" ;
+    rdfs:subClassOf afo:RhythmFeatureExtractor ;
+    = afv:PulseClarity ;
+    vs:term_status "testing"@en .
+
+mirtoolbox:Query a owl:Class ;
+    rdfs:label "Query"@en ;
+    rdfs:comment "Query MIR Toolbox audio feature" ;
+    rdfs:subClassOf afo:Similarity ;
+    = afv:Query ;
+    vs:term_status "testing"@en .
+
+mirtoolbox:RMSEnergy a owl:Class ;
+    rdfs:label "RMSEnergy"@en ;
+    rdfs:comment "RMSEnergy MIR Toolbox audio feature" ;
+    rdfs:subClassOf afo:DynamicsFeatureExtractor ;
+    = afv:RMSEnergy ;
+    vs:term_status "testing"@en .
+
+mirtoolbox:RhythmicFluctuation a owl:Class ;
+    rdfs:label "RhythmicFluctuation"@en ;
+    rdfs:comment "RhythmicFluctuation MIR Toolbox audio feature" ;
+    rdfs:subClassOf afo:RhythmFeatureExtractor ;
+    = afv:RhythmicFluctuation ;
+    vs:term_status "testing"@en .
+
+mirtoolbox:Rolloff a owl:Class ;
+    rdfs:label "Rolloff"@en ;
+    rdfs:comment "Rolloff MIR Toolbox audio feature" ;
+    rdfs:subClassOf afo:TimbreFeatureExtractor ;
+    = afv:Rolloff ;
+    vs:term_status "testing"@en .
+
+mirtoolbox:Roughness a owl:Class ;
+    rdfs:label "Roughness"@en ;
+    rdfs:comment "Roughness MIR Toolbox audio feature" ;
+    rdfs:subClassOf afo:TimbreFeatureExtractor ;
+    = afv:Roughness ;
+    vs:term_status "testing"@en .
+
+mirtoolbox:Segment a owl:Class ;
+    rdfs:label "Segment"@en ;
+    rdfs:comment "Segment MIR Toolbox audio feature" ;
+    rdfs:subClassOf afo:Structure ;
+    = afv:Segment ;
+    vs:term_status "testing"@en .
+
+mirtoolbox:SimilarityMatrix a owl:Class ;
+    rdfs:label "SimilarityMatrix"@en ;
+    rdfs:comment "SimilarityMatrix MIR Toolbox audio feature" ;
+    rdfs:subClassOf afo:Structure ;
+    = afv:SimilarityMatrix ;
+    vs:term_status "testing"@en .
+
+mirtoolbox:Skewness a owl:Class ;
+    rdfs:label "Skewness"@en ;
+    rdfs:comment "Skewness MIR Toolbox audio feature" ;
+    rdfs:subClassOf afo:Statistics ;
+    = afv:Skewness ;
+    vs:term_status "testing"@en .
+
+mirtoolbox:SpectralFluxOnsetDetectionFunction a owl:Class ;
+    rdfs:label "SpectralFluxOnsetDetectionFunction"@en ;
+    rdfs:comment "SpectralFluxOnsetDetectionFunction MIR Toolbox audio feature" ;
+    rdfs:subClassOf afo:RhythmFeatureExtractor ;
+    = afv:SpectralFluxOnsetDetectionFunction ;
+    vs:term_status "testing"@en .
+
+mirtoolbox:Spectrum a owl:Class ;
+    rdfs:label "Spectrum"@en ;
+    rdfs:comment "Spectrum MIR Toolbox audio feature" ;
+    = afv:Spectrum ;
+    vs:term_status "testing"@en .
+
+mirtoolbox:Spread a owl:Class ;
+    rdfs:label "Spread"@en ;
+    rdfs:comment "Spread MIR Toolbox audio feature" ;
+    rdfs:subClassOf afo:Statistics ;
+    = afv:Spread ;
+    vs:term_status "testing"@en .
+
+mirtoolbox:StandardDeviation a owl:Class ;
+    rdfs:label "StandardDeviation"@en ;
+    rdfs:comment "StandardDeviation MIR Toolbox audio feature" ;
+    rdfs:subClassOf afo:Statistics ;
+    = afv:StandardDeviation ;
+    vs:term_status "testing"@en .
+
+mirtoolbox:StatisticalMapping a owl:Class ;
+    rdfs:label "StatisticalMapping"@en ;
+    rdfs:comment "StatisticalMapping MIR Toolbox audio feature" ;
+    rdfs:subClassOf afo:Statistics ;
+    = afv:StatisticalMapping ;
+    vs:term_status "testing"@en .
+
+mirtoolbox:Sum a owl:Class ;
+    rdfs:label "Sum"@en ;
+    rdfs:comment "Sum MIR Toolbox audio feature" ;
+    = afv:Sum ;
+    vs:term_status "testing"@en .
+
+mirtoolbox:Tempo a owl:Class ;
+    rdfs:label "Tempo"@en ;
+    rdfs:comment "Tempo MIR Toolbox audio feature" ;
+    rdfs:subClassOf afo:RhythmFeatureExtractor ;
+    = afv:Tempo ;
+    vs:term_status "testing"@en .
+
+mirtoolbox:TonalCentroid a owl:Class ;
+    rdfs:label "TonalCentroid"@en ;
+    rdfs:comment "TonalCentroid MIR Toolbox audio feature" ;
+    rdfs:subClassOf afo:TonalityFeatureExtractor ;
+    = afv:TonalCentroid ;
+    vs:term_status "testing"@en .
+
+mirtoolbox:ZeroCrossingRate a owl:Class ;
+    rdfs:label "ZeroCrossingRate"@en ;
+    rdfs:comment "ZeroCrossingRate MIR Toolbox audio feature" ;
+    rdfs:subClassOf afo:Statistics,
+        afo:TimbreFeatureExtractor ;
+    = afv:ZeroCrossingRate ;
+    vs:term_status "testing"@en .
+
+vs:term_status a owl:AnnotationProperty .
+

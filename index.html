@@ -1,0 +1,247 @@
+<html>
+  <head>
+    <title>Audio Feature Ontology</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+    <link href="base.css" rel="StyleSheet" type="text/css">
+    <link href="onto.css" rel="StyleSheet" type="text/css">
+	  <link href='http://fonts.googleapis.com/css?family=Lato' rel='stylesheet' type='text/css'>
+    <link rel="shortcut icon" href="http://mikro.tehis.net/lambda.png">
+  </head>
+  <body>
+      <div id="main">
+	     <div class="sitetitle">Audio Feature Ontology</div>
+	     <div class="sitesubtitle">This ontology represents the feature extraction workflow of automatically extracted features from audio signals on different levels of abstraction. It updates the original Audio Feature Ontology http://purl.org/ontology/af/.</div>
+       <div class="sitesubtitle sub">Version 1.1</div>
+       <div class="sitesubtitle sub">2017-01-12T12:53:45.439476</div>
+       <div class="sitesubtitle sub">authors: Gyorgy Fazekas, Alo Allik</div>
+       <div class="content">
+          <div class="terms intro">
+  <p>
+    The Audio Feature Ontology is a Semantic Web ontology that is designed to serve a dual purpose:
+    <ul>
+      <li> to represent computational workflows of audio features </li>
+      <li> to provide a common structure for feature data formats using Open Linked Data principles and technologies. </li>
+    </ul>
+    The Audio Feature Ontology is based on the analysis of existing feature extraction tools and MIR literature.
+    The ontology provides a descriptive framework for expressing different conceptualisations of the MIR domain
+    and enables designing linked data formats for content-based audio features. Since there are potentially conflicting views
+    on organising the features into a taxonomy in the research community, the ontology does not attempt to impose a hierarchical structure,
+    leaving the structural organisation open to task and tool specific ontologies.
+  </p>
+  <p>
+    In order to access the RDF representation of the ontology from a Web browser, the files are accessible in <a href="af-ontology.n3">Notation 3</a> and
+    <a href="af-ontology.rdf">RDF/XML</a>. From other types of applications, the <a href="http://www.w3.org/TR/swbp-vocab-pub/">standard content negotiation guidelines</a>
+    are followed. Here is an example how to access the ontology in N3 syntax from the Python rdflib module:
+    <pre>Graph().parse("https://w3id.org/afo/onto/1.1#", format="n3")</pre>
+  </p>
+  <img src="af-data.png">
+  <p>
+    The core model of the ontology retains original attributes to distinguish audio features by temporal characteristics
+    and data density. It relies on the <a href="http://motools.sourceforge.net/event/">Event</a>
+    and <a href="http://motools.sourceforge.net/timeline/">Timeline</a> ontologies to provide the primary
+    structuring concepts for feature data representation. Temporal characteristics classify feature data either
+    into instantaneous points in time - e.g. event onsets or tonal change moments - or events with known time duration.
+    Data density attributes allow describing how a feature relates to the extent of an audio file:
+    whether it is scattered and occurs irregularly over the course of the audio signal
+    (for example, segmentation or onset features), or the feature is calculated at regular intervals and fixed
+    duration (e.g. signal-like features with regular sampling rate). The above image illustrates how audio features
+    are linked with terms in the Music Ontology and thereby other music-related metadata on the Web.
+    Specific named audio feature entities, such as <b>afv:Onset</b>, <b>afv:Segment</b>, and <b>afv:MFCC</b> are
+    subclasses of <b>afo:AudioFeature</b>, which, in turn, is a subclass of <b>event:Event</b> from the <a href="http://motools.sourceforge.net/event/">Event Ontology</a>.
+  </p>
+  <p>
+    Representing instantaneous events on a signal timeline like onsets can be accomplished by linking
+    the audio feature with the <b>event:time</b> property to a <b>tl:Instant</b> which can be placed on
+    an audio signal timeline using the <b>tl:at</b> property. Audio features that have a duration over a segment of the signal can be represented as <b>tl:Interval</b>
+    instances. Dense signal-like features such as Chromagrams or Mel Frequency Cepstral Coefficients (MFCC) can be mapped to
+    the signal timeline by <b>tl:TimelineMap</b> objects. Here is an example in Turtle syntax showing Onset and MFCC
+    features:
+  </p>
+    <pre>
+    &lt;file:///home/snd/moodplay/62400-14.01.mp3&gt; a mo:AudioFile ;
+        mo:encodes :signal_f6261475 .
+
+    :signal_f6261475 a mo:Signal ;
+        mo:time [
+            a tl:Interval ;
+            tl:onTimeLine :timeline_aec1cb82
+        ] .
+
+    :timeline_aec1cb82 a tl:Timeline .
+
+    :transform_onsets a vamp:Transform ;
+    	vamp:plugin plugbase:qm-onsetdetector ;
+    	vamp:output plugbase:qm-onsetdetector_output_onsets .
+
+    :transform_mfcc a vamp:Transform ;
+        vamp:plugin plugbase:qm-mfcc ;
+    	vamp:output plugbase:qm-mfcc_output_coefficients .
+
+    :event_1 a afv:Onset ;
+        event:time [
+            a tl:Instant ;
+            tl:onTimeLine :timeline_aec1cb82 ;
+            tl:at "PT1.98S"^^xsd:duration ;
+        ] ;
+        vamp:computed_by :transform_onsets .
+
+    :feature_1 a afv:MFCC ;
+        mo:time [
+            a tl:Interval ;
+            tl:onTimeLine :timeline_aec1cb82 ;
+        ] ;
+        vamp:computed_by :transform_mfcc ;
+        af:value ( -26.9344 0.188319 0.106938 ..) .
+    </pre>
+  </p>
+  <p>
+    Beyond representing audio feature data in research workflows, there are many other practical applications
+    for the ontology framework. One of the test cases is providing data services for an adaptive music player
+    that uses audio features to enrich user experience and enables novel ways to search or browse large music
+    collections. Feature data of the music tracks available in the player is stored in a
+    <a href="http://couchdb.apache.org">CouchDB</a> instance in JSON-LD. The data is used by Semantic Web
+    entities called Dynamic Music Objects (dymos) that control the audio mixing functionality of the player.
+    Dymos make song selections and determine tempo alignment for cross-fading based on features. The following
+    examples show JSON-LD representations of a track used in the system linked to feature annotations. The first
+    example shows the document that stores metadata about a track.
+    <pre>
+    {
+       "@context": {
+           "foaf": "http://xmlns.com/foaf/0.1/",
+           "afo": "https://w3id.org/afo/onto/1.1#",
+           "mo": "http://purl.org/ontology/mo/",
+           "dc": "http://purl.org/dc/elements/1.1/",
+           "tl": "http://purl.org/NET/c4dm/timeline.owl#",
+           "vamp": "http://purl.org/ontology/vamp/",
+           "afv": "https://w3id.org/afo/vocab/1.1#"
+       },
+       "@type": "mo:Track",
+       "@id": "baf169e8af365c243f08794c7e48b591",
+       "mo:available_as": "254087-16.01.wav",
+       "mo:artist": {
+           "foaf:name": "Dazz Band",
+           "@type": "mo:MusicArtist"
+       },
+       "mo:musicbrainz": "http://musicbrainz.org/recording/ee498e4d-1940-4268-8a23-c3992dfdedef",
+       "mo:musicbrainz_guid": "ee498e4d-1940-4268-8a23-c3992dfdedef",
+       "dc:title": "Let It Whip",
+       "release": { "@type": "mo:Release", "dc:title": "Soul Train Volume 2" },
+       "mo:encodes": {
+           "@type": "afo:Signal",
+           "@id": "ed1c11b3-5830-4b9e-a84f-2e60ddcb3ff4",
+           "mo:encoding": "WAV",
+           "mo:sampleRate": 44100,
+           "mo:time": {
+               "tl:timeline": {
+                   "@id": "14e80f2a-4b6f-4c1f-8ff4-360b2990dd53",
+                   "@type": "tl:Timeline"
+               },
+               "@type": "tl:Interval",
+               "tl:duration": "PT246.533333333S"
+           }
+       }
+    }
+    </pre>
+    The track is linked to the feature data by assigning a GUID to the signal timeline, that features can be placed on.
+    <pre>
+      {
+         "@context": {
+             "afo": "https://w3id.org/afo/onto/1.1#",
+             "mo": "http://purl.org/ontology/mo/",
+             "dc": "http://purl.org/dc/elements/1.1/",
+             "tl": "http://purl.org/NET/c4dm/timeline.owl#",
+             "vamp": "http://purl.org/ontology/vamp/",
+             "afv": "https://w3id.org/afo/vocab/1.1#"
+         },
+         "@type": "afv:Key",
+         "afo:input": { "@type": "mo:Signal", "@id": "ed1c11b3-5830-4b9e-a84f-2e60ddcb3ff4" },
+         "afo:computed_by": {
+             "vamp:block_size": 32768,
+             "vamp:sample_rate": 44100,
+             "afo:implemented_in": {
+                 "@type": "afo:FeatureExtractor",
+                 "afo:version": "1.3",
+                 "dc:name": "Sonic Annotator"
+             },
+             "vamp:parameter_binding": [
+                 {
+                     "vamp:parameter": {
+                         "vamp:identifier": "length"
+                     },
+                     "vamp:value": 10
+                 },
+                 {
+                     "vamp:parameter": {
+                         "vamp:identifier": "tuning"
+                     },
+                     "vamp:value": 440
+                 }
+             ],
+             "vamp:output": "http://vamp-plugins.org/rdf/plugins/qm-vamp-plugins#qm-keydetector_output_key",
+             "vamp:step_size": 32768,
+             "vamp:plugin": "http://vamp-plugins.org/rdf/plugins/qm-vamp-plugins#qm-keydetector",
+             "@type": "vamp:Transform",
+             "vamp:plugin_version": "4"
+         },
+         "afo:values": [
+             {
+                 "afo:value": 19,
+                 "tl:timeline": "14e80f2a-4b6f-4c1f-8ff4-360b2990dd53",
+                 "tl:at": 0,
+                 "@type": "tl:Instant",
+                 "rdfs:label": "F# minor"
+             },
+             {
+                 "afo:value": 2,
+                 "tl:timeline": "14e80f2a-4b6f-4c1f-8ff4-360b2990dd53",
+                 "tl:at": 2.229115646,
+                 "@type": "tl:Instant",
+                 "rdfs:label": "Db major"
+             },
+             {
+                 "afo:value": 1,
+                 "tl:timeline": "14e80f2a-4b6f-4c1f-8ff4-360b2990dd53",
+                 "tl:at": 28.978503401,
+                 "@type": "tl:Instant",
+                 "rdfs:label": "C major"
+             },
+             {
+                 "afo:value": 2,
+                 "tl:timeline": "14e80f2a-4b6f-4c1f-8ff4-360b2990dd53",
+                 "tl:at": 37.151927437,
+                 "@type": "tl:Instant",
+                 "rdfs:label": "Db major"
+             }
+         ]
+      }
+    </pre>
+  </p>
+  <p>
+    The ontology engineering process has produced example ontologies for existing tools including
+    MIR Toolbox, Essentia, Marsyas:
+    <ul>
+      <li><a href="http://essentia.upf.edu">Essentia</a>: <a href="af-essentia.n3">af-essentia.n3</a></li>
+      <li><a href="https://www.jyu.fi/hum/laitokset/musiikki/en/research/coe/materials/mirtoolbox">MIRtoolbox</a>: <a href="af-mirtoolbox.n3">af-mirtoolbox.n3</a></li>
+      <li><a href="http://marsyas.info">Marsyas</a>: <a href="af-marsyas.n3">af-marsyas.n3</a></li>
+    </ul>
+  </p>
+  <p>
+    The Audio Feature Ontology is being developed at the <a href="http://c4dm.eecs.qmul.ac.uk">Centre for Digital Music, Queen Mary University of London</a>
+    as part of the Fusing Audio and Semantic Technologies (<a href="http://semanticaudio.ac.uk">FAST</a>) project.
+    <br>Contact: <a href="mailto:a.allik@qmul.ac.uk">Alo Allik</a>
+    <br>The source code is available here: <a href="https://code.soundsoftware.ac.uk/projects/af-ontology">https://code.soundsoftware.ac.uk/projects/af-ontology</a>.
+    <br><a href="http://vowl.visualdataweb.org/webvowl.html">WebVOWL</a> visualisation of the ontology:  <a href="http://vowl.visualdataweb.org/webvowl/index.html#iri=https://w3id.org/afo/onto/1.1#">Audio Feature Ontology</a>.
+  </p>
+  <p>
+    <div>
+      <a rel="license" href="http://creativecommons.org/licenses/by/4.0/"><img alt="Creative Commons License" style="border-width:0; float: left; width:88px; height:31px" src="https://i.creativecommons.org/l/by/4.0/88x31.png" /></a><br />This work is licensed under a <a rel="license" href="http://creativecommons.org/licenses/by/4.0/">Creative Commons Attribution 4.0 International License</a>.
+    </div>
+    <br>
+    <a href="http://dx.doi.org/10.5281/zenodo.55564"><img style="height:10px;width:85px;float:left" src="https://zenodo.org/badge/doi/10.5281/zenodo.55564.svg" alt="10.5281/zenodo.55564"></a>
+  </p>
+  </div>
+<div class="terms"><div class="section">Prefixes</div><ul><li>@prefix xml: &lt;http://www.w3.org/XML/1998/namespace&gt; .</li><li>@prefix owl: &lt;http://www.w3.org/2002/07/owl#&gt; .</li><li>@prefix afo: &lt;https://w3id.org/afo/onto/1.1#&gt; .</li><li>@prefix co: &lt;http://purl.org/co/&gt; .</li><li>@prefix bibo: &lt;http://purl.org/ontology/bibo/&gt; .</li><li>@prefix rdfs: &lt;http://www.w3.org/2000/01/rdf-schema#&gt; .</li><li>@prefix prov: &lt;http://www.w3.org/ns/prov#&gt; .</li><li>@prefix mo: &lt;http://purl.org/ontology/mo/&gt; .</li><li>@prefix dc: &lt;http://purl.org/dc/elements/1.1/&gt; .</li><li>@prefix qudt: &lt;http://qudt.org/1.1/schema/qudt#&gt; .</li><li>@prefix rdf: &lt;http://www.w3.org/1999/02/22-rdf-syntax-ns#&gt; .</li><li>@prefix tl: &lt;http://purl.org/NET/c4dm/timeline.#&gt; .</li><li>@prefix xsd: &lt;http://www.w3.org/2001/XMLSchema#&gt; .</li><li>@prefix time: &lt;http://www.w3.org/2006/time#&gt; .</li><li>@prefix dcterms: &lt;http://purl.org/dc/terms/&gt; .</li><li>@prefix event: &lt;http://purl.org/NET/c4dm/event.#&gt; .</li><li>@prefix unit: &lt;http://qudt.org/1.1/vocab/unit#&gt; .</li></ul></div><div class="terms"><div class="section">Terms</div> <a href="#Aggregation">Aggregation</a> (Class) <a href="#AudioFeature">AudioFeature</a> (Class) <a href="#Context">Context</a> (Class) <a href="#FeatureExtractor">FeatureExtractor</a> (Class) <a href="#Filter">Filter</a> (Class) <a href="#FirstOperation">FirstOperation</a> (Class) <a href="#Instance">Instance</a> (Class) <a href="#LastOperation">LastOperation</a> (Class) <a href="#Model">Model</a> (Class) <a href="#Operation">Operation</a> (Class) <a href="#OperationSequence">OperationSequence</a> (Class) <a href="#OptionalOperation">OptionalOperation</a> (Class) <a href="#Parameter">Parameter</a> (Class) <a href="#Point">Point</a> (Class) <a href="#Segment">Segment</a> (Class) <a href="#Signal">Signal</a> (Class) <a href="#Transformation">Transformation</a> (Class) <a href="#agent">agent</a> (Property) <a href="#collection">collection</a> (Property) <a href="#computed_by">computed_by</a> (Property) <a href="#context">context</a> (Property) <a href="#described_in">described_in</a> (Property) <a href="#dimensions">dimensions</a> (Property) <a href="#feature">feature</a> (Property) <a href="#first_operation">first_operation</a> (Property) <a href="#implementation">implementation</a> (Property) <a href="#implementation_of">implementation_of</a> (Property) <a href="#implemented_in">implemented_in</a> (Property) <a href="#implements">implements</a> (Property) <a href="#model">model</a> (Property) <a href="#model_of">model_of</a> (Property) <a href="#next_operation">next_operation</a> (Property) <a href="#operation">operation</a> (Property) <a href="#output">output</a> (Property) <a href="#parameter">parameter</a> (Property) <a href="#sequence">sequence</a> (Property) <a href="#unit">unit</a> (Property) <a href="#value">value</a> (Property) <a href="#value">value</a> (Property) <a href="#value">value</a> (Property) <a href="#value">value</a> (Property) <a href="#values">values</a> (Property) <a href="#confidence">confidence</a> (Individual) <a href="#data_type">data_type</a> (Individual) <a href="#default_value">default_value</a> (Individual) <a href="#description">description</a> (Individual) <a href="#maximum_value">maximum_value</a> (Individual) <a href="#minimum_value">minimum_value</a> (Individual) <a href="#name">name</a> (Individual) <a href="#probability">probability</a> (Individual) <a href="#value">value</a> (Individual) <a href="#value">value</a> (Individual) </div><div class="terms"><div class="section">Classes</div><ul><li><div class="owlclass"><a name="Aggregation" href="#Aggregation">afo:Aggregation</a>: Abstract class Aggregation represents a computational operation in audio feature extraction computational workflow</div></li><li><div class="owlclass"><a name="AudioFeature" href="#AudioFeature">afo:AudioFeature</a>: Represents abstract conceptualisation of an audio feature<br><br><span class="section">Properties:</span> <a href="#collection">afo:collection</a>, <a href="#computed_by">afo:computed_by</a>, <a href="#described_in">afo:described_in</a>, <a href="#dimensions">afo:dimensions</a>, <a href="#feature">afo:feature</a>, <a href="#model">afo:model</a>, <a href="#sequence">afo:sequence</a>, <a href="#value">afo:value</a>, <a href="#value">afo:value</a>, <a href="#values">afo:values</a></div></li><li><div class="owlclass"><a name="Context" href="#Context">afo:Context</a>: Represents the software and hardware context of a feature extractor instance<br><br><span class="section">Properties:</span> <a href="#agent">afo:agent</a></div></li><li><div class="owlclass"><a name="FeatureExtractor" href="#FeatureExtractor">afo:FeatureExtractor</a>: Represents a specific implementation of an audio feature<br><br><span class="section">Properties:</span> <a href="#implementation_of">afo:implementation_of</a>, <a href="#implemented_in">afo:implemented_in</a>, <a href="#implements">afo:implements</a></div></li><li><div class="owlclass"><a name="Filter" href="#Filter">afo:Filter</a>: Abstract class Filter represents a computational operation in audio feature extraction computational workflow</div></li><li><div class="owlclass"><a name="FirstOperation" href="#FirstOperation">afo:FirstOperation</a>: First computational operation in a feature extraction sequence of operations</div></li><li><div class="owlclass"><a name="Instance" href="#Instance">afo:Instance</a>: Represents an instance of a feature extractor<br><br><span class="section">Properties:</span> <a href="#context">afo:context</a></div></li><li><div class="owlclass"><a name="LastOperation" href="#LastOperation">afo:LastOperation</a>: Last computational operation in a feature extraction sequence of operations</div></li><li><div class="owlclass"><a name="Model" href="#Model">afo:Model</a>: Represents an abstract model of an audio feature<br><br><span class="section">Properties:</span> <a href="#implementation">afo:implementation</a>, <a href="#model_of">afo:model_of</a></div></li><li><div class="owlclass"><a name="Operation" href="#Operation">afo:Operation</a>: Represents a computational operation in the feature extraction workflow<br><br><span class="section">Properties:</span> <a href="#next_operation">afo:next_operation</a>, <a href="#operation">afo:operation</a>, <a href="#output">afo:output</a>, <a href="#parameter">afo:parameter</a></div></li><li><div class="owlclass"><a name="OperationSequence" href="#OperationSequence">afo:OperationSequence</a>: Represents a sequence of mathematical operations<br><br><span class="section">Properties:</span> <a href="#first_operation">afo:first_operation</a></div></li><li><div class="owlclass"><a name="OptionalOperation" href="#OptionalOperation">afo:OptionalOperation</a>: Optional computational operation in a feature extraction sequence of operations</div></li><li><div class="owlclass"><a name="Parameter" href="#Parameter">afo:Parameter</a>: Represents a parameter for an audio feature extraction algorithm<br><br><span class="section">Properties:</span> <a href="#unit">afo:unit</a>, <a href="#value">afo:value</a>, <a href="#value">afo:value</a></div></li><li><div class="owlclass"><a name="Point" href="#Point">afo:Point</a>: Represents a feature at an instant of time</div></li><li><div class="owlclass"><a name="Segment" href="#Segment">afo:Segment</a>: Represents a feature spanning an interval of time</div></li><li><div class="owlclass"><a name="Signal" href="#Signal">afo:Signal</a>: Represents a dense signal-like feature</div></li><li><div class="owlclass"><a name="Transformation" href="#Transformation">afo:Transformation</a>: Abstract class Transformation represents a computational operation in audio feature extraction computational workflow</div></li></ul></div><div class="terms"><div class="section">Properties</div><ul><li><div class="owlprop"><a name="agent" href="#agent">afo:agent</a>: links an operating system description to context<br><br><span class="section">Domain: </span><a href="#Context">afo:Context</a><br><span class="section">Range: </span><a href="http://www.w3.org/ns/prov#SoftwareAgent">prov:SoftwareAgent</div></li><li><div class="owlprop"><a name="collection" href="#collection">afo:collection</a>: links a collection of values using terms defined in the Collection Ontology<br><br><span class="section">Domain: </span><a href="#AudioFeature">afo:AudioFeature</a><br><span class="section">Range: </span><a href="http://purl.org/co/Collection">co:Collection</div></li><li><div class="owlprop"><a name="computed_by" href="#computed_by">afo:computed_by</a>: links an audio feature to a feature extractor<br><br><span class="section">Domain: </span><a href="#AudioFeature">afo:AudioFeature</a><br><span class="section">Range: </span><a href="#FeatureExtractor">afo:FeatureExtractor</div></li><li><div class="owlprop"><a name="context" href="#context">afo:context</a>: links an audio feature extractor to a system context<br><br><span class="section">Domain: </span><a href="#Instance">afo:Instance</a><br><span class="section">Range: </span><a href="#Context">afo:Context</div></li><li><div class="owlprop"><a name="described_in" href="#described_in">afo:described_in</a>: links model to an external resource that describes it<br><br><span class="section">Domain: </span><a href="#AudioFeature">afo:AudioFeature</a><br><span class="section">Range: </span><a href="http://purl.org/ontology/bibo/Document">bibo:Document</div></li><li><div class="owlprop"><a name="dimensions" href="#dimensions">afo:dimensions</a>: links dimensions of a feature to feature extraction result<br><br><span class="section">Domain: </span><a href="#AudioFeature">afo:AudioFeature</a><br><span class="section">Range: </span><a href="http://www.w3.org/1999/02/22-rdf-syntax-ns#List">rdf:List</div></li><li><div class="owlprop"><a name="feature" href="#feature">afo:feature</a>: feature of a feature<br><br><span class="section">Domain: </span><a href="#AudioFeature">afo:AudioFeature</a><br><span class="section">Range: </span><a href="#AudioFeature">afo:AudioFeature</div></li><li><div class="owlprop"><a name="first_operation" href="#first_operation">afo:first_operation</a>: first operation in a sequence<br><br><span class="section">Domain: </span><a href="#OperationSequence">afo:OperationSequence</a><br><span class="section">Range: </span><a href="#Operation">afo:Operation</div></li><li><div class="owlprop"><a name="implementation" href="#implementation">afo:implementation</a>: links an audio feature to an implementation<br><br><span class="section">Domain: </span><a href="#Model">afo:Model</a><br><span class="section">Range: </span><a href="#FeatureExtractor">afo:FeatureExtractor</div></li><li><div class="owlprop"><a name="implementation_of" href="#implementation_of">afo:implementation_of</a>: inverse of implementation to link an implemented algorithm to a computational model<br><br><span class="section">Domain: </span><a href="#FeatureExtractor">afo:FeatureExtractor</a><br><span class="section">Range: </span><a href="#Model">afo:Model</div></li><li><div class="owlprop"><a name="implemented_in" href="#implemented_in">afo:implemented_in</a>: links a feature extractor to a SoftwareAgent<br><br><span class="section">Domain: </span><a href="#FeatureExtractor">afo:FeatureExtractor</a><br><span class="section">Range: </span><a href="http://www.w3.org/ns/prov#SoftwareAgent">prov:SoftwareAgent</div></li><li><div class="owlprop"><a name="implements" href="#implements">afo:implements</a>: links an audio feature extractor to an audio feature<br><br><span class="section">Domain: </span><a href="#FeatureExtractor">afo:FeatureExtractor</a><br><span class="section">Range: </span><a href="#AudioFeature">afo:AudioFeature</div></li><li><div class="owlprop"><a name="model" href="#model">afo:model</a>: links audio feature to a computational model<br><br><span class="section">Domain: </span><a href="#AudioFeature">afo:AudioFeature</a><br><span class="section">Range: </span><a href="#Model">afo:Model</div></li><li><div class="owlprop"><a name="model_of" href="#model_of">afo:model_of</a>: inverse of model to link a computational model to an audio feature<br><br><span class="section">Domain: </span><a href="#Model">afo:Model</a><br><span class="section">Range: </span><a href="#AudioFeature">afo:AudioFeature</div></li><li><div class="owlprop"><a name="next_operation" href="#next_operation">afo:next_operation</a>: link between operations in a sequence<br><br><span class="section">Domain: </span><a href="#Operation">afo:Operation</a><br><span class="section">Range: </span><a href="#Operation">afo:Operation</div></li><li><div class="owlprop"><a name="operation" href="#operation">afo:operation</a>: abstract property<br><br><span class="section">Domain: </span><a href="#Operation">afo:Operation</a><br><span class="section">Range: </span><a href="#Operation">afo:Operation</div></li><li><div class="owlprop"><a name="output" href="#output">afo:output</a>: links an abstract output type to a computational operation<br><br><span class="section">Domain: </span><a href="#Operation">afo:Operation</a><br><span class="section">Range: </span><a href="#AudioFeature">afo:AudioFeature</div></li><li><div class="owlprop"><a name="parameter" href="#parameter">afo:parameter</a>: links parameters to audio features<br><br><span class="section">Domain: </span><a href="#Operation">afo:Operation</a><br><span class="section">Range: </span><a href="#Parameter">afo:Parameter</div></li><li><div class="owlprop"><a name="sequence" href="#sequence">afo:sequence</a>: links a model to computational sequence<br><br><span class="section">Domain: </span><a href="#AudioFeature">afo:AudioFeature</a><br><span class="section">Range: </span><a href="#OperationSequence">afo:OperationSequence</div></li><li><div class="owlprop"><a name="unit" href="#unit">afo:unit</a>: parameter unit<br><br><span class="section">Domain: </span><a href="#Parameter">afo:Parameter</a><br><span class="section">Range: </span><a href="http://qudt.org/1.1/vocab/unit#unit">unit:unit</div></li><li><div class="owlprop"><a name="value" href="#value">afo:value</a>: parameter value<br><br><span class="section">Domain: </span><a href="#Parameter">afo:Parameter</a><br><span class="section">Range: </span><a href="http://www.w3.org/2001/XMLSchema#anySimpleType">xsd:anySimpleType</div></li><li><div class="owlprop"><a name="value" href="#value">afo:value</a>: parameter value<br><br><span class="section">Domain: </span><a href="#AudioFeature">afo:AudioFeature</a><br><span class="section">Range: </span><a href="http://www.w3.org/2001/XMLSchema#anySimpleType">xsd:anySimpleType</div></li><li><div class="owlprop"><a name="value" href="#value">afo:value</a>: links a feature value to an audio feature<br><br><span class="section">Domain: </span><a href="#Parameter">afo:Parameter</a><br><span class="section">Range: </span><a href="http://www.w3.org/2001/XMLSchema#anySimpleType">xsd:anySimpleType</div></li><li><div class="owlprop"><a name="value" href="#value">afo:value</a>: links a feature value to an audio feature<br><br><span class="section">Domain: </span><a href="#AudioFeature">afo:AudioFeature</a><br><span class="section">Range: </span><a href="http://www.w3.org/2001/XMLSchema#anySimpleType">xsd:anySimpleType</div></li><li><div class="owlprop"><a name="values" href="#values">afo:values</a>: links a collection of values to an audio feature<br><br><span class="section">Domain: </span><a href="#AudioFeature">afo:AudioFeature</a><br><span class="section">Range: </span><a href="http://www.w3.org/1999/02/22-rdf-syntax-ns#Collection">rdf:Collection</div></li></ul></div><div class="terms"><div class="section">Individuals</div><ul><li><div class="owlclass"><a name="confidence" href="#confidence">afo:confidence</a><br><br><span class="section">Type: </span>owl:DatatypeProperty</a><br><li><div class="owlclass"><a name="data_type" href="#data_type">afo:data_type</a><br><br><span class="section">Type: </span>owl:DatatypeProperty</a><br><li><div class="owlclass"><a name="default_value" href="#default_value">afo:default_value</a><br><br><span class="section">Type: </span>owl:DatatypeProperty</a><br><li><div class="owlclass"><a name="description" href="#description">afo:description</a><br><br><span class="section">Type: </span>owl:DatatypeProperty</a><br><li><div class="owlclass"><a name="maximum_value" href="#maximum_value">afo:maximum_value</a><br><br><span class="section">Type: </span>owl:DatatypeProperty</a><br><li><div class="owlclass"><a name="minimum_value" href="#minimum_value">afo:minimum_value</a><br><br><span class="section">Type: </span>owl:DatatypeProperty</a><br><li><div class="owlclass"><a name="name" href="#name">afo:name</a><br><br><span class="section">Type: </span>owl:DatatypeProperty</a><br><li><div class="owlclass"><a name="probability" href="#probability">afo:probability</a><br><br><span class="section">Type: </span>owl:DatatypeProperty</a><br><li><div class="owlclass"><a name="value" href="#value">afo:value</a><br><br><span class="section">Type: </span>owl:DatatypeProperty</a><br><li><div class="owlclass"><a name="value" href="#value">afo:value</a><br><br><span class="section">Type: </span>owl:DatatypeProperty</a><br></ul></div>
+       </div>
+      </div>
+  </body>
+</html>
