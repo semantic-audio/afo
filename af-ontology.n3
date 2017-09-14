@@ -19,7 +19,7 @@
 afo: a owl:Ontology ;
     dc:creator "Alo Allik",
         "Gyorgy Fazekas" ;
-    dc:date "2017-09-14T17:54:21.766713" ;
+    dc:date "2017-09-14T18:01:24.565457" ;
     dc:description "This ontology represents the feature extraction workflow of automatically extracted features from audio signals on different levels of abstraction. It updates the original Audio Feature Ontology http://purl.org/ontology/af/."@en ;
     dc:rights "This ontology is distributed under a Creative Commons License - http://creativecommons.org/licenses/by-sa/4.0/" ;
     dc:title "Audio Feature Ontology"@en ;
@@ -346,10 +346,10 @@ afo:Operation a owl:Class ;
     rdfs:subClassOf prov:SoftwareAgent .
 
 afo:AudioFeature a [ a owl:Restriction ;
-            owl:allValuesFrom afo:Operation ;
+            owl:cardinality "1"^^xsd:int ;
             owl:onProperty afo:operation ],
         [ a owl:Restriction ;
-            owl:cardinality "1"^^xsd:int ;
+            owl:allValuesFrom afo:Operation ;
             owl:onProperty afo:operation ],
         owl:Class ;
     rdfs:label "Audio feature"@en ;

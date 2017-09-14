@@ -10,7 +10,7 @@
 @prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
 
 essentia: a owl:Ontology ;
-    dc:date "2017-09-14T17:54:32.972149" ;
+    dc:date "2017-09-14T18:01:35.243116" ;
     dc:description "This ontology represents audio feature extraction algorithms in the Essentia open source C++ library for audio analysis and audio-based music information retrieval"@en ;
     dc:title "Essentia Ontology"@en ;
     owl:versionInfo "Version 0.1" .
@@ -277,19 +277,19 @@ References:
     afo:input essentia:Spectrum ;
     afo:output essentia:BarkBands ;
     afo:parameter [ a afo:NumericParameter ;
-            afo:defaultValue "27" ;
-            afo:description "the number of desired barkbands" ;
-            afo:maximumValue 28 ;
-            afo:minimumValue 1 ;
-            afo:name "numberBands" ;
-            afo:type xsd:integer ],
-        [ a afo:NumericParameter ;
             afo:defaultValue "44100" ;
             afo:description "the sampling rate of the audio signal [Hz]" ;
             afo:maximumValue "inf" ;
             afo:minimumValue 0 ;
             afo:name "sampleRate" ;
-            afo:type xsd:float ] .
+            afo:type xsd:float ],
+        [ a afo:NumericParameter ;
+            afo:defaultValue "27" ;
+            afo:description "the number of desired barkbands" ;
+            afo:maximumValue 28 ;
+            afo:minimumValue 1 ;
+            afo:name "numberBands" ;
+            afo:type xsd:integer ] .
 
 essentia:Beat a owl:Class ;
     rdfs:label "Beat"@en ;
@@ -316,18 +316,18 @@ References:
     afo:input essentia:Signal ;
     afo:output essentia:Ticks ;
     afo:parameter [ a afo:NumericParameter ;
-            afo:defaultValue "208" ;
-            afo:description "the fastest tempo to detect [bpm]" ;
-            afo:maximumValue 250 ;
-            afo:minimumValue 60 ;
-            afo:name "maxTempo" ;
-            afo:type xsd:integer ],
-        [ a afo:NumericParameter ;
             afo:defaultValue "40" ;
             afo:description "the slowest tempo to detect [bpm]" ;
             afo:maximumValue 180 ;
             afo:minimumValue 40 ;
             afo:name "minTempo" ;
+            afo:type xsd:integer ],
+        [ a afo:NumericParameter ;
+            afo:defaultValue "208" ;
+            afo:description "the fastest tempo to detect [bpm]" ;
+            afo:maximumValue 250 ;
+            afo:minimumValue 60 ;
+            afo:name "maxTempo" ;
             afo:type xsd:integer ] .
 
 essentia:BeatogramExtractor a owl:Class ;
@@ -606,18 +606,18 @@ References:
             afo:name "sampleRate" ;
             afo:type xsd:float ],
         [ a afo:NumericParameter ;
-            afo:defaultValue "8800" ;
-            afo:description "maximum segment length to consider [ms]" ;
-            afo:maximumValue "inf" ;
-            afo:minimumValue 0 ;
-            afo:name "maxTau" ;
-            afo:type xsd:float ],
-        [ a afo:NumericParameter ;
             afo:defaultValue "1.1" ;
             afo:description "multiplier to increment from min to max tau" ;
             afo:maximumValue "inf" ;
             afo:minimumValue 1 ;
             afo:name "tauMultiplier" ;
+            afo:type xsd:float ],
+        [ a afo:NumericParameter ;
+            afo:defaultValue "8800" ;
+            afo:description "maximum segment length to consider [ms]" ;
+            afo:maximumValue "inf" ;
+            afo:minimumValue 0 ;
+            afo:name "maxTau" ;
             afo:type xsd:float ] .
 
 essentia:Decrease a owl:Class ;
@@ -743,25 +743,18 @@ References:
     afo:input essentia:Spectrum ;
     afo:output essentia:ERBBands ;
     afo:parameter [ a afo:NumericParameter ;
-            afo:defaultValue "1025" ;
-            afo:description "the size of the spectrum" ;
-            afo:maximumValue "inf" ;
-            afo:minimumValue 1 ;
-            afo:name "inputSize" ;
-            afo:type xsd:integer ],
-        [ a afo:NumericParameter ;
-            afo:defaultValue "22050" ;
-            afo:description "an upper-bound limit for the frequencies to be included in the bands" ;
-            afo:maximumValue "inf" ;
-            afo:minimumValue 0 ;
-            afo:name "highFrequencyBound" ;
-            afo:type xsd:float ],
-        [ a afo:NumericParameter ;
             afo:defaultValue "44100" ;
             afo:description "the sampling rate of the audio signal [Hz]" ;
             afo:maximumValue "inf" ;
             afo:minimumValue 0 ;
             afo:name "sampleRate" ;
+            afo:type xsd:float ],
+        [ a afo:NumericParameter ;
+            afo:defaultValue "50" ;
+            afo:description "a lower-bound limit for the frequencies to be included in the bands" ;
+            afo:maximumValue "inf" ;
+            afo:minimumValue 0 ;
+            afo:name "lowFrequencyBound" ;
             afo:type xsd:float ],
         [ a afo:NumericParameter ;
             afo:defaultValue "40" ;
@@ -770,13 +763,6 @@ References:
             afo:minimumValue 1 ;
             afo:name "numberBands" ;
             afo:type xsd:integer ],
-        [ a afo:NumericParameter ;
-            afo:defaultValue "50" ;
-            afo:description "a lower-bound limit for the frequencies to be included in the bands" ;
-            afo:maximumValue "inf" ;
-            afo:minimumValue 0 ;
-            afo:name "lowFrequencyBound" ;
-            afo:type xsd:float ],
         [ a afo:IndexedParameter ;
             afo:defaultValue "energy" ;
             afo:description "compute energies or magnitudes" ;
@@ -789,7 +775,21 @@ References:
             afo:maximumValue "inf" ;
             afo:minimumValue 0 ;
             afo:name "width" ;
-            afo:type xsd:float ] .
+            afo:type xsd:float ],
+        [ a afo:NumericParameter ;
+            afo:defaultValue "22050" ;
+            afo:description "an upper-bound limit for the frequencies to be included in the bands" ;
+            afo:maximumValue "inf" ;
+            afo:minimumValue 0 ;
+            afo:name "highFrequencyBound" ;
+            afo:type xsd:float ],
+        [ a afo:NumericParameter ;
+            afo:defaultValue "1025" ;
+            afo:description "the size of the spectrum" ;
+            afo:maximumValue "inf" ;
+            afo:minimumValue 1 ;
+            afo:name "inputSize" ;
+            afo:type xsd:integer ] .
 
 essentia:EffectiveDuration a owl:Class ;
     rdfs:label "EffectiveDuration"@en ;
@@ -811,18 +811,18 @@ References:
     afo:input essentia:Signal ;
     afo:output essentia:EffectiveDuration ;
     afo:parameter [ a afo:NumericParameter ;
-            afo:defaultValue "0.4" ;
-            afo:description "the ratio of the envelope maximum to be used as the threshold" ;
-            afo:maximumValue 1 ;
-            afo:minimumValue 0 ;
-            afo:name "thresholdRatio" ;
-            afo:type xsd:float ],
-        [ a afo:NumericParameter ;
             afo:defaultValue "44100" ;
             afo:description "the sampling rate of the audio signal [Hz]" ;
             afo:maximumValue "inf" ;
             afo:minimumValue 0 ;
             afo:name "sampleRate" ;
+            afo:type xsd:float ],
+        [ a afo:NumericParameter ;
+            afo:defaultValue "0.4" ;
+            afo:description "the ratio of the envelope maximum to be used as the threshold" ;
+            afo:maximumValue 1 ;
+            afo:minimumValue 0 ;
+            afo:name "thresholdRatio" ;
             afo:type xsd:float ] .
 
 essentia:Energy a owl:Class ;
@@ -852,13 +852,6 @@ References:
     afo:input essentia:Spectrum ;
     afo:output essentia:EnergyBand ;
     afo:parameter [ a afo:NumericParameter ;
-            afo:defaultValue "100" ;
-            afo:description "the stop frequency to which to sum the energy [Hz]" ;
-            afo:maximumValue "inf" ;
-            afo:minimumValue 0 ;
-            afo:name "stopCutoffFrequency" ;
-            afo:type xsd:float ],
-        [ a afo:NumericParameter ;
             afo:defaultValue "0" ;
             afo:description "the start frequency from which to sum the energy [Hz]" ;
             afo:maximumValue "inf" ;
@@ -871,6 +864,13 @@ References:
             afo:maximumValue "inf" ;
             afo:minimumValue 0 ;
             afo:name "sampleRate" ;
+            afo:type xsd:float ],
+        [ a afo:NumericParameter ;
+            afo:defaultValue "100" ;
+            afo:description "the stop frequency to which to sum the energy [Hz]" ;
+            afo:maximumValue "inf" ;
+            afo:minimumValue 0 ;
+            afo:name "stopCutoffFrequency" ;
             afo:type xsd:float ] .
 
 essentia:EnergyBandRatio a owl:Class ;
@@ -895,13 +895,6 @@ References:
     afo:input essentia:Spectrum ;
     afo:output essentia:EnergyBandRatio ;
     afo:parameter [ a afo:NumericParameter ;
-            afo:defaultValue "0" ;
-            afo:description "the frequency from which to start summing the energy [Hz]" ;
-            afo:maximumValue "inf" ;
-            afo:minimumValue 0 ;
-            afo:name "startFrequency" ;
-            afo:type xsd:float ],
-        [ a afo:NumericParameter ;
             afo:defaultValue "100" ;
             afo:description "the frequency up to which to sum the energy [Hz]" ;
             afo:maximumValue "inf" ;
@@ -914,6 +907,13 @@ References:
             afo:maximumValue "inf" ;
             afo:minimumValue 0 ;
             afo:name "sampleRate" ;
+            afo:type xsd:float ],
+        [ a afo:NumericParameter ;
+            afo:defaultValue "0" ;
+            afo:description "the frequency from which to start summing the energy [Hz]" ;
+            afo:maximumValue "inf" ;
+            afo:minimumValue 0 ;
+            afo:name "startFrequency" ;
             afo:type xsd:float ] .
 
 essentia:EnergyExtractor a owl:Class ;
@@ -963,25 +963,18 @@ References:
     rdfs:subClassOf essentia:Envelope_SFXExtractors ;
     afo:input essentia:Signal ;
     afo:output essentia:Envelope ;
-    afo:parameter [ a afo:NumericParameter ;
-            afo:defaultValue "10" ;
-            afo:description "the attack time of the first order lowpass in the attack phase [ms]" ;
-            afo:maximumValue "inf" ;
-            afo:minimumValue 0 ;
-            afo:name "attackTime" ;
-            afo:type xsd:float ],
-        [ a afo:IndexedParameter ;
+    afo:parameter [ a afo:IndexedParameter ;
             afo:defaultValue "true" ;
             afo:description "whether to apply rectification (envelope based on the absolute value of signal)" ;
             afo:name "applyRectification" ;
             afo:parameterValues "{true,false}" ;
             afo:type xsd:boolean ],
         [ a afo:NumericParameter ;
-            afo:defaultValue "1500" ;
-            afo:description "the release time of the first order lowpass in the release phase [ms]" ;
+            afo:defaultValue "10" ;
+            afo:description "the attack time of the first order lowpass in the attack phase [ms]" ;
             afo:maximumValue "inf" ;
             afo:minimumValue 0 ;
-            afo:name "releaseTime" ;
+            afo:name "attackTime" ;
             afo:type xsd:float ],
         [ a afo:NumericParameter ;
             afo:defaultValue "44100" ;
@@ -989,6 +982,13 @@ References:
             afo:maximumValue "inf" ;
             afo:minimumValue 0 ;
             afo:name "sampleRate" ;
+            afo:type xsd:float ],
+        [ a afo:NumericParameter ;
+            afo:defaultValue "1500" ;
+            afo:description "the release time of the first order lowpass in the release phase [ms]" ;
+            afo:maximumValue "inf" ;
+            afo:minimumValue 0 ;
+            afo:name "releaseTime" ;
             afo:type xsd:float ] .
 
 essentia:EqualTemperedDeviation a owl:Class ;
@@ -1243,19 +1243,19 @@ References:
     rdfs:subClassOf essentia:SpectralExtractors ;
     afo:input essentia:Spectrum ;
     afo:output essentia:HFC ;
-    afo:parameter [ a afo:IndexedParameter ;
-            afo:defaultValue "Masri" ;
-            afo:description "the type of HFC coefficient to be computed" ;
-            afo:name "type" ;
-            afo:parameterValues "{Masri,Jensen,Brossier}" ;
-            afo:type xsd:string ],
-        [ a afo:NumericParameter ;
+    afo:parameter [ a afo:NumericParameter ;
             afo:defaultValue "44100" ;
             afo:description "the sampling rate of the audio signal [Hz]" ;
             afo:maximumValue "inf" ;
             afo:minimumValue 0 ;
             afo:name "sampleRate" ;
-            afo:type xsd:float ] .
+            afo:type xsd:float ],
+        [ a afo:IndexedParameter ;
+            afo:defaultValue "Masri" ;
+            afo:description "the type of HFC coefficient to be computed" ;
+            afo:name "type" ;
+            afo:parameterValues "{Masri,Jensen,Brossier}" ;
+            afo:type xsd:string ] .
 
 essentia:HPCPExtractor a owl:Class ;
     rdfs:label "HPCP Extractor"@en ;
@@ -1274,45 +1274,6 @@ References:
         essentia:Magnitudes ;
     afo:output essentia:HPCP ;
     afo:parameter [ a afo:IndexedParameter ;
-            afo:defaultValue "squaredCosine" ;
-            afo:description "type of weighting function for determining frequency contribution" ;
-            afo:name "weightType" ;
-            afo:parameterValues "{none,cosine,squaredCosine}" ;
-            afo:type xsd:string ],
-        [ a afo:NumericParameter ;
-            afo:defaultValue "0" ;
-            afo:description "number of harmonics for frequency contribution, 0 indicates exclusive fundamental frequency contribution" ;
-            afo:maximumValue "inf" ;
-            afo:minimumValue 0 ;
-            afo:name "harmonics" ;
-            afo:type xsd:integer ],
-        [ a afo:IndexedParameter ;
-            afo:defaultValue "false" ;
-            afo:description "whether to shift the HPCP vector so that the maximum peak is at index 0" ;
-            afo:name "maxShifted" ;
-            afo:parameterValues "{true,false}" ;
-            afo:type xsd:boolean ],
-        [ a afo:NumericParameter ;
-            afo:defaultValue "500" ;
-            afo:description "the split frequency for low and high bands, not used if bandPreset is false [Hz]" ;
-            afo:maximumValue "inf" ;
-            afo:minimumValue 0 ;
-            afo:name "splitFrequency" ;
-            afo:type xsd:float ],
-        [ a afo:NumericParameter ;
-            afo:defaultValue "44100" ;
-            afo:description "the sampling rate of the audio signal [Hz]" ;
-            afo:maximumValue "inf" ;
-            afo:minimumValue 0 ;
-            afo:name "sampleRate" ;
-            afo:type xsd:float ],
-        [ a afo:IndexedParameter ;
-            afo:defaultValue "true" ;
-            afo:description "enables whether to use a band preset" ;
-            afo:name "bandPreset" ;
-            afo:parameterValues "{true,false}" ;
-            afo:type xsd:boolean ],
-        [ a afo:IndexedParameter ;
             afo:defaultValue "false" ;
             afo:description "enables whether to apply a Jordi non-linear post-processing function to the output" ;
             afo:name "nonLinear" ;
@@ -1325,11 +1286,39 @@ References:
             afo:parameterValues "{true,false}" ;
             afo:type xsd:boolean ],
         [ a afo:NumericParameter ;
-            afo:defaultValue "5000" ;
-            afo:description "the maximum frequency that contributes to the HPCP [Hz] (the difference between the max and split frequencies must not be less than 200.0 Hz)" ;
+            afo:defaultValue "1" ;
+            afo:description "the size, in semitones, of the window used for the weighting" ;
+            afo:maximumValue 12 ;
+            afo:minimumValue 0 ;
+            afo:name "windowSize" ;
+            afo:type xsd:float ],
+        [ a afo:NumericParameter ;
+            afo:defaultValue "0" ;
+            afo:description "number of harmonics for frequency contribution, 0 indicates exclusive fundamental frequency contribution" ;
             afo:maximumValue "inf" ;
             afo:minimumValue 0 ;
-            afo:name "maxFrequency" ;
+            afo:name "harmonics" ;
+            afo:type xsd:integer ],
+        [ a afo:NumericParameter ;
+            afo:defaultValue "12" ;
+            afo:description "the size of the output HPCP (must be a positive nonzero multiple of 12)" ;
+            afo:maximumValue "inf" ;
+            afo:minimumValue 12 ;
+            afo:name "size" ;
+            afo:type xsd:integer ],
+        [ a afo:NumericParameter ;
+            afo:defaultValue "44100" ;
+            afo:description "the sampling rate of the audio signal [Hz]" ;
+            afo:maximumValue "inf" ;
+            afo:minimumValue 0 ;
+            afo:name "sampleRate" ;
+            afo:type xsd:float ],
+        [ a afo:NumericParameter ;
+            afo:defaultValue "500" ;
+            afo:description "the split frequency for low and high bands, not used if bandPreset is false [Hz]" ;
+            afo:maximumValue "inf" ;
+            afo:minimumValue 0 ;
+            afo:name "splitFrequency" ;
             afo:type xsd:float ],
         [ a afo:NumericParameter ;
             afo:defaultValue "40" ;
@@ -1339,13 +1328,6 @@ References:
             afo:name "minFrequency" ;
             afo:type xsd:float ],
         [ a afo:NumericParameter ;
-            afo:defaultValue "12" ;
-            afo:description "the size of the output HPCP (must be a positive nonzero multiple of 12)" ;
-            afo:maximumValue "inf" ;
-            afo:minimumValue 12 ;
-            afo:name "size" ;
-            afo:type xsd:integer ],
-        [ a afo:NumericParameter ;
             afo:defaultValue "440" ;
             afo:description "the reference frequency for semitone index calculation, corresponding to A3 [Hz]" ;
             afo:maximumValue "inf" ;
@@ -1353,12 +1335,30 @@ References:
             afo:name "referenceFrequency" ;
             afo:type xsd:float ],
         [ a afo:NumericParameter ;
-            afo:defaultValue "1" ;
-            afo:description "the size, in semitones, of the window used for the weighting" ;
-            afo:maximumValue 12 ;
+            afo:defaultValue "5000" ;
+            afo:description "the maximum frequency that contributes to the HPCP [Hz] (the difference between the max and split frequencies must not be less than 200.0 Hz)" ;
+            afo:maximumValue "inf" ;
             afo:minimumValue 0 ;
-            afo:name "windowSize" ;
-            afo:type xsd:float ] .
+            afo:name "maxFrequency" ;
+            afo:type xsd:float ],
+        [ a afo:IndexedParameter ;
+            afo:defaultValue "squaredCosine" ;
+            afo:description "type of weighting function for determining frequency contribution" ;
+            afo:name "weightType" ;
+            afo:parameterValues "{none,cosine,squaredCosine}" ;
+            afo:type xsd:string ],
+        [ a afo:IndexedParameter ;
+            afo:defaultValue "true" ;
+            afo:description "enables whether to use a band preset" ;
+            afo:name "bandPreset" ;
+            afo:parameterValues "{true,false}" ;
+            afo:type xsd:boolean ],
+        [ a afo:IndexedParameter ;
+            afo:defaultValue "false" ;
+            afo:description "whether to shift the HPCP vector so that the maximum peak is at index 0" ;
+            afo:name "maxShifted" ;
+            afo:parameterValues "{true,false}" ;
+            afo:type xsd:boolean ] .
 
 essentia:HarmonicBpmExtractor a owl:Class ;
     rdfs:label "HarmonicBpm Extractor"@en ;
@@ -1374,19 +1374,19 @@ References:
     afo:input essentia:BPMs ;
     afo:output essentia:HarmonicBpmHarmonicbpms ;
     afo:parameter [ a afo:NumericParameter ;
-            afo:defaultValue "20" ;
-            afo:description "bpm threshold below which greatest common divisors are discarded" ;
-            afo:maximumValue "inf" ;
-            afo:minimumValue 1 ;
-            afo:name "threshold" ;
-            afo:type xsd:float ],
-        [ a afo:NumericParameter ;
             afo:defaultValue "60" ;
             afo:description "the bpm used to find its harmonics" ;
             afo:maximumValue "inf" ;
             afo:minimumValue 1 ;
             afo:name "bpm" ;
             afo:type xsd:integer ],
+        [ a afo:NumericParameter ;
+            afo:defaultValue "20" ;
+            afo:description "bpm threshold below which greatest common divisors are discarded" ;
+            afo:maximumValue "inf" ;
+            afo:minimumValue 1 ;
+            afo:name "threshold" ;
+            afo:type xsd:float ],
         [ a afo:NumericParameter ;
             afo:defaultValue "5" ;
             afo:description "percentage tolerance to consider two bpms are equal or equal to a harmonic" ;
@@ -1580,6 +1580,13 @@ References:
             afo:name "sampleRate" ;
             afo:type xsd:float ],
         [ a afo:NumericParameter ;
+            afo:defaultValue "1.5" ;
+            afo:description "the power used for averaging" ;
+            afo:maximumValue "inf" ;
+            afo:minimumValue "inf" ;
+            afo:name "power" ;
+            afo:type xsd:float ],
+        [ a afo:NumericParameter ;
             afo:defaultValue "10" ;
             afo:description "the attack time of the first order lowpass in the attack phase [ms]" ;
             afo:maximumValue "inf" ;
@@ -1592,13 +1599,6 @@ References:
             afo:maximumValue "inf" ;
             afo:minimumValue 0 ;
             afo:name "releaseTime" ;
-            afo:type xsd:float ],
-        [ a afo:NumericParameter ;
-            afo:defaultValue "1.5" ;
-            afo:description "the power used for averaging" ;
-            afo:maximumValue "inf" ;
-            afo:minimumValue "inf" ;
-            afo:name "power" ;
             afo:type xsd:float ] .
 
 essentia:LeqExtractor a owl:Class ;
@@ -1622,18 +1622,18 @@ essentia:LevelExtractor a owl:Class ;
     afo:input essentia:Signal ;
     afo:output essentia:Loudness ;
     afo:parameter [ a afo:NumericParameter ;
-            afo:defaultValue "44100" ;
-            afo:description "hop size to compute loudness" ;
-            afo:maximumValue "inf" ;
-            afo:minimumValue 0 ;
-            afo:name "hopSize" ;
-            afo:type xsd:integer ],
-        [ a afo:NumericParameter ;
             afo:defaultValue "88200" ;
             afo:description "frame size to compute loudness" ;
             afo:maximumValue "inf" ;
             afo:minimumValue 0 ;
             afo:name "frameSize" ;
+            afo:type xsd:integer ],
+        [ a afo:NumericParameter ;
+            afo:defaultValue "44100" ;
+            afo:description "hop size to compute loudness" ;
+            afo:maximumValue "inf" ;
+            afo:minimumValue 0 ;
+            afo:name "hopSize" ;
             afo:type xsd:integer ] .
 
 essentia:LogAttackTime a owl:Class ;
@@ -1656,11 +1656,11 @@ Note that startAttackThreshold cannot be greater than stopAttackThreshold and th
     afo:input essentia:Signal ;
     afo:output essentia:LogAttackTime ;
     afo:parameter [ a afo:NumericParameter ;
-            afo:defaultValue "0.2" ;
-            afo:description "the percentage of the input signal envelope at which the starting point of the attack is considered" ;
+            afo:defaultValue "0.9" ;
+            afo:description "the percentage of the input signal envelope at which the ending point of the attack is considered" ;
             afo:maximumValue 1 ;
             afo:minimumValue 0 ;
-            afo:name "startAttackThreshold" ;
+            afo:name "stopAttackThreshold" ;
             afo:type xsd:float ],
         [ a afo:NumericParameter ;
             afo:defaultValue "44100" ;
@@ -1670,11 +1670,11 @@ Note that startAttackThreshold cannot be greater than stopAttackThreshold and th
             afo:name "sampleRate" ;
             afo:type xsd:float ],
         [ a afo:NumericParameter ;
-            afo:defaultValue "0.9" ;
-            afo:description "the percentage of the input signal envelope at which the ending point of the attack is considered" ;
+            afo:defaultValue "0.2" ;
+            afo:description "the percentage of the input signal envelope at which the starting point of the attack is considered" ;
             afo:maximumValue 1 ;
             afo:minimumValue 0 ;
-            afo:name "stopAttackThreshold" ;
+            afo:name "startAttackThreshold" ;
             afo:type xsd:float ] .
 
 essentia:LoudnessEBUR128Integratedloudness a owl:Class ;
@@ -1859,12 +1859,12 @@ References:
     afo:input essentia:Spectrum ;
     afo:output essentia:MelBands ;
     afo:parameter [ a afo:NumericParameter ;
-            afo:defaultValue "0" ;
-            afo:description "a lower-bound limit for the frequencies to be included in the bands" ;
+            afo:defaultValue "24" ;
+            afo:description "the number of output bands" ;
             afo:maximumValue "inf" ;
-            afo:minimumValue 0 ;
-            afo:name "lowFrequencyBound" ;
-            afo:type xsd:float ],
+            afo:minimumValue 1 ;
+            afo:name "numberBands" ;
+            afo:type xsd:integer ],
         [ a afo:NumericParameter ;
             afo:defaultValue "1025" ;
             afo:description "the size of the spectrum" ;
@@ -1880,12 +1880,12 @@ References:
             afo:name "highFrequencyBound" ;
             afo:type xsd:float ],
         [ a afo:NumericParameter ;
-            afo:defaultValue "24" ;
-            afo:description "the number of output bands" ;
+            afo:defaultValue "0" ;
+            afo:description "a lower-bound limit for the frequencies to be included in the bands" ;
             afo:maximumValue "inf" ;
-            afo:minimumValue 1 ;
-            afo:name "numberBands" ;
-            afo:type xsd:integer ],
+            afo:minimumValue 0 ;
+            afo:name "lowFrequencyBound" ;
+            afo:type xsd:float ],
         [ a afo:NumericParameter ;
             afo:defaultValue "44100" ;
             afo:description "the sample rate" ;
@@ -1964,6 +1964,34 @@ References:
             afo:name "referenceFrequency" ;
             afo:type xsd:float ],
         [ a afo:NumericParameter ;
+            afo:defaultValue "0.8" ;
+            afo:description "harmonic weighting parameter (weight decay ratio between two consequent harmonics, =1 for no decay)" ;
+            afo:maximumValue 1 ;
+            afo:minimumValue 0 ;
+            afo:name "harmonicWeight" ;
+            afo:type xsd:float ],
+        [ a afo:NumericParameter ;
+            afo:defaultValue "2048" ;
+            afo:description "the frame size for computing pitch saliecnce" ;
+            afo:maximumValue "inf" ;
+            afo:minimumValue 0 ;
+            afo:name "frameSize" ;
+            afo:type xsd:integer ],
+        [ a afo:NumericParameter ;
+            afo:defaultValue "10" ;
+            afo:description "number of considered harmonics" ;
+            afo:maximumValue "inf" ;
+            afo:minimumValue 1 ;
+            afo:name "numberHarmonics" ;
+            afo:type xsd:integer ],
+        [ a afo:NumericParameter ;
+            afo:defaultValue "1760" ;
+            afo:description "the maximum allowed frequency for salience function peaks (ignore peaks above) [Hz]" ;
+            afo:maximumValue "inf" ;
+            afo:minimumValue 0 ;
+            afo:name "maxFrequency" ;
+            afo:type xsd:float ],
+        [ a afo:NumericParameter ;
             afo:defaultValue "40" ;
             afo:description "spectral peak magnitude threshold (maximum allowed difference from the highest peak in dBs)" ;
             afo:maximumValue "inf" ;
@@ -1978,39 +2006,18 @@ References:
             afo:name "sampleRate" ;
             afo:type xsd:float ],
         [ a afo:NumericParameter ;
+            afo:defaultValue "1" ;
+            afo:description "magnitude compression parameter for the salience function (=0 for maximum compression, =1 for no compression)" ;
+            afo:maximumValue 1 ;
+            afo:minimumValue 0 ;
+            afo:name "magnitudeCompression" ;
+            afo:type xsd:float ],
+        [ a afo:NumericParameter ;
             afo:defaultValue "80" ;
             afo:description "the minimum allowed frequency for salience function peaks (ignore peaks below) [Hz]" ;
             afo:maximumValue "inf" ;
             afo:minimumValue 0 ;
             afo:name "minFrequency" ;
-            afo:type xsd:float ],
-        [ a afo:NumericParameter ;
-            afo:defaultValue "0.8" ;
-            afo:description "harmonic weighting parameter (weight decay ratio between two consequent harmonics, =1 for no decay)" ;
-            afo:maximumValue 1 ;
-            afo:minimumValue 0 ;
-            afo:name "harmonicWeight" ;
-            afo:type xsd:float ],
-        [ a afo:NumericParameter ;
-            afo:defaultValue "10" ;
-            afo:description "salience function bin resolution [cents]" ;
-            afo:maximumValue "inf" ;
-            afo:minimumValue 0 ;
-            afo:name "binResolution" ;
-            afo:type xsd:float ],
-        [ a afo:NumericParameter ;
-            afo:defaultValue "2048" ;
-            afo:description "the frame size for computing pitch saliecnce" ;
-            afo:maximumValue "inf" ;
-            afo:minimumValue 0 ;
-            afo:name "frameSize" ;
-            afo:type xsd:integer ],
-        [ a afo:NumericParameter ;
-            afo:defaultValue "1760" ;
-            afo:description "the maximum allowed frequency for salience function peaks (ignore peaks above) [Hz]" ;
-            afo:maximumValue "inf" ;
-            afo:minimumValue 0 ;
-            afo:name "maxFrequency" ;
             afo:type xsd:float ],
         [ a afo:NumericParameter ;
             afo:defaultValue "128" ;
@@ -2021,17 +2028,10 @@ References:
             afo:type xsd:integer ],
         [ a afo:NumericParameter ;
             afo:defaultValue "10" ;
-            afo:description "number of considered harmonics" ;
+            afo:description "salience function bin resolution [cents]" ;
             afo:maximumValue "inf" ;
-            afo:minimumValue 1 ;
-            afo:name "numberHarmonics" ;
-            afo:type xsd:integer ],
-        [ a afo:NumericParameter ;
-            afo:defaultValue "1" ;
-            afo:description "magnitude compression parameter for the salience function (=0 for maximum compression, =1 for no compression)" ;
-            afo:maximumValue 1 ;
             afo:minimumValue 0 ;
-            afo:name "magnitudeCompression" ;
+            afo:name "binResolution" ;
             afo:type xsd:float ] .
 
 essentia:MultiPitchMelodiaExtractor a owl:Class ;
@@ -2054,25 +2054,32 @@ References:
     afo:input essentia:Signal ;
     afo:output essentia:MultiPitch ;
     afo:parameter [ a afo:NumericParameter ;
-            afo:defaultValue "1" ;
-            afo:description "magnitude compression parameter for the salience function (=0 for maximum compression, =1 for no compression)" ;
-            afo:maximumValue 1 ;
+            afo:defaultValue "40" ;
+            afo:description "spectral peak magnitude threshold (maximum allowed difference from the highest peak in dBs)" ;
+            afo:maximumValue "inf" ;
             afo:minimumValue 0 ;
-            afo:name "magnitudeCompression" ;
-            afo:type xsd:float ],
-        [ a afo:NumericParameter ;
-            afo:defaultValue "0.8" ;
-            afo:description "harmonic weighting parameter (weight decay ratio between two consequent harmonics, =1 for no decay)" ;
-            afo:maximumValue 1 ;
-            afo:minimumValue 0 ;
-            afo:name "harmonicWeight" ;
-            afo:type xsd:float ],
+            afo:name "magnitudeThreshold" ;
+            afo:type xsd:integer ],
         [ a afo:NumericParameter ;
             afo:defaultValue "55" ;
             afo:description "the reference frequency for Hertz to cent convertion [Hz], corresponding to the 0th cent bin" ;
             afo:maximumValue "inf" ;
             afo:minimumValue 0 ;
             afo:name "referenceFrequency" ;
+            afo:type xsd:float ],
+        [ a afo:NumericParameter ;
+            afo:defaultValue "10" ;
+            afo:description "salience function bin resolution [cents]" ;
+            afo:maximumValue "inf" ;
+            afo:minimumValue 0 ;
+            afo:name "binResolution" ;
+            afo:type xsd:float ],
+        [ a afo:NumericParameter ;
+            afo:defaultValue "0.9" ;
+            afo:description "allowed deviation below the peak salience mean over all frames (fraction of the standard deviation)" ;
+            afo:maximumValue 2 ;
+            afo:minimumValue 0 ;
+            afo:name "peakDistributionThreshold" ;
             afo:type xsd:float ],
         [ a afo:NumericParameter ;
             afo:defaultValue "27.5625" ;
@@ -2082,12 +2089,12 @@ References:
             afo:name "pitchContinuity" ;
             afo:type xsd:float ],
         [ a afo:NumericParameter ;
-            afo:defaultValue "40" ;
-            afo:description "the minimum allowed frequency for salience function peaks (ignore contours with peaks below) [Hz]" ;
+            afo:defaultValue "3" ;
+            afo:description "number of iterations for the octave errors / pitch outlier filtering process" ;
             afo:maximumValue "inf" ;
-            afo:minimumValue 0 ;
-            afo:name "minFrequency" ;
-            afo:type xsd:float ],
+            afo:minimumValue 1 ;
+            afo:name "filterIterations" ;
+            afo:type xsd:integer ],
         [ a afo:IndexedParameter ;
             afo:defaultValue "false" ;
             afo:description "estimate pitch for non-voiced segments by using non-salient contours when no salient ones are present in a frame" ;
@@ -2096,32 +2103,11 @@ References:
             afo:type xsd:boolean ],
         [ a afo:NumericParameter ;
             afo:defaultValue "100" ;
-            afo:description "time continuity cue (the maximum allowed gap duration for a pitch contour) [ms]" ;
-            afo:maximumValue "inf" ;
-            afo:minimumValue 0 ;
-            afo:name "timeContinuity" ;
-            afo:type xsd:integer ],
-        [ a afo:NumericParameter ;
-            afo:defaultValue "40" ;
-            afo:description "spectral peak magnitude threshold (maximum allowed difference from the highest peak in dBs)" ;
-            afo:maximumValue "inf" ;
-            afo:minimumValue 0 ;
-            afo:name "magnitudeThreshold" ;
-            afo:type xsd:integer ],
-        [ a afo:NumericParameter ;
-            afo:defaultValue "100" ;
             afo:description "the minimum allowed contour duration [ms]" ;
             afo:maximumValue "inf" ;
             afo:minimumValue 0 ;
             afo:name "minDuration" ;
             afo:type xsd:integer ],
-        [ a afo:NumericParameter ;
-            afo:defaultValue "10" ;
-            afo:description "salience function bin resolution [cents]" ;
-            afo:maximumValue "inf" ;
-            afo:minimumValue 0 ;
-            afo:name "binResolution" ;
-            afo:type xsd:float ],
         [ a afo:NumericParameter ;
             afo:defaultValue "128" ;
             afo:description "the hop size with which the pitch salience function was computed" ;
@@ -2137,33 +2123,12 @@ References:
             afo:name "numberHarmonics" ;
             afo:type xsd:integer ],
         [ a afo:NumericParameter ;
-            afo:defaultValue "3" ;
-            afo:description "number of iterations for the octave errors / pitch outlier filtering process" ;
+            afo:defaultValue "100" ;
+            afo:description "time continuity cue (the maximum allowed gap duration for a pitch contour) [ms]" ;
             afo:maximumValue "inf" ;
-            afo:minimumValue 1 ;
-            afo:name "filterIterations" ;
+            afo:minimumValue 0 ;
+            afo:name "timeContinuity" ;
             afo:type xsd:integer ],
-        [ a afo:NumericParameter ;
-            afo:defaultValue "0.9" ;
-            afo:description "allowed deviation below the peak salience mean over all frames (fraction of the standard deviation)" ;
-            afo:maximumValue 2 ;
-            afo:minimumValue 0 ;
-            afo:name "peakDistributionThreshold" ;
-            afo:type xsd:float ],
-        [ a afo:NumericParameter ;
-            afo:defaultValue "2048" ;
-            afo:description "the frame size for computing pitch saliecnce" ;
-            afo:maximumValue "inf" ;
-            afo:minimumValue 0 ;
-            afo:name "frameSize" ;
-            afo:type xsd:integer ],
-        [ a afo:NumericParameter ;
-            afo:defaultValue "20000" ;
-            afo:description "the minimum allowed frequency for salience function peaks (ignore contours with peaks above) [Hz]" ;
-            afo:maximumValue "inf" ;
-            afo:minimumValue 0 ;
-            afo:name "maxFrequency" ;
-            afo:type xsd:float ],
         [ a afo:NumericParameter ;
             afo:defaultValue "0.9" ;
             afo:description "per-frame salience threshold factor (fraction of the highest peak salience in a frame)" ;
@@ -2172,12 +2137,47 @@ References:
             afo:name "peakFrameThreshold" ;
             afo:type xsd:float ],
         [ a afo:NumericParameter ;
+            afo:defaultValue "20000" ;
+            afo:description "the minimum allowed frequency for salience function peaks (ignore contours with peaks above) [Hz]" ;
+            afo:maximumValue "inf" ;
+            afo:minimumValue 0 ;
+            afo:name "maxFrequency" ;
+            afo:type xsd:float ],
+        [ a afo:NumericParameter ;
+            afo:defaultValue "40" ;
+            afo:description "the minimum allowed frequency for salience function peaks (ignore contours with peaks below) [Hz]" ;
+            afo:maximumValue "inf" ;
+            afo:minimumValue 0 ;
+            afo:name "minFrequency" ;
+            afo:type xsd:float ],
+        [ a afo:NumericParameter ;
+            afo:defaultValue "1" ;
+            afo:description "magnitude compression parameter for the salience function (=0 for maximum compression, =1 for no compression)" ;
+            afo:maximumValue 1 ;
+            afo:minimumValue 0 ;
+            afo:name "magnitudeCompression" ;
+            afo:type xsd:float ],
+        [ a afo:NumericParameter ;
+            afo:defaultValue "0.8" ;
+            afo:description "harmonic weighting parameter (weight decay ratio between two consequent harmonics, =1 for no decay)" ;
+            afo:maximumValue 1 ;
+            afo:minimumValue 0 ;
+            afo:name "harmonicWeight" ;
+            afo:type xsd:float ],
+        [ a afo:NumericParameter ;
             afo:defaultValue "44100" ;
             afo:description "the sampling rate of the audio signal [Hz]" ;
             afo:maximumValue "inf" ;
             afo:minimumValue 0 ;
             afo:name "sampleRate" ;
-            afo:type xsd:float ] .
+            afo:type xsd:float ],
+        [ a afo:NumericParameter ;
+            afo:defaultValue "2048" ;
+            afo:description "the frame size for computing pitch saliecnce" ;
+            afo:maximumValue "inf" ;
+            afo:minimumValue 0 ;
+            afo:name "frameSize" ;
+            afo:type xsd:integer ] .
 
 essentia:NonTemperedEnergyRatio a owl:Class ;
     rdfs:label "NonTemperedEnergyRatio"@en ;
@@ -2351,12 +2351,12 @@ References:
     afo:input essentia:Signal ;
     afo:output essentia:OnsetDetectionGlobalOnsetdetections ;
     afo:parameter [ a afo:NumericParameter ;
-            afo:defaultValue "44100" ;
-            afo:description "the sampling rate of the audio signal [Hz]" ;
+            afo:defaultValue "512" ;
+            afo:description "the hop size for computing onset detection function" ;
             afo:maximumValue "inf" ;
             afo:minimumValue 0 ;
-            afo:name "sampleRate" ;
-            afo:type xsd:float ],
+            afo:name "hopSize" ;
+            afo:type xsd:integer ],
         [ a afo:NumericParameter ;
             afo:defaultValue "2048" ;
             afo:description "the frame size for computing onset detection function" ;
@@ -2365,12 +2365,12 @@ References:
             afo:name "frameSize" ;
             afo:type xsd:integer ],
         [ a afo:NumericParameter ;
-            afo:defaultValue "512" ;
-            afo:description "the hop size for computing onset detection function" ;
+            afo:defaultValue "44100" ;
+            afo:description "the sampling rate of the audio signal [Hz]" ;
             afo:maximumValue "inf" ;
             afo:minimumValue 0 ;
-            afo:name "hopSize" ;
-            afo:type xsd:integer ],
+            afo:name "sampleRate" ;
+            afo:type xsd:float ],
         [ a afo:IndexedParameter ;
             afo:defaultValue "infogain" ;
             afo:description "the method used for onset detection" ;
@@ -2434,12 +2434,12 @@ References:
             afo:name "silenceThreshold" ;
             afo:type xsd:float ],
         [ a afo:NumericParameter ;
-            afo:defaultValue "86.1328" ;
-            afo:description "frames per second" ;
+            afo:defaultValue "5" ;
+            afo:description "the number of frames used to compute the threshold--size of short-onset filter" ;
             afo:maximumValue "inf" ;
             afo:minimumValue 0 ;
-            afo:name "frameRate" ;
-            afo:type xsd:float ],
+            afo:name "delay" ;
+            afo:type xsd:integer ],
         [ a afo:NumericParameter ;
             afo:defaultValue "0.1" ;
             afo:description "the proportion of the mean included to reject smaller peaks--filters very short onsets" ;
@@ -2448,12 +2448,12 @@ References:
             afo:name "alpha" ;
             afo:type xsd:float ],
         [ a afo:NumericParameter ;
-            afo:defaultValue "5" ;
-            afo:description "the number of frames used to compute the threshold--size of short-onset filter" ;
+            afo:defaultValue "86.1328" ;
+            afo:description "frames per second" ;
             afo:maximumValue "inf" ;
             afo:minimumValue 0 ;
-            afo:name "delay" ;
-            afo:type xsd:integer ] .
+            afo:name "frameRate" ;
+            afo:type xsd:float ] .
 
 essentia:PCAExtractor a owl:Class ;
     rdfs:label "PCA Extractor"@en ;
@@ -2502,27 +2502,12 @@ References:
     afo:input essentia:Spectrumleft,
         essentia:Spectrumright ;
     afo:output essentia:PanningPanningcoeffs ;
-    afo:parameter [ a afo:NumericParameter ;
-            afo:defaultValue "44100" ;
-            afo:description "audio sampling rate [Hz]" ;
-            afo:maximumValue "inf" ;
-            afo:minimumValue 0 ;
-            afo:name "sampleRate" ;
-            afo:type xsd:float ],
-        [ a afo:NumericParameter ;
-            afo:defaultValue "43" ;
-            afo:description "number of frames to take into account for averaging" ;
-            afo:maximumValue "inf" ;
-            afo:minimumValue 0 ;
-            afo:name "averageFrames" ;
-            afo:type xsd:integer ],
-        [ a afo:NumericParameter ;
-            afo:defaultValue "20" ;
-            afo:description "number of coefficients used to define the panning curve at each frame" ;
-            afo:maximumValue "inf" ;
-            afo:minimumValue 0 ;
-            afo:name "numCoeffs" ;
-            afo:type xsd:integer ],
+    afo:parameter [ a afo:IndexedParameter ;
+            afo:defaultValue "true" ;
+            afo:description "if true, warped panorama is applied, having more resolution in the center area" ;
+            afo:name "warpedPanorama" ;
+            afo:parameterValues "{false,true}" ;
+            afo:type xsd:boolean ],
         [ a afo:NumericParameter ;
             afo:defaultValue "512" ;
             afo:description "size of the histogram of ratios (in bins)" ;
@@ -2531,18 +2516,33 @@ References:
             afo:name "panningBins" ;
             afo:type xsd:integer ],
         [ a afo:NumericParameter ;
+            afo:defaultValue "44100" ;
+            afo:description "audio sampling rate [Hz]" ;
+            afo:maximumValue "inf" ;
+            afo:minimumValue 0 ;
+            afo:name "sampleRate" ;
+            afo:type xsd:float ],
+        [ a afo:NumericParameter ;
+            afo:defaultValue "20" ;
+            afo:description "number of coefficients used to define the panning curve at each frame" ;
+            afo:maximumValue "inf" ;
+            afo:minimumValue 0 ;
+            afo:name "numCoeffs" ;
+            afo:type xsd:integer ],
+        [ a afo:NumericParameter ;
+            afo:defaultValue "43" ;
+            afo:description "number of frames to take into account for averaging" ;
+            afo:maximumValue "inf" ;
+            afo:minimumValue 0 ;
+            afo:name "averageFrames" ;
+            afo:type xsd:integer ],
+        [ a afo:NumericParameter ;
             afo:defaultValue "1" ;
             afo:description "number of mel bands" ;
             afo:maximumValue "inf" ;
             afo:minimumValue 1 ;
             afo:name "numBands" ;
-            afo:type xsd:integer ],
-        [ a afo:IndexedParameter ;
-            afo:defaultValue "true" ;
-            afo:description "if true, warped panorama is applied, having more resolution in the center area" ;
-            afo:name "warpedPanorama" ;
-            afo:parameterValues "{false,true}" ;
-            afo:type xsd:boolean ] .
+            afo:type xsd:integer ] .
 
 essentia:PanningPanningcoeffs a owl:Class ;
     rdfs:label "PanningPanningcoeffs"@en ;
@@ -2651,40 +2651,12 @@ References:
         essentia:Contoursstarttimes,
         essentia:Duration ;
     afo:output essentia:PitchContoursMultiMelodyPitch ;
-    afo:parameter [ a afo:NumericParameter ;
-            afo:defaultValue "3" ;
-            afo:description "number of interations for the octave errors / pitch outlier filtering process" ;
-            afo:maximumValue "inf" ;
-            afo:minimumValue 1 ;
-            afo:name "filterIterations" ;
-            afo:type xsd:integer ],
-        [ a afo:NumericParameter ;
-            afo:defaultValue "55" ;
-            afo:description "the reference frequency for Hertz to cent convertion [Hz], corresponding to the 0th cent bin" ;
-            afo:maximumValue "inf" ;
-            afo:minimumValue 0 ;
-            afo:name "referenceFrequency" ;
-            afo:type xsd:float ],
-        [ a afo:NumericParameter ;
-            afo:defaultValue "80" ;
-            afo:description "the minimum allowed frequency for salience function peaks (ignore contours with peaks below) [Hz]" ;
-            afo:maximumValue "inf" ;
-            afo:minimumValue 0 ;
-            afo:name "minFrequency" ;
-            afo:type xsd:float ],
-        [ a afo:IndexedParameter ;
+    afo:parameter [ a afo:IndexedParameter ;
             afo:defaultValue "false" ;
             afo:description "Estimate pitch for non-voiced segments by using non-salient contours when no salient ones are present in a frame" ;
             afo:name "guessUnvoiced" ;
             afo:parameterValues "{false,true}" ;
             afo:type xsd:boolean ],
-        [ a afo:NumericParameter ;
-            afo:defaultValue "128" ;
-            afo:description "the hop size with which the pitch salience function was computed" ;
-            afo:maximumValue "inf" ;
-            afo:minimumValue 0 ;
-            afo:name "hopSize" ;
-            afo:type xsd:integer ],
         [ a afo:NumericParameter ;
             afo:defaultValue "44100" ;
             afo:description "the sampling rate of the audio signal (Hz)" ;
@@ -2700,12 +2672,40 @@ References:
             afo:name "maxFrequency" ;
             afo:type xsd:float ],
         [ a afo:NumericParameter ;
+            afo:defaultValue "3" ;
+            afo:description "number of interations for the octave errors / pitch outlier filtering process" ;
+            afo:maximumValue "inf" ;
+            afo:minimumValue 1 ;
+            afo:name "filterIterations" ;
+            afo:type xsd:integer ],
+        [ a afo:NumericParameter ;
             afo:defaultValue "10" ;
             afo:description "salience function bin resolution [cents]" ;
             afo:maximumValue "inf" ;
             afo:minimumValue 0 ;
             afo:name "binResolution" ;
-            afo:type xsd:float ] .
+            afo:type xsd:float ],
+        [ a afo:NumericParameter ;
+            afo:defaultValue "55" ;
+            afo:description "the reference frequency for Hertz to cent convertion [Hz], corresponding to the 0th cent bin" ;
+            afo:maximumValue "inf" ;
+            afo:minimumValue 0 ;
+            afo:name "referenceFrequency" ;
+            afo:type xsd:float ],
+        [ a afo:NumericParameter ;
+            afo:defaultValue "80" ;
+            afo:description "the minimum allowed frequency for salience function peaks (ignore contours with peaks below) [Hz]" ;
+            afo:maximumValue "inf" ;
+            afo:minimumValue 0 ;
+            afo:name "minFrequency" ;
+            afo:type xsd:float ],
+        [ a afo:NumericParameter ;
+            afo:defaultValue "128" ;
+            afo:description "the hop size with which the pitch salience function was computed" ;
+            afo:maximumValue "inf" ;
+            afo:minimumValue 0 ;
+            afo:name "hopSize" ;
+            afo:type xsd:integer ] .
 
 essentia:PitchContoursMultiMelodyPitch a owl:Class ;
     rdfs:label "PitchContoursMultiMelodyPitch"@en ;
@@ -2741,18 +2741,18 @@ References:
             afo:parameterValues "{true,false}" ;
             afo:type xsd:boolean ],
         [ a afo:NumericParameter ;
-            afo:defaultValue "36" ;
-            afo:description "ratio between the average confidence of the most confident chunk and the minimum allowed average confidence of a chunk" ;
-            afo:maximumValue "inf" ;
-            afo:minimumValue 0 ;
-            afo:name "confidenceThreshold" ;
-            afo:type xsd:integer ],
-        [ a afo:NumericParameter ;
             afo:defaultValue "30" ;
             afo:description "minumum number of frames in non-zero pitch chunks" ;
             afo:maximumValue "inf" ;
             afo:minimumValue 0 ;
             afo:name "minChunkSize" ;
+            afo:type xsd:integer ],
+        [ a afo:NumericParameter ;
+            afo:defaultValue "36" ;
+            afo:description "ratio between the average confidence of the most confident chunk and the minimum allowed average confidence of a chunk" ;
+            afo:maximumValue "inf" ;
+            afo:minimumValue 0 ;
+            afo:name "confidenceThreshold" ;
             afo:type xsd:integer ] .
 
 essentia:PitchFilterPitchfiltered a owl:Class ;
@@ -2794,11 +2794,11 @@ References:
     afo:input essentia:Spectrum ;
     afo:output essentia:PitchSalience ;
     afo:parameter [ a afo:NumericParameter ;
-            afo:defaultValue "100" ;
-            afo:description "from which frequency we are looking for the maximum (must not be larger than highBoundary) [Hz]" ;
+            afo:defaultValue "44100" ;
+            afo:description "the sampling rate of the audio signal [Hz]" ;
             afo:maximumValue "inf" ;
             afo:minimumValue 0 ;
-            afo:name "lowBoundary" ;
+            afo:name "sampleRate" ;
             afo:type xsd:float ],
         [ a afo:NumericParameter ;
             afo:defaultValue "5000" ;
@@ -2808,11 +2808,11 @@ References:
             afo:name "highBoundary" ;
             afo:type xsd:float ],
         [ a afo:NumericParameter ;
-            afo:defaultValue "44100" ;
-            afo:description "the sampling rate of the audio signal [Hz]" ;
+            afo:defaultValue "100" ;
+            afo:description "from which frequency we are looking for the maximum (must not be larger than highBoundary) [Hz]" ;
             afo:maximumValue "inf" ;
             afo:minimumValue 0 ;
-            afo:name "sampleRate" ;
+            afo:name "lowBoundary" ;
             afo:type xsd:float ] .
 
 essentia:PitchSalienceFunctionExtractor a owl:Class ;
@@ -2841,6 +2841,13 @@ References:
             afo:name "harmonicWeight" ;
             afo:type xsd:float ],
         [ a afo:NumericParameter ;
+            afo:defaultValue "55" ;
+            afo:description "the reference frequency for Hertz to cent convertion [Hz], corresponding to the 0th cent bin" ;
+            afo:maximumValue "inf" ;
+            afo:minimumValue 0 ;
+            afo:name "referenceFrequency" ;
+            afo:type xsd:float ],
+        [ a afo:NumericParameter ;
             afo:defaultValue "40" ;
             afo:description "peak magnitude threshold (maximum allowed difference from the highest peak in dBs)" ;
             afo:maximumValue "inf" ;
@@ -2848,11 +2855,11 @@ References:
             afo:name "magnitudeThreshold" ;
             afo:type xsd:float ],
         [ a afo:NumericParameter ;
-            afo:defaultValue "55" ;
-            afo:description "the reference frequency for Hertz to cent convertion [Hz], corresponding to the 0th cent bin" ;
-            afo:maximumValue "inf" ;
+            afo:defaultValue "1" ;
+            afo:description "magnitude compression parameter (=0 for maximum compression, =1 for no compression)" ;
+            afo:maximumValue 1 ;
             afo:minimumValue 0 ;
-            afo:name "referenceFrequency" ;
+            afo:name "magnitudeCompression" ;
             afo:type xsd:float ],
         [ a afo:NumericParameter ;
             afo:defaultValue "20" ;
@@ -2867,13 +2874,6 @@ References:
             afo:maximumValue "inf" ;
             afo:minimumValue 0 ;
             afo:name "binResolution" ;
-            afo:type xsd:float ],
-        [ a afo:NumericParameter ;
-            afo:defaultValue "1" ;
-            afo:description "magnitude compression parameter (=0 for maximum compression, =1 for no compression)" ;
-            afo:maximumValue 1 ;
-            afo:minimumValue 0 ;
-            afo:name "magnitudeCompression" ;
             afo:type xsd:float ] .
 
 essentia:PitchSalienceFunctionPeaksSaliencebins a owl:Class ;
@@ -2947,13 +2947,13 @@ Please also note that only the absolute values of the first and second derivates
     rdfs:subClassOf essentia:StatisticExtractors ;
     afo:input essentia:Input ;
     afo:output essentia:PoolAggregatorOutput ;
-    afo:parameter [ afo:defaultValue "[\"mean\", \"var\", \"min\", \"max\", \"median\"]" ;
-            afo:description "the default statistics to be computed for each descriptor in the input pool" ;
-            afo:name "defaultStats" ;
-            afo:type rdf:List ],
-        [ afo:defaultValue "{}" ;
+    afo:parameter [ afo:defaultValue "{}" ;
             afo:description "a mapping between descriptor names (no duplicates) and the types of statistics to be computed for those descriptors (e.g. { lowlevel.bpm : [min, max], lowlevel.gain : [var, min, dmean] })" ;
             afo:name "exceptions" ;
+            afo:type rdf:List ],
+        [ afo:defaultValue "[\"mean\", \"var\", \"min\", \"max\", \"median\"]" ;
+            afo:description "the default statistics to be computed for each descriptor in the input pool" ;
+            afo:name "defaultStats" ;
             afo:type rdf:List ] .
 
 essentia:PoolAggregatorOutput a owl:Class ;
@@ -3171,18 +3171,18 @@ References:
     afo:input essentia:Spectrum ;
     afo:output essentia:RollOff ;
     afo:parameter [ a afo:NumericParameter ;
-            afo:defaultValue "0.85" ;
-            afo:description "the ratio of total energy to attain before yielding the roll-off frequency" ;
-            afo:maximumValue 1 ;
-            afo:minimumValue 0 ;
-            afo:name "cutoff" ;
-            afo:type xsd:float ],
-        [ a afo:NumericParameter ;
             afo:defaultValue "44100" ;
             afo:description "the sampling rate of the audio signal (used to normalize rollOff) [Hz]" ;
             afo:maximumValue "inf" ;
             afo:minimumValue 0 ;
             afo:name "sampleRate" ;
+            afo:type xsd:float ],
+        [ a afo:NumericParameter ;
+            afo:defaultValue "0.85" ;
+            afo:description "the ratio of total energy to attain before yielding the roll-off frequency" ;
+            afo:maximumValue 1 ;
+            afo:minimumValue 0 ;
+            afo:name "cutoff" ;
             afo:type xsd:float ] .
 
 essentia:SBicExtractor a owl:Class ;
@@ -3214,6 +3214,13 @@ References:
             afo:name "cpw" ;
             afo:type xsd:float ],
         [ a afo:NumericParameter ;
+            afo:defaultValue "20" ;
+            afo:description "second pass increment [frames]" ;
+            afo:maximumValue "inf" ;
+            afo:minimumValue 1 ;
+            afo:name "inc2" ;
+            afo:type xsd:integer ],
+        [ a afo:NumericParameter ;
             afo:defaultValue "300" ;
             afo:description "first pass window size [frames]" ;
             afo:maximumValue "inf" ;
@@ -3221,11 +3228,11 @@ References:
             afo:name "size1" ;
             afo:type xsd:integer ],
         [ a afo:NumericParameter ;
-            afo:defaultValue "60" ;
-            afo:description "first pass increment [frames]" ;
+            afo:defaultValue "10" ;
+            afo:description "minimum length of a segment [frames]" ;
             afo:maximumValue "inf" ;
             afo:minimumValue 1 ;
-            afo:name "inc1" ;
+            afo:name "minLength" ;
             afo:type xsd:integer ],
         [ a afo:NumericParameter ;
             afo:defaultValue "200" ;
@@ -3235,18 +3242,11 @@ References:
             afo:name "size2" ;
             afo:type xsd:integer ],
         [ a afo:NumericParameter ;
-            afo:defaultValue "20" ;
-            afo:description "second pass increment [frames]" ;
+            afo:defaultValue "60" ;
+            afo:description "first pass increment [frames]" ;
             afo:maximumValue "inf" ;
             afo:minimumValue 1 ;
-            afo:name "inc2" ;
-            afo:type xsd:integer ],
-        [ a afo:NumericParameter ;
-            afo:defaultValue "10" ;
-            afo:description "minimum length of a segment [frames]" ;
-            afo:maximumValue "inf" ;
-            afo:minimumValue 1 ;
-            afo:name "minLength" ;
+            afo:name "inc1" ;
             afo:type xsd:integer ] .
 
 essentia:Saliencefunction a owl:Class ;
@@ -3320,18 +3320,18 @@ References:
     afo:input essentia:Spectrum ;
     afo:output essentia:SpectralComplexity ;
     afo:parameter [ a afo:NumericParameter ;
-            afo:defaultValue "0.005" ;
-            afo:description "the minimum spectral-peak magnitude that contributes to spectral complexity" ;
-            afo:maximumValue "inf" ;
-            afo:minimumValue 0 ;
-            afo:name "magnitudeThreshold" ;
-            afo:type xsd:float ],
-        [ a afo:NumericParameter ;
             afo:defaultValue "44100" ;
             afo:description "the audio sampling rate [Hz]" ;
             afo:maximumValue "inf" ;
             afo:minimumValue 0 ;
             afo:name "sampleRate" ;
+            afo:type xsd:float ],
+        [ a afo:NumericParameter ;
+            afo:defaultValue "0.005" ;
+            afo:description "the minimum spectral-peak magnitude that contributes to spectral complexity" ;
+            afo:maximumValue "inf" ;
+            afo:minimumValue 0 ;
+            afo:name "magnitudeThreshold" ;
             afo:type xsd:float ] .
 
 essentia:SpectralContrast a owl:Class ;
@@ -3514,19 +3514,19 @@ essentia:SuperFluxExtractor a owl:Class ;
     afo:input essentia:Signal ;
     afo:output essentia:Onsets ;
     afo:parameter [ a afo:NumericParameter ;
+            afo:defaultValue "256" ;
+            afo:description "the hop size for computing low level features" ;
+            afo:maximumValue "inf" ;
+            afo:minimumValue 0 ;
+            afo:name "hopSize" ;
+            afo:type xsd:integer ],
+        [ a afo:NumericParameter ;
             afo:defaultValue "2048" ;
             afo:description "the frame size for computing low level features" ;
             afo:maximumValue "inf" ;
             afo:minimumValue 0 ;
             afo:name "frameSize" ;
             afo:type xsd:integer ],
-        [ a afo:NumericParameter ;
-            afo:defaultValue "0.05" ;
-            afo:description "threshold for peak peaking compared to the difference of novelty_signal and average_signal ,  for peaking onsets in ambien noise" ;
-            afo:maximumValue "inf" ;
-            afo:minimumValue 0 ;
-            afo:name "threshold" ;
-            afo:type xsd:float ],
         [ a afo:NumericParameter ;
             afo:defaultValue "16" ;
             afo:description "ratio threshold for peak-picking compared to novelty_signal/novelty_average, 0  disable it ,  for low energy onsets" ;
@@ -3535,18 +3535,11 @@ essentia:SuperFluxExtractor a owl:Class ;
             afo:name "ratioThreshold" ;
             afo:type xsd:float ],
         [ a afo:NumericParameter ;
-            afo:defaultValue "256" ;
-            afo:description "the hop size for computing low level features" ;
+            afo:defaultValue "0.05" ;
+            afo:description "threshold for peak peaking compared to the difference of novelty_signal and average_signal ,  for peaking onsets in ambien noise" ;
             afo:maximumValue "inf" ;
             afo:minimumValue 0 ;
-            afo:name "hopSize" ;
-            afo:type xsd:integer ],
-        [ a afo:NumericParameter ;
-            afo:defaultValue "20" ;
-            afo:description "time threshold for double onsets detections(ms)" ;
-            afo:maximumValue "inf" ;
-            afo:minimumValue 0 ;
-            afo:name "combine" ;
+            afo:name "threshold" ;
             afo:type xsd:float ],
         [ a afo:NumericParameter ;
             afo:defaultValue "44100" ;
@@ -3554,6 +3547,13 @@ essentia:SuperFluxExtractor a owl:Class ;
             afo:maximumValue "inf" ;
             afo:minimumValue 0 ;
             afo:name "sampleRate" ;
+            afo:type xsd:float ],
+        [ a afo:NumericParameter ;
+            afo:defaultValue "20" ;
+            afo:description "time threshold for double onsets detections(ms)" ;
+            afo:maximumValue "inf" ;
+            afo:minimumValue 0 ;
+            afo:name "combine" ;
             afo:type xsd:float ] .
 
 essentia:SuperFluxNoveltyDifferences a owl:Class ;
@@ -3571,18 +3571,18 @@ essentia:SuperFluxNoveltyExtractor a owl:Class ;
     afo:input essentia:Bands ;
     afo:output essentia:SuperFluxNoveltyDifferences ;
     afo:parameter [ a afo:NumericParameter ;
-            afo:defaultValue "3" ;
-            afo:description "height(n of frequency bins) of the SuperFluxNoveltyFilter" ;
-            afo:maximumValue "inf" ;
-            afo:minimumValue 3 ;
-            afo:name "binWidth" ;
-            afo:type xsd:integer ],
-        [ a afo:NumericParameter ;
             afo:defaultValue "2" ;
             afo:description "differenciate with the N-th previous frame" ;
             afo:maximumValue "inf" ;
             afo:minimumValue 0 ;
             afo:name "frameWidth" ;
+            afo:type xsd:integer ],
+        [ a afo:NumericParameter ;
+            afo:defaultValue "3" ;
+            afo:description "height(n of frequency bins) of the SuperFluxNoveltyFilter" ;
+            afo:maximumValue "inf" ;
+            afo:minimumValue 3 ;
+            afo:name "binWidth" ;
             afo:type xsd:integer ] .
 
 essentia:SuperFluxPeaksExtractor a owl:Class ;
@@ -3593,25 +3593,11 @@ essentia:SuperFluxPeaksExtractor a owl:Class ;
     afo:input essentia:Novelty ;
     afo:output essentia:Peaks ;
     afo:parameter [ a afo:NumericParameter ;
-            afo:defaultValue "100" ;
-            afo:description "use N miliseconds past information for moving average" ;
+            afo:defaultValue "30" ;
+            afo:description "ms for onset combination" ;
             afo:maximumValue "inf" ;
             afo:minimumValue 0 ;
-            afo:name "pre_avg" ;
-            afo:type xsd:float ],
-        [ a afo:NumericParameter ;
-            afo:defaultValue "0.05" ;
-            afo:description "threshold for peak peaking compared to the difference of novelty_signal and average_signal ,  for peaking onsets in ambien noise" ;
-            afo:maximumValue "inf" ;
-            afo:minimumValue 0 ;
-            afo:name "threshold" ;
-            afo:type xsd:float ],
-        [ a afo:NumericParameter ;
-            afo:defaultValue "172" ;
-            afo:description "frameRate" ;
-            afo:maximumValue "inf" ;
-            afo:minimumValue 0 ;
-            afo:name "frameRate" ;
+            afo:name "combine" ;
             afo:type xsd:float ],
         [ a afo:NumericParameter ;
             afo:defaultValue "16" ;
@@ -3621,6 +3607,13 @@ essentia:SuperFluxPeaksExtractor a owl:Class ;
             afo:name "ratioThreshold" ;
             afo:type xsd:float ],
         [ a afo:NumericParameter ;
+            afo:defaultValue "0.05" ;
+            afo:description "threshold for peak peaking compared to the difference of novelty_signal and average_signal ,  for peaking onsets in ambien noise" ;
+            afo:maximumValue "inf" ;
+            afo:minimumValue 0 ;
+            afo:name "threshold" ;
+            afo:type xsd:float ],
+        [ a afo:NumericParameter ;
             afo:defaultValue "30" ;
             afo:description "use N miliseconds past information for moving maximum" ;
             afo:maximumValue "inf" ;
@@ -3628,11 +3621,18 @@ essentia:SuperFluxPeaksExtractor a owl:Class ;
             afo:name "pre_max" ;
             afo:type xsd:float ],
         [ a afo:NumericParameter ;
-            afo:defaultValue "30" ;
-            afo:description "ms for onset combination" ;
+            afo:defaultValue "100" ;
+            afo:description "use N miliseconds past information for moving average" ;
             afo:maximumValue "inf" ;
             afo:minimumValue 0 ;
-            afo:name "combine" ;
+            afo:name "pre_avg" ;
+            afo:type xsd:float ],
+        [ a afo:NumericParameter ;
+            afo:defaultValue "172" ;
+            afo:description "frameRate" ;
+            afo:maximumValue "inf" ;
+            afo:minimumValue 0 ;
+            afo:name "frameRate" ;
             afo:type xsd:float ] .
 
 essentia:TCToTotal a owl:Class ;
@@ -3689,6 +3689,13 @@ References:
             afo:minimumValue 40 ;
             afo:name "minTempo" ;
             afo:type xsd:integer ],
+        [ a afo:NumericParameter ;
+            afo:defaultValue "208" ;
+            afo:description "fastest tempo allowed to be detected [bpm]" ;
+            afo:maximumValue 250 ;
+            afo:minimumValue 60 ;
+            afo:name "maxTempo" ;
+            afo:type xsd:integer ],
         [ a afo:IndexedParameter ;
             afo:defaultValue "none" ;
             afo:description "use upsampling of the onset detection function (may increase accuracy)" ;
@@ -3701,14 +3708,7 @@ References:
             afo:maximumValue "inf" ;
             afo:minimumValue 0 ;
             afo:name "sampleRateODF" ;
-            afo:type xsd:float ],
-        [ a afo:NumericParameter ;
-            afo:defaultValue "208" ;
-            afo:description "fastest tempo allowed to be detected [bpm]" ;
-            afo:maximumValue 250 ;
-            afo:minimumValue 60 ;
-            afo:name "maxTempo" ;
-            afo:type xsd:integer ] .
+            afo:type xsd:float ] .
 
 essentia:TempoTapPeriods a owl:Class ;
     rdfs:label "TempoTapPeriods"@en ;
@@ -3749,26 +3749,12 @@ References:
     afo:input essentia:Signal ;
     afo:output essentia:IndianArtMusicTonic ;
     afo:parameter [ a afo:NumericParameter ;
-            afo:defaultValue "512" ;
-            afo:description "the hop size with which the pitch salience function was computed" ;
+            afo:defaultValue "100" ;
+            afo:description "the minimum allowed tonic frequency [Hz]" ;
             afo:maximumValue "inf" ;
             afo:minimumValue 0 ;
-            afo:name "hopSize" ;
-            afo:type xsd:integer ],
-        [ a afo:NumericParameter ;
-            afo:defaultValue "0.85" ;
-            afo:description "harmonic weighting parameter (weight decay ratio between two consequent harmonics, =1 for no decay)" ;
-            afo:maximumValue 1 ;
-            afo:minimumValue 0 ;
-            afo:name "harmonicWeight" ;
+            afo:name "minTonicFrequency" ;
             afo:type xsd:float ],
-        [ a afo:NumericParameter ;
-            afo:defaultValue "5" ;
-            afo:description " number of top peaks of the salience function which should be considered for constructing histogram" ;
-            afo:maximumValue 15 ;
-            afo:minimumValue 1 ;
-            afo:name "numberSaliencePeaks" ;
-            afo:type xsd:integer ],
         [ a afo:NumericParameter ;
             afo:defaultValue "2048" ;
             afo:description "the frame size for computing pitch saliecnce" ;
@@ -3777,18 +3763,18 @@ References:
             afo:name "frameSize" ;
             afo:type xsd:integer ],
         [ a afo:NumericParameter ;
-            afo:defaultValue "55" ;
-            afo:description "the reference frequency for Hertz to cent convertion [Hz], corresponding to the 0th cent bin" ;
+            afo:defaultValue "512" ;
+            afo:description "the hop size with which the pitch salience function was computed" ;
             afo:maximumValue "inf" ;
             afo:minimumValue 0 ;
-            afo:name "referenceFrequency" ;
-            afo:type xsd:float ],
+            afo:name "hopSize" ;
+            afo:type xsd:integer ],
         [ a afo:NumericParameter ;
-            afo:defaultValue "1" ;
-            afo:description "magnitude compression parameter (=0 for maximum compression, =1 for no compression)" ;
-            afo:maximumValue 1 ;
+            afo:defaultValue "44100" ;
+            afo:description "the sampling rate of the audio signal [Hz]" ;
+            afo:maximumValue "inf" ;
             afo:minimumValue 0 ;
-            afo:name "magnitudeCompression" ;
+            afo:name "sampleRate" ;
             afo:type xsd:float ],
         [ a afo:NumericParameter ;
             afo:defaultValue "20" ;
@@ -3798,18 +3784,25 @@ References:
             afo:name "numberHarmonics" ;
             afo:type xsd:integer ],
         [ a afo:NumericParameter ;
-            afo:defaultValue "100" ;
-            afo:description "the minimum allowed tonic frequency [Hz]" ;
+            afo:defaultValue "375" ;
+            afo:description "the maximum allowed tonic frequency [Hz]" ;
             afo:maximumValue "inf" ;
             afo:minimumValue 0 ;
-            afo:name "minTonicFrequency" ;
+            afo:name "maxTonicFrequency" ;
             afo:type xsd:float ],
         [ a afo:NumericParameter ;
-            afo:defaultValue "44100" ;
-            afo:description "the sampling rate of the audio signal [Hz]" ;
-            afo:maximumValue "inf" ;
+            afo:defaultValue "5" ;
+            afo:description " number of top peaks of the salience function which should be considered for constructing histogram" ;
+            afo:maximumValue 15 ;
+            afo:minimumValue 1 ;
+            afo:name "numberSaliencePeaks" ;
+            afo:type xsd:integer ],
+        [ a afo:NumericParameter ;
+            afo:defaultValue "1" ;
+            afo:description "magnitude compression parameter (=0 for maximum compression, =1 for no compression)" ;
+            afo:maximumValue 1 ;
             afo:minimumValue 0 ;
-            afo:name "sampleRate" ;
+            afo:name "magnitudeCompression" ;
             afo:type xsd:float ],
         [ a afo:NumericParameter ;
             afo:defaultValue "40" ;
@@ -3819,11 +3812,11 @@ References:
             afo:name "magnitudeThreshold" ;
             afo:type xsd:float ],
         [ a afo:NumericParameter ;
-            afo:defaultValue "375" ;
-            afo:description "the maximum allowed tonic frequency [Hz]" ;
-            afo:maximumValue "inf" ;
+            afo:defaultValue "0.85" ;
+            afo:description "harmonic weighting parameter (weight decay ratio between two consequent harmonics, =1 for no decay)" ;
+            afo:maximumValue 1 ;
             afo:minimumValue 0 ;
-            afo:name "maxTonicFrequency" ;
+            afo:name "harmonicWeight" ;
             afo:type xsd:float ],
         [ a afo:NumericParameter ;
             afo:defaultValue "10" ;
@@ -3831,6 +3824,13 @@ References:
             afo:maximumValue "inf" ;
             afo:minimumValue 0 ;
             afo:name "binResolution" ;
+            afo:type xsd:float ],
+        [ a afo:NumericParameter ;
+            afo:defaultValue "55" ;
+            afo:description "the reference frequency for Hertz to cent convertion [Hz], corresponding to the 0th cent bin" ;
+            afo:maximumValue "inf" ;
+            afo:minimumValue 0 ;
+            afo:name "referenceFrequency" ;
             afo:type xsd:float ] .
 
 essentia:TransformationExtractors a owl:Class ;
@@ -3998,18 +3998,18 @@ References:
     afo:output essentia:Confidence,
         essentia:Ticks ;
     afo:parameter [ a afo:NumericParameter ;
-            afo:defaultValue "208" ;
-            afo:description "the fastest tempo to detect [bpm]" ;
-            afo:maximumValue 250 ;
-            afo:minimumValue 60 ;
-            afo:name "maxTempo" ;
-            afo:type xsd:integer ],
-        [ a afo:NumericParameter ;
             afo:defaultValue "40" ;
             afo:description "the slowest tempo to detect [bpm]" ;
             afo:maximumValue 180 ;
             afo:minimumValue 40 ;
             afo:name "minTempo" ;
+            afo:type xsd:integer ],
+        [ a afo:NumericParameter ;
+            afo:defaultValue "208" ;
+            afo:description "the fastest tempo to detect [bpm]" ;
+            afo:maximumValue 250 ;
+            afo:minimumValue 60 ;
+            afo:name "maxTempo" ;
             afo:type xsd:integer ] .
 
 essentia:Beatogram a owl:Class ;
@@ -4029,17 +4029,17 @@ Note that the algorithm will output empty results in the case if no beats are sp
     afo:input essentia:Signal ;
     afo:output essentia:BeatsLoudness,
         essentia:BeatsLoudnessBandRatio ;
-    afo:parameter [ a afo:NumericParameter ;
-            afo:defaultValue "0.1" ;
-            afo:description "the duration of the window in which to look for the beginning of the beat (centered around the positions in 'beats') [s]" ;
-            afo:maximumValue "inf" ;
-            afo:minimumValue 0 ;
-            afo:name "beatWindowDuration" ;
-            afo:type xsd:float ],
-        [ afo:defaultValue "[]" ;
+    afo:parameter [ afo:defaultValue "[]" ;
             afo:description "the list of beat positions (each position is in seconds)" ;
             afo:name "beats" ;
             afo:type rdf:List ],
+        [ a afo:NumericParameter ;
+            afo:defaultValue "44100" ;
+            afo:description "the audio sampling rate [Hz]" ;
+            afo:maximumValue "inf" ;
+            afo:minimumValue 0 ;
+            afo:name "sampleRate" ;
+            afo:type xsd:float ],
         [ a afo:NumericParameter ;
             afo:defaultValue "0.05" ;
             afo:description "the duration of the window in which the beat will be restricted [s]" ;
@@ -4048,11 +4048,11 @@ Note that the algorithm will output empty results in the case if no beats are sp
             afo:name "beatDuration" ;
             afo:type xsd:float ],
         [ a afo:NumericParameter ;
-            afo:defaultValue "44100" ;
-            afo:description "the audio sampling rate [Hz]" ;
+            afo:defaultValue "0.1" ;
+            afo:description "the duration of the window in which to look for the beginning of the beat (centered around the positions in 'beats') [s]" ;
             afo:maximumValue "inf" ;
             afo:minimumValue 0 ;
-            afo:name "sampleRate" ;
+            afo:name "beatWindowDuration" ;
             afo:type xsd:float ],
         [ afo:defaultValue "[20, 150, 400, 3200, 7000, 22000]" ;
             afo:description "the list of bands to compute energy ratios [Hz" ;
@@ -4130,19 +4130,19 @@ References:
             afo:name "windowSize" ;
             afo:type xsd:float ],
         [ a afo:NumericParameter ;
-            afo:defaultValue "2048" ;
-            afo:description "the hop size with which the input PCPs were computed" ;
-            afo:maximumValue "inf" ;
-            afo:minimumValue 0 ;
-            afo:name "hopSize" ;
-            afo:type xsd:integer ],
-        [ a afo:NumericParameter ;
             afo:defaultValue "44100" ;
             afo:description "the sampling rate of the audio signal [Hz]" ;
             afo:maximumValue "inf" ;
             afo:minimumValue 0 ;
             afo:name "sampleRate" ;
-            afo:type xsd:float ] .
+            afo:type xsd:float ],
+        [ a afo:NumericParameter ;
+            afo:defaultValue "2048" ;
+            afo:description "the hop size with which the input PCPs were computed" ;
+            afo:maximumValue "inf" ;
+            afo:minimumValue 0 ;
+            afo:name "hopSize" ;
+            afo:type xsd:integer ] .
 
 essentia:DerivativeSFXExtractor a owl:Class ;
     rdfs:label "DerivativeSFX Extractor"@en ;
@@ -4178,18 +4178,18 @@ References:
     afo:output essentia:DynamicComplexity,
         essentia:DynamicComplexityLoudness ;
     afo:parameter [ a afo:NumericParameter ;
-            afo:defaultValue "0.2" ;
-            afo:description "the frame size [s]" ;
-            afo:maximumValue "inf" ;
-            afo:minimumValue 0 ;
-            afo:name "frameSize" ;
-            afo:type xsd:float ],
-        [ a afo:NumericParameter ;
             afo:defaultValue "44100" ;
             afo:description "the sampling rate of the audio signal [Hz]" ;
             afo:maximumValue "inf" ;
             afo:minimumValue 0 ;
             afo:name "sampleRate" ;
+            afo:type xsd:float ],
+        [ a afo:NumericParameter ;
+            afo:defaultValue "0.2" ;
+            afo:description "the frame size [s]" ;
+            afo:maximumValue "inf" ;
+            afo:minimumValue 0 ;
+            afo:name "frameSize" ;
             afo:type xsd:float ] .
 
 essentia:Estimates a owl:Class ;
@@ -4215,11 +4215,11 @@ References:
     afo:output essentia:FadeDetectionFadein,
         essentia:FadeDetectionFadeout ;
     afo:parameter [ a afo:NumericParameter ;
-            afo:defaultValue "4" ;
-            afo:description "the rate of frames used in calculation of the RMS [frames/s]" ;
-            afo:maximumValue "inf" ;
+            afo:defaultValue "0.85" ;
+            afo:description "fraction of the average RMS to define the maximum threshold" ;
+            afo:maximumValue 1 ;
             afo:minimumValue 0 ;
-            afo:name "frameRate" ;
+            afo:name "cutoffHigh" ;
             afo:type xsd:float ],
         [ a afo:NumericParameter ;
             afo:defaultValue "3" ;
@@ -4229,18 +4229,18 @@ References:
             afo:name "minLength" ;
             afo:type xsd:float ],
         [ a afo:NumericParameter ;
-            afo:defaultValue "0.85" ;
-            afo:description "fraction of the average RMS to define the maximum threshold" ;
-            afo:maximumValue 1 ;
-            afo:minimumValue 0 ;
-            afo:name "cutoffHigh" ;
-            afo:type xsd:float ],
-        [ a afo:NumericParameter ;
             afo:defaultValue "0.2" ;
             afo:description "fraction of the average RMS to define the minimum threshold" ;
             afo:maximumValue 1 ;
             afo:minimumValue 0 ;
             afo:name "cutoffLow" ;
+            afo:type xsd:float ],
+        [ a afo:NumericParameter ;
+            afo:defaultValue "4" ;
+            afo:description "the rate of frames used in calculation of the RMS [frames/s]" ;
+            afo:maximumValue "inf" ;
+            afo:minimumValue 0 ;
+            afo:name "frameRate" ;
             afo:type xsd:float ] .
 
 essentia:FirstPeakBPM a owl:Class ;
@@ -4282,13 +4282,6 @@ References:
     afo:output essentia:GFCC,
         essentia:GFCCBands ;
     afo:parameter [ a afo:NumericParameter ;
-            afo:defaultValue "13" ;
-            afo:description "the number of output cepstrum coefficients" ;
-            afo:maximumValue "inf" ;
-            afo:minimumValue 1 ;
-            afo:name "numberCoefficients" ;
-            afo:type xsd:integer ],
-        [ a afo:NumericParameter ;
             afo:defaultValue "44100" ;
             afo:description "the sampling rate of the audio signal [Hz]" ;
             afo:maximumValue "inf" ;
@@ -4296,18 +4289,25 @@ References:
             afo:name "sampleRate" ;
             afo:type xsd:float ],
         [ a afo:NumericParameter ;
-            afo:defaultValue "22050" ;
-            afo:description "the upper bound of the frequency range [Hz]" ;
+            afo:defaultValue "13" ;
+            afo:description "the number of output cepstrum coefficients" ;
             afo:maximumValue "inf" ;
-            afo:minimumValue 0 ;
-            afo:name "highFrequencyBound" ;
-            afo:type xsd:float ],
+            afo:minimumValue 1 ;
+            afo:name "numberCoefficients" ;
+            afo:type xsd:integer ],
         [ a afo:NumericParameter ;
             afo:defaultValue "40" ;
             afo:description "the lower bound of the frequency range [Hz]" ;
             afo:maximumValue "inf" ;
             afo:minimumValue 0 ;
             afo:name "lowFrequencyBound" ;
+            afo:type xsd:float ],
+        [ a afo:NumericParameter ;
+            afo:defaultValue "22050" ;
+            afo:description "the upper bound of the frequency range [Hz]" ;
+            afo:maximumValue "inf" ;
+            afo:minimumValue 0 ;
+            afo:name "highFrequencyBound" ;
             afo:type xsd:float ],
         [ a afo:NumericParameter ;
             afo:defaultValue "40" ;
@@ -4430,26 +4430,19 @@ References:
     afo:output essentia:MFCC,
         essentia:MFCCBands ;
     afo:parameter [ a afo:NumericParameter ;
-            afo:defaultValue "11000" ;
-            afo:description "the upper bound of the frequency range [Hz]" ;
-            afo:maximumValue "inf" ;
-            afo:minimumValue 0 ;
-            afo:name "highFrequencyBound" ;
-            afo:type xsd:float ],
-        [ a afo:NumericParameter ;
-            afo:defaultValue "13" ;
-            afo:description "the number of output mel coefficients" ;
-            afo:maximumValue "inf" ;
-            afo:minimumValue 1 ;
-            afo:name "numberCoefficients" ;
-            afo:type xsd:integer ],
-        [ a afo:NumericParameter ;
             afo:defaultValue "1025" ;
             afo:description "the size of input spectrum" ;
             afo:maximumValue "inf" ;
             afo:minimumValue 1 ;
             afo:name "inputSize" ;
             afo:type xsd:integer ],
+        [ a afo:NumericParameter ;
+            afo:defaultValue "11000" ;
+            afo:description "the upper bound of the frequency range [Hz]" ;
+            afo:maximumValue "inf" ;
+            afo:minimumValue 0 ;
+            afo:name "highFrequencyBound" ;
+            afo:type xsd:float ],
         [ a afo:NumericParameter ;
             afo:defaultValue "40" ;
             afo:description "the number of mel-bands in the filter" ;
@@ -4458,6 +4451,13 @@ References:
             afo:name "numberBands" ;
             afo:type xsd:integer ],
         [ a afo:NumericParameter ;
+            afo:defaultValue "0" ;
+            afo:description "the lower bound of the frequency range [Hz]" ;
+            afo:maximumValue "inf" ;
+            afo:minimumValue 0 ;
+            afo:name "lowFrequencyBound" ;
+            afo:type xsd:float ],
+        [ a afo:NumericParameter ;
             afo:defaultValue "44100" ;
             afo:description "the sampling rate of the audio signal [Hz]" ;
             afo:maximumValue "inf" ;
@@ -4465,12 +4465,12 @@ References:
             afo:name "sampleRate" ;
             afo:type xsd:float ],
         [ a afo:NumericParameter ;
-            afo:defaultValue "0" ;
-            afo:description "the lower bound of the frequency range [Hz]" ;
+            afo:defaultValue "13" ;
+            afo:description "the number of output mel coefficients" ;
             afo:maximumValue "inf" ;
-            afo:minimumValue 0 ;
-            afo:name "lowFrequencyBound" ;
-            afo:type xsd:float ] .
+            afo:minimumValue 1 ;
+            afo:name "numberCoefficients" ;
+            afo:type xsd:integer ] .
 
 essentia:Mean a owl:Class ;
     rdfs:label "Mean"@en ;
@@ -4507,10 +4507,13 @@ References:
     afo:input essentia:Novelty ;
     afo:output essentia:Amplitudes,
         essentia:BPM ;
-    afo:parameter [ afo:defaultValue "512" ;
-            afo:description "the hopSize used to computeh the novelty curve from the original signal" ;
-            afo:name "hopSize" ;
-            afo:type xsd:integer ],
+    afo:parameter [ a afo:NumericParameter ;
+            afo:defaultValue "30" ;
+            afo:description "the minimum bpm to look for" ;
+            afo:maximumValue "inf" ;
+            afo:minimumValue 0 ;
+            afo:name "minBpm" ;
+            afo:type xsd:float ],
         [ a afo:NumericParameter ;
             afo:defaultValue "560" ;
             afo:description "the maximum bpm to look for" ;
@@ -4519,19 +4522,16 @@ References:
             afo:name "maxBpm" ;
             afo:type xsd:float ],
         [ a afo:NumericParameter ;
-            afo:defaultValue "30" ;
-            afo:description "the minimum bpm to look for" ;
-            afo:maximumValue "inf" ;
-            afo:minimumValue 0 ;
-            afo:name "minBpm" ;
-            afo:type xsd:float ],
-        [ a afo:NumericParameter ;
             afo:defaultValue "44100" ;
             afo:description "the sampling rate original audio signal [Hz]" ;
             afo:maximumValue "inf" ;
             afo:minimumValue 1 ;
             afo:name "sampleRate" ;
             afo:type xsd:float ],
+        [ afo:defaultValue "512" ;
+            afo:description "the hopSize used to computeh the novelty curve from the original signal" ;
+            afo:name "hopSize" ;
+            afo:type xsd:integer ],
         [ a afo:NumericParameter ;
             afo:defaultValue "3" ;
             afo:description "tolerance (in percentage) for considering bpms to be equal" ;
@@ -4576,27 +4576,6 @@ References:
     afo:output essentia:Pitch,
         essentia:PitchContoursMelodyPitchconfidence ;
     afo:parameter [ a afo:NumericParameter ;
-            afo:defaultValue "3" ;
-            afo:description "number of interations for the octave errors / pitch outlier filtering process" ;
-            afo:maximumValue "inf" ;
-            afo:minimumValue 1 ;
-            afo:name "filterIterations" ;
-            afo:type xsd:integer ],
-        [ a afo:NumericParameter ;
-            afo:defaultValue "0.2" ;
-            afo:description "allowed deviation below the average contour mean salience of all contours (fraction of the standard deviation)" ;
-            afo:maximumValue 1.4e+00 ;
-            afo:minimumValue 1e+00 ;
-            afo:name "voicingTolerance" ;
-            afo:type xsd:float ],
-        [ a afo:NumericParameter ;
-            afo:defaultValue "44100" ;
-            afo:description "the sampling rate of the audio signal (Hz)" ;
-            afo:maximumValue "inf" ;
-            afo:minimumValue 0 ;
-            afo:name "sampleRate" ;
-            afo:type xsd:float ],
-        [ a afo:NumericParameter ;
             afo:defaultValue "20000" ;
             afo:description "the minimum allowed frequency for salience function peaks (ignore contours with peaks above) [Hz]" ;
             afo:maximumValue "inf" ;
@@ -4610,11 +4589,25 @@ References:
             afo:parameterValues "{true,false}" ;
             afo:type xsd:boolean ],
         [ a afo:NumericParameter ;
-            afo:defaultValue "10" ;
-            afo:description "salience function bin resolution [cents]" ;
+            afo:defaultValue "44100" ;
+            afo:description "the sampling rate of the audio signal (Hz)" ;
             afo:maximumValue "inf" ;
             afo:minimumValue 0 ;
-            afo:name "binResolution" ;
+            afo:name "sampleRate" ;
+            afo:type xsd:float ],
+        [ a afo:NumericParameter ;
+            afo:defaultValue "3" ;
+            afo:description "number of interations for the octave errors / pitch outlier filtering process" ;
+            afo:maximumValue "inf" ;
+            afo:minimumValue 1 ;
+            afo:name "filterIterations" ;
+            afo:type xsd:integer ],
+        [ a afo:NumericParameter ;
+            afo:defaultValue "0.2" ;
+            afo:description "allowed deviation below the average contour mean salience of all contours (fraction of the standard deviation)" ;
+            afo:maximumValue 1.4e+00 ;
+            afo:minimumValue 1e+00 ;
+            afo:name "voicingTolerance" ;
             afo:type xsd:float ],
         [ a afo:NumericParameter ;
             afo:defaultValue "80" ;
@@ -4636,6 +4629,13 @@ References:
             afo:minimumValue 0 ;
             afo:name "hopSize" ;
             afo:type xsd:integer ],
+        [ a afo:NumericParameter ;
+            afo:defaultValue "10" ;
+            afo:description "salience function bin resolution [cents]" ;
+            afo:maximumValue "inf" ;
+            afo:minimumValue 0 ;
+            afo:name "binResolution" ;
+            afo:type xsd:float ],
         [ a afo:NumericParameter ;
             afo:defaultValue "55" ;
             afo:description "the reference frequency for Hertz to cent convertion [Hz], corresponding to the 0th cent bin" ;
@@ -4676,33 +4676,12 @@ References:
             afo:minimumValue 1 ;
             afo:name "filterIterations" ;
             afo:type xsd:integer ],
-        [ a afo:NumericParameter ;
-            afo:defaultValue "10" ;
-            afo:description "salience function bin resolution [cents]" ;
-            afo:maximumValue "inf" ;
-            afo:minimumValue 0 ;
-            afo:name "binResolution" ;
-            afo:type xsd:float ],
-        [ a afo:NumericParameter ;
-            afo:defaultValue "20000" ;
-            afo:description "the minimum allowed frequency for salience function peaks (ignore contours with peaks above) [Hz]" ;
-            afo:maximumValue "inf" ;
-            afo:minimumValue 0 ;
-            afo:name "maxFrequency" ;
-            afo:type xsd:float ],
         [ a afo:IndexedParameter ;
             afo:defaultValue "false" ;
             afo:description "Estimate pitch for non-voiced segments by using non-salient contours when no salient ones are present in a frame" ;
             afo:name "guessUnvoiced" ;
             afo:parameterValues "{false,true}" ;
             afo:type xsd:boolean ],
-        [ a afo:NumericParameter ;
-            afo:defaultValue "55" ;
-            afo:description "the reference frequency for Hertz to cent convertion [Hz], corresponding to the 0th cent bin" ;
-            afo:maximumValue "inf" ;
-            afo:minimumValue 0 ;
-            afo:name "referenceFrequency" ;
-            afo:type xsd:float ],
         [ a afo:NumericParameter ;
             afo:defaultValue "44100" ;
             afo:description "the sampling rate of the audio signal (Hz)" ;
@@ -4716,6 +4695,27 @@ References:
             afo:maximumValue "inf" ;
             afo:minimumValue 0 ;
             afo:name "minFrequency" ;
+            afo:type xsd:float ],
+        [ a afo:NumericParameter ;
+            afo:defaultValue "55" ;
+            afo:description "the reference frequency for Hertz to cent convertion [Hz], corresponding to the 0th cent bin" ;
+            afo:maximumValue "inf" ;
+            afo:minimumValue 0 ;
+            afo:name "referenceFrequency" ;
+            afo:type xsd:float ],
+        [ a afo:NumericParameter ;
+            afo:defaultValue "20000" ;
+            afo:description "the minimum allowed frequency for salience function peaks (ignore contours with peaks above) [Hz]" ;
+            afo:maximumValue "inf" ;
+            afo:minimumValue 0 ;
+            afo:name "maxFrequency" ;
+            afo:type xsd:float ],
+        [ a afo:NumericParameter ;
+            afo:defaultValue "10" ;
+            afo:description "salience function bin resolution [cents]" ;
+            afo:maximumValue "inf" ;
+            afo:minimumValue 0 ;
+            afo:name "binResolution" ;
             afo:type xsd:float ],
         [ a afo:NumericParameter ;
             afo:defaultValue "128" ;
@@ -4748,32 +4748,31 @@ References:
     afo:output essentia:Pitch,
         essentia:PitchMelodiaPitchconfidence ;
     afo:parameter [ a afo:NumericParameter ;
-            afo:defaultValue "44100" ;
-            afo:description "the sampling rate of the audio signal [Hz]" ;
-            afo:maximumValue "inf" ;
-            afo:minimumValue 0 ;
-            afo:name "sampleRate" ;
-            afo:type xsd:float ],
-        [ a afo:NumericParameter ;
-            afo:defaultValue "27.5625" ;
-            afo:description "pitch continuity cue (maximum allowed pitch change during 1 ms time period) [cents]" ;
-            afo:maximumValue "inf" ;
-            afo:minimumValue 0 ;
-            afo:name "pitchContinuity" ;
-            afo:type xsd:float ],
-        [ a afo:NumericParameter ;
-            afo:defaultValue "40" ;
-            afo:description "the minimum allowed frequency for salience function peaks (ignore contours with peaks below) [Hz]" ;
-            afo:maximumValue "inf" ;
-            afo:minimumValue 0 ;
-            afo:name "minFrequency" ;
-            afo:type xsd:float ],
-        [ a afo:NumericParameter ;
             afo:defaultValue "100" ;
             afo:description "time continuity cue (the maximum allowed gap duration for a pitch contour) [ms]" ;
             afo:maximumValue "inf" ;
             afo:minimumValue 0 ;
             afo:name "timeContinuity" ;
+            afo:type xsd:integer ],
+        [ a afo:NumericParameter ;
+            afo:defaultValue "0.8" ;
+            afo:description "harmonic weighting parameter (weight decay ratio between two consequent harmonics, =1 for no decay)" ;
+            afo:maximumValue 1 ;
+            afo:minimumValue 0 ;
+            afo:name "harmonicWeight" ;
+            afo:type xsd:float ],
+        [ a afo:IndexedParameter ;
+            afo:defaultValue "false" ;
+            afo:description "estimate pitch for non-voiced segments by using non-salient contours when no salient ones are present in a frame" ;
+            afo:name "guessUnvoiced" ;
+            afo:parameterValues "{false,true}" ;
+            afo:type xsd:boolean ],
+        [ a afo:NumericParameter ;
+            afo:defaultValue "20" ;
+            afo:description "number of considered harmonics" ;
+            afo:maximumValue "inf" ;
+            afo:minimumValue 1 ;
+            afo:name "numberHarmonics" ;
             afo:type xsd:integer ],
         [ a afo:NumericParameter ;
             afo:defaultValue "40" ;
@@ -4782,33 +4781,20 @@ References:
             afo:minimumValue 0 ;
             afo:name "magnitudeThreshold" ;
             afo:type xsd:integer ],
-        [ a afo:IndexedParameter ;
-            afo:defaultValue "false" ;
-            afo:description "estimate pitch for non-voiced segments by using non-salient contours when no salient ones are present in a frame" ;
-            afo:name "guessUnvoiced" ;
-            afo:parameterValues "{false,true}" ;
-            afo:type xsd:boolean ],
         [ a afo:NumericParameter ;
-            afo:defaultValue "20000" ;
-            afo:description "the minimum allowed frequency for salience function peaks (ignore contours with peaks above) [Hz]" ;
+            afo:defaultValue "44100" ;
+            afo:description "the sampling rate of the audio signal [Hz]" ;
             afo:maximumValue "inf" ;
             afo:minimumValue 0 ;
-            afo:name "maxFrequency" ;
+            afo:name "sampleRate" ;
             afo:type xsd:float ],
         [ a afo:NumericParameter ;
-            afo:defaultValue "0.9" ;
-            afo:description "allowed deviation below the peak salience mean over all frames (fraction of the standard deviation)" ;
-            afo:maximumValue 2 ;
+            afo:defaultValue "100" ;
+            afo:description "the minimum allowed contour duration [ms]" ;
+            afo:maximumValue "inf" ;
             afo:minimumValue 0 ;
-            afo:name "peakDistributionThreshold" ;
-            afo:type xsd:float ],
-        [ a afo:NumericParameter ;
-            afo:defaultValue "1" ;
-            afo:description "magnitude compression parameter for the salience function (=0 for maximum compression, =1 for no compression)" ;
-            afo:maximumValue 1 ;
-            afo:minimumValue 0 ;
-            afo:name "magnitudeCompression" ;
-            afo:type xsd:float ],
+            afo:name "minDuration" ;
+            afo:type xsd:integer ],
         [ a afo:NumericParameter ;
             afo:defaultValue "55" ;
             afo:description "the reference frequency for Hertz to cent convertion [Hz], corresponding to the 0th cent bin" ;
@@ -4817,18 +4803,18 @@ References:
             afo:name "referenceFrequency" ;
             afo:type xsd:float ],
         [ a afo:NumericParameter ;
-            afo:defaultValue "128" ;
-            afo:description "the hop size with which the pitch salience function was computed" ;
-            afo:maximumValue "inf" ;
-            afo:minimumValue 0 ;
-            afo:name "hopSize" ;
-            afo:type xsd:integer ],
-        [ a afo:NumericParameter ;
             afo:defaultValue "0.9" ;
             afo:description "per-frame salience threshold factor (fraction of the highest peak salience in a frame)" ;
             afo:maximumValue 1 ;
             afo:minimumValue 0 ;
             afo:name "peakFrameThreshold" ;
+            afo:type xsd:float ],
+        [ a afo:NumericParameter ;
+            afo:defaultValue "20000" ;
+            afo:description "the minimum allowed frequency for salience function peaks (ignore contours with peaks above) [Hz]" ;
+            afo:maximumValue "inf" ;
+            afo:minimumValue 0 ;
+            afo:name "maxFrequency" ;
             afo:type xsd:float ],
         [ a afo:NumericParameter ;
             afo:defaultValue "10" ;
@@ -4838,32 +4824,25 @@ References:
             afo:name "binResolution" ;
             afo:type xsd:float ],
         [ a afo:NumericParameter ;
-            afo:defaultValue "20" ;
-            afo:description "number of considered harmonics" ;
-            afo:maximumValue "inf" ;
-            afo:minimumValue 1 ;
-            afo:name "numberHarmonics" ;
-            afo:type xsd:integer ],
+            afo:defaultValue "0.9" ;
+            afo:description "allowed deviation below the peak salience mean over all frames (fraction of the standard deviation)" ;
+            afo:maximumValue 2 ;
+            afo:minimumValue 0 ;
+            afo:name "peakDistributionThreshold" ;
+            afo:type xsd:float ],
         [ a afo:NumericParameter ;
-            afo:defaultValue "2048" ;
-            afo:description "the frame size for computing pitch saliecnce" ;
+            afo:defaultValue "27.5625" ;
+            afo:description "pitch continuity cue (maximum allowed pitch change during 1 ms time period) [cents]" ;
             afo:maximumValue "inf" ;
             afo:minimumValue 0 ;
-            afo:name "frameSize" ;
-            afo:type xsd:integer ],
+            afo:name "pitchContinuity" ;
+            afo:type xsd:float ],
         [ a afo:NumericParameter ;
-            afo:defaultValue "100" ;
-            afo:description "the minimum allowed contour duration [ms]" ;
-            afo:maximumValue "inf" ;
-            afo:minimumValue 0 ;
-            afo:name "minDuration" ;
-            afo:type xsd:integer ],
-        [ a afo:NumericParameter ;
-            afo:defaultValue "0.8" ;
-            afo:description "harmonic weighting parameter (weight decay ratio between two consequent harmonics, =1 for no decay)" ;
+            afo:defaultValue "1" ;
+            afo:description "magnitude compression parameter for the salience function (=0 for maximum compression, =1 for no compression)" ;
             afo:maximumValue 1 ;
             afo:minimumValue 0 ;
-            afo:name "harmonicWeight" ;
+            afo:name "magnitudeCompression" ;
             afo:type xsd:float ],
         [ a afo:NumericParameter ;
             afo:defaultValue "3" ;
@@ -4871,6 +4850,27 @@ References:
             afo:maximumValue "inf" ;
             afo:minimumValue 1 ;
             afo:name "filterIterations" ;
+            afo:type xsd:integer ],
+        [ a afo:NumericParameter ;
+            afo:defaultValue "40" ;
+            afo:description "the minimum allowed frequency for salience function peaks (ignore contours with peaks below) [Hz]" ;
+            afo:maximumValue "inf" ;
+            afo:minimumValue 0 ;
+            afo:name "minFrequency" ;
+            afo:type xsd:float ],
+        [ a afo:NumericParameter ;
+            afo:defaultValue "128" ;
+            afo:description "the hop size with which the pitch salience function was computed" ;
+            afo:maximumValue "inf" ;
+            afo:minimumValue 0 ;
+            afo:name "hopSize" ;
+            afo:type xsd:integer ],
+        [ a afo:NumericParameter ;
+            afo:defaultValue "2048" ;
+            afo:description "the frame size for computing pitch saliecnce" ;
+            afo:maximumValue "inf" ;
+            afo:minimumValue 0 ;
+            afo:name "frameSize" ;
             afo:type xsd:integer ] .
 
 essentia:PitchSalienceFunctionPeaksExtractor a owl:Class ;
@@ -4890,17 +4890,17 @@ References:
         essentia:PitchSalienceFunctionPeaksSaliencevalues ;
     afo:parameter [ a afo:NumericParameter ;
             afo:defaultValue "55" ;
-            afo:description "the minimum frequency to evaluate (ignore peaks below) [Hz]" ;
-            afo:maximumValue "inf" ;
-            afo:minimumValue 0 ;
-            afo:name "minFrequency" ;
-            afo:type xsd:float ],
-        [ a afo:NumericParameter ;
-            afo:defaultValue "55" ;
             afo:description "the reference frequency for Hertz to cent convertion [Hz], corresponding to the 0th cent bin" ;
             afo:maximumValue "inf" ;
             afo:minimumValue 0 ;
             afo:name "referenceFrequency" ;
+            afo:type xsd:float ],
+        [ a afo:NumericParameter ;
+            afo:defaultValue "55" ;
+            afo:description "the minimum frequency to evaluate (ignore peaks below) [Hz]" ;
+            afo:maximumValue "inf" ;
+            afo:minimumValue 0 ;
+            afo:name "minFrequency" ;
             afo:type xsd:float ],
         [ a afo:NumericParameter ;
             afo:defaultValue "1760" ;
@@ -4939,19 +4939,12 @@ References:
     afo:output essentia:Pitch,
         essentia:PitchYinPitchconfidence ;
     afo:parameter [ a afo:NumericParameter ;
-            afo:defaultValue "20" ;
-            afo:description "the minimum allowed frequency [Hz]" ;
-            afo:maximumValue "inf" ;
+            afo:defaultValue "0.15" ;
+            afo:description "tolerance for peak detection" ;
+            afo:maximumValue 1 ;
             afo:minimumValue 0 ;
-            afo:name "minFrequency" ;
+            afo:name "tolerance" ;
             afo:type xsd:float ],
-        [ a afo:NumericParameter ;
-            afo:defaultValue "2048" ;
-            afo:description "number of samples in the input frame" ;
-            afo:maximumValue "inf" ;
-            afo:minimumValue 2 ;
-            afo:name "frameSize" ;
-            afo:type xsd:integer ],
         [ a afo:IndexedParameter ;
             afo:defaultValue "true" ;
             afo:description "enable interpolation" ;
@@ -4973,11 +4966,18 @@ References:
             afo:name "sampleRate" ;
             afo:type xsd:float ],
         [ a afo:NumericParameter ;
-            afo:defaultValue "0.15" ;
-            afo:description "tolerance for peak detection" ;
-            afo:maximumValue 1 ;
+            afo:defaultValue "2048" ;
+            afo:description "number of samples in the input frame" ;
+            afo:maximumValue "inf" ;
+            afo:minimumValue 2 ;
+            afo:name "frameSize" ;
+            afo:type xsd:integer ],
+        [ a afo:NumericParameter ;
+            afo:defaultValue "20" ;
+            afo:description "the minimum allowed frequency [Hz]" ;
+            afo:maximumValue "inf" ;
             afo:minimumValue 0 ;
-            afo:name "tolerance" ;
+            afo:name "minFrequency" ;
             afo:type xsd:float ] .
 
 essentia:PitchYinFFTExtractor a owl:Class ;
@@ -5000,12 +5000,13 @@ References:
     afo:input essentia:Spectrum ;
     afo:output essentia:Pitch,
         essentia:PitchYinFFTPitchconfidence ;
-    afo:parameter [ a afo:IndexedParameter ;
-            afo:defaultValue "true" ;
-            afo:description "boolean flag to enable interpolation" ;
-            afo:name "interpolate" ;
-            afo:parameterValues "{true,false}" ;
-            afo:type xsd:boolean ],
+    afo:parameter [ a afo:NumericParameter ;
+            afo:defaultValue "2048" ;
+            afo:description "number of samples in the input spectrum" ;
+            afo:maximumValue "inf" ;
+            afo:minimumValue 2 ;
+            afo:name "frameSize" ;
+            afo:type xsd:integer ],
         [ a afo:NumericParameter ;
             afo:defaultValue "20" ;
             afo:description "the minimum allowed frequency [Hz]" ;
@@ -5020,13 +5021,12 @@ References:
             afo:minimumValue 0 ;
             afo:name "sampleRate" ;
             afo:type xsd:float ],
-        [ a afo:NumericParameter ;
-            afo:defaultValue "2048" ;
-            afo:description "number of samples in the input spectrum" ;
-            afo:maximumValue "inf" ;
-            afo:minimumValue 2 ;
-            afo:name "frameSize" ;
-            afo:type xsd:integer ],
+        [ a afo:IndexedParameter ;
+            afo:defaultValue "true" ;
+            afo:description "boolean flag to enable interpolation" ;
+            afo:name "interpolate" ;
+            afo:parameterValues "{true,false}" ;
+            afo:type xsd:boolean ],
         [ a afo:NumericParameter ;
             afo:defaultValue "22050" ;
             afo:description "the maximum allowed frequency [Hz]" ;
@@ -5060,11 +5060,11 @@ References:
     afo:output essentia:Pitch,
         essentia:PredominantPitchMelodiaPitchconfidence ;
     afo:parameter [ a afo:NumericParameter ;
-            afo:defaultValue "55" ;
-            afo:description "the reference frequency for Hertz to cent convertion [Hz], corresponding to the 0th cent bin" ;
+            afo:defaultValue "20000" ;
+            afo:description "the minimum allowed frequency for salience function peaks (ignore contours with peaks above) [Hz]" ;
             afo:maximumValue "inf" ;
             afo:minimumValue 0 ;
-            afo:name "referenceFrequency" ;
+            afo:name "maxFrequency" ;
             afo:type xsd:float ],
         [ a afo:NumericParameter ;
             afo:defaultValue "2048" ;
@@ -5073,20 +5073,6 @@ References:
             afo:minimumValue 0 ;
             afo:name "frameSize" ;
             afo:type xsd:integer ],
-        [ a afo:NumericParameter ;
-            afo:defaultValue "40" ;
-            afo:description "spectral peak magnitude threshold (maximum allowed difference from the highest peak in dBs)" ;
-            afo:maximumValue "inf" ;
-            afo:minimumValue 0 ;
-            afo:name "magnitudeThreshold" ;
-            afo:type xsd:integer ],
-        [ a afo:NumericParameter ;
-            afo:defaultValue "1" ;
-            afo:description "magnitude compression parameter for the salience function (=0 for maximum compression, =1 for no compression)" ;
-            afo:maximumValue 1 ;
-            afo:minimumValue 0 ;
-            afo:name "magnitudeCompression" ;
-            afo:type xsd:float ],
         [ a afo:NumericParameter ;
             afo:defaultValue "80" ;
             afo:description "the minimum allowed frequency for salience function peaks (ignore contours with peaks below) [Hz]" ;
@@ -5102,53 +5088,6 @@ References:
             afo:name "pitchContinuity" ;
             afo:type xsd:float ],
         [ a afo:NumericParameter ;
-            afo:defaultValue "0.2" ;
-            afo:description "allowed deviation below the average contour mean salience of all contours (fraction of the standard deviation)" ;
-            afo:maximumValue 1.4e+00 ;
-            afo:minimumValue 1e+00 ;
-            afo:name "voicingTolerance" ;
-            afo:type xsd:float ],
-        [ a afo:NumericParameter ;
-            afo:defaultValue "44100" ;
-            afo:description "the sampling rate of the audio signal [Hz]" ;
-            afo:maximumValue "inf" ;
-            afo:minimumValue 0 ;
-            afo:name "sampleRate" ;
-            afo:type xsd:float ],
-        [ a afo:IndexedParameter ;
-            afo:defaultValue "false" ;
-            afo:description "estimate pitch for non-voiced segments by using non-salient contours when no salient ones are present in a frame" ;
-            afo:name "guessUnvoiced" ;
-            afo:parameterValues "{false,true}" ;
-            afo:type xsd:boolean ],
-        [ a afo:IndexedParameter ;
-            afo:defaultValue "false" ;
-            afo:description "detect voice vibrato" ;
-            afo:name "voiceVibrato" ;
-            afo:parameterValues "{true,false}" ;
-            afo:type xsd:boolean ],
-        [ a afo:NumericParameter ;
-            afo:defaultValue "20" ;
-            afo:description "number of considered harmonics" ;
-            afo:maximumValue "inf" ;
-            afo:minimumValue 1 ;
-            afo:name "numberHarmonics" ;
-            afo:type xsd:integer ],
-        [ a afo:NumericParameter ;
-            afo:defaultValue "10" ;
-            afo:description "salience function bin resolution [cents]" ;
-            afo:maximumValue "inf" ;
-            afo:minimumValue 0 ;
-            afo:name "binResolution" ;
-            afo:type xsd:float ],
-        [ a afo:NumericParameter ;
-            afo:defaultValue "0.9" ;
-            afo:description "per-frame salience threshold factor (fraction of the highest peak salience in a frame)" ;
-            afo:maximumValue 1 ;
-            afo:minimumValue 0 ;
-            afo:name "peakFrameThreshold" ;
-            afo:type xsd:float ],
-        [ a afo:NumericParameter ;
             afo:defaultValue "128" ;
             afo:description "the hop size with which the pitch salience function was computed" ;
             afo:maximumValue "inf" ;
@@ -5156,26 +5095,18 @@ References:
             afo:name "hopSize" ;
             afo:type xsd:integer ],
         [ a afo:NumericParameter ;
-            afo:defaultValue "100" ;
-            afo:description "the minimum allowed contour duration [ms]" ;
-            afo:maximumValue "inf" ;
+            afo:defaultValue "0.9" ;
+            afo:description "per-frame salience threshold factor (fraction of the highest peak salience in a frame)" ;
+            afo:maximumValue 1 ;
             afo:minimumValue 0 ;
-            afo:name "minDuration" ;
-            afo:type xsd:integer ],
-        [ a afo:NumericParameter ;
-            afo:defaultValue "3" ;
-            afo:description "number of iterations for the octave errors / pitch outlier filtering process" ;
-            afo:maximumValue "inf" ;
-            afo:minimumValue 1 ;
-            afo:name "filterIterations" ;
-            afo:type xsd:integer ],
-        [ a afo:NumericParameter ;
-            afo:defaultValue "100" ;
-            afo:description "time continuity cue (the maximum allowed gap duration for a pitch contour) [ms]" ;
-            afo:maximumValue "inf" ;
-            afo:minimumValue 0 ;
-            afo:name "timeContinuity" ;
-            afo:type xsd:integer ],
+            afo:name "peakFrameThreshold" ;
+            afo:type xsd:float ],
+        [ a afo:IndexedParameter ;
+            afo:defaultValue "false" ;
+            afo:description "estimate pitch for non-voiced segments by using non-salient contours when no salient ones are present in a frame" ;
+            afo:name "guessUnvoiced" ;
+            afo:parameterValues "{false,true}" ;
+            afo:type xsd:boolean ],
         [ a afo:NumericParameter ;
             afo:defaultValue "0.9" ;
             afo:description "allowed deviation below the peak salience mean over all frames (fraction of the standard deviation)" ;
@@ -5184,6 +5115,47 @@ References:
             afo:name "peakDistributionThreshold" ;
             afo:type xsd:float ],
         [ a afo:NumericParameter ;
+            afo:defaultValue "1" ;
+            afo:description "magnitude compression parameter for the salience function (=0 for maximum compression, =1 for no compression)" ;
+            afo:maximumValue 1 ;
+            afo:minimumValue 0 ;
+            afo:name "magnitudeCompression" ;
+            afo:type xsd:float ],
+        [ a afo:NumericParameter ;
+            afo:defaultValue "0.2" ;
+            afo:description "allowed deviation below the average contour mean salience of all contours (fraction of the standard deviation)" ;
+            afo:maximumValue 1.4e+00 ;
+            afo:minimumValue 1e+00 ;
+            afo:name "voicingTolerance" ;
+            afo:type xsd:float ],
+        [ a afo:IndexedParameter ;
+            afo:defaultValue "false" ;
+            afo:description "detect voice vibrato" ;
+            afo:name "voiceVibrato" ;
+            afo:parameterValues "{true,false}" ;
+            afo:type xsd:boolean ],
+        [ a afo:NumericParameter ;
+            afo:defaultValue "40" ;
+            afo:description "spectral peak magnitude threshold (maximum allowed difference from the highest peak in dBs)" ;
+            afo:maximumValue "inf" ;
+            afo:minimumValue 0 ;
+            afo:name "magnitudeThreshold" ;
+            afo:type xsd:integer ],
+        [ a afo:NumericParameter ;
+            afo:defaultValue "55" ;
+            afo:description "the reference frequency for Hertz to cent convertion [Hz], corresponding to the 0th cent bin" ;
+            afo:maximumValue "inf" ;
+            afo:minimumValue 0 ;
+            afo:name "referenceFrequency" ;
+            afo:type xsd:float ],
+        [ a afo:NumericParameter ;
+            afo:defaultValue "100" ;
+            afo:description "the minimum allowed contour duration [ms]" ;
+            afo:maximumValue "inf" ;
+            afo:minimumValue 0 ;
+            afo:name "minDuration" ;
+            afo:type xsd:integer ],
+        [ a afo:NumericParameter ;
             afo:defaultValue "0.8" ;
             afo:description "harmonic weighting parameter (weight decay ratio between two consequent harmonics, =1 for no decay)" ;
             afo:maximumValue 1 ;
@@ -5191,12 +5163,40 @@ References:
             afo:name "harmonicWeight" ;
             afo:type xsd:float ],
         [ a afo:NumericParameter ;
-            afo:defaultValue "20000" ;
-            afo:description "the minimum allowed frequency for salience function peaks (ignore contours with peaks above) [Hz]" ;
+            afo:defaultValue "10" ;
+            afo:description "salience function bin resolution [cents]" ;
             afo:maximumValue "inf" ;
             afo:minimumValue 0 ;
-            afo:name "maxFrequency" ;
-            afo:type xsd:float ] .
+            afo:name "binResolution" ;
+            afo:type xsd:float ],
+        [ a afo:NumericParameter ;
+            afo:defaultValue "100" ;
+            afo:description "time continuity cue (the maximum allowed gap duration for a pitch contour) [ms]" ;
+            afo:maximumValue "inf" ;
+            afo:minimumValue 0 ;
+            afo:name "timeContinuity" ;
+            afo:type xsd:integer ],
+        [ a afo:NumericParameter ;
+            afo:defaultValue "44100" ;
+            afo:description "the sampling rate of the audio signal [Hz]" ;
+            afo:maximumValue "inf" ;
+            afo:minimumValue 0 ;
+            afo:name "sampleRate" ;
+            afo:type xsd:float ],
+        [ a afo:NumericParameter ;
+            afo:defaultValue "20" ;
+            afo:description "number of considered harmonics" ;
+            afo:maximumValue "inf" ;
+            afo:minimumValue 1 ;
+            afo:name "numberHarmonics" ;
+            afo:type xsd:integer ],
+        [ a afo:NumericParameter ;
+            afo:defaultValue "3" ;
+            afo:description "number of iterations for the octave errors / pitch outlier filtering process" ;
+            afo:maximumValue "inf" ;
+            afo:minimumValue 1 ;
+            afo:name "filterIterations" ;
+            afo:type xsd:integer ] .
 
 essentia:RMS a owl:Class ;
     rdfs:label "RMS"@en ;
@@ -5243,21 +5243,7 @@ References:
     afo:input essentia:Beat ;
     afo:output essentia:Loudness,
         essentia:SingleBeatLoudnessLoudnessbandratio ;
-    afo:parameter [ a afo:NumericParameter ;
-            afo:defaultValue "0.05" ;
-            afo:description "the size of the window in which the beat will be restricted [s]" ;
-            afo:maximumValue "inf" ;
-            afo:minimumValue 0 ;
-            afo:name "beatDuration" ;
-            afo:type xsd:float ],
-        [ a afo:NumericParameter ;
-            afo:defaultValue "44100" ;
-            afo:description "the audio sampling rate [Hz]" ;
-            afo:maximumValue "inf" ;
-            afo:minimumValue 0 ;
-            afo:name "sampleRate" ;
-            afo:type xsd:float ],
-        [ a afo:IndexedParameter ;
+    afo:parameter [ a afo:IndexedParameter ;
             afo:defaultValue "sumEnergy" ;
             afo:description "criteria for finding the start of the beat" ;
             afo:name "onsetStart" ;
@@ -5267,6 +5253,20 @@ References:
             afo:description "the bands" ;
             afo:name "frequencyBands" ;
             afo:type rdf:List ],
+        [ a afo:NumericParameter ;
+            afo:defaultValue "44100" ;
+            afo:description "the audio sampling rate [Hz]" ;
+            afo:maximumValue "inf" ;
+            afo:minimumValue 0 ;
+            afo:name "sampleRate" ;
+            afo:type xsd:float ],
+        [ a afo:NumericParameter ;
+            afo:defaultValue "0.05" ;
+            afo:description "the size of the window in which the beat will be restricted [s]" ;
+            afo:maximumValue "inf" ;
+            afo:minimumValue 0 ;
+            afo:name "beatDuration" ;
+            afo:type xsd:float ],
         [ a afo:NumericParameter ;
             afo:defaultValue "0.1" ;
             afo:description "the size of the window in which to look for the beginning of the beat [s]" ;
@@ -5294,32 +5294,11 @@ References:
     afo:output essentia:SpectralContrast,
         essentia:SpectralValley ;
     afo:parameter [ a afo:NumericParameter ;
-            afo:defaultValue "0.15" ;
-            afo:description "the ratio of the bins to distribute equally" ;
-            afo:maximumValue 1 ;
-            afo:minimumValue 0 ;
-            afo:name "staticDistribution" ;
-            afo:type xsd:float ],
-        [ a afo:NumericParameter ;
-            afo:defaultValue "2048" ;
-            afo:description "the size of the fft frames" ;
-            afo:maximumValue "inf" ;
-            afo:minimumValue 2 ;
-            afo:name "frameSize" ;
-            afo:type xsd:integer ],
-        [ a afo:NumericParameter ;
-            afo:defaultValue "11000" ;
-            afo:description "the upper bound of the highest band" ;
+            afo:defaultValue "22050" ;
+            afo:description "the sampling rate of the audio signal" ;
             afo:maximumValue "inf" ;
             afo:minimumValue 0 ;
-            afo:name "highFrequencyBound" ;
-            afo:type xsd:float ],
-        [ a afo:NumericParameter ;
-            afo:defaultValue "0.4" ;
-            afo:description "the ratio of the bins in the sub band used to calculate the peak and valley" ;
-            afo:maximumValue 1 ;
-            afo:minimumValue 0 ;
-            afo:name "neighbourRatio" ;
+            afo:name "sampleRate" ;
             afo:type xsd:float ],
         [ a afo:NumericParameter ;
             afo:defaultValue "6" ;
@@ -5329,11 +5308,25 @@ References:
             afo:name "numberBands" ;
             afo:type xsd:integer ],
         [ a afo:NumericParameter ;
-            afo:defaultValue "22050" ;
-            afo:description "the sampling rate of the audio signal" ;
+            afo:defaultValue "11000" ;
+            afo:description "the upper bound of the highest band" ;
             afo:maximumValue "inf" ;
             afo:minimumValue 0 ;
-            afo:name "sampleRate" ;
+            afo:name "highFrequencyBound" ;
+            afo:type xsd:float ],
+        [ a afo:NumericParameter ;
+            afo:defaultValue "2048" ;
+            afo:description "the size of the fft frames" ;
+            afo:maximumValue "inf" ;
+            afo:minimumValue 2 ;
+            afo:name "frameSize" ;
+            afo:type xsd:integer ],
+        [ a afo:NumericParameter ;
+            afo:defaultValue "0.4" ;
+            afo:description "the ratio of the bins in the sub band used to calculate the peak and valley" ;
+            afo:maximumValue 1 ;
+            afo:minimumValue 0 ;
+            afo:name "neighbourRatio" ;
             afo:type xsd:float ],
         [ a afo:NumericParameter ;
             afo:defaultValue "20" ;
@@ -5341,6 +5334,13 @@ References:
             afo:maximumValue "inf" ;
             afo:minimumValue 0 ;
             afo:name "lowFrequencyBound" ;
+            afo:type xsd:float ],
+        [ a afo:NumericParameter ;
+            afo:defaultValue "0.15" ;
+            afo:description "the ratio of the bins to distribute equally" ;
+            afo:maximumValue 1 ;
+            afo:minimumValue 0 ;
+            afo:name "staticDistribution" ;
             afo:type xsd:float ] .
 
 essentia:SpectralPeaksExtractor a owl:Class ;
@@ -5358,11 +5358,31 @@ References:
     afo:output essentia:SpectralPeaksFrequencies,
         essentia:SpectralPeaksMagnitudes ;
     afo:parameter [ a afo:NumericParameter ;
-            afo:defaultValue "0" ;
-            afo:description "peaks below this given threshold are not outputted" ;
+            afo:defaultValue "5000" ;
+            afo:description "the maximum frequency of the range to evaluate [Hz]" ;
             afo:maximumValue "inf" ;
-            afo:minimumValue "inf" ;
-            afo:name "magnitudeThreshold" ;
+            afo:minimumValue 0 ;
+            afo:name "maxFrequency" ;
+            afo:type xsd:float ],
+        [ a afo:IndexedParameter ;
+            afo:defaultValue "frequency" ;
+            afo:description "the ordering type of the outputted peaks (ascending by frequency or descending by magnitude)" ;
+            afo:name "orderBy" ;
+            afo:parameterValues "{frequency,magnitude}" ;
+            afo:type xsd:string ],
+        [ a afo:NumericParameter ;
+            afo:defaultValue "100" ;
+            afo:description "the maximum number of returned peaks" ;
+            afo:maximumValue "inf" ;
+            afo:minimumValue 1 ;
+            afo:name "maxPeaks" ;
+            afo:type xsd:integer ],
+        [ a afo:NumericParameter ;
+            afo:defaultValue "0" ;
+            afo:description "the minimum frequency of the range to evaluate [Hz]" ;
+            afo:maximumValue "inf" ;
+            afo:minimumValue 0 ;
+            afo:name "minFrequency" ;
             afo:type xsd:float ],
         [ a afo:NumericParameter ;
             afo:defaultValue "44100" ;
@@ -5372,32 +5392,12 @@ References:
             afo:name "sampleRate" ;
             afo:type xsd:float ],
         [ a afo:NumericParameter ;
-            afo:defaultValue "5000" ;
-            afo:description "the maximum frequency of the range to evaluate [Hz]" ;
-            afo:maximumValue "inf" ;
-            afo:minimumValue 0 ;
-            afo:name "maxFrequency" ;
-            afo:type xsd:float ],
-        [ a afo:NumericParameter ;
             afo:defaultValue "0" ;
-            afo:description "the minimum frequency of the range to evaluate [Hz]" ;
+            afo:description "peaks below this given threshold are not outputted" ;
             afo:maximumValue "inf" ;
-            afo:minimumValue 0 ;
-            afo:name "minFrequency" ;
-            afo:type xsd:float ],
-        [ a afo:NumericParameter ;
-            afo:defaultValue "100" ;
-            afo:description "the maximum number of returned peaks" ;
-            afo:maximumValue "inf" ;
-            afo:minimumValue 1 ;
-            afo:name "maxPeaks" ;
-            afo:type xsd:integer ],
-        [ a afo:IndexedParameter ;
-            afo:defaultValue "frequency" ;
-            afo:description "the ordering type of the outputted peaks (ascending by frequency or descending by magnitude)" ;
-            afo:name "orderBy" ;
-            afo:parameterValues "{frequency,magnitude}" ;
-            afo:type xsd:string ] .
+            afo:minimumValue "inf" ;
+            afo:name "magnitudeThreshold" ;
+            afo:type xsd:float ] .
 
 essentia:StartStopSilenceExtractor a owl:Class ;
     rdfs:label "StartStopSilence Extractor"@en ;
@@ -5472,10 +5472,13 @@ References:
     afo:input essentia:Featuresframe ;
     afo:output essentia:TempoTapPeriods,
         essentia:TempoTapPhases ;
-    afo:parameter [ afo:defaultValue "[]" ;
-            afo:description "optional list of initial beat locations, to favor the detection of pre-determined tempo period and beats alignment [s]" ;
-            afo:name "tempoHints" ;
-            afo:type rdf:List ],
+    afo:parameter [ a afo:NumericParameter ;
+            afo:defaultValue "1024" ;
+            afo:description "number of feature frames separating two evaluations" ;
+            afo:maximumValue "inf" ;
+            afo:minimumValue 0 ;
+            afo:name "frameHop" ;
+            afo:type xsd:integer ],
         [ a afo:NumericParameter ;
             afo:defaultValue "256" ;
             afo:description "number of audio samples in a frame" ;
@@ -5490,6 +5493,17 @@ References:
             afo:minimumValue 0 ;
             afo:name "numberFrames" ;
             afo:type xsd:integer ],
+        [ afo:defaultValue "[]" ;
+            afo:description "optional list of initial beat locations, to favor the detection of pre-determined tempo period and beats alignment [s]" ;
+            afo:name "tempoHints" ;
+            afo:type rdf:List ],
+        [ a afo:NumericParameter ;
+            afo:defaultValue "208" ;
+            afo:description "fastest tempo allowed to be detected [bpm]" ;
+            afo:maximumValue 250 ;
+            afo:minimumValue 60 ;
+            afo:name "maxTempo" ;
+            afo:type xsd:integer ],
         [ a afo:NumericParameter ;
             afo:defaultValue "44100" ;
             afo:description "the sampling rate of the audio signal [Hz]" ;
@@ -5503,20 +5517,6 @@ References:
             afo:maximumValue 180 ;
             afo:minimumValue 40 ;
             afo:name "minTempo" ;
-            afo:type xsd:integer ],
-        [ a afo:NumericParameter ;
-            afo:defaultValue "1024" ;
-            afo:description "number of feature frames separating two evaluations" ;
-            afo:maximumValue "inf" ;
-            afo:minimumValue 0 ;
-            afo:name "frameHop" ;
-            afo:type xsd:integer ],
-        [ a afo:NumericParameter ;
-            afo:defaultValue "208" ;
-            afo:description "fastest tempo allowed to be detected [bpm]" ;
-            afo:maximumValue 250 ;
-            afo:minimumValue 60 ;
-            afo:name "maxTempo" ;
             afo:type xsd:integer ] .
 
 essentia:TempoTapMaxAgreementExtractor a owl:Class ;
@@ -5568,18 +5568,18 @@ References:
             afo:name "sampleRate" ;
             afo:type xsd:float ],
         [ a afo:NumericParameter ;
-            afo:defaultValue "256" ;
-            afo:description "number of audio samples per features" ;
-            afo:maximumValue "inf" ;
-            afo:minimumValue 0 ;
-            afo:name "hopSize" ;
-            afo:type xsd:integer ],
-        [ a afo:NumericParameter ;
             afo:defaultValue "512" ;
             afo:description "number of feature frames separating two evaluations" ;
             afo:maximumValue "inf" ;
             afo:minimumValue 0 ;
             afo:name "frameHop" ;
+            afo:type xsd:integer ],
+        [ a afo:NumericParameter ;
+            afo:defaultValue "256" ;
+            afo:description "number of audio samples per features" ;
+            afo:maximumValue "inf" ;
+            afo:minimumValue 0 ;
+            afo:name "hopSize" ;
             afo:type xsd:integer ] .
 
 essentia:VibratoExtractor a owl:Class ;
@@ -5601,13 +5601,6 @@ References:
     afo:output essentia:VibratoVibratoextend,
         essentia:VibratoVibratofrequency ;
     afo:parameter [ a afo:NumericParameter ;
-            afo:defaultValue "4" ;
-            afo:description "minimum considered vibrato frequency [Hz]" ;
-            afo:maximumValue "inf" ;
-            afo:minimumValue 0 ;
-            afo:name "minFrequency" ;
-            afo:type xsd:float ],
-        [ a afo:NumericParameter ;
             afo:defaultValue "250" ;
             afo:description "maximum considered vibrato extend [cents]" ;
             afo:maximumValue "inf" ;
@@ -5620,6 +5613,13 @@ References:
             afo:maximumValue "inf" ;
             afo:minimumValue 0 ;
             afo:name "maxFrequency" ;
+            afo:type xsd:float ],
+        [ a afo:NumericParameter ;
+            afo:defaultValue "4" ;
+            afo:description "minimum considered vibrato frequency [Hz]" ;
+            afo:maximumValue "inf" ;
+            afo:minimumValue 0 ;
+            afo:name "minFrequency" ;
             afo:type xsd:float ],
         [ a afo:NumericParameter ;
             afo:defaultValue "344.531" ;
@@ -5657,6 +5657,13 @@ References:
         essentia:BpmRubatoRubatostart,
         essentia:BpmRubatoRubatostop ;
     afo:parameter [ a afo:NumericParameter ;
+            afo:defaultValue "4" ;
+            afo:description "time for the shortest constant tempo region from one tempo region to another [s]" ;
+            afo:maximumValue "inf" ;
+            afo:minimumValue 0 ;
+            afo:name "shortRegionsMergingTime" ;
+            afo:type xsd:float ],
+        [ a afo:NumericParameter ;
             afo:defaultValue "20" ;
             afo:description "time for the longest constant tempo region inside a rubato region [s]" ;
             afo:maximumValue "inf" ;
@@ -5669,13 +5676,6 @@ References:
             afo:maximumValue 1 ;
             afo:minimumValue 0 ;
             afo:name "tolerance" ;
-            afo:type xsd:float ],
-        [ a afo:NumericParameter ;
-            afo:defaultValue "4" ;
-            afo:description "time for the shortest constant tempo region from one tempo region to another [s]" ;
-            afo:maximumValue "inf" ;
-            afo:minimumValue 0 ;
-            afo:name "shortRegionsMergingTime" ;
             afo:type xsd:float ] .
 
 essentia:Confidence a owl:Class ;
@@ -5791,11 +5791,18 @@ References:
         essentia:Onset,
         essentia:PitchContourSegmentationMidipitch ;
     afo:parameter [ a afo:NumericParameter ;
-            afo:defaultValue "44100" ;
-            afo:description "sample rate of the audio signal" ;
+            afo:defaultValue "0.1" ;
+            afo:description "minimum note duration [s]" ;
             afo:maximumValue "inf" ;
             afo:minimumValue 0 ;
-            afo:name "sampleRate" ;
+            afo:name "minDur" ;
+            afo:type xsd:float ],
+        [ a afo:NumericParameter ;
+            afo:defaultValue "60" ;
+            afo:description "pitch threshold for note segmentation [cents]" ;
+            afo:maximumValue "inf" ;
+            afo:minimumValue 0 ;
+            afo:name "pitchDistanceThreshold" ;
             afo:type xsd:integer ],
         [ a afo:NumericParameter ;
             afo:defaultValue "440" ;
@@ -5812,25 +5819,18 @@ References:
             afo:name "hopSize" ;
             afo:type xsd:integer ],
         [ a afo:NumericParameter ;
-            afo:defaultValue "60" ;
-            afo:description "pitch threshold for note segmentation [cents]" ;
-            afo:maximumValue "inf" ;
-            afo:minimumValue 0 ;
-            afo:name "pitchDistanceThreshold" ;
-            afo:type xsd:integer ],
-        [ a afo:NumericParameter ;
-            afo:defaultValue "0.1" ;
-            afo:description "minimum note duration [s]" ;
-            afo:maximumValue "inf" ;
-            afo:minimumValue 0 ;
-            afo:name "minDur" ;
-            afo:type xsd:float ],
-        [ a afo:NumericParameter ;
             afo:defaultValue "-2" ;
             afo:description "zscore threshold for note segmentation" ;
             afo:maximumValue 0 ;
             afo:minimumValue "inf" ;
             afo:name "rmsThreshold" ;
+            afo:type xsd:integer ],
+        [ a afo:NumericParameter ;
+            afo:defaultValue "44100" ;
+            afo:description "sample rate of the audio signal" ;
+            afo:maximumValue "inf" ;
+            afo:minimumValue 0 ;
+            afo:name "sampleRate" ;
             afo:type xsd:integer ] .
 
 essentia:SingleGaussianExtractor a owl:Class ;
@@ -5879,19 +5879,19 @@ References:
             afo:name "hopSize" ;
             afo:type xsd:integer ],
         [ a afo:NumericParameter ;
-            afo:defaultValue "1" ;
-            afo:description "resolution in cents (logarithmic scale, 100 cents = 1 semitone) for tuning frequency determination" ;
-            afo:maximumValue "inf" ;
-            afo:minimumValue 0 ;
-            afo:name "resolution" ;
-            afo:type xsd:float ],
-        [ a afo:NumericParameter ;
             afo:defaultValue "4096" ;
             afo:description "the frameSize for computing tuning frequency" ;
             afo:maximumValue "inf" ;
             afo:minimumValue 0 ;
             afo:name "frameSize" ;
-            afo:type xsd:integer ] .
+            afo:type xsd:integer ],
+        [ a afo:NumericParameter ;
+            afo:defaultValue "1" ;
+            afo:description "resolution in cents (logarithmic scale, 100 cents = 1 semitone) for tuning frequency determination" ;
+            afo:maximumValue "inf" ;
+            afo:minimumValue 0 ;
+            afo:name "resolution" ;
+            afo:type xsd:float ] .
 
 essentia:BPM a owl:Class ;
     rdfs:label "BPM"@en ;
@@ -5934,11 +5934,32 @@ References:
         essentia:KeyScale,
         essentia:KeyStrength ;
     afo:parameter [ a afo:NumericParameter ;
+            afo:defaultValue "4" ;
+            afo:description "number of harmonics that should contribute to the polyphonic profile (1 only considers the fundamental harmonic)" ;
+            afo:maximumValue "inf" ;
+            afo:minimumValue 1 ;
+            afo:name "numHarmonics" ;
+            afo:type xsd:integer ],
+        [ a afo:NumericParameter ;
             afo:defaultValue "36" ;
             afo:description "number of array elements used to represent a semitone times 12 (this parameter is only a hint, during computation, the size of the input PCP is used instead)" ;
             afo:maximumValue "inf" ;
             afo:minimumValue 12 ;
             afo:name "pcpSize" ;
+            afo:type xsd:integer ],
+        [ a afo:NumericParameter ;
+            afo:defaultValue "0.6" ;
+            afo:description "value of the slope of the exponential harmonic contribution to the polyphonic profile" ;
+            afo:maximumValue "inf" ;
+            afo:minimumValue 0 ;
+            afo:name "slope" ;
+            afo:type xsd:float ],
+        [ a afo:NumericParameter ;
+            afo:defaultValue "4096" ;
+            afo:description "the framesize for computing tonal features" ;
+            afo:maximumValue "inf" ;
+            afo:minimumValue 0 ;
+            afo:name "frameSize" ;
             afo:type xsd:integer ],
         [ a afo:NumericParameter ;
             afo:defaultValue "2048" ;
@@ -5949,29 +5970,16 @@ References:
             afo:type xsd:integer ],
         [ a afo:IndexedParameter ;
             afo:defaultValue "true" ;
-            afo:description "consider only the 3 main triad chords of the key (T, D, SD) to build the polyphonic profiles" ;
-            afo:name "useThreeChords" ;
-            afo:parameterValues "{true,false}" ;
-            afo:type xsd:boolean ],
-        [ a afo:IndexedParameter ;
-            afo:defaultValue "true" ;
             afo:description "enables the use of polyphonic profiles to define key profiles (this includes the contributions from triads as well as pitch harmonics)" ;
             afo:name "usePolyphony" ;
             afo:parameterValues "{true,false}" ;
             afo:type xsd:boolean ],
-        [ a afo:NumericParameter ;
-            afo:defaultValue "4" ;
-            afo:description "number of harmonics that should contribute to the polyphonic profile (1 only considers the fundamental harmonic)" ;
-            afo:maximumValue "inf" ;
-            afo:minimumValue 1 ;
-            afo:name "numHarmonics" ;
-            afo:type xsd:integer ],
         [ a afo:IndexedParameter ;
-            afo:defaultValue "temperley" ;
-            afo:description "the type of polyphic profile to use for correlation calculation" ;
-            afo:name "profileType" ;
-            afo:parameterValues "{diatonic,krumhansl,temperley,weichai,tonictriad,temperley2005,thpcp,shaath,gomez}" ;
-            afo:type xsd:string ],
+            afo:defaultValue "true" ;
+            afo:description "consider only the 3 main triad chords of the key (T, D, SD) to build the polyphonic profiles" ;
+            afo:name "useThreeChords" ;
+            afo:parameterValues "{true,false}" ;
+            afo:type xsd:boolean ],
         [ a afo:NumericParameter ;
             afo:defaultValue "440" ;
             afo:description "the tuning frequency of the input signal" ;
@@ -5979,20 +5987,12 @@ References:
             afo:minimumValue 0 ;
             afo:name "tuningFrequency" ;
             afo:type xsd:float ],
-        [ a afo:NumericParameter ;
-            afo:defaultValue "4096" ;
-            afo:description "the framesize for computing tonal features" ;
-            afo:maximumValue "inf" ;
-            afo:minimumValue 0 ;
-            afo:name "frameSize" ;
-            afo:type xsd:integer ],
-        [ a afo:NumericParameter ;
-            afo:defaultValue "0.6" ;
-            afo:description "value of the slope of the exponential harmonic contribution to the polyphonic profile" ;
-            afo:maximumValue "inf" ;
-            afo:minimumValue 0 ;
-            afo:name "slope" ;
-            afo:type xsd:float ] .
+        [ a afo:IndexedParameter ;
+            afo:defaultValue "temperley" ;
+            afo:description "the type of polyphic profile to use for correlation calculation" ;
+            afo:name "profileType" ;
+            afo:parameterValues "{diatonic,krumhansl,temperley,weichai,tonictriad,temperley2005,thpcp,shaath,gomez}" ;
+            afo:type xsd:string ] .
 
 essentia:LoudnessEBUR128Extractor a owl:Class ;
     rdfs:label "LoudnessEBUR128 Extractor"@en ;
@@ -6024,18 +6024,18 @@ References:
         essentia:LoudnessEBUR128Momentaryloudness,
         essentia:LoudnessEBUR128Shorttermloudness ;
     afo:parameter [ a afo:NumericParameter ;
-            afo:defaultValue "44100" ;
-            afo:description "the sampling rate of the audio signal [Hz]" ;
-            afo:maximumValue "inf" ;
-            afo:minimumValue 0 ;
-            afo:name "sampleRate" ;
-            afo:type xsd:float ],
-        [ a afo:NumericParameter ;
             afo:defaultValue "0.1" ;
             afo:description "the hop size with which the loudness is computed [s]" ;
             afo:maximumValue 1e-01 ;
             afo:minimumValue 0 ;
             afo:name "hopSize" ;
+            afo:type xsd:float ],
+        [ a afo:NumericParameter ;
+            afo:defaultValue "44100" ;
+            afo:description "the sampling rate of the audio signal [Hz]" ;
+            afo:maximumValue "inf" ;
+            afo:minimumValue 0 ;
+            afo:name "sampleRate" ;
             afo:type xsd:float ] .
 
 essentia:PitchContoursExtractor a owl:Class ;
@@ -6067,27 +6067,6 @@ References:
             afo:name "hopSize" ;
             afo:type xsd:integer ],
         [ a afo:NumericParameter ;
-            afo:defaultValue "10" ;
-            afo:description "salience function bin resolution [cents]" ;
-            afo:maximumValue "inf" ;
-            afo:minimumValue 0 ;
-            afo:name "binResolution" ;
-            afo:type xsd:float ],
-        [ a afo:NumericParameter ;
-            afo:defaultValue "100" ;
-            afo:description "time continuity cue (the maximum allowed gap duration for a pitch contour) [ms]" ;
-            afo:maximumValue "inf" ;
-            afo:minimumValue 0 ;
-            afo:name "timeContinuity" ;
-            afo:type xsd:float ],
-        [ a afo:NumericParameter ;
-            afo:defaultValue "100" ;
-            afo:description "the minimum allowed contour duration [ms]" ;
-            afo:maximumValue "inf" ;
-            afo:minimumValue 0 ;
-            afo:name "minDuration" ;
-            afo:type xsd:float ],
-        [ a afo:NumericParameter ;
             afo:defaultValue "0.9" ;
             afo:description "allowed deviation below the peak salience mean over all frames (fraction of the standard deviation)" ;
             afo:maximumValue 2 ;
@@ -6095,11 +6074,11 @@ References:
             afo:name "peakDistributionThreshold" ;
             afo:type xsd:float ],
         [ a afo:NumericParameter ;
-            afo:defaultValue "27.5625" ;
-            afo:description "pitch continuity cue (maximum allowed pitch change durig 1 ms time period) [cents]" ;
+            afo:defaultValue "44100" ;
+            afo:description "the sampling rate of the audio signal [Hz]" ;
             afo:maximumValue "inf" ;
             afo:minimumValue 0 ;
-            afo:name "pitchContinuity" ;
+            afo:name "sampleRate" ;
             afo:type xsd:float ],
         [ a afo:NumericParameter ;
             afo:defaultValue "0.9" ;
@@ -6109,11 +6088,32 @@ References:
             afo:name "peakFrameThreshold" ;
             afo:type xsd:float ],
         [ a afo:NumericParameter ;
-            afo:defaultValue "44100" ;
-            afo:description "the sampling rate of the audio signal [Hz]" ;
+            afo:defaultValue "100" ;
+            afo:description "the minimum allowed contour duration [ms]" ;
             afo:maximumValue "inf" ;
             afo:minimumValue 0 ;
-            afo:name "sampleRate" ;
+            afo:name "minDuration" ;
+            afo:type xsd:float ],
+        [ a afo:NumericParameter ;
+            afo:defaultValue "100" ;
+            afo:description "time continuity cue (the maximum allowed gap duration for a pitch contour) [ms]" ;
+            afo:maximumValue "inf" ;
+            afo:minimumValue 0 ;
+            afo:name "timeContinuity" ;
+            afo:type xsd:float ],
+        [ a afo:NumericParameter ;
+            afo:defaultValue "27.5625" ;
+            afo:description "pitch continuity cue (maximum allowed pitch change durig 1 ms time period) [cents]" ;
+            afo:maximumValue "inf" ;
+            afo:minimumValue 0 ;
+            afo:name "pitchContinuity" ;
+            afo:type xsd:float ],
+        [ a afo:NumericParameter ;
+            afo:defaultValue "10" ;
+            afo:description "salience function bin resolution [cents]" ;
+            afo:maximumValue "inf" ;
+            afo:minimumValue 0 ;
+            afo:name "binResolution" ;
             afo:type xsd:float ] .
 
 essentia:RhythmExtractor a owl:Class ;
@@ -6132,23 +6132,31 @@ An exception is thrown if neither "useOnset" nor "useBands" are enabled (i.e. se
         essentia:Estimates,
         essentia:RhythmExtractorBpmintervals,
         essentia:Ticks ;
-    afo:parameter [ a afo:IndexedParameter ;
-            afo:defaultValue "true" ;
-            afo:description "whether or not to use onsets as periodicity function" ;
-            afo:name "useOnset" ;
-            afo:parameterValues "{true,false}" ;
-            afo:type xsd:boolean ],
+    afo:parameter [ a afo:NumericParameter ;
+            afo:defaultValue "40" ;
+            afo:description "the slowest tempo to detect [bpm]" ;
+            afo:maximumValue 180 ;
+            afo:minimumValue 40 ;
+            afo:name "minTempo" ;
+            afo:type xsd:integer ],
         [ a afo:NumericParameter ;
-            afo:defaultValue "0.24" ;
-            afo:description "the minimum interval between two consecutive beats [s]" ;
+            afo:defaultValue "256" ;
+            afo:description "the number of audio samples per features" ;
             afo:maximumValue "inf" ;
             afo:minimumValue 0 ;
-            afo:name "tolerance" ;
-            afo:type xsd:float ],
+            afo:name "hopSize" ;
+            afo:type xsd:integer ],
         [ afo:defaultValue "[]" ;
             afo:description "the optional list of initial beat locations, to favor the detection of pre-determined tempo period and beats alignment [s]" ;
             afo:name "tempoHints" ;
             afo:type rdf:List ],
+        [ a afo:NumericParameter ;
+            afo:defaultValue "1024" ;
+            afo:description "the number audio samples used to compute a feature" ;
+            afo:maximumValue "inf" ;
+            afo:minimumValue 0 ;
+            afo:name "frameSize" ;
+            afo:type xsd:integer ],
         [ a afo:NumericParameter ;
             afo:defaultValue "44100" ;
             afo:description "the sampling rate of the audio signal [Hz]" ;
@@ -6156,12 +6164,18 @@ An exception is thrown if neither "useOnset" nor "useBands" are enabled (i.e. se
             afo:minimumValue 0 ;
             afo:name "sampleRate" ;
             afo:type xsd:float ],
+        [ a afo:IndexedParameter ;
+            afo:defaultValue "true" ;
+            afo:description "whether or not to use onsets as periodicity function" ;
+            afo:name "useOnset" ;
+            afo:parameterValues "{true,false}" ;
+            afo:type xsd:boolean ],
         [ a afo:NumericParameter ;
-            afo:defaultValue "208" ;
-            afo:description "the fastest tempo to detect [bpm]" ;
-            afo:maximumValue 250 ;
-            afo:minimumValue 60 ;
-            afo:name "maxTempo" ;
+            afo:defaultValue "1024" ;
+            afo:description "the number of feature frames separating two evaluations" ;
+            afo:maximumValue "inf" ;
+            afo:minimumValue 0 ;
+            afo:name "frameHop" ;
             afo:type xsd:integer ],
         [ a afo:NumericParameter ;
             afo:defaultValue "1024" ;
@@ -6177,25 +6191,18 @@ An exception is thrown if neither "useOnset" nor "useBands" are enabled (i.e. se
             afo:parameterValues "{true,false}" ;
             afo:type xsd:boolean ],
         [ a afo:NumericParameter ;
-            afo:defaultValue "256" ;
-            afo:description "the number of audio samples per features" ;
+            afo:defaultValue "0.24" ;
+            afo:description "the minimum interval between two consecutive beats [s]" ;
             afo:maximumValue "inf" ;
             afo:minimumValue 0 ;
-            afo:name "hopSize" ;
-            afo:type xsd:integer ],
+            afo:name "tolerance" ;
+            afo:type xsd:float ],
         [ a afo:NumericParameter ;
-            afo:defaultValue "1024" ;
-            afo:description "the number of feature frames separating two evaluations" ;
-            afo:maximumValue "inf" ;
-            afo:minimumValue 0 ;
-            afo:name "frameHop" ;
-            afo:type xsd:integer ],
-        [ a afo:NumericParameter ;
-            afo:defaultValue "40" ;
-            afo:description "the slowest tempo to detect [bpm]" ;
-            afo:maximumValue 180 ;
-            afo:minimumValue 40 ;
-            afo:name "minTempo" ;
+            afo:defaultValue "208" ;
+            afo:description "the fastest tempo to detect [bpm]" ;
+            afo:maximumValue 250 ;
+            afo:minimumValue 60 ;
+            afo:name "maxTempo" ;
             afo:type xsd:integer ],
         [ a afo:NumericParameter ;
             afo:defaultValue "0.1" ;
@@ -6203,14 +6210,7 @@ An exception is thrown if neither "useOnset" nor "useBands" are enabled (i.e. se
             afo:maximumValue "inf" ;
             afo:minimumValue 0 ;
             afo:name "lastBeatInterval" ;
-            afo:type xsd:float ],
-        [ a afo:NumericParameter ;
-            afo:defaultValue "1024" ;
-            afo:description "the number audio samples used to compute a feature" ;
-            afo:maximumValue "inf" ;
-            afo:minimumValue 0 ;
-            afo:name "frameSize" ;
-            afo:type xsd:integer ] .
+            afo:type xsd:float ] .
 
 essentia:integer a afo:Signal ;
     rdfs:label "integer" .
@@ -6285,13 +6285,12 @@ Note that the algorithm requires the sample rate of the input signal to be 44100
         essentia:Estimates,
         essentia:RhythmExtractor2013Bpmintervals,
         essentia:Ticks ;
-    afo:parameter [ a afo:NumericParameter ;
-            afo:defaultValue "40" ;
-            afo:description "the slowest tempo to detect [bpm]" ;
-            afo:maximumValue 180 ;
-            afo:minimumValue 40 ;
-            afo:name "minTempo" ;
-            afo:type xsd:integer ],
+    afo:parameter [ a afo:IndexedParameter ;
+            afo:defaultValue "multifeature" ;
+            afo:description "the method used for beat tracking" ;
+            afo:name "method" ;
+            afo:parameterValues "{multifeature,degara}" ;
+            afo:type xsd:string ],
         [ a afo:NumericParameter ;
             afo:defaultValue "208" ;
             afo:description "the fastest tempo to detect [bpm]" ;
@@ -6299,12 +6298,13 @@ Note that the algorithm requires the sample rate of the input signal to be 44100
             afo:minimumValue 60 ;
             afo:name "maxTempo" ;
             afo:type xsd:integer ],
-        [ a afo:IndexedParameter ;
-            afo:defaultValue "multifeature" ;
-            afo:description "the method used for beat tracking" ;
-            afo:name "method" ;
-            afo:parameterValues "{multifeature,degara}" ;
-            afo:type xsd:string ] .
+        [ a afo:NumericParameter ;
+            afo:defaultValue "40" ;
+            afo:description "the slowest tempo to detect [bpm]" ;
+            afo:maximumValue 180 ;
+            afo:minimumValue 40 ;
+            afo:name "minTempo" ;
+            afo:type xsd:integer ] .
 
 essentia:string a afo:Signal ;
     rdfs:label "string" .

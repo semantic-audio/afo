@@ -5,65 +5,120 @@
    xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
    xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#"
 >
-  <rdf:Description rdf:about="http://sovarr.c4dm.eecs.qmul.ac.uk/mir/marsyas/PCA">
+  <rdf:Description rdf:about="http://sovarr.c4dm.eecs.qmul.ac.uk/mir/marsyas/LPCC">
+    <rdfs:subClassOf rdf:resource="http://sovarr.c4dm.eecs.qmul.ac.uk/mir/marsyas/SpectrumDescriptor"/>
+    <rdf:type rdf:resource="https://w3id.org/afo/onto/1.1#AudioFeature"/>
+    <dc:description>Convert LPC coefficients to Cepstrum coefficients. This MarSystem is expecting to receive at its input LPC coefficients + Pitch + Power, as output by the LPC MarSystem (see LPC.cpp/.h). It only converts the LPC coefficients to cepstral coefficients and ignores the pitch value received from LPC. Code by: Lus Gustavo Martins - lmartins@inescporto.pt November 2006</dc:description>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://sovarr.c4dm.eecs.qmul.ac.uk/mir/marsyas/PowerSpectrum">
+    <dc:description>PowerSpectrum computes the magnitude/power of the complex spectrum Computes the magnitude/power/decibels/powerdensity of a complex spectrum (as output from the Spectrum MarSystem - see its documentation for info about the spectrum format used in Marsyas). PowerSpectrum takes N/2+1 complex spectrum bins and computes the corresponding N/2+1 power/magnitude/decibels/powerdensity real values. Controls: - \b mrs_string/spectrumType [w] : choose between "power", "magnitude", "decibels", "logmagnitude" (for 1+log(magnitude*1000), "logmagnitude2" (for 1+log10(magnitude)) and "powerdensity" computations \see Spectrum</dc:description>
+    <rdf:type rdf:resource="https://w3id.org/afo/onto/1.1#AudioFeature"/>
+    <rdfs:subClassOf rdf:resource="http://sovarr.c4dm.eecs.qmul.ac.uk/mir/marsyas/SpectrumDescriptor"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://sovarr.c4dm.eecs.qmul.ac.uk/mir/marsyas/SpectralFlatnessAllBands">
+    <rdfs:subClassOf rdf:resource="http://sovarr.c4dm.eecs.qmul.ac.uk/mir/marsyas/SpectrumDescriptor"/>
+    <rdf:type rdf:resource="https://w3id.org/afo/onto/1.1#AudioFeature"/>
+    <dc:description>Calculates a single spectral flatness value. Similar to SFM, but that marsystem splits the observations into bands, whereas this one uses the whole range of observations to generate one number. It may be used to 'narrow in' on a specific range by putting a RemoveObservations marsystem before it.</dc:description>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://sovarr.c4dm.eecs.qmul.ac.uk/mir/marsyas/Median">
+    <dc:description>Median calculate the median of each row of observations</dc:description>
     <rdfs:subClassOf rdf:resource="http://sovarr.c4dm.eecs.qmul.ac.uk/mir/marsyas/StatisticalFunction"/>
-    <dc:description>Perform Principal Component Analysis Perform Principal Component Analysis (PCA) on all samples of the incoming realvec of data. The correlation method is taken, with a correlation matrix computed over all samples within the single input realvec. Eigenvalue/Eigenvector calculation is by the QL algorithm (ie. not suitable when the correlation matrix is singular or near singular). Output is the set of input samples projected onto the top "npc" (a MarSystem control) principal components.</dc:description>
     <rdf:type rdf:resource="https://w3id.org/afo/onto/1.1#AudioFeature"/>
   </rdf:Description>
-  <rdf:Description rdf:about="http://sovarr.c4dm.eecs.qmul.ac.uk/mir/marsyas/AimVQ">
-    <rdf:type rdf:resource="https://w3id.org/afo/onto/1.1#AudioFeature"/>
+  <rdf:Description rdf:about="http://sovarr.c4dm.eecs.qmul.ac.uk/mir/marsyas/AimHCL2">
     <rdfs:subClassOf rdf:resource="http://sovarr.c4dm.eecs.qmul.ac.uk/mir/marsyas/AuditoryImageModel"/>
-    <dc:description>Vector quantization for dense to sparse features Author : Thomas Walters &lt;tom@acousticscale.org&gt; Ported to Marsyas by Steven Ness &lt;sness@sness.net&gt; The original source code for these functions in AIM-C can be found at: http://code.google.com/p/aimc/</dc:description>
-  </rdf:Description>
-  <rdf:Description rdf:about="http://sovarr.c4dm.eecs.qmul.ac.uk/mir/marsyas/ZeroCrossings">
-    <dc:description>Time-domain ZeroCrossings Basically counts the number of times the input signal crosses the zero line.</dc:description>
-    <rdfs:subClassOf rdf:resource="http://sovarr.c4dm.eecs.qmul.ac.uk/mir/marsyas/Analysis"/>
     <rdf:type rdf:resource="https://w3id.org/afo/onto/1.1#AudioFeature"/>
+    <dc:description>Halfwave rectification, compression and lowpass filtering Author Thomas Walters &lt;tom@acousticscale.org&gt; Ported to Marsyas by Steven Ness &lt;sness@sness.net&gt; Made more Marsyas like by George Tzanetakis The original source code for these functions in AIM-C can be found at: http://code.google.com/p/aimc/</dc:description>
   </rdf:Description>
-  <rdf:Description rdf:about="http://sovarr.c4dm.eecs.qmul.ac.uk/mir/marsyas/SpectrumDescriptor">
-    <rdfs:subClassOf rdf:resource="http://sovarr.c4dm.eecs.qmul.ac.uk/mir/marsyas/Analysis"/>
-    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
-  </rdf:Description>
-  <rdf:Description rdf:about="http://sovarr.c4dm.eecs.qmul.ac.uk/mir/marsyas/Rms">
+  <rdf:Description rdf:about="http://sovarr.c4dm.eecs.qmul.ac.uk/mir/marsyas/RunningAutocorrelation">
     <rdf:type rdf:resource="https://w3id.org/afo/onto/1.1#AudioFeature"/>
-    <dc:description>Rms energy of realvec Simple MarSystem example. Calculate the RMS energy of a realvec</dc:description>
+    <dc:description>Running calculation (across slices) of the autocorrelation values. This MarSystem calculates the autocorrelation function of the input signal defined by successive input slices. Unlike the AutoCorrelation MarSystem, the calculations are done across slice boundaries in a seamless fashion (RunningAutocorrelation keeps an internal buffer of the appropriate number of samples from previous slices to implement this feature). Calculations are done in time domain for time lags from 0 to a user defined maximum lag (in number of samples). Note that this assumes that the input slices are non overlapping slices. The autocorrelation values are laid out in the output slice along the time/samples dimension from lag zero to the maximum lag. Multiple input observation channels are supported. For example, if there are two input channels and the maximum lag is 4, the output slice will have two rows and five (not four) columns: \f[\begin{array}{ccccc} R_{xx}[0] &amp; R_{xx}[1] &amp; R_{xx}[2] &amp; R_{xx}[3] &amp; R_{xx}[4] \\ R_{yy}[0] &amp; R_{yy}[1] &amp; R_{yy}[2] &amp; R_{yy}[3] &amp; R_{yy}[4] \\ \end{array}\f] with \f$R_{xx}[n]\f$ the autocorrelation of the first channel for lag \f$n\f$ and \f$R_{yy}[n]\f$ the autocorrelation of the second channel. TODO: support overlap between slices (e.g. provide a control for skipping a certain amount of samples). Controls: - \b mrs_natural/maxLag: the maximum time lag (in samples) to calculate - \b mrs_bool/normalize: normalize the autocorrelation values on the value for lag = 0 (which is the energy of the signal). Note that the autocorrelation value for lag 0 will consequently be always 1 (unless the input signal is 0 everywhere). - \b mrs_bool/doNotNormalizeForLag0: when normalizing the autocorrelation values, do not normalize the value for lag 0. - \b mrs_bool/clear: clear the internal buffers to start fresh. - \b mrs_bool/unfoldToObservations: instead of putting the autocorrelation values along the time/samples axis in the slice, they can also be laid out along the observation axis. Using the example from above, the output slice will have one column and 10 rows with values \f$R_{xx}[0], R_{xx}[1], \ldots, R_{xx}[4], R_{yy}[0], R_{yy}[1], \ldots, R_{yy}[4] \f$</dc:description>
+    <rdfs:subClassOf rdf:resource="http://sovarr.c4dm.eecs.qmul.ac.uk/mir/marsyas/Analysis"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://sovarr.c4dm.eecs.qmul.ac.uk/mir/marsyas/MaxMin">
+    <dc:description>Calculate the maximum and minimum values for each observation signal (per slice). For each observation channel in each given slice, the maximum and minimum values is calculated. This MarSystem has no extra controls.</dc:description>
+    <rdf:type rdf:resource="https://w3id.org/afo/onto/1.1#AudioFeature"/>
     <rdfs:subClassOf rdf:resource="http://sovarr.c4dm.eecs.qmul.ac.uk/mir/marsyas/StatisticalFunction"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://sovarr.c4dm.eecs.qmul.ac.uk/mir/marsyas/TriangularFilterBank">
+    <dc:description>Triangular FilterBank Takes as input the N/2+1 spectrum Magnitude points output by PowerSpectrum. For example it can be used to compute a Mel-scale or Constant-Q filterbank. \see Spectrum, PowerSpectrum Controls: - \b mrs_natural/coefficients [w]: the number of cepstral coefficients to calculate.</dc:description>
+    <rdf:type rdf:resource="https://w3id.org/afo/onto/1.1#AudioFeature"/>
+    <rdfs:subClassOf rdf:resource="http://sovarr.c4dm.eecs.qmul.ac.uk/mir/marsyas/SpectrumDescriptor"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://sovarr.c4dm.eecs.qmul.ac.uk/mir/marsyas/Spectrum2Mel">
+    <dc:description>Convert spectrum magnitude (e.g. output from PowerSpectrum MarSystem) into Mel frequency scale. In order to duplicate the mel matrix in Slaney's mfcc.m use the following parameters: - fftsize = 512 - srate = 8000Hz - melBands = 40 - bandWidth = 1.0 - bandLowEdge = 133.33 - bandHighEdge = 6855.5 - constAmp = false Based in the fft2melmx.m MATLAB script by Dan Ellis: http://labrosa.ee.columbia.edu/projects/coversongs/ Controls: - \b mrs_natural/melBands [w] : sets the number of Mel bands to output (default = 40, i.e. one per bark) - \b mrs_real/bandWidth [w] : sets the constant width of each band relative to standard Mel (default 1.0) - \b mrs_real/bandLowEdge [w] : sets the frequency (in Hz) of the lowest band edge (default 0.0, but 133.33 is a common standard (to skip LF)) - \b mrs_real/bandHighEdge [w] : sets frequency in Hz of upper edge (default audio srate/2) - \b mrs_bool/htkMel [w] : use HTK's version of the mel curve, not Slaney's - \b mrs_bool/constAmp [w] : make integration windows peak at 1, not sum to 1</dc:description>
+    <rdfs:subClassOf rdf:resource="http://sovarr.c4dm.eecs.qmul.ac.uk/mir/marsyas/SpectrumDescriptor"/>
+    <rdf:type rdf:resource="https://w3id.org/afo/onto/1.1#AudioFeature"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://sovarr.c4dm.eecs.qmul.ac.uk/mir/marsyas/SNR">
+    <rdfs:subClassOf rdf:resource="http://sovarr.c4dm.eecs.qmul.ac.uk/mir/marsyas/StatisticalFunction"/>
+    <dc:description>Compute SNR and variations Computes the SNR between two mono audio signals. One signal is observation 0 and the other is observation 1. The output is: observation 0 is the Signal/Noise ratio in dB 10 * log10(\frac{\sum A^2}{\sum A-B}) observation 1 is the SNR with optimized gain factor 10 * log10(\frac{1}{1 - (\frac{sum A B}{\sqrt{\sum A^2 \sum B^2}})}) Controls: - \b mrs_string/mode [rw] : sets the gain multiplier.</dc:description>
+    <rdf:type rdf:resource="https://w3id.org/afo/onto/1.1#AudioFeature"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://sovarr.c4dm.eecs.qmul.ac.uk/mir/marsyas/EnhADRess">
+    <dc:description>Azimuth Discrimination and Resynthesis (EnhADRess) implementation, which takes a stereo input (i.e. input is expected to be the output of a parallel of two Spectrum MarSystems, one for each stereo channel), and outputs the magnitudes, phases and panning indexes for N/2+1 bins, stacked vertically: [Mag] [Phases] [Pan] This enhanced version of the ADRess algorithm was proposed by Cooney et al, "An Enhanced implemantation of the ADRess Music Source Separation Algorithm", 121st AES Convention, October 2006.</dc:description>
+    <rdf:type rdf:resource="https://w3id.org/afo/onto/1.1#AudioFeature"/>
+    <rdfs:subClassOf rdf:resource="http://sovarr.c4dm.eecs.qmul.ac.uk/mir/marsyas/AzimuthDiscriminationandResynthesis"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://sovarr.c4dm.eecs.qmul.ac.uk/mir/marsyas/StereoSpectrumFeatures">
+    <rdf:type rdf:resource="https://w3id.org/afo/onto/1.1#AudioFeature"/>
+    <rdfs:subClassOf rdf:resource="http://sovarr.c4dm.eecs.qmul.ac.uk/mir/marsyas/SpectrumDescriptor"/>
+    <dc:description>StereoSpectrumFeatures capture panning information After computing the Stereo Spectrum we can summarize it by extracting features using the StereoSpectrumFeatures.</dc:description>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://sovarr.c4dm.eecs.qmul.ac.uk/mir/marsyas/StereoSpectrumSources">
+    <dc:description>StereoSpectrumSources estimates the number of sources placed into different stereo positions. After computing the Stereo Spectrum we can try to estimate the number of sources playing in different stereo positions.</dc:description>
+    <rdfs:subClassOf rdf:resource="http://sovarr.c4dm.eecs.qmul.ac.uk/mir/marsyas/SpectrumDescriptor"/>
+    <rdf:type rdf:resource="https://w3id.org/afo/onto/1.1#AudioFeature"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://sovarr.c4dm.eecs.qmul.ac.uk/mir/marsyas/BeatPhase">
+    <rdf:type rdf:resource="https://w3id.org/afo/onto/1.1#AudioFeature"/>
+    <rdfs:subClassOf rdf:resource="http://sovarr.c4dm.eecs.qmul.ac.uk/mir/marsyas/TempoDetection"/>
+    <dc:description>Given a periodicity calculate best matching phase</dc:description>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://sovarr.c4dm.eecs.qmul.ac.uk/mir/marsyas/MinArgMin">
+    <rdf:type rdf:resource="https://w3id.org/afo/onto/1.1#AudioFeature"/>
+    <rdfs:subClassOf rdf:resource="http://sovarr.c4dm.eecs.qmul.ac.uk/mir/marsyas/StatisticalFunction"/>
+    <dc:description>Calculate k minimums and their positions The output is : min1, argmin1, min2, argmin2, ....</dc:description>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://sovarr.c4dm.eecs.qmul.ac.uk/mir/marsyas/ADRess">
+    <rdf:type rdf:resource="https://w3id.org/afo/onto/1.1#AudioFeature"/>
+    <dc:description>Azimuth Discrimination and Resynthesis (ADRess) implementation, which takes a stereo input (i.e. input is expected to be the output of a parallel of two Spectrum MarSystems, one for each stereo channel), and outputs the phase vector and frequency dependent nulls matrix for each channel using the following format: [bin_phases_l][AZl] [bin_phases_r][AZr] This algorithm was proposed by Dan Barry et al at the DAfX04, "Sound Source Separation: azimuth discrimination and resynthesis". The algorithm exploits the use of pan pot as a means to achieve image localisation within stereophonic recordings, assuming only an interaural intensity difference exists between left and right channels for a single source. A gain scaling and phase cancellation technique is then used to expose frequency dependent nulls across the azimuth domain, from which source separation and resynthesis may be carried out. Controls: - \b mrs_natural/beta [w] : Sets the azimuth resolution</dc:description>
+    <rdfs:subClassOf rdf:resource="http://sovarr.c4dm.eecs.qmul.ac.uk/mir/marsyas/AzimuthDiscriminationandResynthesis"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://sovarr.c4dm.eecs.qmul.ac.uk/mir/marsyas/Power">
+    <rdf:type rdf:resource="https://w3id.org/afo/onto/1.1#AudioFeature"/>
+    <rdfs:subClassOf rdf:resource="http://sovarr.c4dm.eecs.qmul.ac.uk/mir/marsyas/StatisticalFunction"/>
+    <dc:description>compute the RMS Power of the input observations into one column</dc:description>
   </rdf:Description>
   <rdf:Description rdf:about="http://sovarr.c4dm.eecs.qmul.ac.uk/mir/marsyas/TempoDetection">
     <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
     <rdfs:subClassOf rdf:resource="http://sovarr.c4dm.eecs.qmul.ac.uk/mir/marsyas/Analysis"/>
   </rdf:Description>
-  <rdf:Description rdf:about="http://sovarr.c4dm.eecs.qmul.ac.uk/mir/marsyas/Flux">
-    <dc:description>Flux calculate the flux between the current and prev. spectrum (e.g. output of PowerSpectrum) The flux is defined as the norm of the difference vector between two successive magnitue/power spectra, although different implementations are possible. Controls: - \b mrs_string/mode [w]: select from the different available implementations for Flux: "marsyas" and "DixonDAFX06" - \b mrs_bool/reset [rw] : clear and reset the memory buffer</dc:description>
+  <rdf:Description rdf:about="http://sovarr.c4dm.eecs.qmul.ac.uk/mir/marsyas/Spectrum2Chroma">
     <rdf:type rdf:resource="https://w3id.org/afo/onto/1.1#AudioFeature"/>
     <rdfs:subClassOf rdf:resource="http://sovarr.c4dm.eecs.qmul.ac.uk/mir/marsyas/SpectrumDescriptor"/>
-  </rdf:Description>
-  <rdf:Description rdf:about="http://sovarr.c4dm.eecs.qmul.ac.uk/mir/marsyas/Kurtosis">
-    <rdf:type rdf:resource="https://w3id.org/afo/onto/1.1#AudioFeature"/>
-    <rdfs:subClassOf rdf:resource="http://sovarr.c4dm.eecs.qmul.ac.uk/mir/marsyas/StatisticalFunction"/>
-    <dc:description>Kurtosis Calculate the Kurtosis of the input observations. Typically used for characterizing the magnitude spectrum.</dc:description>
-  </rdf:Description>
-  <rdf:Description rdf:about="http://sovarr.c4dm.eecs.qmul.ac.uk/mir/marsyas/BeatPhase">
-    <dc:description>Given a periodicity calculate best matching phase</dc:description>
-    <rdfs:subClassOf rdf:resource="http://sovarr.c4dm.eecs.qmul.ac.uk/mir/marsyas/TempoDetection"/>
-    <rdf:type rdf:resource="https://w3id.org/afo/onto/1.1#AudioFeature"/>
-  </rdf:Description>
-  <rdf:Description rdf:about="http://sovarr.c4dm.eecs.qmul.ac.uk/mir/marsyas/AimLocalMax">
-    <rdfs:subClassOf rdf:resource="http://sovarr.c4dm.eecs.qmul.ac.uk/mir/marsyas/AuditoryImageModel"/>
-    <rdf:type rdf:resource="https://w3id.org/afo/onto/1.1#AudioFeature"/>
-    <dc:description>Local maximum strobe criterion: decaying threshold with timeout Author : Thomas Walters &lt;tom@acousticscale.org&gt; Ported to Marsyas by Steven Ness &lt;sness@sness.net&gt; The original source code for these functions in AIM-C can be found at: http://code.google.com/p/aimc/</dc:description>
-  </rdf:Description>
-  <rdf:Description rdf:about="http://sovarr.c4dm.eecs.qmul.ac.uk/mir/marsyas/SNR">
-    <rdf:type rdf:resource="https://w3id.org/afo/onto/1.1#AudioFeature"/>
-    <dc:description>Compute SNR and variations Computes the SNR between two mono audio signals. One signal is observation 0 and the other is observation 1. The output is: observation 0 is the Signal/Noise ratio in dB 10 * log10(\frac{\sum A^2}{\sum A-B}) observation 1 is the SNR with optimized gain factor 10 * log10(\frac{1}{1 - (\frac{sum A B}{\sqrt{\sum A^2 \sum B^2}})}) Controls: - \b mrs_string/mode [rw] : sets the gain multiplier.</dc:description>
-    <rdfs:subClassOf rdf:resource="http://sovarr.c4dm.eecs.qmul.ac.uk/mir/marsyas/StatisticalFunction"/>
-  </rdf:Description>
-  <rdf:Description rdf:about="http://sovarr.c4dm.eecs.qmul.ac.uk/mir/marsyas/OnsetDetection">
-    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
-    <rdfs:subClassOf rdf:resource="http://sovarr.c4dm.eecs.qmul.ac.uk/mir/marsyas/Analysis"/>
+    <dc:description>Convert spectrum magnitude (e.g. output from PowerSpectrum MarSystem) into a Chroma vector representation. Based in the fft2chromamx.m MATLAB script by Dan Ellis: http://www.ee.columbia.edu/~dpwe/resources/matlab/chroma-ansyn/#1 Controls: - \b mrs_natural/nbins [w] : sets the number of chroma bins to output (default = 12, i.e. chromatic diatonic) - \b mrs_real/middleAfreq [w] : sets the frequency (in Hz) to be used for the middle A pitch (A4) - \b mrs_real/weightCenterFreq [w] : sets the Gaussian weighting center frequency (in Hz) - \b mrs_real/weightStdDev [w] : sets the Gaussian weighting StdDev (in octaves)</dc:description>
   </rdf:Description>
   <rdf:Description rdf:about="http://sovarr.c4dm.eecs.qmul.ac.uk/mir/marsyas/StatisticalFunction">
     <rdfs:subClassOf rdf:resource="http://sovarr.c4dm.eecs.qmul.ac.uk/mir/marsyas/Analysis"/>
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://sovarr.c4dm.eecs.qmul.ac.uk/mir/marsyas/EnhADRessStereoSpectrum">
+    <rdfs:subClassOf rdf:resource="http://sovarr.c4dm.eecs.qmul.ac.uk/mir/marsyas/AzimuthDiscriminationandResynthesis"/>
+    <dc:description>Takes the output of the enhADRess and outputs the panning coefficient for each spectral bin (N/2+1 bins).</dc:description>
+    <rdf:type rdf:resource="https://w3id.org/afo/onto/1.1#AudioFeature"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://sovarr.c4dm.eecs.qmul.ac.uk/mir/marsyas/AimGammatone">
+    <rdfs:subClassOf rdf:resource="http://sovarr.c4dm.eecs.qmul.ac.uk/mir/marsyas/AuditoryImageModel"/>
+    <rdf:type rdf:resource="https://w3id.org/afo/onto/1.1#AudioFeature"/>
+    <dc:description>Slaney's gammatone filterbank Author : Thomas Walters &lt;tom@acousticscale.org&gt; Ported to Marsyas by Steven Ness &lt;sness@sness.net&gt; This is the version of the IIR gammatone used in Slaney's Auditory toolbox. The original verison as described in Apple Tech. Report #35 has a problem with the high-order coefficients at low centre frequencies and high sample rates. Since it is important that AIM-C can deal with these cases (for example for the Gaussian features), I've reiplemeted Slaney's alternative version which uses a cascade of four second-order filters in place of the eighth-order filter. The original source code for these functions in AIM-C can be found at: http://code.google.com/p/aimc/</dc:description>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://sovarr.c4dm.eecs.qmul.ac.uk/mir/marsyas/Yin">
+    <rdf:type rdf:resource="https://w3id.org/afo/onto/1.1#AudioFeature"/>
+    <rdfs:subClassOf rdf:resource="http://sovarr.c4dm.eecs.qmul.ac.uk/mir/marsyas/PitchDetection"/>
+    <dc:description>Pitch detection using the YIN algorithm This algorithm was developped by A. de Cheveigne and H. Kawahara and published in: De Cheveigne, A., Kawahara, H. (2002) "YIN, a fundamental frequency estimator for speech and music", J. Acoust. Soc. Am. 111, 1917-1930. See http://recherche.ircam.fr/equipes/pcm/pub/people/cheveign.html This code was adapted from aubio (http://aubio.org) by sness. THIS MARSYSTEM IS VERY SIMILAR TO AUBIO_YIN, BUT DO NOT DELETE IT BECAUSE I NEED IT. - Graham Controls: - \b mrs_real/tolerance [w] : sets the tolerance of the yin algorithm - \b mrs_real/frequency_min [w] : limits the search to frequencies above or equal to this - \b mrs_real/frequency_max [w] : limits the search to frequencies below or equal to this (set to 0 to disable)</dc:description>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://sovarr.c4dm.eecs.qmul.ac.uk/mir/marsyas/Analysis">
     <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
   </rdf:Description>
   <rdf:Description rdf:about="http://sovarr.c4dm.eecs.qmul.ac.uk/mir/marsyas/BeatHistogram">
@@ -71,323 +126,268 @@
     <rdf:type rdf:resource="https://w3id.org/afo/onto/1.1#AudioFeature"/>
     <dc:description>BeatHistogram Calculate Beat Histogram. The input should be the autocorrelation of either the time waveform or some kind of onset detection function.</dc:description>
   </rdf:Description>
-  <rdf:Description rdf:about="http://sovarr.c4dm.eecs.qmul.ac.uk/mir/marsyas/MeanAbsoluteDeviation">
-    <dc:description>Calculates the mean absolute deviation</dc:description>
-    <rdfs:subClassOf rdf:resource="http://sovarr.c4dm.eecs.qmul.ac.uk/mir/marsyas/StatisticalFunction"/>
+  <rdf:Description rdf:about="http://sovarr.c4dm.eecs.qmul.ac.uk/mir/marsyas/ZeroCrossings">
     <rdf:type rdf:resource="https://w3id.org/afo/onto/1.1#AudioFeature"/>
-  </rdf:Description>
-  <rdf:Description rdf:about="">
-    <owl:versionInfo>Version 0.1</owl:versionInfo>
-    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Ontology"/>
-    <dc:title>Marsyas Ontology</dc:title>
-    <dc:description>This is an ontology derived from Marsyas feature extraction tools for the Audio Features engineering process</dc:description>
-  </rdf:Description>
-  <rdf:Description rdf:about="http://sovarr.c4dm.eecs.qmul.ac.uk/mir/marsyas/AutoCorrelation">
-    <rdfs:subClassOf rdf:resource="http://sovarr.c4dm.eecs.qmul.ac.uk/mir/marsyas/Analysis"/>
-    <dc:description>Compute the generalized autocorrelation of input window Computes the generalized autocorrelation (with optional magnitude compression) using the Fast Fourier Transform (FFT). Controls: - \b mrs_bool/aliasedOutput [w] : by default, this control is set to true and the output of AutoCorrelation will be an alised time domain signal (as used by the original Marsyas0.1 code implemented by George Tzanetakis - MUST CHECK IF THIS MAKES SENSE!). Setting this control to false, the FFTs will be computed using the next power of 2 of the inSamples*2+1, which avoids alising in the iFFT step. In this mode, only the first inSamples of the autocorrleation function will be output (since the remaining ones are mirrored versions or zero valued). - \b mrs_bool/setr0to1" [w]: if set to true, the output will be normalized so that r_xx(0) = 1 Had to use a weird name because there already was a normalize control [AL]</dc:description>
-    <rdf:type rdf:resource="https://w3id.org/afo/onto/1.1#AudioFeature"/>
-  </rdf:Description>
-  <rdf:Description rdf:about="http://sovarr.c4dm.eecs.qmul.ac.uk/mir/marsyas/ADRess">
-    <rdf:type rdf:resource="https://w3id.org/afo/onto/1.1#AudioFeature"/>
-    <rdfs:subClassOf rdf:resource="http://sovarr.c4dm.eecs.qmul.ac.uk/mir/marsyas/AzimuthDiscriminationandResynthesis"/>
-    <dc:description>Azimuth Discrimination and Resynthesis (ADRess) implementation, which takes a stereo input (i.e. input is expected to be the output of a parallel of two Spectrum MarSystems, one for each stereo channel), and outputs the phase vector and frequency dependent nulls matrix for each channel using the following format: [bin_phases_l][AZl] [bin_phases_r][AZr] This algorithm was proposed by Dan Barry et al at the DAfX04, "Sound Source Separation: azimuth discrimination and resynthesis". The algorithm exploits the use of pan pot as a means to achieve image localisation within stereophonic recordings, assuming only an interaural intensity difference exists between left and right channels for a single source. A gain scaling and phase cancellation technique is then used to expose frequency dependent nulls across the azimuth domain, from which source separation and resynthesis may be carried out. Controls: - \b mrs_natural/beta [w] : Sets the azimuth resolution</dc:description>
-  </rdf:Description>
-  <rdf:Description rdf:about="http://sovarr.c4dm.eecs.qmul.ac.uk/mir/marsyas/PowerToAverageRatio">
-    <dc:description>PowerToAverageRatio (or Power-to-Average Ratio) of a window This calculates the PAR for a complete window of samples; it is similar to SCF (Spectral Crest Factor), however SCF calculates the PAR in various frequency bands of observations.</dc:description>
-    <rdfs:subClassOf rdf:resource="http://sovarr.c4dm.eecs.qmul.ac.uk/mir/marsyas/SpectrumDescriptor"/>
-    <rdf:type rdf:resource="https://w3id.org/afo/onto/1.1#AudioFeature"/>
-  </rdf:Description>
-  <rdf:Description rdf:about="http://sovarr.c4dm.eecs.qmul.ac.uk/mir/marsyas/MFCC">
-    <rdf:type rdf:resource="https://w3id.org/afo/onto/1.1#AudioFeature"/>
-    <rdfs:subClassOf rdf:resource="http://sovarr.c4dm.eecs.qmul.ac.uk/mir/marsyas/SpectrumDescriptor"/>
-    <dc:description>MFCC Mel-Frequency Cepstral Coefficients. Takes as input the N/2+1 spectrum Magnitude points output by PowerSpectrum. Mel-Frequency cepstral coefficients are features frequently used in Speech Recognition. The code is based on the corresponding function in the Auditory Toolbox by Malcolm Slaney. \see Spectrum, PowerSpectrum Controls: - \b mrs_natural/coefficients [w]: the number of cepstral coefficients to calculate.</dc:description>
-  </rdf:Description>
-  <rdf:Description rdf:about="http://sovarr.c4dm.eecs.qmul.ac.uk/mir/marsyas/PitchDiff">
-    <rdfs:subClassOf rdf:resource="http://sovarr.c4dm.eecs.qmul.ac.uk/mir/marsyas/PitchDetection"/>
-    <rdf:type rdf:resource="https://w3id.org/afo/onto/1.1#AudioFeature"/>
-    <dc:description>Difference between detected and expected pitch Place this in a series after Yin (or any other pitch-detection MarSystem), and feed it the expected pitch as a control. Outputs the difference as a midi pitch value. Controls: - \b mrs_real/expectedPitch [w] : expected pitch - \b mrs_bool/ignoreOctaves [w] : useful if the pitch detection algorithm has octave errors, but is otherwise relatively accurate (default false) - \b mrs_bool/absoluteValue [w] : outputs the absolute difference (default false)</dc:description>
-  </rdf:Description>
-  <rdf:Description rdf:about="http://sovarr.c4dm.eecs.qmul.ac.uk/mir/marsyas/Rolloff">
-    <rdfs:subClassOf rdf:resource="http://sovarr.c4dm.eecs.qmul.ac.uk/mir/marsyas/SpectrumDescriptor"/>
-    <dc:description>Rolloff of each time slice of observations Rolloff computes the rolloff of the observations for each time samle. It is defined as the frequency for which the sum of magnitudes of its lower frequencies are equal to percentage of the sum of magnitudes of its higher frequencies.</dc:description>
-    <rdf:type rdf:resource="https://w3id.org/afo/onto/1.1#AudioFeature"/>
-  </rdf:Description>
-  <rdf:Description rdf:about="http://sovarr.c4dm.eecs.qmul.ac.uk/mir/marsyas/ADRessStereoSpectrum">
-    <dc:description>Takes the output of the ADRess (i.e. the panning-frequency maps) and outputs the panning coefficient for each spectral bin (N/2+1 bins).</dc:description>
-    <rdf:type rdf:resource="https://w3id.org/afo/onto/1.1#AudioFeature"/>
-    <rdfs:subClassOf rdf:resource="http://sovarr.c4dm.eecs.qmul.ac.uk/mir/marsyas/AzimuthDiscriminationandResynthesis"/>
-  </rdf:Description>
-  <rdf:Description rdf:about="http://sovarr.c4dm.eecs.qmul.ac.uk/mir/marsyas/StandardDeviation">
-    <rdf:type rdf:resource="https://w3id.org/afo/onto/1.1#AudioFeature"/>
-    <rdfs:subClassOf rdf:resource="http://sovarr.c4dm.eecs.qmul.ac.uk/mir/marsyas/StatisticalFunction"/>
-    <dc:description>Standard Deviation of each row of observations Calculates the standard deviation of each row of observations. The resulting standard deviations are returned as a column vector.</dc:description>
-  </rdf:Description>
-  <rdf:Description rdf:about="http://sovarr.c4dm.eecs.qmul.ac.uk/mir/marsyas/CrossCorrelation">
-    <dc:description>Computes the cross correlation of an input. Accepts N observations and returns N-1 observations, with each observation being the cross correlation of the inputs n and n-1. Controls: "mrs_string/mode" : This control sets the type of cross correlation. "general" is the default, and will compute the generalized cross correlation. "phat" will compute the generalized cross correlation with phase transform "ml" will compute a maximum likelihood cross correlation. This works well specifically for time delay estimation in noisy or reverberant environments. Note: inSamples should be 2^k or fft will not work properly. \author Gabrielle Odowichuk</dc:description>
-    <rdf:type rdf:resource="https://w3id.org/afo/onto/1.1#AudioFeature"/>
-    <rdfs:subClassOf rdf:resource="http://sovarr.c4dm.eecs.qmul.ac.uk/mir/marsyas/StatisticalFunction"/>
-  </rdf:Description>
-  <rdf:Description rdf:about="http://sovarr.c4dm.eecs.qmul.ac.uk/mir/marsyas/ADRessSpectrum">
-    <dc:description>Takes the output of the ADRess (i.e. the stereo azimuth-frequency maps) and outputs a single channel spectrum of the part of the freq-azimuth plane selected by the d and H controls. This can then be inverse transformed back into time domain for resynthesis purposes. Controls: - \b mrs_real/d [w] : value between 0.0~1.0, used for selecting the portion of the azimuth-frequency plane to be extracted - \b mrs_real/H [w] : sets the azimuth subspace width (in percentage of total width of the azimuth plane)</dc:description>
-    <rdf:type rdf:resource="https://w3id.org/afo/onto/1.1#AudioFeature"/>
-    <rdfs:subClassOf rdf:resource="http://sovarr.c4dm.eecs.qmul.ac.uk/mir/marsyas/AzimuthDiscriminationandResynthesis"/>
-  </rdf:Description>
-  <rdf:Description rdf:about="http://sovarr.c4dm.eecs.qmul.ac.uk/mir/marsyas/MaxMin">
-    <rdfs:subClassOf rdf:resource="http://sovarr.c4dm.eecs.qmul.ac.uk/mir/marsyas/StatisticalFunction"/>
-    <dc:description>Calculate the maximum and minimum values for each observation signal (per slice). For each observation channel in each given slice, the maximum and minimum values is calculated. This MarSystem has no extra controls.</dc:description>
-    <rdf:type rdf:resource="https://w3id.org/afo/onto/1.1#AudioFeature"/>
-  </rdf:Description>
-  <rdf:Description rdf:about="http://sovarr.c4dm.eecs.qmul.ac.uk/mir/marsyas/PitchDetection">
-    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+    <dc:description>Time-domain ZeroCrossings Basically counts the number of times the input signal crosses the zero line.</dc:description>
     <rdfs:subClassOf rdf:resource="http://sovarr.c4dm.eecs.qmul.ac.uk/mir/marsyas/Analysis"/>
   </rdf:Description>
-  <rdf:Description rdf:about="http://sovarr.c4dm.eecs.qmul.ac.uk/mir/marsyas/PowerSpectrum">
-    <rdf:type rdf:resource="https://w3id.org/afo/onto/1.1#AudioFeature"/>
-    <dc:description>PowerSpectrum computes the magnitude/power of the complex spectrum Computes the magnitude/power/decibels/powerdensity of a complex spectrum (as output from the Spectrum MarSystem - see its documentation for info about the spectrum format used in Marsyas). PowerSpectrum takes N/2+1 complex spectrum bins and computes the corresponding N/2+1 power/magnitude/decibels/powerdensity real values. Controls: - \b mrs_string/spectrumType [w] : choose between "power", "magnitude", "decibels", "logmagnitude" (for 1+log(magnitude*1000), "logmagnitude2" (for 1+log10(magnitude)) and "powerdensity" computations \see Spectrum</dc:description>
-    <rdfs:subClassOf rdf:resource="http://sovarr.c4dm.eecs.qmul.ac.uk/mir/marsyas/SpectrumDescriptor"/>
-  </rdf:Description>
-  <rdf:Description rdf:about="http://sovarr.c4dm.eecs.qmul.ac.uk/mir/marsyas/AimPZFC2">
-    <rdf:type rdf:resource="https://w3id.org/afo/onto/1.1#AudioFeature"/>
-    <dc:description>Time-domain AimPZFC2 Dick Lyon's Pole-Zero Filter Cascade - implemented in C++ by Tom Walters from the AIM-MAT module based on Dick Lyon's code. Ported to Marsyas from AIM-C by Steven Ness (sness@sness.net). AimPZFC2 is a re-write of the AimPZFC to be more Marsyas like. The original source code for these functions in AIM-C can be found at: http://code.google.com/p/aimc/</dc:description>
-    <rdfs:subClassOf rdf:resource="http://sovarr.c4dm.eecs.qmul.ac.uk/mir/marsyas/AuditoryImageModel"/>
-  </rdf:Description>
-  <rdf:Description rdf:about="http://sovarr.c4dm.eecs.qmul.ac.uk/mir/marsyas/AMDF">
-    <rdfs:subClassOf rdf:resource="http://sovarr.c4dm.eecs.qmul.ac.uk/mir/marsyas/PitchDetection"/>
-    <rdf:type rdf:resource="https://w3id.org/afo/onto/1.1#AudioFeature"/>
-    <dc:description>Average Magnitude Difference Function Computer the average magnitude difference function which can then be used for pitch detection by detecting the location of valleys.</dc:description>
-  </rdf:Description>
-  <rdf:Description rdf:about="http://sovarr.c4dm.eecs.qmul.ac.uk/mir/marsyas/Energy">
-    <rdfs:subClassOf rdf:resource="http://sovarr.c4dm.eecs.qmul.ac.uk/mir/marsyas/LoudnessDescriptor"/>
-    <rdf:type rdf:resource="https://w3id.org/afo/onto/1.1#AudioFeature"/>
-    <dc:description>compute the Energy of the input observations into one column</dc:description>
-  </rdf:Description>
-  <rdf:Description rdf:about="http://sovarr.c4dm.eecs.qmul.ac.uk/mir/marsyas/RunningStatistics">
-    <rdfs:subClassOf rdf:resource="http://sovarr.c4dm.eecs.qmul.ac.uk/mir/marsyas/StatisticalFunction"/>
-    <rdf:type rdf:resource="https://w3id.org/afo/onto/1.1#AudioFeature"/>
-    <dc:description>Gathers the running average, variance, standard deviation, etc. Outputs the running average and standard deviation of all the input so far. Controls: - \b mrs_bool/enableMean: enable outputting of the mean values (on by default). - \b mrs_bool/enableStddev: enable outputting of the standard deviation values (on by default). - \b mrs_bool/enableSkewness: enable outputting of the skewness values (off by default). - \b mrs_bool/clear: clear the internal buffers to start fresh. - \b mrs_book/clearPerTick: clear the buffers at the start of each tick. This disables the "running" property of the calculations. \todo: add kurtosis \todo: add option to output running energy (we're calculating it anyway)</dc:description>
-  </rdf:Description>
-  <rdf:Description rdf:about="http://sovarr.c4dm.eecs.qmul.ac.uk/mir/marsyas/MinArgMin">
-    <dc:description>Calculate k minimums and their positions The output is : min1, argmin1, min2, argmin2, ....</dc:description>
+  <rdf:Description rdf:about="http://sovarr.c4dm.eecs.qmul.ac.uk/mir/marsyas/Kurtosis">
     <rdf:type rdf:resource="https://w3id.org/afo/onto/1.1#AudioFeature"/>
     <rdfs:subClassOf rdf:resource="http://sovarr.c4dm.eecs.qmul.ac.uk/mir/marsyas/StatisticalFunction"/>
-  </rdf:Description>
-  <rdf:Description rdf:about="http://sovarr.c4dm.eecs.qmul.ac.uk/mir/marsyas/AimHCL2">
-    <dc:description>Halfwave rectification, compression and lowpass filtering Author Thomas Walters &lt;tom@acousticscale.org&gt; Ported to Marsyas by Steven Ness &lt;sness@sness.net&gt; Made more Marsyas like by George Tzanetakis The original source code for these functions in AIM-C can be found at: http://code.google.com/p/aimc/</dc:description>
-    <rdfs:subClassOf rdf:resource="http://sovarr.c4dm.eecs.qmul.ac.uk/mir/marsyas/AuditoryImageModel"/>
-    <rdf:type rdf:resource="https://w3id.org/afo/onto/1.1#AudioFeature"/>
-  </rdf:Description>
-  <rdf:Description rdf:about="http://sovarr.c4dm.eecs.qmul.ac.uk/mir/marsyas/Median">
-    <dc:description>Median calculate the median of each row of observations</dc:description>
-    <rdfs:subClassOf rdf:resource="http://sovarr.c4dm.eecs.qmul.ac.uk/mir/marsyas/StatisticalFunction"/>
-    <rdf:type rdf:resource="https://w3id.org/afo/onto/1.1#AudioFeature"/>
-  </rdf:Description>
-  <rdf:Description rdf:about="http://sovarr.c4dm.eecs.qmul.ac.uk/mir/marsyas/AimSAI">
-    <dc:description>Stabilised auditory image Author : Thomas Walters &lt;tom@acousticscale.org&gt; Ported to Marsyas by Steven Ness &lt;sness@sness.net&gt; The original source code for these functions in AIM-C can be found at: http://code.google.com/p/aimc/</dc:description>
-    <rdf:type rdf:resource="https://w3id.org/afo/onto/1.1#AudioFeature"/>
-    <rdfs:subClassOf rdf:resource="http://sovarr.c4dm.eecs.qmul.ac.uk/mir/marsyas/AuditoryImageModel"/>
-  </rdf:Description>
-  <rdf:Description rdf:about="http://sovarr.c4dm.eecs.qmul.ac.uk/mir/marsyas/MeddisHairCell">
-    <rdfs:subClassOf rdf:resource="http://sovarr.c4dm.eecs.qmul.ac.uk/mir/marsyas/Analysis"/>
-    <rdf:type rdf:resource="https://w3id.org/afo/onto/1.1#AudioFeature"/>
-    <dc:description>MeddisHairCell for auditory models Directed port from the Auditory toolbox by Malcolm Slaney</dc:description>
-  </rdf:Description>
-  <rdf:Description rdf:about="http://sovarr.c4dm.eecs.qmul.ac.uk/mir/marsyas/LSP">
-    <rdf:type rdf:resource="https://w3id.org/afo/onto/1.1#AudioFeature"/>
-    <rdfs:subClassOf rdf:resource="http://sovarr.c4dm.eecs.qmul.ac.uk/mir/marsyas/SpectrumDescriptor"/>
-    <dc:description>Compute Linear Spectral Pair (LSP) coefficients Takes the output of ::LPC() and calculates the corresponding LSP values. See the LPC class implementation. Cobe by Lus Gustavo Martins - lmartins@inescporto.pt May 2006</dc:description>
-  </rdf:Description>
-  <rdf:Description rdf:about="http://sovarr.c4dm.eecs.qmul.ac.uk/mir/marsyas/LPCC">
-    <rdf:type rdf:resource="https://w3id.org/afo/onto/1.1#AudioFeature"/>
-    <rdfs:subClassOf rdf:resource="http://sovarr.c4dm.eecs.qmul.ac.uk/mir/marsyas/SpectrumDescriptor"/>
-    <dc:description>Convert LPC coefficients to Cepstrum coefficients. This MarSystem is expecting to receive at its input LPC coefficients + Pitch + Power, as output by the LPC MarSystem (see LPC.cpp/.h). It only converts the LPC coefficients to cepstral coefficients and ignores the pitch value received from LPC. Code by: Lus Gustavo Martins - lmartins@inescporto.pt November 2006</dc:description>
-  </rdf:Description>
-  <rdf:Description rdf:about="http://sovarr.c4dm.eecs.qmul.ac.uk/mir/marsyas/AuditoryImageModel">
-    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
-    <rdfs:subClassOf rdf:resource="http://sovarr.c4dm.eecs.qmul.ac.uk/mir/marsyas/Analysis"/>
-  </rdf:Description>
-  <rdf:Description rdf:about="http://sovarr.c4dm.eecs.qmul.ac.uk/mir/marsyas/BeatHistogramFromPeaks">
-    <rdfs:subClassOf rdf:resource="http://sovarr.c4dm.eecs.qmul.ac.uk/mir/marsyas/TempoDetection"/>
-    <rdf:type rdf:resource="https://w3id.org/afo/onto/1.1#AudioFeature"/>
-    <dc:description>BeatHistogramFromPeaks Calculate BeatHistograms from peaks represented as pairs of periodicity/amplitude (typically from an autocorrelation function).</dc:description>
-  </rdf:Description>
-  <rdf:Description rdf:about="http://sovarr.c4dm.eecs.qmul.ac.uk/mir/marsyas/F0Analysis">
-    <rdf:type rdf:resource="https://w3id.org/afo/onto/1.1#AudioFeature"/>
-    <dc:description>Compute F0s in input spectrum \author Matthias Varewyck \date 20090518 Controls: - \b mrs_natural NrOfHarmonics [rw] : nr. of harmonics taken into account (excl. F0) - \b mrs_real F0Weight [rw] : balance between F0 and higher harmonics - \b mrs_real Attenuation [rw] : attenuation of higher harmonics - \b mrs_real Tolerance_ [rw] : tolerance for harmonics to be assigned to F0 - \b mrs_real LowestFo_ [rw] : lowest possible F0 - \b mrs_real ChordEvidence_ [r] : evidence that input spectrum includes chord</dc:description>
-    <rdfs:subClassOf rdf:resource="http://sovarr.c4dm.eecs.qmul.ac.uk/mir/marsyas/PitchDetection"/>
-  </rdf:Description>
-  <rdf:Description rdf:about="http://sovarr.c4dm.eecs.qmul.ac.uk/mir/marsyas/EnhADRess">
-    <rdf:type rdf:resource="https://w3id.org/afo/onto/1.1#AudioFeature"/>
-    <rdfs:subClassOf rdf:resource="http://sovarr.c4dm.eecs.qmul.ac.uk/mir/marsyas/AzimuthDiscriminationandResynthesis"/>
-    <dc:description>Azimuth Discrimination and Resynthesis (EnhADRess) implementation, which takes a stereo input (i.e. input is expected to be the output of a parallel of two Spectrum MarSystems, one for each stereo channel), and outputs the magnitudes, phases and panning indexes for N/2+1 bins, stacked vertically: [Mag] [Phases] [Pan] This enhanced version of the ADRess algorithm was proposed by Cooney et al, "An Enhanced implemantation of the ADRess Music Source Separation Algorithm", 121st AES Convention, October 2006.</dc:description>
-  </rdf:Description>
-  <rdf:Description rdf:about="http://sovarr.c4dm.eecs.qmul.ac.uk/mir/marsyas/StereoSpectrum">
-    <rdf:type rdf:resource="https://w3id.org/afo/onto/1.1#AudioFeature"/>
-    <dc:description>StereoSpectrum computes the panning index for each spectrum bin of a stereo input (i.e. input is expected to be the output of a parallel of two Spectrum MarSystems, one for each stereo channel).</dc:description>
-    <rdfs:subClassOf rdf:resource="http://sovarr.c4dm.eecs.qmul.ac.uk/mir/marsyas/SpectrumDescriptor"/>
-  </rdf:Description>
-  <rdf:Description rdf:about="http://sovarr.c4dm.eecs.qmul.ac.uk/mir/marsyas/PeakInObservation">
-    <rdf:type rdf:resource="https://w3id.org/afo/onto/1.1#AudioFeature"/>
-    <dc:description>Compute peaks in observation vector \author Matthias Varewyck \date 20090518 Controls: - \b mrs_natural/HystLength [rw] : .. - \b mrs_real/HystFactor [rw] : ..</dc:description>
-    <rdfs:subClassOf rdf:resource="http://sovarr.c4dm.eecs.qmul.ac.uk/mir/marsyas/StatisticalFunction"/>
-  </rdf:Description>
-  <rdf:Description rdf:about="http://sovarr.c4dm.eecs.qmul.ac.uk/mir/marsyas/StereoSpectrumFeatures">
-    <dc:description>StereoSpectrumFeatures capture panning information After computing the Stereo Spectrum we can summarize it by extracting features using the StereoSpectrumFeatures.</dc:description>
-    <rdfs:subClassOf rdf:resource="http://sovarr.c4dm.eecs.qmul.ac.uk/mir/marsyas/SpectrumDescriptor"/>
-    <rdf:type rdf:resource="https://w3id.org/afo/onto/1.1#AudioFeature"/>
-  </rdf:Description>
-  <rdf:Description rdf:about="http://sovarr.c4dm.eecs.qmul.ac.uk/mir/marsyas/Spectrum">
-    <dc:description>Compute the complex spectrum of input window Computes the complex spectrum (N/2+1 points) of the input window using the Fast Fourier Transform (FFT). The output is a N-sized column vector (where N is the size of the input audio vector), using the following format: [Re(0), Re(N/2), Re(1), Im(1), Re(2), Im(2), ..., Re(N/2-1), Im(N/2-1)] Note that the DC and Nyquist frequencies only have real part, and are output as the two first coefficients in the vector. Overall, the output spectrum has N/2+1 unique points, corresponding to the positive half of the complex spectrum. \note Only the first observation input channel is processed, the rest (if any) is ignored. \see PowerSpectrum, fft</dc:description>
-    <rdf:type rdf:resource="https://w3id.org/afo/onto/1.1#AudioFeature"/>
-    <rdfs:subClassOf rdf:resource="http://sovarr.c4dm.eecs.qmul.ac.uk/mir/marsyas/SpectrumDescriptor"/>
-  </rdf:Description>
-  <rdf:Description rdf:about="http://sovarr.c4dm.eecs.qmul.ac.uk/mir/marsyas/AimHCL">
-    <rdfs:subClassOf rdf:resource="http://sovarr.c4dm.eecs.qmul.ac.uk/mir/marsyas/AuditoryImageModel"/>
-    <rdf:type rdf:resource="https://w3id.org/afo/onto/1.1#AudioFeature"/>
-    <dc:description>Halfwave rectification, compression and lowpass filtering Author Thomas Walters &lt;tom@acousticscale.org&gt; Ported to Marsyas by Steven Ness &lt;sness@sness.net&gt; The original source code for these functions in AIM-C can be found at: http://code.google.com/p/aimc/</dc:description>
-  </rdf:Description>
-  <rdf:Description rdf:about="http://sovarr.c4dm.eecs.qmul.ac.uk/mir/marsyas/LPC">
-    <rdf:type rdf:resource="https://w3id.org/afo/onto/1.1#AudioFeature"/>
-    <rdfs:subClassOf rdf:resource="http://sovarr.c4dm.eecs.qmul.ac.uk/mir/marsyas/SpectrumDescriptor"/>
-    <dc:description>Compute Warped LPC coefficients, Pitch and Power [STILL UNDER TESTING!]. Linear Prediction Coefficients (LPC). Features commonly used in Speech Recognition research. This class is a modification of the original Marsyas0.1 LPC class. The following differences apply: - order now reflects the LPC order (and returns \&lt;order\&gt; coefficients plus pitch and gain) - It is possible to define a pole-shifting parameter, gamma (default value = 1.0 =&gt; no shifting) - It is possible to define a warping factor, lambda (defualt value = 0.0 =&gt; no warping) Code by Lus Gustavo Martins - lmartins@inescporto.pt May 2006</dc:description>
-  </rdf:Description>
-  <rdf:Description rdf:about="http://sovarr.c4dm.eecs.qmul.ac.uk/mir/marsyas/TriangularFilterBank">
-    <rdfs:subClassOf rdf:resource="http://sovarr.c4dm.eecs.qmul.ac.uk/mir/marsyas/SpectrumDescriptor"/>
-    <dc:description>Triangular FilterBank Takes as input the N/2+1 spectrum Magnitude points output by PowerSpectrum. For example it can be used to compute a Mel-scale or Constant-Q filterbank. \see Spectrum, PowerSpectrum Controls: - \b mrs_natural/coefficients [w]: the number of cepstral coefficients to calculate.</dc:description>
-    <rdf:type rdf:resource="https://w3id.org/afo/onto/1.1#AudioFeature"/>
-  </rdf:Description>
-  <rdf:Description rdf:about="http://sovarr.c4dm.eecs.qmul.ac.uk/mir/marsyas/Spectrum2Mel">
-    <rdfs:subClassOf rdf:resource="http://sovarr.c4dm.eecs.qmul.ac.uk/mir/marsyas/SpectrumDescriptor"/>
-    <rdf:type rdf:resource="https://w3id.org/afo/onto/1.1#AudioFeature"/>
-    <dc:description>Convert spectrum magnitude (e.g. output from PowerSpectrum MarSystem) into Mel frequency scale. In order to duplicate the mel matrix in Slaney's mfcc.m use the following parameters: - fftsize = 512 - srate = 8000Hz - melBands = 40 - bandWidth = 1.0 - bandLowEdge = 133.33 - bandHighEdge = 6855.5 - constAmp = false Based in the fft2melmx.m MATLAB script by Dan Ellis: http://labrosa.ee.columbia.edu/projects/coversongs/ Controls: - \b mrs_natural/melBands [w] : sets the number of Mel bands to output (default = 40, i.e. one per bark) - \b mrs_real/bandWidth [w] : sets the constant width of each band relative to standard Mel (default 1.0) - \b mrs_real/bandLowEdge [w] : sets the frequency (in Hz) of the lowest band edge (default 0.0, but 133.33 is a common standard (to skip LF)) - \b mrs_real/bandHighEdge [w] : sets frequency in Hz of upper edge (default audio srate/2) - \b mrs_bool/htkMel [w] : use HTK's version of the mel curve, not Slaney's - \b mrs_bool/constAmp [w] : make integration windows peak at 1, not sum to 1</dc:description>
-  </rdf:Description>
-  <rdf:Description rdf:about="http://sovarr.c4dm.eecs.qmul.ac.uk/mir/marsyas/SpectralFlatnessAllBands">
-    <rdf:type rdf:resource="https://w3id.org/afo/onto/1.1#AudioFeature"/>
-    <rdfs:subClassOf rdf:resource="http://sovarr.c4dm.eecs.qmul.ac.uk/mir/marsyas/SpectrumDescriptor"/>
-    <dc:description>Calculates a single spectral flatness value. Similar to SFM, but that marsystem splits the observations into bands, whereas this one uses the whole range of observations to generate one number. It may be used to 'narrow in' on a specific range by putting a RemoveObservations marsystem before it.</dc:description>
-  </rdf:Description>
-  <rdf:Description rdf:about="http://sovarr.c4dm.eecs.qmul.ac.uk/mir/marsyas/PeakerOnset">
-    <dc:description>Detects if input contains a onset point PeakerOnset is based on the onset peak picking algorithm presented in: Dixon, S. (2006). Onset detection revisited. In Proc. International Conference on Digital Audio Effects (DAFx), Montreal, Canada. It takes as input an onset function over time (i.e. a row vector with the times series of a onset function like flux) and evaluates a specific point for onset presence, as below: Input = [zzzzzzzzzXyyy] Point "X" at the input will be evaluated. The onsetWinSize control specifies a "look ahead" parameter, i.e. how many samples (represented above as "y") after "X" will be used for evaluating if it is an onset or not (i.e. look ahead samples). Controls: - \b mrs_natrual/lookAheadSamples [w]: specifies the "look ahead" nr of "samples" (the number of "y"s in the above example ) for the detection of an onset at the input. - \b mrs_real/threshold [w]: specifies threshold (in % of local mean) for onset detection - \b mrs_real/confidence [r]: outputs the confidence that point "X" is an onset (it will 0.0 if it is not detected as an onset) - \b mrs_bool/onsetDetected [r]: flags if an onset was detected on point "X".</dc:description>
-    <rdfs:subClassOf rdf:resource="http://sovarr.c4dm.eecs.qmul.ac.uk/mir/marsyas/OnsetDetection"/>
-    <rdf:type rdf:resource="https://w3id.org/afo/onto/1.1#AudioFeature"/>
-  </rdf:Description>
-  <rdf:Description rdf:about="http://sovarr.c4dm.eecs.qmul.ac.uk/mir/marsyas/AbsMax">
-    <dc:description>Calculate the maximum absolute value for each observation signal (per slice). For each observation channel in each given slice, the maximum absolute value is calculated. This MarSystem has no extra controls.</dc:description>
-    <rdfs:subClassOf rdf:resource="http://sovarr.c4dm.eecs.qmul.ac.uk/mir/marsyas/StatisticalFunction"/>
-    <rdf:type rdf:resource="https://w3id.org/afo/onto/1.1#AudioFeature"/>
-  </rdf:Description>
-  <rdf:Description rdf:about="http://sovarr.c4dm.eecs.qmul.ac.uk/mir/marsyas/KeyDetection">
-    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
-    <rdfs:subClassOf rdf:resource="http://sovarr.c4dm.eecs.qmul.ac.uk/mir/marsyas/Analysis"/>
-  </rdf:Description>
-  <rdf:Description rdf:about="http://sovarr.c4dm.eecs.qmul.ac.uk/mir/marsyas/Centroid">
-    <dc:description>Centroid of each time slice of observations Centroid computes the centroid of the observations for each time sample. The center is defined as the normalized first moment (center of gravity) of the observation vector.</dc:description>
-    <rdfs:subClassOf rdf:resource="http://sovarr.c4dm.eecs.qmul.ac.uk/mir/marsyas/StatisticalFunction"/>
-    <rdf:type rdf:resource="https://w3id.org/afo/onto/1.1#AudioFeature"/>
-  </rdf:Description>
-  <rdf:Description rdf:about="http://sovarr.c4dm.eecs.qmul.ac.uk/mir/marsyas/AubioYin">
-    <dc:description>Pitch detection using the YIN algorithm This algorithm was developped by A. de Cheveigne and H. Kawahara and published in: De Cheveigne, A., Kawahara, H. (2002) "YIN, a fundamental frequency estimator for speech and music", J. Acoust. Soc. Am. 111, 1917-1930. See http://recherche.ircam.fr/equipes/pcm/pub/people/cheveign.html This code was adapted from aubio (http://aubio.org) by sness. Controls: - \b mrs_real/tolerance [w] : sets the tolerance of the yin algorithm</dc:description>
-    <rdf:type rdf:resource="https://w3id.org/afo/onto/1.1#AudioFeature"/>
-    <rdfs:subClassOf rdf:resource="http://sovarr.c4dm.eecs.qmul.ac.uk/mir/marsyas/PitchDetection"/>
-  </rdf:Description>
-  <rdf:Description rdf:about="http://sovarr.c4dm.eecs.qmul.ac.uk/mir/marsyas/Power">
-    <rdfs:subClassOf rdf:resource="http://sovarr.c4dm.eecs.qmul.ac.uk/mir/marsyas/StatisticalFunction"/>
-    <rdf:type rdf:resource="https://w3id.org/afo/onto/1.1#AudioFeature"/>
-    <dc:description>compute the RMS Power of the input observations into one column</dc:description>
-  </rdf:Description>
-  <rdf:Description rdf:about="http://sovarr.c4dm.eecs.qmul.ac.uk/mir/marsyas/Spectrum2ACMChroma">
-    <rdfs:subClassOf rdf:resource="http://sovarr.c4dm.eecs.qmul.ac.uk/mir/marsyas/SpectrumDescriptor"/>
-    <dc:description>Transform an (amplitude) spectrum to a chroma profile \author Matthias Varewyck \date 20090518 \todo - Check if parameters are independent on input sample rate (~= 8kHz) - Include check if provided (amplitude) spectrum was correctly computed - Include correct error handling (conform Marsyas rules) - Let the lowest F0 be higher than the diapason - Introduce a highest F0 additional to a lowest F0 - Add "fan in combinator" to simplify actual chroma profile computation This class implements the conversion of an (amplitude) spectrum to a chroma profile as described in "a novel chroma representation of polyphonic music based on multiple pitch tracking techniques" which was presented at the 16th ACM International Conference on Multimedia. The method computes the set of pitches that best explains the salient frequencies present in the (amplitude) spectrum. The method results in (1) a chroma profile and (2) a chord evidence. (1) The chroma profile represents the normalized pitches after they were folded to one octave (2) The chord evidence represents the probability that a chord occurs in the examined frame. For an example, see the function "toy_with_chroma" in the mudbox. Controls: - \b mrs_natural/NrOfHarmonics [rw] : adjust the number of harmonics in F0 detection (should be &gt;0) - \b mrs_real/F0Weight [rw] : adjust the balance between F0 and its harmonics (between 0 and 1) - \b mrs_real/LowestF0 [rw] : adjust the lowest F0 to be detected (between 0 and Nyquist frequency) - \b mrs_real/ChordEvidence [r] : store the chord evidence of the last examined frame</dc:description>
-    <rdf:type rdf:resource="https://w3id.org/afo/onto/1.1#AudioFeature"/>
-  </rdf:Description>
-  <rdf:Description rdf:about="http://sovarr.c4dm.eecs.qmul.ac.uk/mir/marsyas/Spectrum2Chroma">
-    <dc:description>Convert spectrum magnitude (e.g. output from PowerSpectrum MarSystem) into a Chroma vector representation. Based in the fft2chromamx.m MATLAB script by Dan Ellis: http://www.ee.columbia.edu/~dpwe/resources/matlab/chroma-ansyn/#1 Controls: - \b mrs_natural/nbins [w] : sets the number of chroma bins to output (default = 12, i.e. chromatic diatonic) - \b mrs_real/middleAfreq [w] : sets the frequency (in Hz) to be used for the middle A pitch (A4) - \b mrs_real/weightCenterFreq [w] : sets the Gaussian weighting center frequency (in Hz) - \b mrs_real/weightStdDev [w] : sets the Gaussian weighting StdDev (in octaves)</dc:description>
-    <rdf:type rdf:resource="https://w3id.org/afo/onto/1.1#AudioFeature"/>
-    <rdfs:subClassOf rdf:resource="http://sovarr.c4dm.eecs.qmul.ac.uk/mir/marsyas/SpectrumDescriptor"/>
-  </rdf:Description>
-  <rdf:Description rdf:about="http://sovarr.c4dm.eecs.qmul.ac.uk/mir/marsyas/StereoSpectrumSources">
-    <rdfs:subClassOf rdf:resource="http://sovarr.c4dm.eecs.qmul.ac.uk/mir/marsyas/SpectrumDescriptor"/>
-    <rdf:type rdf:resource="https://w3id.org/afo/onto/1.1#AudioFeature"/>
-    <dc:description>StereoSpectrumSources estimates the number of sources placed into different stereo positions. After computing the Stereo Spectrum we can try to estimate the number of sources playing in different stereo positions.</dc:description>
+    <dc:description>Kurtosis Calculate the Kurtosis of the input observations. Typically used for characterizing the magnitude spectrum.</dc:description>
   </rdf:Description>
   <rdf:Description rdf:about="http://sovarr.c4dm.eecs.qmul.ac.uk/mir/marsyas/MaxArgMax">
-    <rdfs:subClassOf rdf:resource="http://sovarr.c4dm.eecs.qmul.ac.uk/mir/marsyas/StatisticalFunction"/>
     <dc:description>Calculate k maximums and their positions The output is : max1, argmax1, max2, argmax2, ....</dc:description>
+    <rdfs:subClassOf rdf:resource="http://sovarr.c4dm.eecs.qmul.ac.uk/mir/marsyas/StatisticalFunction"/>
     <rdf:type rdf:resource="https://w3id.org/afo/onto/1.1#AudioFeature"/>
   </rdf:Description>
-  <rdf:Description rdf:about="http://sovarr.c4dm.eecs.qmul.ac.uk/mir/marsyas/Analysis">
+  <rdf:Description rdf:about="http://sovarr.c4dm.eecs.qmul.ac.uk/mir/marsyas/LoudnessDescriptor">
+    <rdfs:subClassOf rdf:resource="http://sovarr.c4dm.eecs.qmul.ac.uk/mir/marsyas/Analysis"/>
     <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
-  </rdf:Description>
-  <rdf:Description rdf:about="http://sovarr.c4dm.eecs.qmul.ac.uk/mir/marsyas/Yin">
-    <rdfs:subClassOf rdf:resource="http://sovarr.c4dm.eecs.qmul.ac.uk/mir/marsyas/PitchDetection"/>
-    <dc:description>Pitch detection using the YIN algorithm This algorithm was developped by A. de Cheveigne and H. Kawahara and published in: De Cheveigne, A., Kawahara, H. (2002) "YIN, a fundamental frequency estimator for speech and music", J. Acoust. Soc. Am. 111, 1917-1930. See http://recherche.ircam.fr/equipes/pcm/pub/people/cheveign.html This code was adapted from aubio (http://aubio.org) by sness. THIS MARSYSTEM IS VERY SIMILAR TO AUBIO_YIN, BUT DO NOT DELETE IT BECAUSE I NEED IT. - Graham Controls: - \b mrs_real/tolerance [w] : sets the tolerance of the yin algorithm - \b mrs_real/frequency_min [w] : limits the search to frequencies above or equal to this - \b mrs_real/frequency_max [w] : limits the search to frequencies below or equal to this (set to 0 to disable)</dc:description>
-    <rdf:type rdf:resource="https://w3id.org/afo/onto/1.1#AudioFeature"/>
-  </rdf:Description>
-  <rdf:Description rdf:about="http://sovarr.c4dm.eecs.qmul.ac.uk/mir/marsyas/AimGammatone">
-    <dc:description>Slaney's gammatone filterbank Author : Thomas Walters &lt;tom@acousticscale.org&gt; Ported to Marsyas by Steven Ness &lt;sness@sness.net&gt; This is the version of the IIR gammatone used in Slaney's Auditory toolbox. The original verison as described in Apple Tech. Report #35 has a problem with the high-order coefficients at low centre frequencies and high sample rates. Since it is important that AIM-C can deal with these cases (for example for the Gaussian features), I've reiplemeted Slaney's alternative version which uses a cascade of four second-order filters in place of the eighth-order filter. The original source code for these functions in AIM-C can be found at: http://code.google.com/p/aimc/</dc:description>
-    <rdf:type rdf:resource="https://w3id.org/afo/onto/1.1#AudioFeature"/>
-    <rdfs:subClassOf rdf:resource="http://sovarr.c4dm.eecs.qmul.ac.uk/mir/marsyas/AuditoryImageModel"/>
-  </rdf:Description>
-  <rdf:Description rdf:about="http://sovarr.c4dm.eecs.qmul.ac.uk/mir/marsyas/AimSSI">
-    <dc:description>Size-shape image (aka the 'sscAI') Author : Thomas Walters &lt;tom@acousticscale.org&gt; Ported to Marsyas by Steven Ness &lt;sness@sness.net&gt; The original source code for these functions in AIM-C can be found at: http://code.google.com/p/aimc/</dc:description>
-    <rdfs:subClassOf rdf:resource="http://sovarr.c4dm.eecs.qmul.ac.uk/mir/marsyas/AuditoryImageModel"/>
-    <rdf:type rdf:resource="https://w3id.org/afo/onto/1.1#AudioFeature"/>
-  </rdf:Description>
-  <rdf:Description rdf:about="http://sovarr.c4dm.eecs.qmul.ac.uk/mir/marsyas/WaveletPyramid">
-    <rdfs:subClassOf rdf:resource="http://sovarr.c4dm.eecs.qmul.ac.uk/mir/marsyas/SpectrumDescriptor"/>
-    <rdf:type rdf:resource="https://w3id.org/afo/onto/1.1#AudioFeature"/>
-    <dc:description>Pyramid wavelet algorithm Discrete Wavelet Transform (DWT) pyramid algorithm. Based on the Numerical Recipies wavelet code.</dc:description>
   </rdf:Description>
   <rdf:Description rdf:about="http://sovarr.c4dm.eecs.qmul.ac.uk/mir/marsyas/Mean">
     <rdf:type rdf:resource="https://w3id.org/afo/onto/1.1#AudioFeature"/>
     <dc:description>Mean calculate the mean of each row of observations</dc:description>
     <rdfs:subClassOf rdf:resource="http://sovarr.c4dm.eecs.qmul.ac.uk/mir/marsyas/StatisticalFunction"/>
   </rdf:Description>
-  <rdf:Description rdf:about="http://sovarr.c4dm.eecs.qmul.ac.uk/mir/marsyas/EnhADRessStereoSpectrum">
-    <rdf:type rdf:resource="https://w3id.org/afo/onto/1.1#AudioFeature"/>
-    <dc:description>Takes the output of the enhADRess and outputs the panning coefficient for each spectral bin (N/2+1 bins).</dc:description>
-    <rdfs:subClassOf rdf:resource="http://sovarr.c4dm.eecs.qmul.ac.uk/mir/marsyas/AzimuthDiscriminationandResynthesis"/>
-  </rdf:Description>
-  <rdf:Description rdf:about="http://sovarr.c4dm.eecs.qmul.ac.uk/mir/marsyas/Pitch2Chroma">
-    <dc:description>Transform pitch to chroma - input = amplitude spectrum with peaks at frequency bins that represent pitches and values that represent evidences - output = chroma profile with chroma values ordered according to the circle of fifths, i.e. A, E,.. D \author Matthias Varewyck \date 20090518 Controls: - \b mrs_real/SampleRate [rw] : sample rate of the input spectrum - \b mrs_real/LowestPitch [rw] : lowest pitch taken into account - \b mrs_natural/NotesPerOctave [rw] : nr. of notes per octave ([f 2*f]) - \b mrs_natural/NrOfNotes [rw] : total nr. of notes to be taken into account - \b mrs_natural/RefChromaIndex [rw] : index in chroma vector of the ref. pitch (= 440Hz)</dc:description>
-    <rdf:type rdf:resource="https://w3id.org/afo/onto/1.1#AudioFeature"/>
+  <rdf:Description rdf:about="http://sovarr.c4dm.eecs.qmul.ac.uk/mir/marsyas/AubioYin">
+    <dc:description>Pitch detection using the YIN algorithm This algorithm was developped by A. de Cheveigne and H. Kawahara and published in: De Cheveigne, A., Kawahara, H. (2002) "YIN, a fundamental frequency estimator for speech and music", J. Acoust. Soc. Am. 111, 1917-1930. See http://recherche.ircam.fr/equipes/pcm/pub/people/cheveign.html This code was adapted from aubio (http://aubio.org) by sness. Controls: - \b mrs_real/tolerance [w] : sets the tolerance of the yin algorithm</dc:description>
     <rdfs:subClassOf rdf:resource="http://sovarr.c4dm.eecs.qmul.ac.uk/mir/marsyas/PitchDetection"/>
-  </rdf:Description>
-  <rdf:Description rdf:about="http://sovarr.c4dm.eecs.qmul.ac.uk/mir/marsyas/KrumhanslKeyFinder">
     <rdf:type rdf:resource="https://w3id.org/afo/onto/1.1#AudioFeature"/>
-    <rdfs:subClassOf rdf:resource="http://sovarr.c4dm.eecs.qmul.ac.uk/mir/marsyas/KeyDetection"/>
-    <dc:description>Krumhansl-Schmuckler Key-Finding Algorithm Performs simple chord detection using the Krumhansl-Schmuckler Key-Finding Algorithm. The input is a pitch class profile or chroma vector with 12 values one for each chromatic note. Controls:</dc:description>
   </rdf:Description>
-  <rdf:Description rdf:about="http://sovarr.c4dm.eecs.qmul.ac.uk/mir/marsyas/AzimuthDiscriminationandResynthesis">
-    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+  <rdf:Description rdf:about="http://sovarr.c4dm.eecs.qmul.ac.uk/mir/marsyas/AutoCorrelation">
+    <rdf:type rdf:resource="https://w3id.org/afo/onto/1.1#AudioFeature"/>
+    <dc:description>Compute the generalized autocorrelation of input window Computes the generalized autocorrelation (with optional magnitude compression) using the Fast Fourier Transform (FFT). Controls: - \b mrs_bool/aliasedOutput [w] : by default, this control is set to true and the output of AutoCorrelation will be an alised time domain signal (as used by the original Marsyas0.1 code implemented by George Tzanetakis - MUST CHECK IF THIS MAKES SENSE!). Setting this control to false, the FFTs will be computed using the next power of 2 of the inSamples*2+1, which avoids alising in the iFFT step. In this mode, only the first inSamples of the autocorrleation function will be output (since the remaining ones are mirrored versions or zero valued). - \b mrs_bool/setr0to1" [w]: if set to true, the output will be normalized so that r_xx(0) = 1 Had to use a weird name because there already was a normalize control [AL]</dc:description>
     <rdfs:subClassOf rdf:resource="http://sovarr.c4dm.eecs.qmul.ac.uk/mir/marsyas/Analysis"/>
   </rdf:Description>
-  <rdf:Description rdf:about="http://sovarr.c4dm.eecs.qmul.ac.uk/mir/marsyas/RunningAutocorrelation">
-    <rdf:type rdf:resource="https://w3id.org/afo/onto/1.1#AudioFeature"/>
-    <rdfs:subClassOf rdf:resource="http://sovarr.c4dm.eecs.qmul.ac.uk/mir/marsyas/Analysis"/>
-    <dc:description>Running calculation (across slices) of the autocorrelation values. This MarSystem calculates the autocorrelation function of the input signal defined by successive input slices. Unlike the AutoCorrelation MarSystem, the calculations are done across slice boundaries in a seamless fashion (RunningAutocorrelation keeps an internal buffer of the appropriate number of samples from previous slices to implement this feature). Calculations are done in time domain for time lags from 0 to a user defined maximum lag (in number of samples). Note that this assumes that the input slices are non overlapping slices. The autocorrelation values are laid out in the output slice along the time/samples dimension from lag zero to the maximum lag. Multiple input observation channels are supported. For example, if there are two input channels and the maximum lag is 4, the output slice will have two rows and five (not four) columns: \f[\begin{array}{ccccc} R_{xx}[0] &amp; R_{xx}[1] &amp; R_{xx}[2] &amp; R_{xx}[3] &amp; R_{xx}[4] \\ R_{yy}[0] &amp; R_{yy}[1] &amp; R_{yy}[2] &amp; R_{yy}[3] &amp; R_{yy}[4] \\ \end{array}\f] with \f$R_{xx}[n]\f$ the autocorrelation of the first channel for lag \f$n\f$ and \f$R_{yy}[n]\f$ the autocorrelation of the second channel. TODO: support overlap between slices (e.g. provide a control for skipping a certain amount of samples). Controls: - \b mrs_natural/maxLag: the maximum time lag (in samples) to calculate - \b mrs_bool/normalize: normalize the autocorrelation values on the value for lag = 0 (which is the energy of the signal). Note that the autocorrelation value for lag 0 will consequently be always 1 (unless the input signal is 0 everywhere). - \b mrs_bool/doNotNormalizeForLag0: when normalizing the autocorrelation values, do not normalize the value for lag 0. - \b mrs_bool/clear: clear the internal buffers to start fresh. - \b mrs_bool/unfoldToObservations: instead of putting the autocorrelation values along the time/samples axis in the slice, they can also be laid out along the observation axis. Using the example from above, the output slice will have one column and 10 rows with values \f$R_{xx}[0], R_{xx}[1], \ldots, R_{xx}[4], R_{yy}[0], R_{yy}[1], \ldots, R_{yy}[4] \f$</dc:description>
-  </rdf:Description>
-  <rdf:Description rdf:about="http://sovarr.c4dm.eecs.qmul.ac.uk/mir/marsyas/Peaker">
-    <rdf:type rdf:resource="https://w3id.org/afo/onto/1.1#AudioFeature"/>
-    <rdfs:subClassOf rdf:resource="http://sovarr.c4dm.eecs.qmul.ac.uk/mir/marsyas/OnsetDetection"/>
-    <dc:description>Pick peaks out of signal Peaker is used to select peaks(or valleys) from the input vector. Various parameters of the peak selection process can be adjusted. Controls: - \b mrs_real/peakSpacing [w] : expressed in percentage of total vector length and is how much spacing you allow between the peaks - \b mrs_real/peakStrength [w] : threshold compared to the RMS of the vector (should be renamed to peakStrengthRelRms to keep naming consistent, but this might break existing systems) - \b mrs_real/peakStrengthAbs [w] : absolute threshold (might make sense e.g. for normalized spectra) - \b mrs_real/peakStrengthRelMax [w] : threshold compared to global max of the vector (range: 0...1, example: 0.001 if all peaks with a level of more than 60dB below the maximum should be discarded - \b mrs_real/peakStrengthRelThresh [w] : threshold compared to an adaptive threshold of the vector (lp filtered version of the signal); value is a factor that moves threshold up and down, e.g. value = 2 means that the lp filtered signal is moved up by 6dB - \b mrs_real/peakStrengthTreshLpParam [w] : coefficient for the single pole lowpass for computing the adaptive threshold (between 0...1) - \b mrs_natural/peakStart [w] : expressed in absolute positions of the vector and it just to adjust what part of the vector will be considered - \b mrs_natural/peakEnd [w] : expressed in absolute positions of the vector length and it just to adjust what part of the vector will be considered - \b mrs_natural/interpolation [w] : TODO - mlagrange? [!] - \b mrs_real/peakGain [w] : TODO - mlagrange? [!]</dc:description>
-  </rdf:Description>
-  <rdf:Description rdf:about="http://sovarr.c4dm.eecs.qmul.ac.uk/mir/marsyas/LoudnessDescriptor">
-    <rdfs:subClassOf rdf:resource="http://sovarr.c4dm.eecs.qmul.ac.uk/mir/marsyas/Analysis"/>
-    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
-  </rdf:Description>
-  <rdf:Description rdf:about="http://sovarr.c4dm.eecs.qmul.ac.uk/mir/marsyas/AimBoxes">
-    <rdf:type rdf:resource="https://w3id.org/afo/onto/1.1#AudioFeature"/>
+  <rdf:Description rdf:about="http://sovarr.c4dm.eecs.qmul.ac.uk/mir/marsyas/AimVQ">
     <rdfs:subClassOf rdf:resource="http://sovarr.c4dm.eecs.qmul.ac.uk/mir/marsyas/AuditoryImageModel"/>
-    <dc:description>'Box-cutting' routine to generate dense features Author : Thomas Walters &lt;tom@acousticscale.org&gt; Ported to Marsyas by Steven Ness &lt;sness@sness.net&gt; The original source code for these functions in AIM-C can be found at: http://code.google.com/p/aimc/</dc:description>
+    <dc:description>Vector quantization for dense to sparse features Author : Thomas Walters &lt;tom@acousticscale.org&gt; Ported to Marsyas by Steven Ness &lt;sness@sness.net&gt; The original source code for these functions in AIM-C can be found at: http://code.google.com/p/aimc/</dc:description>
+    <rdf:type rdf:resource="https://w3id.org/afo/onto/1.1#AudioFeature"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://sovarr.c4dm.eecs.qmul.ac.uk/mir/marsyas/PitchDiff">
+    <dc:description>Difference between detected and expected pitch Place this in a series after Yin (or any other pitch-detection MarSystem), and feed it the expected pitch as a control. Outputs the difference as a midi pitch value. Controls: - \b mrs_real/expectedPitch [w] : expected pitch - \b mrs_bool/ignoreOctaves [w] : useful if the pitch detection algorithm has octave errors, but is otherwise relatively accurate (default false) - \b mrs_bool/absoluteValue [w] : outputs the absolute difference (default false)</dc:description>
+    <rdfs:subClassOf rdf:resource="http://sovarr.c4dm.eecs.qmul.ac.uk/mir/marsyas/PitchDetection"/>
+    <rdf:type rdf:resource="https://w3id.org/afo/onto/1.1#AudioFeature"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://sovarr.c4dm.eecs.qmul.ac.uk/mir/marsyas/ADRessStereoSpectrum">
+    <rdfs:subClassOf rdf:resource="http://sovarr.c4dm.eecs.qmul.ac.uk/mir/marsyas/AzimuthDiscriminationandResynthesis"/>
+    <rdf:type rdf:resource="https://w3id.org/afo/onto/1.1#AudioFeature"/>
+    <dc:description>Takes the output of the ADRess (i.e. the panning-frequency maps) and outputs the panning coefficient for each spectral bin (N/2+1 bins).</dc:description>
   </rdf:Description>
   <rdf:Description rdf:about="http://sovarr.c4dm.eecs.qmul.ac.uk/mir/marsyas/AimPZFC">
     <rdfs:subClassOf rdf:resource="http://sovarr.c4dm.eecs.qmul.ac.uk/mir/marsyas/AuditoryImageModel"/>
     <rdf:type rdf:resource="https://w3id.org/afo/onto/1.1#AudioFeature"/>
     <dc:description>Time-domain AimPZFC Dick Lyon's Pole-Zero Filter Cascade - implemented in C++ by Tom Walters from the AIM-MAT module based on Dick Lyon's code. Ported to Marsyas from AIM-C by Steven Ness (sness@sness.net). The original source code for these functions in AIM-C can be found at: http://code.google.com/p/aimc/</dc:description>
   </rdf:Description>
-  <rdf:Description rdf:about="http://sovarr.c4dm.eecs.qmul.ac.uk/mir/marsyas/Daub4">
+  <rdf:Description rdf:about="http://sovarr.c4dm.eecs.qmul.ac.uk/mir/marsyas/KrumhanslKeyFinder">
+    <rdfs:subClassOf rdf:resource="http://sovarr.c4dm.eecs.qmul.ac.uk/mir/marsyas/KeyDetection"/>
+    <rdf:type rdf:resource="https://w3id.org/afo/onto/1.1#AudioFeature"/>
+    <dc:description>Krumhansl-Schmuckler Key-Finding Algorithm Performs simple chord detection using the Krumhansl-Schmuckler Key-Finding Algorithm. The input is a pitch class profile or chroma vector with 12 values one for each chromatic note. Controls:</dc:description>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://sovarr.c4dm.eecs.qmul.ac.uk/mir/marsyas/MeddisHairCell">
+    <dc:description>MeddisHairCell for auditory models Directed port from the Auditory toolbox by Malcolm Slaney</dc:description>
+    <rdfs:subClassOf rdf:resource="http://sovarr.c4dm.eecs.qmul.ac.uk/mir/marsyas/Analysis"/>
+    <rdf:type rdf:resource="https://w3id.org/afo/onto/1.1#AudioFeature"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://sovarr.c4dm.eecs.qmul.ac.uk/mir/marsyas/Rolloff">
+    <dc:description>Rolloff of each time slice of observations Rolloff computes the rolloff of the observations for each time samle. It is defined as the frequency for which the sum of magnitudes of its lower frequencies are equal to percentage of the sum of magnitudes of its higher frequencies.</dc:description>
     <rdfs:subClassOf rdf:resource="http://sovarr.c4dm.eecs.qmul.ac.uk/mir/marsyas/SpectrumDescriptor"/>
     <rdf:type rdf:resource="https://w3id.org/afo/onto/1.1#AudioFeature"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://sovarr.c4dm.eecs.qmul.ac.uk/mir/marsyas/AMDF">
+    <rdf:type rdf:resource="https://w3id.org/afo/onto/1.1#AudioFeature"/>
+    <rdfs:subClassOf rdf:resource="http://sovarr.c4dm.eecs.qmul.ac.uk/mir/marsyas/PitchDetection"/>
+    <dc:description>Average Magnitude Difference Function Computer the average magnitude difference function which can then be used for pitch detection by detecting the location of valleys.</dc:description>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://sovarr.c4dm.eecs.qmul.ac.uk/mir/marsyas/AimSSI">
+    <rdfs:subClassOf rdf:resource="http://sovarr.c4dm.eecs.qmul.ac.uk/mir/marsyas/AuditoryImageModel"/>
+    <dc:description>Size-shape image (aka the 'sscAI') Author : Thomas Walters &lt;tom@acousticscale.org&gt; Ported to Marsyas by Steven Ness &lt;sness@sness.net&gt; The original source code for these functions in AIM-C can be found at: http://code.google.com/p/aimc/</dc:description>
+    <rdf:type rdf:resource="https://w3id.org/afo/onto/1.1#AudioFeature"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://sovarr.c4dm.eecs.qmul.ac.uk/mir/marsyas/Flux">
+    <rdf:type rdf:resource="https://w3id.org/afo/onto/1.1#AudioFeature"/>
+    <rdfs:subClassOf rdf:resource="http://sovarr.c4dm.eecs.qmul.ac.uk/mir/marsyas/SpectrumDescriptor"/>
+    <dc:description>Flux calculate the flux between the current and prev. spectrum (e.g. output of PowerSpectrum) The flux is defined as the norm of the difference vector between two successive magnitue/power spectra, although different implementations are possible. Controls: - \b mrs_string/mode [w]: select from the different available implementations for Flux: "marsyas" and "DixonDAFX06" - \b mrs_bool/reset [rw] : clear and reset the memory buffer</dc:description>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://sovarr.c4dm.eecs.qmul.ac.uk/mir/marsyas/Rms">
+    <rdf:type rdf:resource="https://w3id.org/afo/onto/1.1#AudioFeature"/>
+    <dc:description>Rms energy of realvec Simple MarSystem example. Calculate the RMS energy of a realvec</dc:description>
+    <rdfs:subClassOf rdf:resource="http://sovarr.c4dm.eecs.qmul.ac.uk/mir/marsyas/StatisticalFunction"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://sovarr.c4dm.eecs.qmul.ac.uk/mir/marsyas/AimSAI">
+    <rdfs:subClassOf rdf:resource="http://sovarr.c4dm.eecs.qmul.ac.uk/mir/marsyas/AuditoryImageModel"/>
+    <dc:description>Stabilised auditory image Author : Thomas Walters &lt;tom@acousticscale.org&gt; Ported to Marsyas by Steven Ness &lt;sness@sness.net&gt; The original source code for these functions in AIM-C can be found at: http://code.google.com/p/aimc/</dc:description>
+    <rdf:type rdf:resource="https://w3id.org/afo/onto/1.1#AudioFeature"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://sovarr.c4dm.eecs.qmul.ac.uk/mir/marsyas/Centroid">
+    <dc:description>Centroid of each time slice of observations Centroid computes the centroid of the observations for each time sample. The center is defined as the normalized first moment (center of gravity) of the observation vector.</dc:description>
+    <rdfs:subClassOf rdf:resource="http://sovarr.c4dm.eecs.qmul.ac.uk/mir/marsyas/StatisticalFunction"/>
+    <rdf:type rdf:resource="https://w3id.org/afo/onto/1.1#AudioFeature"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://sovarr.c4dm.eecs.qmul.ac.uk/mir/marsyas/PeakInObservation">
+    <rdf:type rdf:resource="https://w3id.org/afo/onto/1.1#AudioFeature"/>
+    <dc:description>Compute peaks in observation vector \author Matthias Varewyck \date 20090518 Controls: - \b mrs_natural/HystLength [rw] : .. - \b mrs_real/HystFactor [rw] : ..</dc:description>
+    <rdfs:subClassOf rdf:resource="http://sovarr.c4dm.eecs.qmul.ac.uk/mir/marsyas/StatisticalFunction"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://sovarr.c4dm.eecs.qmul.ac.uk/mir/marsyas/CrossCorrelation">
+    <rdf:type rdf:resource="https://w3id.org/afo/onto/1.1#AudioFeature"/>
+    <rdfs:subClassOf rdf:resource="http://sovarr.c4dm.eecs.qmul.ac.uk/mir/marsyas/StatisticalFunction"/>
+    <dc:description>Computes the cross correlation of an input. Accepts N observations and returns N-1 observations, with each observation being the cross correlation of the inputs n and n-1. Controls: "mrs_string/mode" : This control sets the type of cross correlation. "general" is the default, and will compute the generalized cross correlation. "phat" will compute the generalized cross correlation with phase transform "ml" will compute a maximum likelihood cross correlation. This works well specifically for time delay estimation in noisy or reverberant environments. Note: inSamples should be 2^k or fft will not work properly. \author Gabrielle Odowichuk</dc:description>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://sovarr.c4dm.eecs.qmul.ac.uk/mir/marsyas/AuditoryImageModel">
+    <rdfs:subClassOf rdf:resource="http://sovarr.c4dm.eecs.qmul.ac.uk/mir/marsyas/Analysis"/>
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://sovarr.c4dm.eecs.qmul.ac.uk/mir/marsyas/Spectrum">
+    <rdf:type rdf:resource="https://w3id.org/afo/onto/1.1#AudioFeature"/>
+    <dc:description>Compute the complex spectrum of input window Computes the complex spectrum (N/2+1 points) of the input window using the Fast Fourier Transform (FFT). The output is a N-sized column vector (where N is the size of the input audio vector), using the following format: [Re(0), Re(N/2), Re(1), Im(1), Re(2), Im(2), ..., Re(N/2-1), Im(N/2-1)] Note that the DC and Nyquist frequencies only have real part, and are output as the two first coefficients in the vector. Overall, the output spectrum has N/2+1 unique points, corresponding to the positive half of the complex spectrum. \note Only the first observation input channel is processed, the rest (if any) is ignored. \see PowerSpectrum, fft</dc:description>
+    <rdfs:subClassOf rdf:resource="http://sovarr.c4dm.eecs.qmul.ac.uk/mir/marsyas/SpectrumDescriptor"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://sovarr.c4dm.eecs.qmul.ac.uk/mir/marsyas/PeakerOnset">
+    <rdfs:subClassOf rdf:resource="http://sovarr.c4dm.eecs.qmul.ac.uk/mir/marsyas/OnsetDetection"/>
+    <rdf:type rdf:resource="https://w3id.org/afo/onto/1.1#AudioFeature"/>
+    <dc:description>Detects if input contains a onset point PeakerOnset is based on the onset peak picking algorithm presented in: Dixon, S. (2006). Onset detection revisited. In Proc. International Conference on Digital Audio Effects (DAFx), Montreal, Canada. It takes as input an onset function over time (i.e. a row vector with the times series of a onset function like flux) and evaluates a specific point for onset presence, as below: Input = [zzzzzzzzzXyyy] Point "X" at the input will be evaluated. The onsetWinSize control specifies a "look ahead" parameter, i.e. how many samples (represented above as "y") after "X" will be used for evaluating if it is an onset or not (i.e. look ahead samples). Controls: - \b mrs_natrual/lookAheadSamples [w]: specifies the "look ahead" nr of "samples" (the number of "y"s in the above example ) for the detection of an onset at the input. - \b mrs_real/threshold [w]: specifies threshold (in % of local mean) for onset detection - \b mrs_real/confidence [r]: outputs the confidence that point "X" is an onset (it will 0.0 if it is not detected as an onset) - \b mrs_bool/onsetDetected [r]: flags if an onset was detected on point "X".</dc:description>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://sovarr.c4dm.eecs.qmul.ac.uk/mir/marsyas/BeatHistogramFromPeaks">
+    <dc:description>BeatHistogramFromPeaks Calculate BeatHistograms from peaks represented as pairs of periodicity/amplitude (typically from an autocorrelation function).</dc:description>
+    <rdf:type rdf:resource="https://w3id.org/afo/onto/1.1#AudioFeature"/>
+    <rdfs:subClassOf rdf:resource="http://sovarr.c4dm.eecs.qmul.ac.uk/mir/marsyas/TempoDetection"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://sovarr.c4dm.eecs.qmul.ac.uk/mir/marsyas/AimHCL">
+    <rdf:type rdf:resource="https://w3id.org/afo/onto/1.1#AudioFeature"/>
+    <dc:description>Halfwave rectification, compression and lowpass filtering Author Thomas Walters &lt;tom@acousticscale.org&gt; Ported to Marsyas by Steven Ness &lt;sness@sness.net&gt; The original source code for these functions in AIM-C can be found at: http://code.google.com/p/aimc/</dc:description>
+    <rdfs:subClassOf rdf:resource="http://sovarr.c4dm.eecs.qmul.ac.uk/mir/marsyas/AuditoryImageModel"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://sovarr.c4dm.eecs.qmul.ac.uk/mir/marsyas/AbsMax">
+    <rdf:type rdf:resource="https://w3id.org/afo/onto/1.1#AudioFeature"/>
+    <dc:description>Calculate the maximum absolute value for each observation signal (per slice). For each observation channel in each given slice, the maximum absolute value is calculated. This MarSystem has no extra controls.</dc:description>
+    <rdfs:subClassOf rdf:resource="http://sovarr.c4dm.eecs.qmul.ac.uk/mir/marsyas/StatisticalFunction"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://sovarr.c4dm.eecs.qmul.ac.uk/mir/marsyas/Daub4">
+    <rdfs:subClassOf rdf:resource="http://sovarr.c4dm.eecs.qmul.ac.uk/mir/marsyas/SpectrumDescriptor"/>
     <dc:description>Daubechies4 WaveletStep Applies the Daubechies 4-coefficient wavelet filter as a WaveletStep for the WaveletPyramid algorithm. The code is is based on the Numerical Recipies wavelet code.</dc:description>
+    <rdf:type rdf:resource="https://w3id.org/afo/onto/1.1#AudioFeature"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://sovarr.c4dm.eecs.qmul.ac.uk/mir/marsyas/PitchDetection">
+    <rdfs:subClassOf rdf:resource="http://sovarr.c4dm.eecs.qmul.ac.uk/mir/marsyas/Analysis"/>
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://sovarr.c4dm.eecs.qmul.ac.uk/mir/marsyas/LPC">
+    <rdfs:subClassOf rdf:resource="http://sovarr.c4dm.eecs.qmul.ac.uk/mir/marsyas/SpectrumDescriptor"/>
+    <rdf:type rdf:resource="https://w3id.org/afo/onto/1.1#AudioFeature"/>
+    <dc:description>Compute Warped LPC coefficients, Pitch and Power [STILL UNDER TESTING!]. Linear Prediction Coefficients (LPC). Features commonly used in Speech Recognition research. This class is a modification of the original Marsyas0.1 LPC class. The following differences apply: - order now reflects the LPC order (and returns \&lt;order\&gt; coefficients plus pitch and gain) - It is possible to define a pole-shifting parameter, gamma (default value = 1.0 =&gt; no shifting) - It is possible to define a warping factor, lambda (defualt value = 0.0 =&gt; no warping) Code by Lus Gustavo Martins - lmartins@inescporto.pt May 2006</dc:description>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://sovarr.c4dm.eecs.qmul.ac.uk/mir/marsyas/RunningStatistics">
+    <rdf:type rdf:resource="https://w3id.org/afo/onto/1.1#AudioFeature"/>
+    <rdfs:subClassOf rdf:resource="http://sovarr.c4dm.eecs.qmul.ac.uk/mir/marsyas/StatisticalFunction"/>
+    <dc:description>Gathers the running average, variance, standard deviation, etc. Outputs the running average and standard deviation of all the input so far. Controls: - \b mrs_bool/enableMean: enable outputting of the mean values (on by default). - \b mrs_bool/enableStddev: enable outputting of the standard deviation values (on by default). - \b mrs_bool/enableSkewness: enable outputting of the skewness values (off by default). - \b mrs_bool/clear: clear the internal buffers to start fresh. - \b mrs_book/clearPerTick: clear the buffers at the start of each tick. This disables the "running" property of the calculations. \todo: add kurtosis \todo: add option to output running energy (we're calculating it anyway)</dc:description>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://sovarr.c4dm.eecs.qmul.ac.uk/mir/marsyas/Spectrum2ACMChroma">
+    <rdfs:subClassOf rdf:resource="http://sovarr.c4dm.eecs.qmul.ac.uk/mir/marsyas/SpectrumDescriptor"/>
+    <rdf:type rdf:resource="https://w3id.org/afo/onto/1.1#AudioFeature"/>
+    <dc:description>Transform an (amplitude) spectrum to a chroma profile \author Matthias Varewyck \date 20090518 \todo - Check if parameters are independent on input sample rate (~= 8kHz) - Include check if provided (amplitude) spectrum was correctly computed - Include correct error handling (conform Marsyas rules) - Let the lowest F0 be higher than the diapason - Introduce a highest F0 additional to a lowest F0 - Add "fan in combinator" to simplify actual chroma profile computation This class implements the conversion of an (amplitude) spectrum to a chroma profile as described in "a novel chroma representation of polyphonic music based on multiple pitch tracking techniques" which was presented at the 16th ACM International Conference on Multimedia. The method computes the set of pitches that best explains the salient frequencies present in the (amplitude) spectrum. The method results in (1) a chroma profile and (2) a chord evidence. (1) The chroma profile represents the normalized pitches after they were folded to one octave (2) The chord evidence represents the probability that a chord occurs in the examined frame. For an example, see the function "toy_with_chroma" in the mudbox. Controls: - \b mrs_natural/NrOfHarmonics [rw] : adjust the number of harmonics in F0 detection (should be &gt;0) - \b mrs_real/F0Weight [rw] : adjust the balance between F0 and its harmonics (between 0 and 1) - \b mrs_real/LowestF0 [rw] : adjust the lowest F0 to be detected (between 0 and Nyquist frequency) - \b mrs_real/ChordEvidence [r] : store the chord evidence of the last examined frame</dc:description>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://sovarr.c4dm.eecs.qmul.ac.uk/mir/marsyas/StandardDeviation">
+    <dc:description>Standard Deviation of each row of observations Calculates the standard deviation of each row of observations. The resulting standard deviations are returned as a column vector.</dc:description>
+    <rdf:type rdf:resource="https://w3id.org/afo/onto/1.1#AudioFeature"/>
+    <rdfs:subClassOf rdf:resource="http://sovarr.c4dm.eecs.qmul.ac.uk/mir/marsyas/StatisticalFunction"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://sovarr.c4dm.eecs.qmul.ac.uk/mir/marsyas/AimBoxes">
+    <rdfs:subClassOf rdf:resource="http://sovarr.c4dm.eecs.qmul.ac.uk/mir/marsyas/AuditoryImageModel"/>
+    <dc:description>'Box-cutting' routine to generate dense features Author : Thomas Walters &lt;tom@acousticscale.org&gt; Ported to Marsyas by Steven Ness &lt;sness@sness.net&gt; The original source code for these functions in AIM-C can be found at: http://code.google.com/p/aimc/</dc:description>
+    <rdf:type rdf:resource="https://w3id.org/afo/onto/1.1#AudioFeature"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://sovarr.c4dm.eecs.qmul.ac.uk/mir/marsyas/StereoSpectrum">
+    <rdfs:subClassOf rdf:resource="http://sovarr.c4dm.eecs.qmul.ac.uk/mir/marsyas/SpectrumDescriptor"/>
+    <dc:description>StereoSpectrum computes the panning index for each spectrum bin of a stereo input (i.e. input is expected to be the output of a parallel of two Spectrum MarSystems, one for each stereo channel).</dc:description>
+    <rdf:type rdf:resource="https://w3id.org/afo/onto/1.1#AudioFeature"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://sovarr.c4dm.eecs.qmul.ac.uk/mir/marsyas/Energy">
+    <rdf:type rdf:resource="https://w3id.org/afo/onto/1.1#AudioFeature"/>
+    <dc:description>compute the Energy of the input observations into one column</dc:description>
+    <rdfs:subClassOf rdf:resource="http://sovarr.c4dm.eecs.qmul.ac.uk/mir/marsyas/LoudnessDescriptor"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://sovarr.c4dm.eecs.qmul.ac.uk/mir/marsyas/AzimuthDiscriminationandResynthesis">
+    <rdfs:subClassOf rdf:resource="http://sovarr.c4dm.eecs.qmul.ac.uk/mir/marsyas/Analysis"/>
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://sovarr.c4dm.eecs.qmul.ac.uk/mir/marsyas/LSP">
+    <dc:description>Compute Linear Spectral Pair (LSP) coefficients Takes the output of ::LPC() and calculates the corresponding LSP values. See the LPC class implementation. Cobe by Lus Gustavo Martins - lmartins@inescporto.pt May 2006</dc:description>
+    <rdf:type rdf:resource="https://w3id.org/afo/onto/1.1#AudioFeature"/>
+    <rdfs:subClassOf rdf:resource="http://sovarr.c4dm.eecs.qmul.ac.uk/mir/marsyas/SpectrumDescriptor"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://sovarr.c4dm.eecs.qmul.ac.uk/mir/marsyas/KeyDetection">
+    <rdfs:subClassOf rdf:resource="http://sovarr.c4dm.eecs.qmul.ac.uk/mir/marsyas/Analysis"/>
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://sovarr.c4dm.eecs.qmul.ac.uk/mir/marsyas/Peaker">
+    <rdf:type rdf:resource="https://w3id.org/afo/onto/1.1#AudioFeature"/>
+    <rdfs:subClassOf rdf:resource="http://sovarr.c4dm.eecs.qmul.ac.uk/mir/marsyas/OnsetDetection"/>
+    <dc:description>Pick peaks out of signal Peaker is used to select peaks(or valleys) from the input vector. Various parameters of the peak selection process can be adjusted. Controls: - \b mrs_real/peakSpacing [w] : expressed in percentage of total vector length and is how much spacing you allow between the peaks - \b mrs_real/peakStrength [w] : threshold compared to the RMS of the vector (should be renamed to peakStrengthRelRms to keep naming consistent, but this might break existing systems) - \b mrs_real/peakStrengthAbs [w] : absolute threshold (might make sense e.g. for normalized spectra) - \b mrs_real/peakStrengthRelMax [w] : threshold compared to global max of the vector (range: 0...1, example: 0.001 if all peaks with a level of more than 60dB below the maximum should be discarded - \b mrs_real/peakStrengthRelThresh [w] : threshold compared to an adaptive threshold of the vector (lp filtered version of the signal); value is a factor that moves threshold up and down, e.g. value = 2 means that the lp filtered signal is moved up by 6dB - \b mrs_real/peakStrengthTreshLpParam [w] : coefficient for the single pole lowpass for computing the adaptive threshold (between 0...1) - \b mrs_natural/peakStart [w] : expressed in absolute positions of the vector and it just to adjust what part of the vector will be considered - \b mrs_natural/peakEnd [w] : expressed in absolute positions of the vector length and it just to adjust what part of the vector will be considered - \b mrs_natural/interpolation [w] : TODO - mlagrange? [!] - \b mrs_real/peakGain [w] : TODO - mlagrange? [!]</dc:description>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://sovarr.c4dm.eecs.qmul.ac.uk/mir/marsyas/ADRessSpectrum">
+    <rdf:type rdf:resource="https://w3id.org/afo/onto/1.1#AudioFeature"/>
+    <dc:description>Takes the output of the ADRess (i.e. the stereo azimuth-frequency maps) and outputs a single channel spectrum of the part of the freq-azimuth plane selected by the d and H controls. This can then be inverse transformed back into time domain for resynthesis purposes. Controls: - \b mrs_real/d [w] : value between 0.0~1.0, used for selecting the portion of the azimuth-frequency plane to be extracted - \b mrs_real/H [w] : sets the azimuth subspace width (in percentage of total width of the azimuth plane)</dc:description>
+    <rdfs:subClassOf rdf:resource="http://sovarr.c4dm.eecs.qmul.ac.uk/mir/marsyas/AzimuthDiscriminationandResynthesis"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://sovarr.c4dm.eecs.qmul.ac.uk/mir/marsyas/PCA">
+    <rdf:type rdf:resource="https://w3id.org/afo/onto/1.1#AudioFeature"/>
+    <rdfs:subClassOf rdf:resource="http://sovarr.c4dm.eecs.qmul.ac.uk/mir/marsyas/StatisticalFunction"/>
+    <dc:description>Perform Principal Component Analysis Perform Principal Component Analysis (PCA) on all samples of the incoming realvec of data. The correlation method is taken, with a correlation matrix computed over all samples within the single input realvec. Eigenvalue/Eigenvector calculation is by the QL algorithm (ie. not suitable when the correlation matrix is singular or near singular). Output is the set of input samples projected onto the top "npc" (a MarSystem control) principal components.</dc:description>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://sovarr.c4dm.eecs.qmul.ac.uk/mir/marsyas/MFCC">
+    <rdf:type rdf:resource="https://w3id.org/afo/onto/1.1#AudioFeature"/>
+    <rdfs:subClassOf rdf:resource="http://sovarr.c4dm.eecs.qmul.ac.uk/mir/marsyas/SpectrumDescriptor"/>
+    <dc:description>MFCC Mel-Frequency Cepstral Coefficients. Takes as input the N/2+1 spectrum Magnitude points output by PowerSpectrum. Mel-Frequency cepstral coefficients are features frequently used in Speech Recognition. The code is based on the corresponding function in the Auditory Toolbox by Malcolm Slaney. \see Spectrum, PowerSpectrum Controls: - \b mrs_natural/coefficients [w]: the number of cepstral coefficients to calculate.</dc:description>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://sovarr.c4dm.eecs.qmul.ac.uk/mir/marsyas/PowerToAverageRatio">
+    <rdf:type rdf:resource="https://w3id.org/afo/onto/1.1#AudioFeature"/>
+    <rdfs:subClassOf rdf:resource="http://sovarr.c4dm.eecs.qmul.ac.uk/mir/marsyas/SpectrumDescriptor"/>
+    <dc:description>PowerToAverageRatio (or Power-to-Average Ratio) of a window This calculates the PAR for a complete window of samples; it is similar to SCF (Spectral Crest Factor), however SCF calculates the PAR in various frequency bands of observations.</dc:description>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://sovarr.c4dm.eecs.qmul.ac.uk/mir/marsyas/MeanAbsoluteDeviation">
+    <rdf:type rdf:resource="https://w3id.org/afo/onto/1.1#AudioFeature"/>
+    <rdfs:subClassOf rdf:resource="http://sovarr.c4dm.eecs.qmul.ac.uk/mir/marsyas/StatisticalFunction"/>
+    <dc:description>Calculates the mean absolute deviation</dc:description>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://sovarr.c4dm.eecs.qmul.ac.uk/mir/marsyas/SpectrumDescriptor">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+    <rdfs:subClassOf rdf:resource="http://sovarr.c4dm.eecs.qmul.ac.uk/mir/marsyas/Analysis"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://sovarr.c4dm.eecs.qmul.ac.uk/mir/marsyas/AimPZFC2">
+    <rdf:type rdf:resource="https://w3id.org/afo/onto/1.1#AudioFeature"/>
+    <dc:description>Time-domain AimPZFC2 Dick Lyon's Pole-Zero Filter Cascade - implemented in C++ by Tom Walters from the AIM-MAT module based on Dick Lyon's code. Ported to Marsyas from AIM-C by Steven Ness (sness@sness.net). AimPZFC2 is a re-write of the AimPZFC to be more Marsyas like. The original source code for these functions in AIM-C can be found at: http://code.google.com/p/aimc/</dc:description>
+    <rdfs:subClassOf rdf:resource="http://sovarr.c4dm.eecs.qmul.ac.uk/mir/marsyas/AuditoryImageModel"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://sovarr.c4dm.eecs.qmul.ac.uk/mir/marsyas/OnsetDetection">
+    <rdfs:subClassOf rdf:resource="http://sovarr.c4dm.eecs.qmul.ac.uk/mir/marsyas/Analysis"/>
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="">
+    <dc:description>This is an ontology derived from Marsyas feature extraction tools for the Audio Features engineering process</dc:description>
+    <dc:title>Marsyas Ontology</dc:title>
+    <owl:versionInfo>Version 0.1</owl:versionInfo>
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Ontology"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://sovarr.c4dm.eecs.qmul.ac.uk/mir/marsyas/WaveletPyramid">
+    <rdf:type rdf:resource="https://w3id.org/afo/onto/1.1#AudioFeature"/>
+    <rdfs:subClassOf rdf:resource="http://sovarr.c4dm.eecs.qmul.ac.uk/mir/marsyas/SpectrumDescriptor"/>
+    <dc:description>Pyramid wavelet algorithm Discrete Wavelet Transform (DWT) pyramid algorithm. Based on the Numerical Recipies wavelet code.</dc:description>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://sovarr.c4dm.eecs.qmul.ac.uk/mir/marsyas/Pitch2Chroma">
+    <rdf:type rdf:resource="https://w3id.org/afo/onto/1.1#AudioFeature"/>
+    <dc:description>Transform pitch to chroma - input = amplitude spectrum with peaks at frequency bins that represent pitches and values that represent evidences - output = chroma profile with chroma values ordered according to the circle of fifths, i.e. A, E,.. D \author Matthias Varewyck \date 20090518 Controls: - \b mrs_real/SampleRate [rw] : sample rate of the input spectrum - \b mrs_real/LowestPitch [rw] : lowest pitch taken into account - \b mrs_natural/NotesPerOctave [rw] : nr. of notes per octave ([f 2*f]) - \b mrs_natural/NrOfNotes [rw] : total nr. of notes to be taken into account - \b mrs_natural/RefChromaIndex [rw] : index in chroma vector of the ref. pitch (= 440Hz)</dc:description>
+    <rdfs:subClassOf rdf:resource="http://sovarr.c4dm.eecs.qmul.ac.uk/mir/marsyas/PitchDetection"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://sovarr.c4dm.eecs.qmul.ac.uk/mir/marsyas/AimLocalMax">
+    <rdfs:subClassOf rdf:resource="http://sovarr.c4dm.eecs.qmul.ac.uk/mir/marsyas/AuditoryImageModel"/>
+    <rdf:type rdf:resource="https://w3id.org/afo/onto/1.1#AudioFeature"/>
+    <dc:description>Local maximum strobe criterion: decaying threshold with timeout Author : Thomas Walters &lt;tom@acousticscale.org&gt; Ported to Marsyas by Steven Ness &lt;sness@sness.net&gt; The original source code for these functions in AIM-C can be found at: http://code.google.com/p/aimc/</dc:description>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://sovarr.c4dm.eecs.qmul.ac.uk/mir/marsyas/F0Analysis">
+    <dc:description>Compute F0s in input spectrum \author Matthias Varewyck \date 20090518 Controls: - \b mrs_natural NrOfHarmonics [rw] : nr. of harmonics taken into account (excl. F0) - \b mrs_real F0Weight [rw] : balance between F0 and higher harmonics - \b mrs_real Attenuation [rw] : attenuation of higher harmonics - \b mrs_real Tolerance_ [rw] : tolerance for harmonics to be assigned to F0 - \b mrs_real LowestFo_ [rw] : lowest possible F0 - \b mrs_real ChordEvidence_ [r] : evidence that input spectrum includes chord</dc:description>
+    <rdfs:subClassOf rdf:resource="http://sovarr.c4dm.eecs.qmul.ac.uk/mir/marsyas/PitchDetection"/>
+    <rdf:type rdf:resource="https://w3id.org/afo/onto/1.1#AudioFeature"/>
   </rdf:Description>
 </rdf:RDF>
