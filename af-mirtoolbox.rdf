@@ -6,457 +6,457 @@
    xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#"
    xmlns:vs="http://www.w3.org/2003/06/sw-vocab-status/ns#"
 >
-  <rdf:Description rdf:about="http://sovarr.c4dm.eecs.qmul.ac.uk/af/mir/MIRToolbox/1.0#AttackSlope">
-    <owl:sameAs rdf:resource="https://w3id.org/afo/vocab/1.1#AttackSlope"/>
-    <rdfs:subClassOf rdf:resource="https://w3id.org/afo/onto/1.1#TimbreFeatureExtractor"/>
-    <rdfs:label xml:lang="en">AttackSlope</rdfs:label>
+  <rdf:Description rdf:about="http://sovarr.c4dm.eecs.qmul.ac.uk/af/mir/MIRToolbox/1.0#SpectralFluxOnsetDetectionFunction">
+    <rdfs:comment>SpectralFluxOnsetDetectionFunction MIR Toolbox audio feature</rdfs:comment>
+    <vs:term_status xml:lang="en">testing</vs:term_status>
+    <owl:sameAs rdf:resource="https://w3id.org/afo/vocab/1.1#SpectralFluxOnsetDetectionFunction"/>
+    <rdfs:label xml:lang="en">SpectralFluxOnsetDetectionFunction</rdfs:label>
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+    <rdfs:subClassOf rdf:resource="https://w3id.org/afo/onto/1.1#RhythmFeatureExtractor"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://sovarr.c4dm.eecs.qmul.ac.uk/af/mir/MIRToolbox/1.0#MFCC">
+    <rdfs:label xml:lang="en">MFCC</rdfs:label>
+    <rdfs:comment>MFCC MIR Toolbox audio feature</rdfs:comment>
     <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
     <vs:term_status xml:lang="en">testing</vs:term_status>
-    <rdfs:comment>AttackSlope MIR Toolbox audio feature</rdfs:comment>
+    <rdfs:subClassOf rdf:resource="https://w3id.org/afo/onto/1.1#TimbreFeatureExtractor"/>
+    <owl:sameAs rdf:resource="https://w3id.org/afo/vocab/1.1#MFCC"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://sovarr.c4dm.eecs.qmul.ac.uk/af/mir/MIRToolbox/1.0#Filterbank">
+    <rdfs:label xml:lang="en">Filterbank</rdfs:label>
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+    <owl:sameAs rdf:resource="https://w3id.org/afo/vocab/1.1#Filterbank"/>
+    <rdfs:comment>Filterbank MIR Toolbox audio feature</rdfs:comment>
+    <vs:term_status xml:lang="en">testing</vs:term_status>
   </rdf:Description>
   <rdf:Description rdf:about="http://sovarr.c4dm.eecs.qmul.ac.uk/af/mir/MIRToolbox/1.0#Spectrum">
-    <rdfs:label xml:lang="en">Spectrum</rdfs:label>
-    <vs:term_status xml:lang="en">testing</vs:term_status>
     <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
-    <rdfs:comment>Spectrum MIR Toolbox audio feature</rdfs:comment>
     <owl:sameAs rdf:resource="https://w3id.org/afo/vocab/1.1#Spectrum"/>
-  </rdf:Description>
-  <rdf:Description rdf:about="http://sovarr.c4dm.eecs.qmul.ac.uk/af/mir/MIRToolbox/1.0#ZeroCrossingRate">
     <vs:term_status xml:lang="en">testing</vs:term_status>
-    <rdfs:label xml:lang="en">ZeroCrossingRate</rdfs:label>
+    <rdfs:label xml:lang="en">Spectrum</rdfs:label>
+    <rdfs:comment>Spectrum MIR Toolbox audio feature</rdfs:comment>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://sovarr.c4dm.eecs.qmul.ac.uk/af/mir/MIRToolbox/1.0#StandardDeviation">
     <rdfs:subClassOf rdf:resource="https://w3id.org/afo/onto/1.1#Statistics"/>
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+    <rdfs:label xml:lang="en">StandardDeviation</rdfs:label>
+    <owl:sameAs rdf:resource="https://w3id.org/afo/vocab/1.1#StandardDeviation"/>
+    <rdfs:comment>StandardDeviation MIR Toolbox audio feature</rdfs:comment>
+    <vs:term_status xml:lang="en">testing</vs:term_status>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://sovarr.c4dm.eecs.qmul.ac.uk/af/mir/MIRToolbox/1.0#Flatness">
+    <rdfs:subClassOf rdf:resource="https://w3id.org/afo/onto/1.1#Statistics"/>
+    <owl:sameAs rdf:resource="https://w3id.org/afo/vocab/1.1#Flatness"/>
+    <vs:term_status xml:lang="en">testing</vs:term_status>
+    <rdfs:label xml:lang="en">Flatness</rdfs:label>
+    <rdfs:comment>Flatness MIR Toolbox audio feature</rdfs:comment>
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://sovarr.c4dm.eecs.qmul.ac.uk/af/mir/MIRToolbox/1.0#Audio">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+    <owl:sameAs rdf:resource="https://w3id.org/afo/vocab/1.1#Audio"/>
+    <vs:term_status xml:lang="en">testing</vs:term_status>
+    <rdfs:comment>Audio MIR Toolbox audio feature</rdfs:comment>
+    <rdfs:label xml:lang="en">Audio</rdfs:label>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://sovarr.c4dm.eecs.qmul.ac.uk/af/mir/MIRToolbox/1.0#Classify">
+    <rdfs:comment>Classify MIR Toolbox audio feature</rdfs:comment>
+    <owl:sameAs rdf:resource="https://w3id.org/afo/vocab/1.1#Classify"/>
+    <rdfs:label xml:lang="en">Classify</rdfs:label>
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+    <vs:term_status xml:lang="en">testing</vs:term_status>
+    <rdfs:subClassOf rdf:resource="https://w3id.org/afo/onto/1.1#Predictions"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://sovarr.c4dm.eecs.qmul.ac.uk/af/mir/MIRToolbox/1.0#Roughness">
+    <rdfs:comment>Roughness MIR Toolbox audio feature</rdfs:comment>
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+    <rdfs:label xml:lang="en">Roughness</rdfs:label>
     <rdfs:subClassOf rdf:resource="https://w3id.org/afo/onto/1.1#TimbreFeatureExtractor"/>
-    <rdfs:comment>ZeroCrossingRate MIR Toolbox audio feature</rdfs:comment>
-    <owl:sameAs rdf:resource="https://w3id.org/afo/vocab/1.1#ZeroCrossingRate"/>
-    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
-  </rdf:Description>
-  <rdf:Description rdf:about="http://sovarr.c4dm.eecs.qmul.ac.uk/af/mir/MIRToolbox/1.0#Skewness">
-    <rdfs:subClassOf rdf:resource="https://w3id.org/afo/onto/1.1#Statistics"/>
-    <rdfs:comment>Skewness MIR Toolbox audio feature</rdfs:comment>
-    <vs:term_status xml:lang="en">testing</vs:term_status>
-    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
-    <rdfs:label xml:lang="en">Skewness</rdfs:label>
-    <owl:sameAs rdf:resource="https://w3id.org/afo/vocab/1.1#Skewness"/>
-  </rdf:Description>
-  <rdf:Description rdf:about="http://sovarr.c4dm.eecs.qmul.ac.uk/af/mir/MIRToolbox/1.0#Centroid">
-    <vs:term_status xml:lang="en">testing</vs:term_status>
-    <rdfs:comment>Centroid MIR Toolbox audio feature</rdfs:comment>
-    <rdfs:subClassOf rdf:resource="https://w3id.org/afo/onto/1.1#Statistics"/>
-    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
-    <rdfs:label xml:lang="en">Centroid</rdfs:label>
-    <owl:sameAs rdf:resource="https://w3id.org/afo/vocab/1.1#Centroid"/>
-  </rdf:Description>
-  <rdf:Description rdf:about="http://sovarr.c4dm.eecs.qmul.ac.uk/af/mir/MIRToolbox/1.0#Pitch">
-    <rdfs:subClassOf rdf:resource="https://w3id.org/afo/onto/1.1#PitchFeatureExtractor"/>
-    <rdfs:comment>Pitch MIR Toolbox audio feature</rdfs:comment>
-    <rdfs:label xml:lang="en">Pitch</rdfs:label>
-    <owl:sameAs rdf:resource="https://w3id.org/afo/vocab/1.1#Pitch"/>
-    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+    <owl:sameAs rdf:resource="https://w3id.org/afo/vocab/1.1#Roughness"/>
     <vs:term_status xml:lang="en">testing</vs:term_status>
   </rdf:Description>
-  <rdf:Description rdf:about="http://sovarr.c4dm.eecs.qmul.ac.uk/af/mir/MIRToolbox/1.0#Sum">
-    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
-    <owl:sameAs rdf:resource="https://w3id.org/afo/vocab/1.1#Sum"/>
-    <rdfs:label xml:lang="en">Sum</rdfs:label>
+  <rdf:Description rdf:about="http://sovarr.c4dm.eecs.qmul.ac.uk/af/mir/MIRToolbox/1.0#Distance">
+    <rdfs:label xml:lang="en">Distance</rdfs:label>
+    <rdfs:subClassOf rdf:resource="https://w3id.org/afo/onto/1.1#Similarity"/>
     <vs:term_status xml:lang="en">testing</vs:term_status>
-    <rdfs:comment>Sum MIR Toolbox audio feature</rdfs:comment>
+    <rdfs:comment>Distance MIR Toolbox audio feature</rdfs:comment>
+    <owl:sameAs rdf:resource="https://w3id.org/afo/vocab/1.1#Distance"/>
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://sovarr.c4dm.eecs.qmul.ac.uk/af/mir/MIRToolbox/1.0#RhythmicFluctuation">
+    <rdfs:subClassOf rdf:resource="https://w3id.org/afo/onto/1.1#RhythmFeatureExtractor"/>
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+    <rdfs:comment>RhythmicFluctuation MIR Toolbox audio feature</rdfs:comment>
+    <vs:term_status xml:lang="en">testing</vs:term_status>
+    <rdfs:label xml:lang="en">RhythmicFluctuation</rdfs:label>
+    <owl:sameAs rdf:resource="https://w3id.org/afo/vocab/1.1#RhythmicFluctuation"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://sovarr.c4dm.eecs.qmul.ac.uk/af/mir/MIRToolbox/1.0#Flux">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+    <rdfs:label xml:lang="en">Flux</rdfs:label>
+    <owl:sameAs rdf:resource="https://w3id.org/afo/vocab/1.1#Flux"/>
+    <rdfs:comment>Flux MIR Toolbox audio feature</rdfs:comment>
+    <vs:term_status xml:lang="en">testing</vs:term_status>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://sovarr.c4dm.eecs.qmul.ac.uk/af/mir/MIRToolbox/1.0#Frame">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+    <owl:sameAs rdf:resource="https://w3id.org/afo/vocab/1.1#Frame"/>
+    <rdfs:comment>Frame MIR Toolbox audio feature</rdfs:comment>
+    <vs:term_status xml:lang="en">testing</vs:term_status>
+    <rdfs:label xml:lang="en">Frame</rdfs:label>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://sovarr.c4dm.eecs.qmul.ac.uk/af/mir/MIRToolbox/1.0#TonalCentroid">
+    <owl:sameAs rdf:resource="https://w3id.org/afo/vocab/1.1#TonalCentroid"/>
+    <rdfs:label xml:lang="en">TonalCentroid</rdfs:label>
+    <rdfs:comment>TonalCentroid MIR Toolbox audio feature</rdfs:comment>
+    <rdfs:subClassOf rdf:resource="https://w3id.org/afo/onto/1.1#TonalityFeatureExtractor"/>
+    <vs:term_status xml:lang="en">testing</vs:term_status>
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://sovarr.c4dm.eecs.qmul.ac.uk/af/mir/MIRToolbox/1.0#Attack">
+    <rdfs:label xml:lang="en">Attack</rdfs:label>
+    <owl:sameAs rdf:resource="https://w3id.org/afo/vocab/1.1#Attack"/>
+    <rdfs:subClassOf rdf:resource="https://w3id.org/afo/onto/1.1#TimbreFeatureExtractor"/>
+    <vs:term_status xml:lang="en">testing</vs:term_status>
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+    <rdfs:comment>Attack MIR Toolbox audio feature</rdfs:comment>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://sovarr.c4dm.eecs.qmul.ac.uk/af/mir/MIRToolbox/1.0#Novelty">
+    <rdfs:subClassOf rdf:resource="https://w3id.org/afo/onto/1.1#Structure"/>
+    <owl:sameAs rdf:resource="https://w3id.org/afo/vocab/1.1#Novelty"/>
+    <vs:term_status xml:lang="en">testing</vs:term_status>
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+    <rdfs:comment>Novelty MIR Toolbox audio feature</rdfs:comment>
+    <rdfs:label xml:lang="en">Novelty</rdfs:label>
   </rdf:Description>
   <rdf:Description rdf:about="http://sovarr.c4dm.eecs.qmul.ac.uk/af/mir/MIRToolbox/1.0#KeyStrength">
     <vs:term_status xml:lang="en">testing</vs:term_status>
     <owl:sameAs rdf:resource="https://w3id.org/afo/vocab/1.1#KeyStrength"/>
     <rdfs:comment>KeyStrength MIR Toolbox audio feature</rdfs:comment>
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+    <rdfs:subClassOf rdf:resource="https://w3id.org/afo/onto/1.1#TonalityFeatureExtractor"/>
     <rdfs:label xml:lang="en">KeyStrength</rdfs:label>
-    <rdfs:subClassOf rdf:resource="https://w3id.org/afo/onto/1.1#TonalityFeatureExtractor"/>
-    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
-  </rdf:Description>
-  <rdf:Description rdf:about="http://sovarr.c4dm.eecs.qmul.ac.uk/af/mir/MIRToolbox/1.0#Emotion">
-    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
-    <rdfs:comment>Emotion MIR Toolbox audio feature</rdfs:comment>
-    <vs:term_status xml:lang="en">testing</vs:term_status>
-    <rdfs:label xml:lang="en">Emotion</rdfs:label>
-    <owl:sameAs rdf:resource="https://w3id.org/afo/vocab/1.1#Emotion"/>
-    <rdfs:subClassOf rdf:resource="https://w3id.org/afo/onto/1.1#Predictions"/>
-  </rdf:Description>
-  <rdf:Description rdf:about="http://sovarr.c4dm.eecs.qmul.ac.uk/af/mir/MIRToolbox/1.0#StandardDeviation">
-    <rdfs:label xml:lang="en">StandardDeviation</rdfs:label>
-    <vs:term_status xml:lang="en">testing</vs:term_status>
-    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
-    <rdfs:comment>StandardDeviation MIR Toolbox audio feature</rdfs:comment>
-    <rdfs:subClassOf rdf:resource="https://w3id.org/afo/onto/1.1#Statistics"/>
-    <owl:sameAs rdf:resource="https://w3id.org/afo/vocab/1.1#StandardDeviation"/>
-  </rdf:Description>
-  <rdf:Description rdf:about="http://sovarr.c4dm.eecs.qmul.ac.uk/af/mir/MIRToolbox/1.0#Autocorrelation">
-    <rdfs:comment>Autocorrelation MIR Toolbox audio feature</rdfs:comment>
-    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
-    <rdfs:label xml:lang="en">Autocorrelation</rdfs:label>
-    <vs:term_status xml:lang="en">testing</vs:term_status>
-    <owl:sameAs rdf:resource="https://w3id.org/afo/vocab/1.1#Autocorrelation"/>
-  </rdf:Description>
-  <rdf:Description rdf:about="http://sovarr.c4dm.eecs.qmul.ac.uk/af/mir/MIRToolbox/1.0#MFCC">
-    <rdfs:comment>MFCC MIR Toolbox audio feature</rdfs:comment>
-    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
-    <vs:term_status xml:lang="en">testing</vs:term_status>
-    <rdfs:label xml:lang="en">MFCC</rdfs:label>
-    <owl:sameAs rdf:resource="https://w3id.org/afo/vocab/1.1#MFCC"/>
-    <rdfs:subClassOf rdf:resource="https://w3id.org/afo/onto/1.1#TimbreFeatureExtractor"/>
-  </rdf:Description>
-  <rdf:Description rdf:about="http://sovarr.c4dm.eecs.qmul.ac.uk/af/mir/MIRToolbox/1.0#Kurtosis">
-    <owl:sameAs rdf:resource="https://w3id.org/afo/vocab/1.1#Kurtosis"/>
-    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
-    <rdfs:comment>Kurtosis MIR Toolbox audio feature</rdfs:comment>
-    <vs:term_status xml:lang="en">testing</vs:term_status>
-    <rdfs:subClassOf rdf:resource="https://w3id.org/afo/onto/1.1#Statistics"/>
-    <rdfs:label xml:lang="en">Kurtosis</rdfs:label>
-  </rdf:Description>
-  <rdf:Description rdf:about="http://sovarr.c4dm.eecs.qmul.ac.uk/af/mir/MIRToolbox/1.0#NoteOnset">
-    <vs:term_status xml:lang="en">testing</vs:term_status>
-    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
-    <owl:sameAs rdf:resource="https://w3id.org/afo/vocab/1.1#NoteOnset"/>
-    <rdfs:label xml:lang="en">NoteOnset</rdfs:label>
-    <rdfs:comment>NoteOnset MIR Toolbox audio feature</rdfs:comment>
-    <rdfs:subClassOf rdf:resource="https://w3id.org/afo/onto/1.1#RhythmFeatureExtractor"/>
-  </rdf:Description>
-  <rdf:Description rdf:about="http://sovarr.c4dm.eecs.qmul.ac.uk/af/mir/MIRToolbox/1.0#Key">
-    <rdfs:comment>Key MIR Toolbox audio feature</rdfs:comment>
-    <rdfs:label xml:lang="en">Key</rdfs:label>
-    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
-    <vs:term_status xml:lang="en">testing</vs:term_status>
-    <rdfs:subClassOf rdf:resource="https://w3id.org/afo/onto/1.1#TonalityFeatureExtractor"/>
-    <owl:sameAs rdf:resource="https://w3id.org/afo/vocab/1.1#Key"/>
-  </rdf:Description>
-  <rdf:Description rdf:about="http://sovarr.c4dm.eecs.qmul.ac.uk/af/mir/MIRToolbox/1.0#Tempo">
-    <rdfs:subClassOf rdf:resource="https://w3id.org/afo/onto/1.1#RhythmFeatureExtractor"/>
-    <owl:sameAs rdf:resource="https://w3id.org/afo/vocab/1.1#Tempo"/>
-    <vs:term_status xml:lang="en">testing</vs:term_status>
-    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
-    <rdfs:label xml:lang="en">Tempo</rdfs:label>
-    <rdfs:comment>Tempo MIR Toolbox audio feature</rdfs:comment>
-  </rdf:Description>
-  <rdf:Description rdf:about="http://sovarr.c4dm.eecs.qmul.ac.uk/af/mir/MIRToolbox/1.0#KeySOM">
-    <rdfs:comment>KeySOM MIR Toolbox audio feature</rdfs:comment>
-    <rdfs:label xml:lang="en">KeySOM</rdfs:label>
-    <rdfs:subClassOf rdf:resource="https://w3id.org/afo/onto/1.1#TonalityFeatureExtractor"/>
-    <vs:term_status xml:lang="en">testing</vs:term_status>
-    <owl:sameAs rdf:resource="https://w3id.org/afo/vocab/1.1#KeySOM"/>
-    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
-  </rdf:Description>
-  <rdf:Description rdf:about="http://sovarr.c4dm.eecs.qmul.ac.uk/af/mir/MIRToolbox/1.0#Novelty">
-    <rdfs:label xml:lang="en">Novelty</rdfs:label>
-    <rdfs:comment>Novelty MIR Toolbox audio feature</rdfs:comment>
-    <vs:term_status xml:lang="en">testing</vs:term_status>
-    <rdfs:subClassOf rdf:resource="https://w3id.org/afo/onto/1.1#Structure"/>
-    <owl:sameAs rdf:resource="https://w3id.org/afo/vocab/1.1#Novelty"/>
-    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
-  </rdf:Description>
-  <rdf:Description rdf:about="http://sovarr.c4dm.eecs.qmul.ac.uk/af/mir/MIRToolbox/1.0#HarmonicChangeDetectionFunction">
-    <owl:sameAs rdf:resource="https://w3id.org/afo/vocab/1.1#HarmonicChangeDetectionFunction"/>
-    <vs:term_status xml:lang="en">testing</vs:term_status>
-    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
-    <rdfs:comment>HarmonicChangeDetectionFunction MIR Toolbox audio feature</rdfs:comment>
-    <rdfs:subClassOf rdf:resource="https://w3id.org/afo/onto/1.1#TonalityFeatureExtractor"/>
-    <rdfs:label xml:lang="en">HarmonicChangeDetectionFunction</rdfs:label>
-  </rdf:Description>
-  <rdf:Description rdf:about="http://sovarr.c4dm.eecs.qmul.ac.uk/af/mir/MIRToolbox/1.0#AttackLeap">
-    <rdfs:subClassOf rdf:resource="https://w3id.org/afo/onto/1.1#TimbreFeatureExtractor"/>
-    <rdfs:comment>AttackLeap MIR Toolbox audio feature</rdfs:comment>
-    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
-    <owl:sameAs rdf:resource="https://w3id.org/afo/vocab/1.1#AttackLeap"/>
-    <rdfs:label xml:lang="en">AttackLeap</rdfs:label>
-    <vs:term_status xml:lang="en">testing</vs:term_status>
-  </rdf:Description>
-  <rdf:Description rdf:about="http://sovarr.c4dm.eecs.qmul.ac.uk/af/mir/MIRToolbox/1.0#Segment">
-    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
-    <rdfs:subClassOf rdf:resource="https://w3id.org/afo/onto/1.1#Structure"/>
-    <vs:term_status xml:lang="en">testing</vs:term_status>
-    <owl:sameAs rdf:resource="https://w3id.org/afo/vocab/1.1#Segment"/>
-    <rdfs:comment>Segment MIR Toolbox audio feature</rdfs:comment>
-    <rdfs:label xml:lang="en">Segment</rdfs:label>
-  </rdf:Description>
-  <rdf:Description rdf:about="http://sovarr.c4dm.eecs.qmul.ac.uk/af/mir/MIRToolbox/1.0#LowEnergy">
-    <rdfs:comment>LowEnergy MIR Toolbox audio feature</rdfs:comment>
-    <owl:sameAs rdf:resource="https://w3id.org/afo/vocab/1.1#LowEnergy"/>
-    <rdfs:subClassOf rdf:resource="https://w3id.org/afo/onto/1.1#DynamicsFeatureExtractor"/>
-    <vs:term_status xml:lang="en">testing</vs:term_status>
-    <rdfs:label xml:lang="en">LowEnergy</rdfs:label>
-    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
-  </rdf:Description>
-  <rdf:Description rdf:about="http://sovarr.c4dm.eecs.qmul.ac.uk/af/mir/MIRToolbox/1.0#Filterbank">
-    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
-    <vs:term_status xml:lang="en">testing</vs:term_status>
-    <rdfs:comment>Filterbank MIR Toolbox audio feature</rdfs:comment>
-    <owl:sameAs rdf:resource="https://w3id.org/afo/vocab/1.1#Filterbank"/>
-    <rdfs:label xml:lang="en">Filterbank</rdfs:label>
-  </rdf:Description>
-  <rdf:Description rdf:about="http://sovarr.c4dm.eecs.qmul.ac.uk/af/mir/MIRToolbox/1.0#PulseClarity">
-    <rdfs:comment>PulseClarity MIR Toolbox audio feature</rdfs:comment>
-    <rdfs:subClassOf rdf:resource="https://w3id.org/afo/onto/1.1#RhythmFeatureExtractor"/>
-    <vs:term_status xml:lang="en">testing</vs:term_status>
-    <owl:sameAs rdf:resource="https://w3id.org/afo/vocab/1.1#PulseClarity"/>
-    <rdfs:label xml:lang="en">PulseClarity</rdfs:label>
-    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
   </rdf:Description>
   <rdf:Description rdf:about="http://sovarr.c4dm.eecs.qmul.ac.uk/af/mir/MIRToolbox/1.0#Rolloff">
-    <rdfs:subClassOf rdf:resource="https://w3id.org/afo/onto/1.1#TimbreFeatureExtractor"/>
-    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
-    <rdfs:label xml:lang="en">Rolloff</rdfs:label>
-    <vs:term_status xml:lang="en">testing</vs:term_status>
-    <owl:sameAs rdf:resource="https://w3id.org/afo/vocab/1.1#Rolloff"/>
     <rdfs:comment>Rolloff MIR Toolbox audio feature</rdfs:comment>
-  </rdf:Description>
-  <rdf:Description rdf:about="http://sovarr.c4dm.eecs.qmul.ac.uk/af/mir/MIRToolbox/1.0#Mode">
-    <rdfs:label xml:lang="en">Mode</rdfs:label>
-    <vs:term_status xml:lang="en">testing</vs:term_status>
-    <rdfs:subClassOf rdf:resource="https://w3id.org/afo/onto/1.1#TonalityFeatureExtractor"/>
-    <owl:sameAs rdf:resource="https://w3id.org/afo/vocab/1.1#Mode"/>
-    <rdfs:comment>Mode MIR Toolbox audio feature</rdfs:comment>
-    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
-  </rdf:Description>
-  <rdf:Description rdf:about="http://sovarr.c4dm.eecs.qmul.ac.uk/af/mir/MIRToolbox/1.0#RMSEnergy">
-    <owl:sameAs rdf:resource="https://w3id.org/afo/vocab/1.1#RMSEnergy"/>
-    <rdfs:subClassOf rdf:resource="https://w3id.org/afo/onto/1.1#DynamicsFeatureExtractor"/>
-    <rdfs:label xml:lang="en">RMSEnergy</rdfs:label>
-    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
-    <rdfs:comment>RMSEnergy MIR Toolbox audio feature</rdfs:comment>
-    <vs:term_status xml:lang="en">testing</vs:term_status>
-  </rdf:Description>
-  <rdf:Description rdf:about="http://sovarr.c4dm.eecs.qmul.ac.uk/af/mir/MIRToolbox/1.0#RhythmicFluctuation">
-    <rdfs:comment>RhythmicFluctuation MIR Toolbox audio feature</rdfs:comment>
-    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
-    <vs:term_status xml:lang="en">testing</vs:term_status>
-    <rdfs:label xml:lang="en">RhythmicFluctuation</rdfs:label>
-    <rdfs:subClassOf rdf:resource="https://w3id.org/afo/onto/1.1#RhythmFeatureExtractor"/>
-    <owl:sameAs rdf:resource="https://w3id.org/afo/vocab/1.1#RhythmicFluctuation"/>
-  </rdf:Description>
-  <rdf:Description rdf:about="http://sovarr.c4dm.eecs.qmul.ac.uk/af/mir/MIRToolbox/1.0#Envelope">
-    <owl:sameAs rdf:resource="https://w3id.org/afo/vocab/1.1#Envelope"/>
-    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
-    <vs:term_status xml:lang="en">testing</vs:term_status>
-    <rdfs:label xml:lang="en">Envelope</rdfs:label>
-    <rdfs:comment>Envelope MIR Toolbox audio feature</rdfs:comment>
-  </rdf:Description>
-  <rdf:Description rdf:about="http://sovarr.c4dm.eecs.qmul.ac.uk/af/mir/MIRToolbox/1.0#Brightness">
-    <owl:sameAs rdf:resource="https://w3id.org/afo/vocab/1.1#Brightness"/>
-    <vs:term_status xml:lang="en">testing</vs:term_status>
-    <rdfs:comment>Brightness MIR Toolbox audio feature</rdfs:comment>
+    <owl:sameAs rdf:resource="https://w3id.org/afo/vocab/1.1#Rolloff"/>
+    <rdfs:label xml:lang="en">Rolloff</rdfs:label>
     <rdfs:subClassOf rdf:resource="https://w3id.org/afo/onto/1.1#TimbreFeatureExtractor"/>
-    <rdfs:label xml:lang="en">Brightness</rdfs:label>
-    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
-  </rdf:Description>
-  <rdf:Description rdf:about="http://sovarr.c4dm.eecs.qmul.ac.uk/af/mir/MIRToolbox/1.0#Inharmonicity">
-    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
-    <vs:term_status xml:lang="en">testing</vs:term_status>
-    <rdfs:label xml:lang="en">Inharmonicity</rdfs:label>
-    <rdfs:comment>Inharmonicity MIR Toolbox audio feature</rdfs:comment>
-    <owl:sameAs rdf:resource="https://w3id.org/afo/vocab/1.1#Inharmonicity"/>
-    <rdfs:subClassOf rdf:resource="https://w3id.org/afo/onto/1.1#PitchFeatureExtractor"/>
-  </rdf:Description>
-  <rdf:Description rdf:about="http://sovarr.c4dm.eecs.qmul.ac.uk/af/mir/MIRToolbox/1.0#Histogram">
-    <rdfs:label xml:lang="en">Histogram</rdfs:label>
-    <rdfs:comment>Histogram MIR Toolbox audio feature</rdfs:comment>
-    <owl:sameAs rdf:resource="https://w3id.org/afo/vocab/1.1#Histogram"/>
     <vs:term_status xml:lang="en">testing</vs:term_status>
     <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
-    <rdfs:subClassOf rdf:resource="https://w3id.org/afo/onto/1.1#Statistics"/>
   </rdf:Description>
   <rdf:Description rdf:about="">
-    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Ontology"/>
-    <dc:description xml:lang="en">This is an ontology for annotating MIR Toolbox audio features</dc:description>
-    <owl:versionInfo xml:lang="en">Version 1.0</owl:versionInfo>
     <dc:title xml:lang="en">MIR Toolbox Ontology</dc:title>
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Ontology"/>
+    <owl:versionInfo xml:lang="en">Version 1.0</owl:versionInfo>
+    <dc:description xml:lang="en">This is an ontology for annotating MIR Toolbox audio features</dc:description>
   </rdf:Description>
-  <rdf:Description rdf:about="http://sovarr.c4dm.eecs.qmul.ac.uk/af/mir/MIRToolbox/1.0#MIDI">
-    <vs:term_status xml:lang="en">testing</vs:term_status>
-    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
-    <rdfs:label xml:lang="en">MIDI</rdfs:label>
-    <rdfs:comment>MIDI MIR Toolbox audio feature</rdfs:comment>
-    <rdfs:subClassOf rdf:resource="https://w3id.org/afo/onto/1.1#PitchFeatureExtractor"/>
-    <owl:sameAs rdf:resource="https://w3id.org/afo/vocab/1.1#MIDI"/>
-  </rdf:Description>
-  <rdf:Description rdf:about="http://sovarr.c4dm.eecs.qmul.ac.uk/af/mir/MIRToolbox/1.0#Query">
-    <rdfs:subClassOf rdf:resource="https://w3id.org/afo/onto/1.1#Similarity"/>
-    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
-    <rdfs:label xml:lang="en">Query</rdfs:label>
-    <vs:term_status xml:lang="en">testing</vs:term_status>
-    <rdfs:comment>Query MIR Toolbox audio feature</rdfs:comment>
-    <owl:sameAs rdf:resource="https://w3id.org/afo/vocab/1.1#Query"/>
-  </rdf:Description>
-  <rdf:Description rdf:about="http://sovarr.c4dm.eecs.qmul.ac.uk/af/mir/MIRToolbox/1.0#Audio">
-    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
-    <owl:sameAs rdf:resource="https://w3id.org/afo/vocab/1.1#Audio"/>
-    <rdfs:comment>Audio MIR Toolbox audio feature</rdfs:comment>
-    <vs:term_status xml:lang="en">testing</vs:term_status>
-    <rdfs:label xml:lang="en">Audio</rdfs:label>
-  </rdf:Description>
-  <rdf:Description rdf:about="http://sovarr.c4dm.eecs.qmul.ac.uk/af/mir/MIRToolbox/1.0#TonalCentroid">
-    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+  <rdf:Description rdf:about="http://sovarr.c4dm.eecs.qmul.ac.uk/af/mir/MIRToolbox/1.0#KeySOM">
+    <rdfs:label xml:lang="en">KeySOM</rdfs:label>
     <rdfs:subClassOf rdf:resource="https://w3id.org/afo/onto/1.1#TonalityFeatureExtractor"/>
-    <rdfs:comment>TonalCentroid MIR Toolbox audio feature</rdfs:comment>
-    <rdfs:label xml:lang="en">TonalCentroid</rdfs:label>
-    <vs:term_status xml:lang="en">testing</vs:term_status>
-    <owl:sameAs rdf:resource="https://w3id.org/afo/vocab/1.1#TonalCentroid"/>
-  </rdf:Description>
-  <rdf:Description rdf:about="http://sovarr.c4dm.eecs.qmul.ac.uk/af/mir/MIRToolbox/1.0#Flatness">
-    <vs:term_status xml:lang="en">testing</vs:term_status>
-    <owl:sameAs rdf:resource="https://w3id.org/afo/vocab/1.1#Flatness"/>
     <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
-    <rdfs:label xml:lang="en">Flatness</rdfs:label>
-    <rdfs:comment>Flatness MIR Toolbox audio feature</rdfs:comment>
-    <rdfs:subClassOf rdf:resource="https://w3id.org/afo/onto/1.1#Statistics"/>
+    <rdfs:comment>KeySOM MIR Toolbox audio feature</rdfs:comment>
+    <owl:sameAs rdf:resource="https://w3id.org/afo/vocab/1.1#KeySOM"/>
+    <vs:term_status xml:lang="en">testing</vs:term_status>
   </rdf:Description>
   <rdf:Description rdf:about="http://sovarr.c4dm.eecs.qmul.ac.uk/af/mir/MIRToolbox/1.0#SimilarityMatrix">
     <rdfs:label xml:lang="en">SimilarityMatrix</rdfs:label>
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+    <vs:term_status xml:lang="en">testing</vs:term_status>
     <owl:sameAs rdf:resource="https://w3id.org/afo/vocab/1.1#SimilarityMatrix"/>
     <rdfs:comment>SimilarityMatrix MIR Toolbox audio feature</rdfs:comment>
-    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
     <rdfs:subClassOf rdf:resource="https://w3id.org/afo/onto/1.1#Structure"/>
-    <vs:term_status xml:lang="en">testing</vs:term_status>
-  </rdf:Description>
-  <rdf:Description rdf:about="http://sovarr.c4dm.eecs.qmul.ac.uk/af/mir/MIRToolbox/1.0#Flux">
-    <vs:term_status xml:lang="en">testing</vs:term_status>
-    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
-    <owl:sameAs rdf:resource="https://w3id.org/afo/vocab/1.1#Flux"/>
-    <rdfs:label xml:lang="en">Flux</rdfs:label>
-    <rdfs:comment>Flux MIR Toolbox audio feature</rdfs:comment>
-  </rdf:Description>
-  <rdf:Description rdf:about="http://sovarr.c4dm.eecs.qmul.ac.uk/af/mir/MIRToolbox/1.0#Distance">
-    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
-    <rdfs:subClassOf rdf:resource="https://w3id.org/afo/onto/1.1#Similarity"/>
-    <owl:sameAs rdf:resource="https://w3id.org/afo/vocab/1.1#Distance"/>
-    <rdfs:label xml:lang="en">Distance</rdfs:label>
-    <rdfs:comment>Distance MIR Toolbox audio feature</rdfs:comment>
-    <vs:term_status xml:lang="en">testing</vs:term_status>
   </rdf:Description>
   <rdf:Description rdf:about="http://sovarr.c4dm.eecs.qmul.ac.uk/af/mir/MIRToolbox/1.0#Irregularity">
-    <vs:term_status xml:lang="en">testing</vs:term_status>
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+    <rdfs:label xml:lang="en">Irregularity</rdfs:label>
     <rdfs:comment>Irregularity MIR Toolbox audio feature</rdfs:comment>
+    <owl:sameAs rdf:resource="https://w3id.org/afo/vocab/1.1#Irregularity"/>
+    <vs:term_status xml:lang="en">testing</vs:term_status>
+    <rdfs:subClassOf rdf:resource="https://w3id.org/afo/onto/1.1#TimbreFeatureExtractor"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://sovarr.c4dm.eecs.qmul.ac.uk/af/mir/MIRToolbox/1.0#Cluster">
+    <owl:sameAs rdf:resource="https://w3id.org/afo/vocab/1.1#Cluster"/>
+    <rdfs:comment>Cluster MIR Toolbox audio feature</rdfs:comment>
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+    <rdfs:label xml:lang="en">Cluster</rdfs:label>
+    <vs:term_status xml:lang="en">testing</vs:term_status>
+    <rdfs:subClassOf rdf:resource="https://w3id.org/afo/onto/1.1#Predictions"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://sovarr.c4dm.eecs.qmul.ac.uk/af/mir/MIRToolbox/1.0#Length">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+    <rdfs:comment>Length MIR Toolbox audio feature</rdfs:comment>
+    <vs:term_status xml:lang="en">testing</vs:term_status>
+    <owl:sameAs rdf:resource="https://w3id.org/afo/vocab/1.1#Length"/>
+    <rdfs:label xml:lang="en">Length</rdfs:label>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://sovarr.c4dm.eecs.qmul.ac.uk/af/mir/MIRToolbox/1.0#Autocorrelation">
+    <vs:term_status xml:lang="en">testing</vs:term_status>
+    <rdfs:label xml:lang="en">Autocorrelation</rdfs:label>
+    <rdfs:comment>Autocorrelation MIR Toolbox audio feature</rdfs:comment>
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+    <owl:sameAs rdf:resource="https://w3id.org/afo/vocab/1.1#Autocorrelation"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://sovarr.c4dm.eecs.qmul.ac.uk/af/mir/MIRToolbox/1.0#MIDI">
+    <rdfs:comment>MIDI MIR Toolbox audio feature</rdfs:comment>
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+    <vs:term_status xml:lang="en">testing</vs:term_status>
+    <rdfs:subClassOf rdf:resource="https://w3id.org/afo/onto/1.1#PitchFeatureExtractor"/>
+    <rdfs:label xml:lang="en">MIDI</rdfs:label>
+    <owl:sameAs rdf:resource="https://w3id.org/afo/vocab/1.1#MIDI"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://sovarr.c4dm.eecs.qmul.ac.uk/af/mir/MIRToolbox/1.0#LowEnergy">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+    <rdfs:comment>LowEnergy MIR Toolbox audio feature</rdfs:comment>
+    <vs:term_status xml:lang="en">testing</vs:term_status>
+    <rdfs:label xml:lang="en">LowEnergy</rdfs:label>
+    <rdfs:subClassOf rdf:resource="https://w3id.org/afo/onto/1.1#DynamicsFeatureExtractor"/>
+    <owl:sameAs rdf:resource="https://w3id.org/afo/vocab/1.1#LowEnergy"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://sovarr.c4dm.eecs.qmul.ac.uk/af/mir/MIRToolbox/1.0#NoteOnset">
+    <rdfs:comment>NoteOnset MIR Toolbox audio feature</rdfs:comment>
+    <owl:sameAs rdf:resource="https://w3id.org/afo/vocab/1.1#NoteOnset"/>
+    <rdfs:label xml:lang="en">NoteOnset</rdfs:label>
+    <rdfs:subClassOf rdf:resource="https://w3id.org/afo/onto/1.1#RhythmFeatureExtractor"/>
+    <vs:term_status xml:lang="en">testing</vs:term_status>
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://sovarr.c4dm.eecs.qmul.ac.uk/af/mir/MIRToolbox/1.0#Query">
+    <owl:sameAs rdf:resource="https://w3id.org/afo/vocab/1.1#Query"/>
+    <rdfs:comment>Query MIR Toolbox audio feature</rdfs:comment>
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+    <rdfs:subClassOf rdf:resource="https://w3id.org/afo/onto/1.1#Similarity"/>
+    <vs:term_status xml:lang="en">testing</vs:term_status>
+    <rdfs:label xml:lang="en">Query</rdfs:label>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://sovarr.c4dm.eecs.qmul.ac.uk/af/mir/MIRToolbox/1.0#AttackLeap">
+    <owl:sameAs rdf:resource="https://w3id.org/afo/vocab/1.1#AttackLeap"/>
+    <rdfs:comment>AttackLeap MIR Toolbox audio feature</rdfs:comment>
+    <rdfs:label xml:lang="en">AttackLeap</rdfs:label>
     <rdfs:subClassOf rdf:resource="https://w3id.org/afo/onto/1.1#TimbreFeatureExtractor"/>
     <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
-    <owl:sameAs rdf:resource="https://w3id.org/afo/vocab/1.1#Irregularity"/>
-    <rdfs:label xml:lang="en">Irregularity</rdfs:label>
+    <vs:term_status xml:lang="en">testing</vs:term_status>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://sovarr.c4dm.eecs.qmul.ac.uk/af/mir/MIRToolbox/1.0#Histogram">
+    <rdfs:label xml:lang="en">Histogram</rdfs:label>
+    <vs:term_status xml:lang="en">testing</vs:term_status>
+    <rdfs:comment>Histogram MIR Toolbox audio feature</rdfs:comment>
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+    <rdfs:subClassOf rdf:resource="https://w3id.org/afo/onto/1.1#Statistics"/>
+    <owl:sameAs rdf:resource="https://w3id.org/afo/vocab/1.1#Histogram"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://sovarr.c4dm.eecs.qmul.ac.uk/af/mir/MIRToolbox/1.0#RMSEnergy">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+    <rdfs:comment>RMSEnergy MIR Toolbox audio feature</rdfs:comment>
+    <vs:term_status xml:lang="en">testing</vs:term_status>
+    <owl:sameAs rdf:resource="https://w3id.org/afo/vocab/1.1#RMSEnergy"/>
+    <rdfs:subClassOf rdf:resource="https://w3id.org/afo/onto/1.1#DynamicsFeatureExtractor"/>
+    <rdfs:label xml:lang="en">RMSEnergy</rdfs:label>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://sovarr.c4dm.eecs.qmul.ac.uk/af/mir/MIRToolbox/1.0#Envelope">
+    <rdfs:comment>Envelope MIR Toolbox audio feature</rdfs:comment>
+    <owl:sameAs rdf:resource="https://w3id.org/afo/vocab/1.1#Envelope"/>
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+    <rdfs:label xml:lang="en">Envelope</rdfs:label>
+    <vs:term_status xml:lang="en">testing</vs:term_status>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://sovarr.c4dm.eecs.qmul.ac.uk/af/mir/MIRToolbox/1.0#ZeroCrossingRate">
+    <rdfs:subClassOf rdf:resource="https://w3id.org/afo/onto/1.1#Statistics"/>
+    <rdfs:label xml:lang="en">ZeroCrossingRate</rdfs:label>
+    <rdfs:comment>ZeroCrossingRate MIR Toolbox audio feature</rdfs:comment>
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+    <owl:sameAs rdf:resource="https://w3id.org/afo/vocab/1.1#ZeroCrossingRate"/>
+    <vs:term_status xml:lang="en">testing</vs:term_status>
+    <rdfs:subClassOf rdf:resource="https://w3id.org/afo/onto/1.1#TimbreFeatureExtractor"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://sovarr.c4dm.eecs.qmul.ac.uk/af/mir/MIRToolbox/1.0#StatisticalMapping">
+    <rdfs:subClassOf rdf:resource="https://w3id.org/afo/onto/1.1#Statistics"/>
+    <rdfs:comment>StatisticalMapping MIR Toolbox audio feature</rdfs:comment>
+    <rdfs:label xml:lang="en">StatisticalMapping</rdfs:label>
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+    <vs:term_status xml:lang="en">testing</vs:term_status>
+    <owl:sameAs rdf:resource="https://w3id.org/afo/vocab/1.1#StatisticalMapping"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://sovarr.c4dm.eecs.qmul.ac.uk/af/mir/MIRToolbox/1.0#Peaks">
+    <owl:sameAs rdf:resource="https://w3id.org/afo/vocab/1.1#Peaks"/>
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+    <rdfs:comment>Peaks MIR Toolbox audio feature</rdfs:comment>
+    <vs:term_status xml:lang="en">testing</vs:term_status>
+    <rdfs:label xml:lang="en">Peaks</rdfs:label>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://sovarr.c4dm.eecs.qmul.ac.uk/af/mir/MIRToolbox/1.0#EventDensity">
+    <rdfs:subClassOf rdf:resource="https://w3id.org/afo/onto/1.1#RhythmFeatureExtractor"/>
+    <vs:term_status xml:lang="en">testing</vs:term_status>
+    <rdfs:label xml:lang="en">EventDensity</rdfs:label>
+    <rdfs:comment>EventDensity MIR Toolbox audio feature</rdfs:comment>
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+    <owl:sameAs rdf:resource="https://w3id.org/afo/vocab/1.1#EventDensity"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://sovarr.c4dm.eecs.qmul.ac.uk/af/mir/MIRToolbox/1.0#Emotion">
+    <owl:sameAs rdf:resource="https://w3id.org/afo/vocab/1.1#Emotion"/>
+    <rdfs:comment>Emotion MIR Toolbox audio feature</rdfs:comment>
+    <vs:term_status xml:lang="en">testing</vs:term_status>
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+    <rdfs:label xml:lang="en">Emotion</rdfs:label>
+    <rdfs:subClassOf rdf:resource="https://w3id.org/afo/onto/1.1#Predictions"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://sovarr.c4dm.eecs.qmul.ac.uk/af/mir/MIRToolbox/1.0#AttackSlope">
+    <rdfs:subClassOf rdf:resource="https://w3id.org/afo/onto/1.1#TimbreFeatureExtractor"/>
+    <rdfs:comment>AttackSlope MIR Toolbox audio feature</rdfs:comment>
+    <rdfs:label xml:lang="en">AttackSlope</rdfs:label>
+    <vs:term_status xml:lang="en">testing</vs:term_status>
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+    <owl:sameAs rdf:resource="https://w3id.org/afo/vocab/1.1#AttackSlope"/>
   </rdf:Description>
   <rdf:Description rdf:about="http://sovarr.c4dm.eecs.qmul.ac.uk/af/mir/MIRToolbox/1.0#Cepstrum">
+    <rdfs:comment>Cepstrum MIR Toolbox audio feature</rdfs:comment>
     <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
     <owl:sameAs rdf:resource="https://w3id.org/afo/vocab/1.1#Cepstrum"/>
     <vs:term_status xml:lang="en">testing</vs:term_status>
     <rdfs:label xml:lang="en">Cepstrum</rdfs:label>
-    <rdfs:comment>Cepstrum MIR Toolbox audio feature</rdfs:comment>
   </rdf:Description>
-  <rdf:Description rdf:about="http://sovarr.c4dm.eecs.qmul.ac.uk/af/mir/MIRToolbox/1.0#SpectralFluxOnsetDetectionFunction">
-    <rdfs:comment>SpectralFluxOnsetDetectionFunction MIR Toolbox audio feature</rdfs:comment>
-    <owl:sameAs rdf:resource="https://w3id.org/afo/vocab/1.1#SpectralFluxOnsetDetectionFunction"/>
-    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
-    <rdfs:subClassOf rdf:resource="https://w3id.org/afo/onto/1.1#RhythmFeatureExtractor"/>
-    <rdfs:label xml:lang="en">SpectralFluxOnsetDetectionFunction</rdfs:label>
+  <rdf:Description rdf:about="http://sovarr.c4dm.eecs.qmul.ac.uk/af/mir/MIRToolbox/1.0#Skewness">
+    <rdfs:label xml:lang="en">Skewness</rdfs:label>
+    <rdfs:comment>Skewness MIR Toolbox audio feature</rdfs:comment>
     <vs:term_status xml:lang="en">testing</vs:term_status>
-  </rdf:Description>
-  <rdf:Description rdf:about="http://sovarr.c4dm.eecs.qmul.ac.uk/af/mir/MIRToolbox/1.0#BeatSpectrum">
-    <rdfs:subClassOf rdf:resource="https://w3id.org/afo/onto/1.1#RhythmFeatureExtractor"/>
-    <owl:sameAs rdf:resource="https://w3id.org/afo/vocab/1.1#BeatSpectrum"/>
-    <vs:term_status xml:lang="en">testing</vs:term_status>
-    <rdfs:label xml:lang="en">BeatSpectrum</rdfs:label>
-    <rdfs:comment>BeatSpectrum MIR Toolbox audio feature</rdfs:comment>
-    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
-  </rdf:Description>
-  <rdf:Description rdf:about="http://sovarr.c4dm.eecs.qmul.ac.uk/af/mir/MIRToolbox/1.0#Mean">
-    <owl:sameAs rdf:resource="https://w3id.org/afo/vocab/1.1#Mean"/>
-    <rdfs:comment>Mean MIR Toolbox audio feature</rdfs:comment>
-    <vs:term_status xml:lang="en">testing</vs:term_status>
-    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
-    <rdfs:label xml:lang="en">Mean</rdfs:label>
+    <owl:sameAs rdf:resource="https://w3id.org/afo/vocab/1.1#Skewness"/>
     <rdfs:subClassOf rdf:resource="https://w3id.org/afo/onto/1.1#Statistics"/>
-  </rdf:Description>
-  <rdf:Description rdf:about="http://sovarr.c4dm.eecs.qmul.ac.uk/af/mir/MIRToolbox/1.0#Classify">
-    <owl:sameAs rdf:resource="https://w3id.org/afo/vocab/1.1#Classify"/>
-    <vs:term_status xml:lang="en">testing</vs:term_status>
     <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
-    <rdfs:subClassOf rdf:resource="https://w3id.org/afo/onto/1.1#Predictions"/>
-    <rdfs:label xml:lang="en">Classify</rdfs:label>
-    <rdfs:comment>Classify MIR Toolbox audio feature</rdfs:comment>
   </rdf:Description>
-  <rdf:Description rdf:about="http://sovarr.c4dm.eecs.qmul.ac.uk/af/mir/MIRToolbox/1.0#Spread">
-    <rdfs:subClassOf rdf:resource="https://w3id.org/afo/onto/1.1#Statistics"/>
-    <rdfs:comment>Spread MIR Toolbox audio feature</rdfs:comment>
+  <rdf:Description rdf:about="http://sovarr.c4dm.eecs.qmul.ac.uk/af/mir/MIRToolbox/1.0#Centroid">
     <vs:term_status xml:lang="en">testing</vs:term_status>
-    <rdfs:label xml:lang="en">Spread</rdfs:label>
+    <rdfs:comment>Centroid MIR Toolbox audio feature</rdfs:comment>
     <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
-    <owl:sameAs rdf:resource="https://w3id.org/afo/vocab/1.1#Spread"/>
-  </rdf:Description>
-  <rdf:Description rdf:about="http://sovarr.c4dm.eecs.qmul.ac.uk/af/mir/MIRToolbox/1.0#Frame">
-    <owl:sameAs rdf:resource="https://w3id.org/afo/vocab/1.1#Frame"/>
-    <rdfs:label xml:lang="en">Frame</rdfs:label>
-    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
-    <rdfs:comment>Frame MIR Toolbox audio feature</rdfs:comment>
-    <vs:term_status xml:lang="en">testing</vs:term_status>
-  </rdf:Description>
-  <rdf:Description rdf:about="http://sovarr.c4dm.eecs.qmul.ac.uk/af/mir/MIRToolbox/1.0#Entropy">
-    <owl:sameAs rdf:resource="https://w3id.org/afo/vocab/1.1#Entropy"/>
-    <vs:term_status xml:lang="en">testing</vs:term_status>
-    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
-    <rdfs:comment>Entropy MIR Toolbox audio feature</rdfs:comment>
-    <rdfs:label xml:lang="en">Entropy</rdfs:label>
+    <rdfs:label xml:lang="en">Centroid</rdfs:label>
+    <owl:sameAs rdf:resource="https://w3id.org/afo/vocab/1.1#Centroid"/>
     <rdfs:subClassOf rdf:resource="https://w3id.org/afo/onto/1.1#Statistics"/>
   </rdf:Description>
   <rdf:Description rdf:about="http://sovarr.c4dm.eecs.qmul.ac.uk/af/mir/MIRToolbox/1.0#Chromagram">
-    <vs:term_status xml:lang="en">testing</vs:term_status>
-    <owl:sameAs rdf:resource="https://w3id.org/afo/vocab/1.1#Chromagram"/>
-    <rdfs:comment>Chromagram MIR Toolbox audio feature</rdfs:comment>
-    <rdfs:subClassOf rdf:resource="https://w3id.org/afo/onto/1.1#TonalityFeatureExtractor"/>
     <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+    <vs:term_status xml:lang="en">testing</vs:term_status>
+    <rdfs:subClassOf rdf:resource="https://w3id.org/afo/onto/1.1#TonalityFeatureExtractor"/>
+    <rdfs:comment>Chromagram MIR Toolbox audio feature</rdfs:comment>
+    <owl:sameAs rdf:resource="https://w3id.org/afo/vocab/1.1#Chromagram"/>
     <rdfs:label xml:lang="en">Chromagram</rdfs:label>
   </rdf:Description>
-  <rdf:Description rdf:about="http://sovarr.c4dm.eecs.qmul.ac.uk/af/mir/MIRToolbox/1.0#Peaks">
+  <rdf:Description rdf:about="http://sovarr.c4dm.eecs.qmul.ac.uk/af/mir/MIRToolbox/1.0#PulseClarity">
     <vs:term_status xml:lang="en">testing</vs:term_status>
+    <rdfs:label xml:lang="en">PulseClarity</rdfs:label>
     <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
-    <rdfs:comment>Peaks MIR Toolbox audio feature</rdfs:comment>
-    <owl:sameAs rdf:resource="https://w3id.org/afo/vocab/1.1#Peaks"/>
-    <rdfs:label xml:lang="en">Peaks</rdfs:label>
-  </rdf:Description>
-  <rdf:Description rdf:about="http://sovarr.c4dm.eecs.qmul.ac.uk/af/mir/MIRToolbox/1.0#Length">
-    <rdfs:label xml:lang="en">Length</rdfs:label>
-    <vs:term_status xml:lang="en">testing</vs:term_status>
-    <rdfs:comment>Length MIR Toolbox audio feature</rdfs:comment>
-    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
-    <owl:sameAs rdf:resource="https://w3id.org/afo/vocab/1.1#Length"/>
-  </rdf:Description>
-  <rdf:Description rdf:about="http://sovarr.c4dm.eecs.qmul.ac.uk/af/mir/MIRToolbox/1.0#StatisticalMapping">
-    <owl:sameAs rdf:resource="https://w3id.org/afo/vocab/1.1#StatisticalMapping"/>
-    <rdfs:subClassOf rdf:resource="https://w3id.org/afo/onto/1.1#Statistics"/>
-    <rdfs:label xml:lang="en">StatisticalMapping</rdfs:label>
-    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
-    <rdfs:comment>StatisticalMapping MIR Toolbox audio feature</rdfs:comment>
-    <vs:term_status xml:lang="en">testing</vs:term_status>
-  </rdf:Description>
-  <rdf:Description rdf:about="http://sovarr.c4dm.eecs.qmul.ac.uk/af/mir/MIRToolbox/1.0#Cluster">
-    <rdfs:subClassOf rdf:resource="https://w3id.org/afo/onto/1.1#Predictions"/>
-    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
-    <vs:term_status xml:lang="en">testing</vs:term_status>
-    <rdfs:comment>Cluster MIR Toolbox audio feature</rdfs:comment>
-    <rdfs:label xml:lang="en">Cluster</rdfs:label>
-    <owl:sameAs rdf:resource="https://w3id.org/afo/vocab/1.1#Cluster"/>
-  </rdf:Description>
-  <rdf:Description rdf:about="http://sovarr.c4dm.eecs.qmul.ac.uk/af/mir/MIRToolbox/1.0#EventDensity">
-    <vs:term_status xml:lang="en">testing</vs:term_status>
-    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
-    <rdfs:label xml:lang="en">EventDensity</rdfs:label>
-    <owl:sameAs rdf:resource="https://w3id.org/afo/vocab/1.1#EventDensity"/>
-    <rdfs:comment>EventDensity MIR Toolbox audio feature</rdfs:comment>
+    <owl:sameAs rdf:resource="https://w3id.org/afo/vocab/1.1#PulseClarity"/>
     <rdfs:subClassOf rdf:resource="https://w3id.org/afo/onto/1.1#RhythmFeatureExtractor"/>
+    <rdfs:comment>PulseClarity MIR Toolbox audio feature</rdfs:comment>
   </rdf:Description>
-  <rdf:Description rdf:about="http://sovarr.c4dm.eecs.qmul.ac.uk/af/mir/MIRToolbox/1.0#Roughness">
-    <rdfs:comment>Roughness MIR Toolbox audio feature</rdfs:comment>
-    <owl:sameAs rdf:resource="https://w3id.org/afo/vocab/1.1#Roughness"/>
+  <rdf:Description rdf:about="http://sovarr.c4dm.eecs.qmul.ac.uk/af/mir/MIRToolbox/1.0#Tempo">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+    <owl:sameAs rdf:resource="https://w3id.org/afo/vocab/1.1#Tempo"/>
+    <vs:term_status xml:lang="en">testing</vs:term_status>
+    <rdfs:comment>Tempo MIR Toolbox audio feature</rdfs:comment>
+    <rdfs:subClassOf rdf:resource="https://w3id.org/afo/onto/1.1#RhythmFeatureExtractor"/>
+    <rdfs:label xml:lang="en">Tempo</rdfs:label>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://sovarr.c4dm.eecs.qmul.ac.uk/af/mir/MIRToolbox/1.0#BeatSpectrum">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+    <rdfs:label xml:lang="en">BeatSpectrum</rdfs:label>
+    <rdfs:comment>BeatSpectrum MIR Toolbox audio feature</rdfs:comment>
+    <vs:term_status xml:lang="en">testing</vs:term_status>
+    <rdfs:subClassOf rdf:resource="https://w3id.org/afo/onto/1.1#RhythmFeatureExtractor"/>
+    <owl:sameAs rdf:resource="https://w3id.org/afo/vocab/1.1#BeatSpectrum"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://sovarr.c4dm.eecs.qmul.ac.uk/af/mir/MIRToolbox/1.0#Brightness">
+    <rdfs:label xml:lang="en">Brightness</rdfs:label>
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+    <rdfs:comment>Brightness MIR Toolbox audio feature</rdfs:comment>
     <rdfs:subClassOf rdf:resource="https://w3id.org/afo/onto/1.1#TimbreFeatureExtractor"/>
     <vs:term_status xml:lang="en">testing</vs:term_status>
-    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
-    <rdfs:label xml:lang="en">Roughness</rdfs:label>
+    <owl:sameAs rdf:resource="https://w3id.org/afo/vocab/1.1#Brightness"/>
   </rdf:Description>
-  <rdf:Description rdf:about="http://sovarr.c4dm.eecs.qmul.ac.uk/af/mir/MIRToolbox/1.0#Attack">
-    <rdfs:comment>Attack MIR Toolbox audio feature</rdfs:comment>
+  <rdf:Description rdf:about="http://sovarr.c4dm.eecs.qmul.ac.uk/af/mir/MIRToolbox/1.0#HarmonicChangeDetectionFunction">
+    <owl:sameAs rdf:resource="https://w3id.org/afo/vocab/1.1#HarmonicChangeDetectionFunction"/>
+    <rdfs:subClassOf rdf:resource="https://w3id.org/afo/onto/1.1#TonalityFeatureExtractor"/>
+    <rdfs:label xml:lang="en">HarmonicChangeDetectionFunction</rdfs:label>
     <vs:term_status xml:lang="en">testing</vs:term_status>
-    <rdfs:subClassOf rdf:resource="https://w3id.org/afo/onto/1.1#TimbreFeatureExtractor"/>
-    <owl:sameAs rdf:resource="https://w3id.org/afo/vocab/1.1#Attack"/>
+    <rdfs:comment>HarmonicChangeDetectionFunction MIR Toolbox audio feature</rdfs:comment>
     <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
-    <rdfs:label xml:lang="en">Attack</rdfs:label>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://sovarr.c4dm.eecs.qmul.ac.uk/af/mir/MIRToolbox/1.0#Kurtosis">
+    <rdfs:subClassOf rdf:resource="https://w3id.org/afo/onto/1.1#Statistics"/>
+    <owl:sameAs rdf:resource="https://w3id.org/afo/vocab/1.1#Kurtosis"/>
+    <vs:term_status xml:lang="en">testing</vs:term_status>
+    <rdfs:label xml:lang="en">Kurtosis</rdfs:label>
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+    <rdfs:comment>Kurtosis MIR Toolbox audio feature</rdfs:comment>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://sovarr.c4dm.eecs.qmul.ac.uk/af/mir/MIRToolbox/1.0#Key">
+    <vs:term_status xml:lang="en">testing</vs:term_status>
+    <rdfs:label xml:lang="en">Key</rdfs:label>
+    <rdfs:subClassOf rdf:resource="https://w3id.org/afo/onto/1.1#TonalityFeatureExtractor"/>
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+    <owl:sameAs rdf:resource="https://w3id.org/afo/vocab/1.1#Key"/>
+    <rdfs:comment>Key MIR Toolbox audio feature</rdfs:comment>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://sovarr.c4dm.eecs.qmul.ac.uk/af/mir/MIRToolbox/1.0#Inharmonicity">
+    <rdfs:subClassOf rdf:resource="https://w3id.org/afo/onto/1.1#PitchFeatureExtractor"/>
+    <rdfs:comment>Inharmonicity MIR Toolbox audio feature</rdfs:comment>
+    <vs:term_status xml:lang="en">testing</vs:term_status>
+    <rdfs:label xml:lang="en">Inharmonicity</rdfs:label>
+    <owl:sameAs rdf:resource="https://w3id.org/afo/vocab/1.1#Inharmonicity"/>
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://sovarr.c4dm.eecs.qmul.ac.uk/af/mir/MIRToolbox/1.0#Mode">
+    <rdfs:comment>Mode MIR Toolbox audio feature</rdfs:comment>
+    <rdfs:label xml:lang="en">Mode</rdfs:label>
+    <rdfs:subClassOf rdf:resource="https://w3id.org/afo/onto/1.1#TonalityFeatureExtractor"/>
+    <owl:sameAs rdf:resource="https://w3id.org/afo/vocab/1.1#Mode"/>
+    <vs:term_status xml:lang="en">testing</vs:term_status>
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://sovarr.c4dm.eecs.qmul.ac.uk/af/mir/MIRToolbox/1.0#Spread">
+    <rdfs:label xml:lang="en">Spread</rdfs:label>
+    <owl:sameAs rdf:resource="https://w3id.org/afo/vocab/1.1#Spread"/>
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+    <vs:term_status xml:lang="en">testing</vs:term_status>
+    <rdfs:comment>Spread MIR Toolbox audio feature</rdfs:comment>
+    <rdfs:subClassOf rdf:resource="https://w3id.org/afo/onto/1.1#Statistics"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://sovarr.c4dm.eecs.qmul.ac.uk/af/mir/MIRToolbox/1.0#Mean">
+    <owl:sameAs rdf:resource="https://w3id.org/afo/vocab/1.1#Mean"/>
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+    <rdfs:comment>Mean MIR Toolbox audio feature</rdfs:comment>
+    <rdfs:label xml:lang="en">Mean</rdfs:label>
+    <vs:term_status xml:lang="en">testing</vs:term_status>
+    <rdfs:subClassOf rdf:resource="https://w3id.org/afo/onto/1.1#Statistics"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://sovarr.c4dm.eecs.qmul.ac.uk/af/mir/MIRToolbox/1.0#Entropy">
+    <owl:sameAs rdf:resource="https://w3id.org/afo/vocab/1.1#Entropy"/>
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+    <rdfs:comment>Entropy MIR Toolbox audio feature</rdfs:comment>
+    <vs:term_status xml:lang="en">testing</vs:term_status>
+    <rdfs:subClassOf rdf:resource="https://w3id.org/afo/onto/1.1#Statistics"/>
+    <rdfs:label xml:lang="en">Entropy</rdfs:label>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://sovarr.c4dm.eecs.qmul.ac.uk/af/mir/MIRToolbox/1.0#Sum">
+    <owl:sameAs rdf:resource="https://w3id.org/afo/vocab/1.1#Sum"/>
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+    <rdfs:comment>Sum MIR Toolbox audio feature</rdfs:comment>
+    <vs:term_status xml:lang="en">testing</vs:term_status>
+    <rdfs:label xml:lang="en">Sum</rdfs:label>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://sovarr.c4dm.eecs.qmul.ac.uk/af/mir/MIRToolbox/1.0#Segment">
+    <vs:term_status xml:lang="en">testing</vs:term_status>
+    <rdfs:label xml:lang="en">Segment</rdfs:label>
+    <owl:sameAs rdf:resource="https://w3id.org/afo/vocab/1.1#Segment"/>
+    <rdfs:comment>Segment MIR Toolbox audio feature</rdfs:comment>
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+    <rdfs:subClassOf rdf:resource="https://w3id.org/afo/onto/1.1#Structure"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://sovarr.c4dm.eecs.qmul.ac.uk/af/mir/MIRToolbox/1.0#Pitch">
+    <owl:sameAs rdf:resource="https://w3id.org/afo/vocab/1.1#Pitch"/>
+    <vs:term_status xml:lang="en">testing</vs:term_status>
+    <rdfs:comment>Pitch MIR Toolbox audio feature</rdfs:comment>
+    <rdfs:subClassOf rdf:resource="https://w3id.org/afo/onto/1.1#PitchFeatureExtractor"/>
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+    <rdfs:label xml:lang="en">Pitch</rdfs:label>
   </rdf:Description>
   <rdf:Description rdf:about="http://www.w3.org/2003/06/sw-vocab-status/ns#term_status">
     <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#AnnotationProperty"/>

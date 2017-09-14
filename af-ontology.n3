@@ -19,7 +19,7 @@
 afo: a owl:Ontology ;
     dc:creator "Alo Allik",
         "Gyorgy Fazekas" ;
-    dc:date "2017-01-12T12:53:45.439476" ;
+    dc:date "2017-09-14T17:54:21.766713" ;
     dc:description "This ontology represents the feature extraction workflow of automatically extracted features from audio signals on different levels of abstraction. It updates the original Audio Feature Ontology http://purl.org/ontology/af/."@en ;
     dc:rights "This ontology is distributed under a Creative Commons License - http://creativecommons.org/licenses/by-sa/4.0/" ;
     dc:title "Audio Feature Ontology"@en ;
@@ -63,12 +63,6 @@ afo:Segment a [ a owl:Restriction ;
     rdfs:label "Segment"@en ;
     rdfs:comment "Represents a feature spanning an interval of time"@en ;
     rdfs:subClassOf afo:AudioFeature .
-
-afo:Signal a owl:Class ;
-    rdfs:label "Signal"@en ;
-    rdfs:comment "Represents a dense signal-like feature"@en ;
-    rdfs:subClassOf mo:Signal,
-        afo:AudioFeature .
 
 afo:Transformation a owl:Class ;
     rdfs:label "Transformation"@en ;
@@ -142,6 +136,12 @@ afo:feature a owl:ObjectProperty ;
     rdfs:domain afo:AudioFeature ;
     rdfs:range afo:AudioFeature .
 
+afo:first a owl:ObjectProperty ;
+    rdfs:label "first"@en ;
+    rdfs:comment "first event in a sequence"@en ;
+    rdfs:domain event:Event ;
+    rdfs:range event:Event .
+
 afo:first_operation a owl:FunctionalProperty,
         owl:ObjectProperty ;
     rdfs:label "first_operation"@en ;
@@ -149,6 +149,10 @@ afo:first_operation a owl:FunctionalProperty,
     rdfs:domain afo:OperationSequence ;
     rdfs:range afo:Operation ;
     rdfs:subPropertyOf afo:operation .
+
+afo:identifier a owl:ObjectProperty ;
+    rdfs:label "identifier"@en ;
+    rdfs:comment "associate an identifier with a musical object or agent"@en .
 
 afo:implemented_in a owl:ObjectProperty ;
     rdfs:label "implemented_in"@en ;
@@ -185,6 +189,12 @@ afo:name a owl:DatatypeProperty ;
     rdfs:domain afo:Parameter ;
     rdfs:range xsd:string .
 
+afo:next a owl:ObjectProperty ;
+    rdfs:label "next"@en ;
+    rdfs:comment "next event in a sequence"@en ;
+    rdfs:domain event:Event ;
+    rdfs:range event:Event .
+
 afo:next_operation a owl:FunctionalProperty,
         owl:ObjectProperty ;
     rdfs:label "next_operation"@en ;
@@ -192,6 +202,12 @@ afo:next_operation a owl:FunctionalProperty,
     rdfs:domain afo:Operation ;
     rdfs:range afo:Operation ;
     rdfs:subPropertyOf afo:operation .
+
+afo:origin a owl:ObjectProperty ;
+    rdfs:label "origin"@en ;
+    rdfs:comment "identifier origin, e.g. MusicBrainz, 7digital, Spotify, etc."@en ;
+    rdfs:domain afo:Identifier ;
+    rdfs:range xsd:string .
 
 afo:output a owl:ObjectProperty ;
     rdfs:label "output"@en ;
@@ -218,6 +234,18 @@ afo:sequence a owl:FunctionalProperty,
     rdfs:domain afo:AudioFeature ;
     rdfs:range afo:OperationSequence .
 
+afo:signal_feature a owl:ObjectProperty ;
+    rdfs:label "signal_feature"@en ;
+    rdfs:comment "feature describing the entire signal"@en ;
+    rdfs:domain afo:Signal ;
+    rdfs:range afo:AudioFeature .
+
+afo:type a owl:ObjectProperty ;
+    rdfs:label "type"@en ;
+    rdfs:comment "identifier type, e.g. hash, guid, etc"@en ;
+    rdfs:domain afo:Identifier ;
+    rdfs:range xsd:string .
+
 afo:unit a owl:ObjectProperty ;
     rdfs:label "unit"@en ;
     rdfs:comment "parameter unit"@en ;
@@ -227,11 +255,14 @@ afo:unit a owl:ObjectProperty ;
 afo:value a owl:DatatypeProperty,
         owl:ObjectProperty ;
     rdfs:label "value"@en ;
-    rdfs:comment "links a feature value to an audio feature"@en,
+    rdfs:comment "identifier value"@en,
+        "links a feature value to an audio feature"@en,
         "parameter value"@en ;
     rdfs:domain afo:AudioFeature,
+        afo:Identifier,
         afo:Parameter ;
-    rdfs:range xsd:anySimpleType .
+    rdfs:range xsd:anySimpleType,
+        xsd:string .
 
 afo:values a owl:ObjectProperty ;
     rdfs:label "values"@en ;
@@ -242,6 +273,12 @@ afo:values a owl:ObjectProperty ;
 afo:Instance a owl:Class ;
     rdfs:label "Audio feature extractor instance"@en ;
     rdfs:comment "Represents an instance of a feature extractor"@en .
+
+afo:Signal a owl:Class ;
+    rdfs:label "Signal"@en ;
+    rdfs:comment "Represents a dense signal-like feature"@en ;
+    rdfs:subClassOf mo:Signal,
+        afo:AudioFeature .
 
 afo:implementation a owl:ObjectProperty ;
     rdfs:label "implementation"@en ;
@@ -279,6 +316,10 @@ afo:OperationSequence a owl:Class ;
     rdfs:label "Operation Sequence"@en ;
     rdfs:comment "Represents a sequence of mathematical operations"@en .
 
+afo:Identifier a owl:Class ;
+    rdfs:label "Identifier"@en ;
+    rdfs:comment "Represents any kind of identifier, e.g. Musicbrainz, Spotify, Dbpedia, etc."@en .
+
 afo:Model a owl:Class ;
     rdfs:label "Model"@en ;
     rdfs:comment "Represents an abstract model of an audio feature"@en .
@@ -313,5 +354,6 @@ afo:AudioFeature a [ a owl:Restriction ;
         owl:Class ;
     rdfs:label "Audio feature"@en ;
     rdfs:comment "Represents abstract conceptualisation of an audio feature"@en ;
-    rdfs:subClassOf event:Event .
+    rdfs:subClassOf event:Event,
+        prov:Entity .
 

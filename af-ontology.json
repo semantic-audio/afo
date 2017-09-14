@@ -57,24 +57,36 @@
       }
     },
     {
-      "@id": "afo:operation",
-      "@type": [
-        "owl:ObjectProperty",
-        "owl:FunctionalProperty"
-      ],
+      "@id": "afo:LastOperation",
+      "@type": "owl:Class",
       "http://www.w3.org/2000/01/rdf-schema#comment": {
         "@language": "en",
-        "@value": "abstract property"
-      },
-      "http://www.w3.org/2000/01/rdf-schema#domain": {
-        "@id": "afo:Operation"
+        "@value": "Last computational operation in a feature extraction sequence of operations"
       },
       "http://www.w3.org/2000/01/rdf-schema#label": {
         "@language": "en",
-        "@value": "operation"
+        "@value": "Last Operation"
+      },
+      "http://www.w3.org/2000/01/rdf-schema#subClassOf": {
+        "@id": "afo:Operation"
+      }
+    },
+    {
+      "@id": "afo:first",
+      "@type": "owl:ObjectProperty",
+      "http://www.w3.org/2000/01/rdf-schema#comment": {
+        "@language": "en",
+        "@value": "first event in a sequence"
+      },
+      "http://www.w3.org/2000/01/rdf-schema#domain": {
+        "@id": "event:Event"
+      },
+      "http://www.w3.org/2000/01/rdf-schema#label": {
+        "@language": "en",
+        "@value": "first"
       },
       "http://www.w3.org/2000/01/rdf-schema#range": {
-        "@id": "afo:Operation"
+        "@id": "event:Event"
       }
     },
     {
@@ -90,21 +102,21 @@
       }
     },
     {
-      "@id": "afo:implements",
+      "@id": "afo:origin",
       "@type": "owl:ObjectProperty",
       "http://www.w3.org/2000/01/rdf-schema#comment": {
         "@language": "en",
-        "@value": "links an audio feature extractor to an audio feature"
+        "@value": "identifier origin, e.g. MusicBrainz, 7digital, Spotify, etc."
       },
       "http://www.w3.org/2000/01/rdf-schema#domain": {
-        "@id": "afo:FeatureExtractor"
+        "@id": "afo:Identifier"
       },
       "http://www.w3.org/2000/01/rdf-schema#label": {
         "@language": "en",
-        "@value": "implements"
+        "@value": "origin"
       },
       "http://www.w3.org/2000/01/rdf-schema#range": {
-        "@id": "afo:AudioFeature"
+        "@id": "xsd:string"
       }
     },
     {
@@ -123,6 +135,21 @@
       },
       "http://www.w3.org/2000/01/rdf-schema#range": {
         "@id": "xsd:float"
+      }
+    },
+    {
+      "@id": "afo:Point",
+      "@type": "owl:Class",
+      "http://www.w3.org/2000/01/rdf-schema#comment": {
+        "@language": "en",
+        "@value": "Represents a feature at an instant of time"
+      },
+      "http://www.w3.org/2000/01/rdf-schema#label": {
+        "@language": "en",
+        "@value": "Point"
+      },
+      "http://www.w3.org/2000/01/rdf-schema#subClassOf": {
+        "@id": "afo:AudioFeature"
       }
     },
     {
@@ -221,8 +248,8 @@
     {
       "@id": "afo:sequence",
       "@type": [
-        "owl:FunctionalProperty",
-        "owl:ObjectProperty"
+        "owl:ObjectProperty",
+        "owl:FunctionalProperty"
       ],
       "http://www.w3.org/2000/01/rdf-schema#comment": {
         "@language": "en",
@@ -260,8 +287,8 @@
     {
       "@id": "afo:next_operation",
       "@type": [
-        "owl:FunctionalProperty",
-        "owl:ObjectProperty"
+        "owl:ObjectProperty",
+        "owl:FunctionalProperty"
       ],
       "http://www.w3.org/2000/01/rdf-schema#comment": {
         "@language": "en",
@@ -315,15 +342,27 @@
       }
     },
     {
+      "@id": "afo:Identifier",
+      "@type": "owl:Class",
+      "http://www.w3.org/2000/01/rdf-schema#comment": {
+        "@language": "en",
+        "@value": "Represents any kind of identifier, e.g. Musicbrainz, Spotify, Dbpedia, etc."
+      },
+      "http://www.w3.org/2000/01/rdf-schema#label": {
+        "@language": "en",
+        "@value": "Identifier"
+      }
+    },
+    {
       "@id": "afo:AudioFeature",
       "@type": [
-        "owl:Class",
         {
-          "@id": "_:N53bbaedcf66d4be69a7d8e533b1fe423"
+          "@id": "_:N7f078d729e4d43a295082408e249533d"
         },
         {
-          "@id": "_:Neba26c2f7ef04f7e937ff06f4dc1ca6b"
-        }
+          "@id": "_:N672edf460b284d8ab409945010d53969"
+        },
+        "owl:Class"
       ],
       "http://www.w3.org/2000/01/rdf-schema#comment": {
         "@language": "en",
@@ -333,15 +372,21 @@
         "@language": "en",
         "@value": "Audio feature"
       },
-      "http://www.w3.org/2000/01/rdf-schema#subClassOf": {
-        "@id": "event:Event"
-      }
+      "http://www.w3.org/2000/01/rdf-schema#subClassOf": [
+        {
+          "@id": "prov:Entity"
+        },
+        {
+          "@id": "event:Event"
+        }
+      ]
     },
     {
-      "@id": "_:N53bbaedcf66d4be69a7d8e533b1fe423",
+      "@id": "_:N7f078d729e4d43a295082408e249533d",
       "@type": "owl:Restriction",
-      "owl:allValuesFrom": {
-        "@id": "afo:Operation"
+      "owl:cardinality": {
+        "@type": "xsd:int",
+        "@value": "1"
       },
       "owl:onProperty": {
         "@id": "afo:operation"
@@ -405,6 +450,24 @@
       }
     },
     {
+      "@id": "afo:described_in",
+      "@type": "owl:ObjectProperty",
+      "http://www.w3.org/2000/01/rdf-schema#comment": {
+        "@language": "en",
+        "@value": "links model to an external resource that describes it"
+      },
+      "http://www.w3.org/2000/01/rdf-schema#domain": {
+        "@id": "afo:AudioFeature"
+      },
+      "http://www.w3.org/2000/01/rdf-schema#label": {
+        "@language": "en",
+        "@value": "described_in"
+      },
+      "http://www.w3.org/2000/01/rdf-schema#range": {
+        "@id": "bibo:Document"
+      }
+    },
+    {
       "@id": "afo:collection",
       "@type": "owl:ObjectProperty",
       "http://www.w3.org/2000/01/rdf-schema#comment": {
@@ -456,16 +519,6 @@
       }
     },
     {
-      "@id": "_:N77913cc8b2984942903a58597f9a2e3b",
-      "@type": "owl:Restriction",
-      "owl:onProperty": {
-        "@id": "event:time"
-      },
-      "owl:someValuesFrom": {
-        "@id": "tl:Interval"
-      }
-    },
-    {
       "@id": "afo:Filter",
       "@type": "owl:Class",
       "http://www.w3.org/2000/01/rdf-schema#comment": {
@@ -496,6 +549,16 @@
       },
       "http://www.w3.org/2000/01/rdf-schema#range": {
         "@id": "xsd:float"
+      }
+    },
+    {
+      "@id": "_:N672edf460b284d8ab409945010d53969",
+      "@type": "owl:Restriction",
+      "owl:allValuesFrom": {
+        "@id": "afo:Operation"
+      },
+      "owl:onProperty": {
+        "@id": "afo:operation"
       }
     },
     {
@@ -565,6 +628,18 @@
       }
     },
     {
+      "@id": "afo:identifier",
+      "@type": "owl:ObjectProperty",
+      "http://www.w3.org/2000/01/rdf-schema#comment": {
+        "@language": "en",
+        "@value": "associate an identifier with a musical object or agent"
+      },
+      "http://www.w3.org/2000/01/rdf-schema#label": {
+        "@language": "en",
+        "@value": "identifier"
+      }
+    },
+    {
       "@id": "afo:implemented_in",
       "@type": "owl:ObjectProperty",
       "http://www.w3.org/2000/01/rdf-schema#comment": {
@@ -610,18 +685,39 @@
       }
     },
     {
-      "@id": "afo:Point",
-      "@type": "owl:Class",
+      "@id": "afo:signal_feature",
+      "@type": "owl:ObjectProperty",
       "http://www.w3.org/2000/01/rdf-schema#comment": {
         "@language": "en",
-        "@value": "Represents a feature at an instant of time"
+        "@value": "feature describing the entire signal"
+      },
+      "http://www.w3.org/2000/01/rdf-schema#domain": {
+        "@id": "afo:Signal"
       },
       "http://www.w3.org/2000/01/rdf-schema#label": {
         "@language": "en",
-        "@value": "Point"
+        "@value": "signal_feature"
       },
-      "http://www.w3.org/2000/01/rdf-schema#subClassOf": {
+      "http://www.w3.org/2000/01/rdf-schema#range": {
         "@id": "afo:AudioFeature"
+      }
+    },
+    {
+      "@id": "afo:next",
+      "@type": "owl:ObjectProperty",
+      "http://www.w3.org/2000/01/rdf-schema#comment": {
+        "@language": "en",
+        "@value": "next event in a sequence"
+      },
+      "http://www.w3.org/2000/01/rdf-schema#domain": {
+        "@id": "event:Event"
+      },
+      "http://www.w3.org/2000/01/rdf-schema#label": {
+        "@language": "en",
+        "@value": "next"
+      },
+      "http://www.w3.org/2000/01/rdf-schema#range": {
+        "@id": "event:Event"
       }
     },
     {
@@ -633,6 +729,10 @@
       "http://www.w3.org/2000/01/rdf-schema#comment": [
         {
           "@language": "en",
+          "@value": "identifier value"
+        },
+        {
+          "@language": "en",
           "@value": "links a feature value to an audio feature"
         },
         {
@@ -642,19 +742,27 @@
       ],
       "http://www.w3.org/2000/01/rdf-schema#domain": [
         {
+          "@id": "afo:AudioFeature"
+        },
+        {
           "@id": "afo:Parameter"
         },
         {
-          "@id": "afo:AudioFeature"
+          "@id": "afo:Identifier"
         }
       ],
       "http://www.w3.org/2000/01/rdf-schema#label": {
         "@language": "en",
         "@value": "value"
       },
-      "http://www.w3.org/2000/01/rdf-schema#range": {
-        "@id": "xsd:anySimpleType"
-      }
+      "http://www.w3.org/2000/01/rdf-schema#range": [
+        {
+          "@id": "xsd:string"
+        },
+        {
+          "@id": "xsd:anySimpleType"
+        }
+      ]
     },
     {
       "@id": "afo:",
@@ -663,7 +771,7 @@
         "Alo Allik",
         "Gyorgy Fazekas"
       ],
-      "dc:date": "2017-01-12T12:53:45.439476",
+      "dc:date": "2017-09-14T17:54:21.766713",
       "dc:description": {
         "@language": "en",
         "@value": "This ontology represents the feature extraction workflow of automatically extracted features from audio signals on different levels of abstraction. It updates the original Audio Feature Ontology http://purl.org/ontology/af/."
@@ -714,10 +822,10 @@
     {
       "@id": "afo:Segment",
       "@type": [
+        "owl:Class",
         {
-          "@id": "_:N77913cc8b2984942903a58597f9a2e3b"
-        },
-        "owl:Class"
+          "@id": "_:N3265a1c068fe401691334128c19fd9ed"
+        }
       ],
       "http://www.w3.org/2000/01/rdf-schema#comment": {
         "@language": "en",
@@ -732,28 +840,44 @@
       }
     },
     {
-      "@id": "_:Neba26c2f7ef04f7e937ff06f4dc1ca6b",
-      "@type": "owl:Restriction",
-      "owl:cardinality": {
-        "@type": "xsd:int",
-        "@value": "1"
-      },
-      "owl:onProperty": {
-        "@id": "afo:operation"
-      }
-    },
-    {
-      "@id": "afo:LastOperation",
-      "@type": "owl:Class",
+      "@id": "afo:implementation_of",
+      "@type": "owl:ObjectProperty",
       "http://www.w3.org/2000/01/rdf-schema#comment": {
         "@language": "en",
-        "@value": "Last computational operation in a feature extraction sequence of operations"
+        "@value": "inverse of implementation to link an implemented algorithm to a computational model"
+      },
+      "http://www.w3.org/2000/01/rdf-schema#domain": {
+        "@id": "afo:FeatureExtractor"
       },
       "http://www.w3.org/2000/01/rdf-schema#label": {
         "@language": "en",
-        "@value": "Last Operation"
+        "@value": "implementation_of"
       },
-      "http://www.w3.org/2000/01/rdf-schema#subClassOf": {
+      "http://www.w3.org/2000/01/rdf-schema#range": {
+        "@id": "afo:Model"
+      },
+      "owl:inverseOf": {
+        "@id": "afo:implementation"
+      }
+    },
+    {
+      "@id": "afo:operation",
+      "@type": [
+        "owl:FunctionalProperty",
+        "owl:ObjectProperty"
+      ],
+      "http://www.w3.org/2000/01/rdf-schema#comment": {
+        "@language": "en",
+        "@value": "abstract property"
+      },
+      "http://www.w3.org/2000/01/rdf-schema#domain": {
+        "@id": "afo:Operation"
+      },
+      "http://www.w3.org/2000/01/rdf-schema#label": {
+        "@language": "en",
+        "@value": "operation"
+      },
+      "http://www.w3.org/2000/01/rdf-schema#range": {
         "@id": "afo:Operation"
       }
     },
@@ -800,6 +924,24 @@
       }
     },
     {
+      "@id": "afo:type",
+      "@type": "owl:ObjectProperty",
+      "http://www.w3.org/2000/01/rdf-schema#comment": {
+        "@language": "en",
+        "@value": "identifier type, e.g. hash, guid, etc"
+      },
+      "http://www.w3.org/2000/01/rdf-schema#domain": {
+        "@id": "afo:Identifier"
+      },
+      "http://www.w3.org/2000/01/rdf-schema#label": {
+        "@language": "en",
+        "@value": "type"
+      },
+      "http://www.w3.org/2000/01/rdf-schema#range": {
+        "@id": "xsd:string"
+      }
+    },
+    {
       "@id": "afo:model_of",
       "@type": "owl:ObjectProperty",
       "http://www.w3.org/2000/01/rdf-schema#comment": {
@@ -839,24 +981,21 @@
       }
     },
     {
-      "@id": "afo:implementation_of",
+      "@id": "afo:implements",
       "@type": "owl:ObjectProperty",
       "http://www.w3.org/2000/01/rdf-schema#comment": {
         "@language": "en",
-        "@value": "inverse of implementation to link an implemented algorithm to a computational model"
+        "@value": "links an audio feature extractor to an audio feature"
       },
       "http://www.w3.org/2000/01/rdf-schema#domain": {
         "@id": "afo:FeatureExtractor"
       },
       "http://www.w3.org/2000/01/rdf-schema#label": {
         "@language": "en",
-        "@value": "implementation_of"
+        "@value": "implements"
       },
       "http://www.w3.org/2000/01/rdf-schema#range": {
-        "@id": "afo:Model"
-      },
-      "owl:inverseOf": {
-        "@id": "afo:implementation"
+        "@id": "afo:AudioFeature"
       }
     },
     {
@@ -913,21 +1052,13 @@
       }
     },
     {
-      "@id": "afo:described_in",
-      "@type": "owl:ObjectProperty",
-      "http://www.w3.org/2000/01/rdf-schema#comment": {
-        "@language": "en",
-        "@value": "links model to an external resource that describes it"
+      "@id": "_:N3265a1c068fe401691334128c19fd9ed",
+      "@type": "owl:Restriction",
+      "owl:onProperty": {
+        "@id": "event:time"
       },
-      "http://www.w3.org/2000/01/rdf-schema#domain": {
-        "@id": "afo:AudioFeature"
-      },
-      "http://www.w3.org/2000/01/rdf-schema#label": {
-        "@language": "en",
-        "@value": "described_in"
-      },
-      "http://www.w3.org/2000/01/rdf-schema#range": {
-        "@id": "bibo:Document"
+      "owl:someValuesFrom": {
+        "@id": "tl:Interval"
       }
     }
   ]
